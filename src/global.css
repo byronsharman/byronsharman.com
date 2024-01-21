@@ -7,14 +7,15 @@ a:visited {
 }
 
 body {
-  font-family: "JetBrains Mono", "Courier", "Courier New";
-  font-size: 16px;
   background-color: #202020;
   color: #f0f0f0;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
 }
 
 h1 {
   font-size: 36px;
+  text-align: center;
 }
 
 li {
@@ -23,13 +24,28 @@ li {
   flex-grow: 1;
   flex-shrink: 0;
   list-style: none;
-  margin: 0px;
   text-align: center;
+}
+
+li a {
+  color: #f0f0f0;
+  font-size: 14px;
+  margin: 0px;
+}
+
+li a:visited {
+  color: #f0f0f0;
+}
+
+main {
+  margin: 20px;
+  max-width: 50em;
 }
 
 ul {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 15px;
   padding: 0px;
 }
 
@@ -37,4 +53,9 @@ ul {
   ul {
     flex-direction: column;
   }
+}
+
+#outermost-flex {
+  display:flex;
+  justify-content: center;
 }
