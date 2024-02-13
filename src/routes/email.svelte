@@ -7,4 +7,4 @@
   });
 </script>
 
-<a href={`mailto:${ea}`}>{ea}</a>
+<a href={`mailto:${ea}`}>Email</a>
