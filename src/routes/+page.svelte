@@ -66,7 +66,7 @@
       <h2 class="my-8 font-bold text-3xl lg:text-4xl">Projects</h2>
       <ul>
         {#each projects as p}
-          <li class="border rounded-xl my-4">
+          <li class="border hover:border-gray-400 rounded-xl my-4">
             <a href={p.url} class="block p-4 rounded-lg">
               <h3 class="font-bold text-xl mb-4">{p.name}</h3>
               <p>{p.description}</p>
