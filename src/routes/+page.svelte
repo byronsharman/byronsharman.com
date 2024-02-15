@@ -34,7 +34,9 @@
     <section class="my-6 sm:my-16">
       <h2 class="my-8 font-bold text-3xl lg:text-4xl">Projects</h2>
       <ul>
-        <GitHubCard github_data={data.github_data} />
+        {#each data.github_data as project}
+          <GitHubCard project={project} />
+        {/each}
       </ul>
     </section>
 
