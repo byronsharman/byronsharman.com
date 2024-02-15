@@ -1,41 +1,10 @@
 <script lang='ts'>
   import '../output.css';
+  import type { PageData } from './$types';
   import Email from './email.svelte';
+  import GitHubCard from '../lib/github_card.svelte';
 
-  /* Eventually I want to grab these using the GitHub API */
-  /* it seems like https://api.github.com/repos/b-sharman/b-sharman.github.io
-   * should suffice for the simple functionality I require */
-  const projects = [
-    {
-      'name': 'b-sharman.github.io',
-      'url': 'https://github.com/b-sharman/b-sharman.github.io',
-      'description': 'this website',
-      'languages': {
-        'CSS': 32782,
-        'Svelte': 1291,
-        'JavaScript': 1036,
-        'HTML': 393,
-        'TypeScript': 310,
-      },
-    },
-    {
-      'name': 'Advent of Code 2023',
-      'url': 'https://github.com/b-sharman/aoc2023',
-      'description': 'my solutions for Advent of Code 2023, mostly in C++',
-      'languages': {
-        'C++': 44034,
-        'Python': 2636,
-      },
-    },
-    {
-      'name': 'bangbang',
-      'url': 'https://github.com/b-sharman/bangbang',
-      'description': 'a simple tank game made with Pygame, OpenGL, and websockets',
-      'languages': {
-          'Python': 86673,
-      },
-    },
-  ];
+  export let data: PageData;
 </script>
 
 <div class="flex justify-center p-4">
@@ -65,15 +34,7 @@
     <section class="my-6 sm:my-16">
       <h2 class="my-8 font-bold text-3xl lg:text-4xl">Projects</h2>
       <ul>
-        {#each projects as p}
-          <li class="border hover:border-gray-400 rounded-xl my-4">
-            <a href={p.url} class="block p-4 rounded-lg">
-              <h3 class="font-bold text-xl mb-4">{p.name}</h3>
-              <p>{p.description}</p>
-              <p class="mt-2 text-sm text-gray-600">{Object.keys(p.languages).join(', ')}</p>
-            </a>
-          </li>
-        {/each}
+        <GitHubCard github_data={data.github_data} />
       </ul>
     </section>
 
