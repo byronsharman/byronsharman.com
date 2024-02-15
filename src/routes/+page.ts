@@ -1,6 +1,6 @@
 import type { PageLoad } from './$types';
 
-const projects = ['b-sharman.github.io', 'aoc2023', 'bangbang'];
+const projects = ['b-sharman.dev', 'aoc2023', 'bangbang'];
 
 const fail_placeholder = {
   'html_url': '',
