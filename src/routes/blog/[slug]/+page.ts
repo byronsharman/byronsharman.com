@@ -1,19 +1,16 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
-import { marked } from 'marked'
+import { marked } from 'marked';
 
-const lorem = `# Lorem Ipsum
+// I should be able to do this, but Vite said No, and I gave up after like 30 minutes
+// import lorem from '/src/blog/lorem.md';
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod.
-
-Ullus investigandi veri, nisi inveneris, et quaerendi defatigatio turpis est, cum esset accusata et vituperata ab Hortensio. Qui liber cum et mortem contemnit, qua qui est imbutus quietus esse numquam potest. Praeterea bona praeterita grata recordatione.
-
-Ullus investigandi veri, nisi inveneris, et quaerendi defatigatio turpis est, cum esset accusata et vituperata ab Hortensio. Qui liber cum et mortem contemnit, qua qui est imbutus quietus esse numquam potest. Praeterea bona praeterita grata recordatione renovata delectant. Est autem situm in nobis ut et voluptates et dolores nasci fatemur e corporis voluptatibus et doloribus -- itaque concedo, quod modo dicebas, cadere causa, si.`;
-
-export const load: PageLoad = ({ params }) => {
-  let retval = {'slug': params.slug};
-  if (params.slug === 'lorem') {
-    retval.lorem = marked(lorem);
+export const load: PageLoad = async (p) => {
+  let retval = {'slug': p.params.slug};
+  if (p.params.slug === 'lorem') {
+    const text = await p.fetch('/src/blog/lorem.md')
+      .then(res => res.text());
+    retval.lorem = marked(text);
     return retval;
   }
 
