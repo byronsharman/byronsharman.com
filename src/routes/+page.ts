@@ -1,6 +1,5 @@
 import type { PageLoad } from './$types';
 import { marked } from 'marked';
-import { JSDOM } from 'jsdom';
 
 import blogs from '/src/blog/index.json';
 
@@ -51,14 +50,8 @@ export const load: PageLoad = async (p) => {
     async (blog) => {
       const text = await p.fetch(`/src/blog/${blog['slug']}.md`)
         .then(res => res.text());
-      const htmlString = marked(text);
-      const doc = new JSDOM(htmlString).window.document;
-
-      let ret = blog;
-      ret.html = htmlString;
-      ret.title = doc.getElementsByTagName('h1')[0].textContent;
-      ret.preview = doc.getElementsByTagName('p')[0].textContent;
-      return ret;
+      blog.html = marked(text);
+      return blog;
     }
   ))
     .then((values) => {

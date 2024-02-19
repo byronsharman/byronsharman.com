@@ -1,3 +1,8 @@
 {
-  "lorem": {"slug": "lorem", "date": 1708304756}
+  "lorem": {
+    "slug": "lorem",
+    "date": 1708304756,
+    "preview": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod.",
+    "title": "Lorem Ipsum"
+  }
 }
