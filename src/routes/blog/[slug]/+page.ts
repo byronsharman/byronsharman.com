@@ -10,6 +10,7 @@ export const load: PageLoad = async (p) => {
   let retval = blogs[p.params.slug];
   const text = await p.fetch(`/src/blog/${retval["slug"]}.md`)
     .then(res => res.text());
-  retval.markdown = marked(text);
+  retval.html = marked(text);
+
   return retval;
 };

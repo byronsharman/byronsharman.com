@@ -3,6 +3,7 @@
   import type { PageData } from './$types';
   import Email from './email.svelte';
   import GitHubCard from '../lib/github_card.svelte';
+  import BlogCard from '../lib/blog_card.svelte';
 
   export let data: PageData;
 </script>
@@ -36,6 +37,15 @@
       <ul>
         {#each data.github_data as project}
           <GitHubCard project={project} />
+        {/each}
+      </ul>
+    </section>
+
+    <section class="my-6 sm:my-16">
+      <h2 class="my-8 font-bold text-3xl lg:text-4xl">Blog Posts</h2>
+      <ul>
+        {#each Object.values(data.blog_data) as blog}
+          <BlogCard blog={blog} />
         {/each}
       </ul>
     </section>

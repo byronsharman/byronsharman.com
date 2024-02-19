@@ -1,4 +1,8 @@
 import type { PageLoad } from './$types';
+import { marked } from 'marked';
+import { JSDOM } from 'jsdom';
+
+import blogs from '/src/blog/index.json';
 
 const projects = ['b-sharman.dev', 'aoc2023', 'bangbang'];
 
@@ -10,7 +14,9 @@ const fail_placeholder = {
 };
 
 export const load: PageLoad = async (p) => {
-  let retval;
+  let retval = {};
+
+  // GitHub API data
   await Promise.all(projects.map(
     async (pname) => {
       /* Note to future self:
@@ -36,7 +42,27 @@ export const load: PageLoad = async (p) => {
     }
   ))
     .then((values) => {
-      retval = { 'github_data': values };
+      retval.github_data = values;
+    })
+    .catch((e) => console.log('oopsy woopsy:', e));
+
+  // blog data
+  await Promise.all(Object.values(blogs).map(
+    async (blog) => {
+      const text = await p.fetch(`/src/blog/${blog['slug']}.md`)
+        .then(res => res.text());
+      const htmlString = marked(text);
+      const doc = new JSDOM(htmlString).window.document;
+
+      let ret = blog;
+      ret.html = htmlString;
+      ret.title = doc.getElementsByTagName('h1')[0].textContent;
+      ret.preview = doc.getElementsByTagName('p')[0].textContent;
+      return ret;
+    }
+  ))
+    .then((values) => {
+      retval.blog_data = values;
     })
     .catch((e) => console.log('oopsy woopsy:', e));
 
