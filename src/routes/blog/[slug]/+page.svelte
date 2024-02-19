@@ -8,7 +8,7 @@
 <div class="flex justify-center p-4">
   <main class="max-w-prose">
     <article class="my-6 prose lg:prose-xl">
-      {@html data[data.slug]}
+      {@html data.markdown}
     </article>
   </main>
 </div>
