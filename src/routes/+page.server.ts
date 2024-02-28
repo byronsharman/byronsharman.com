@@ -44,11 +44,11 @@ export const load: PageLoad = async (p) => {
     .catch((e) => console.log('oopsy woopsy:', e));
 
   // blog data
-  const blogs = await p.fetch('/src/blog/index.json')
+  const blogs = await p.fetch('/blog/index.json')
     .then(res => res.json());
   await Promise.all(Object.values(blogs).map(
     async (blog) => {
-      const text = await p.fetch(`/src/blog/${blog['slug']}.md`)
+      const text = await p.fetch(`/blog/${blog['slug']}.md`)
         .then(res => res.text());
       blog.html = marked(text);
       return blog;
