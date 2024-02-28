@@ -1,8 +1,6 @@
 import type { PageLoad } from './$types';
 import { marked } from 'marked';
 
-import blogs from '/src/blog/index.json';
-
 const projects = ['b-sharman.dev', 'aoc2023', 'bangbang'];
 
 const fail_placeholder = {
@@ -46,6 +44,8 @@ export const load: PageLoad = async (p) => {
     .catch((e) => console.log('oopsy woopsy:', e));
 
   // blog data
+  const blogs = await p.fetch('/src/blog/index.json')
+    .then(res => res.json());
   await Promise.all(Object.values(blogs).map(
     async (blog) => {
       const text = await p.fetch(`/src/blog/${blog['slug']}.md`)
