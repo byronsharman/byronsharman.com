@@ -19,12 +19,12 @@ export const load: PageLoad = async (p) => {
   }
   marked.use({ renderer });
 
-  const blogs = await p.fetch('/blog/index.json')
+  const blogs = await p.fetch('/blog/build/index.json')
     .then(res => res.json());
   if (!Object.keys(blogs).includes(p.params.slug)) return error(404, 'Not found');
 
   let retval = blogs[p.params.slug];
-  const text = await p.fetch(`/blog/${retval["slug"]}.md`)
+  const text = await p.fetch(`/blog/build/${retval["slug"]}.md`)
     .then(res => res.text());
   retval.html = marked(text);
 

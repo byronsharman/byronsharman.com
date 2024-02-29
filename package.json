@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "node build.js",
     "preview": "vite preview",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
@@ -23,6 +23,7 @@
   },
   "type": "module",
   "dependencies": {
+    "fs-extra": "^11.2.0",
     "marked": "^12.0.0"
   }
 }
