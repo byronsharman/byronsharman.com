@@ -1074,6 +1074,14 @@ video {
   margin-top: 0.5rem;
 }
 
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -1167,6 +1175,10 @@ video {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.underline {
+  text-decoration-line: underline;
 }
 
 @media (min-width: 1024px) {
@@ -1670,6 +1682,10 @@ video {
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 
+.prose-h1\:mb-0 :is(:where(h1):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  margin-bottom: 0px;
+}
+
 .prose-code\:font-normal :is(:where(code):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   font-weight: 400;
 }
@@ -1688,6 +1704,22 @@ video {
   margin-bottom: 0px;
 }
 
+.prose-img\:max-h-96 :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  max-height: 24rem;
+}
+
+.prose-img\:max-h-\[28rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  max-height: 28rem;
+}
+
+.prose-img\:max-h-\[36rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  max-height: 36rem;
+}
+
+.prose-img\:max-h-\[34rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  max-height: 34rem;
+}
+
 .prose-img\:w-max :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   width: -moz-max-content;
   width: max-content;
@@ -1703,9 +1735,35 @@ video {
     margin-top: 6rem;
     margin-bottom: 6rem;
   }
+
+  .sm\:prose-img\:max-h-\[34rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    max-height: 34rem;
+  }
+
+  .sm\:prose-img\:max-h-96 :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    max-height: 24rem;
+  }
+
+  .sm\:prose-img\:max-h-80 :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    max-height: 20rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:prose-img\:max-h-\[34rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    max-height: 34rem;
+  }
 }
 
 @media (min-width: 1024px) {
+  .lg\:mb-8 {
+    margin-bottom: 2rem;
+  }
+
+  .lg\:mb-12 {
+    margin-bottom: 3rem;
+  }
+
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -1714,5 +1772,9 @@ video {
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .lg\:prose-img\:max-h-\[34rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+    max-height: 34rem;
   }
 }
