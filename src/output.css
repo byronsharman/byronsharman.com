@@ -1046,6 +1046,11 @@ video {
   margin-bottom: 0;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -1094,6 +1099,10 @@ video {
 
 .flex-row {
   flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
 }
 
 .justify-center {
@@ -1677,6 +1686,11 @@ video {
 
 .prose-img\:mb-0 :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   margin-bottom: 0px;
+}
+
+.prose-img\:w-max :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  width: -moz-max-content;
+  width: max-content;
 }
 
 @media (min-width: 640px) {
