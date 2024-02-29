@@ -1,5 +1,4 @@
 import type { PageLoad } from './$types';
-import { marked } from 'marked';
 
 const projects = ['b-sharman.dev', 'aoc2023', 'bangbang'];
 
@@ -50,7 +49,6 @@ export const load: PageLoad = async (p) => {
     async (blog) => {
       const text = await p.fetch(`/blog/${blog['slug']}.md`)
         .then(res => res.text());
-      blog.html = marked(text);
       return blog;
     }
   ))
