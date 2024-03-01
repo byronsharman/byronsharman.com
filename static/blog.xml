@@ -1,0 +1,23 @@
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Byron Sharman's blog</title>
+    <link>https://b-sharman.dev/</link>
+    <description>The latest blog posts from Byron Sharman</description>
+    <language>en-us</language>
+    <atom:link href="https://b-sharman.dev/blog.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Blasterhacks 2024: My First Hackathon</title>
+      <description>I've been trying to find fun things to do more often in college, so when I heard my friends were signing up for a hackathon, I knew I had to try one. In the worst case, I'd lose a weekend, and either way, it certainly sounded more fun than sitting in my dorm all day. My teammates...</description>
+      <link>https://b-sharman.dev/blog/blasterhacks-2024</link>
+      <pubDate>Wed, 28 Feb 2024 22:38:50 GMT</pubDate>
+    </item>
+    <item>
+      <title>Lorem Ipsum</title>
+      <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si aliquod aeternum et infinitum impendere malum nobis opinemur. Quod.</description>
+      <link>https://b-sharman.dev/blog/lorem</link>
+      <pubDate>Mon, 19 Feb 2024 01:05:56 GMT</pubDate>
+    </item>
+
+  </channel>
+</rss>

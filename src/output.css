@@ -1070,16 +1070,16 @@ video {
   margin-bottom: 1rem;
 }
 
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-
-.mb-8 {
-  margin-bottom: 2rem;
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .line-clamp-3 {
@@ -1101,6 +1101,34 @@ video {
   display: contents;
 }
 
+.h-6 {
+  height: 1.5rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
+.h-10 {
+  height: 2.5rem;
+}
+
+.w-6 {
+  width: 1.5rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.w-12 {
+  width: 3rem;
+}
+
 .max-w-prose {
   max-width: 65ch;
 }
@@ -1113,8 +1141,20 @@ video {
   flex-direction: column;
 }
 
+.items-center {
+  align-items: center;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
 .justify-center {
   justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .divide-x > :not([hidden]) ~ :not([hidden]) {
@@ -1704,22 +1744,6 @@ video {
   margin-bottom: 0px;
 }
 
-.prose-img\:max-h-96 :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  max-height: 24rem;
-}
-
-.prose-img\:max-h-\[28rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  max-height: 28rem;
-}
-
-.prose-img\:max-h-\[36rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  max-height: 36rem;
-}
-
-.prose-img\:max-h-\[34rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-  max-height: 34rem;
-}
-
 .prose-img\:w-max :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
   width: -moz-max-content;
   width: max-content;
@@ -1736,16 +1760,8 @@ video {
     margin-bottom: 6rem;
   }
 
-  .sm\:prose-img\:max-h-\[34rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-    max-height: 34rem;
-  }
-
   .sm\:prose-img\:max-h-96 :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
     max-height: 24rem;
-  }
-
-  .sm\:prose-img\:max-h-80 :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-    max-height: 20rem;
   }
 }
 
@@ -1756,10 +1772,6 @@ video {
 }
 
 @media (min-width: 1024px) {
-  .lg\:mb-8 {
-    margin-bottom: 2rem;
-  }
-
   .lg\:mb-12 {
     margin-bottom: 3rem;
   }
@@ -1772,9 +1784,5 @@ video {
   .lg\:text-5xl {
     font-size: 3rem;
     line-height: 1;
-  }
-
-  .lg\:prose-img\:max-h-\[34rem\] :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
-    max-height: 34rem;
   }
 }
