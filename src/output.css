@@ -1749,6 +1749,21 @@ video {
   width: max-content;
 }
 
+.prose-img\:max-w-max :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+
+.prose-img\:max-w-fit :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+}
+
+.prose-img\:object-scale-down :is(:where(img):not(:where([class~="not-prose"],[class~="not-prose"] *))) {
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+}
+
 @media (min-width: 640px) {
   .sm\:my-16 {
     margin-top: 4rem;
