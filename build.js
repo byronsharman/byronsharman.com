@@ -27,7 +27,8 @@ async function runBuild() {
       xml_output += `    <item>
       <title>${blog.title}</title>
       <description>${blog.preview}</description>
-      <link>https://b-sharman.dev/blog/${blog.slug}</link>
+      <link>https://b-sharman.dev/blog/${blog.slug}/</link>
+      <guid>https://b-sharman.dev/blog/${blog.slug}/</guid>
       <pubDate>${new Date(blog.date * 1000).toUTCString()}</pubDate>
     </item>
 `;
