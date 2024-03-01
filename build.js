@@ -1,12 +1,18 @@
 // my first time copy and pasting a script from ChatGPT :P
 
-import { readFileSync, writeFileSync } from 'fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import fs from 'fs-extra';
 import { build } from 'vite';
 
 async function runBuild() {
   try {
     console.log('Writing RSS file...');
+    try {
+      // writeFile will throw an error on Cloudflare since build doesn't exist
+      mkdirSync('build');
+    } catch {
+      // mkdirSync throws an error if the directory already exists
+    }
     let xml_output = `
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
