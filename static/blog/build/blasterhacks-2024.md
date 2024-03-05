@@ -1,4 +1,4 @@
-![a screenshot of our finished application's image feed page](blasterhacks_screenshot.png "The feed page of our finished app.")
+![a screenshot of our finished application's image feed page](blasterhacks_screenshot.avif "The feed page of our finished app.")
 
 I've been trying to find fun things to do more often in college, so when I heard my friends were signing up for a hackathon, I knew I had to try one. In the worst case, I'd lose a weekend, and it certainly sounded more fun than sitting in my dorm all day.
 
