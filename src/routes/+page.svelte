@@ -8,6 +8,10 @@
   export let data: PageData;
 </script>
 
+<svelte:head>
+  <meta name="description" content="Byron Sharman's blog and website" />
+</svelte:head>
+
 <div class="flex justify-center p-4">
   <main class="max-w-prose">
     <header class="my-6 sm:my-24">

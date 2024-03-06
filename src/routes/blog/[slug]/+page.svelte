@@ -6,6 +6,11 @@
   export let data: PageData;
 </script>
 
+<svelte:head>
+  <meta name="description" content={data.preview} />
+  <title>{`${data.title} - Byron Sharman's blog`}</title>
+</svelte:head>
+
 <div class="flex justify-center p-4">
   <main class="max-w-prose">
     <article class="my-6 prose lg:prose-lg prose-img:mb-0 prose-img:w-max prose-img:object-scale-down sm:prose-img:max-h-96 md:prose-img:max-h-[34rem] prose-h1:mb-0 prose-code:font-normal prose-code:before:content-none prose-code:after:content-none">
