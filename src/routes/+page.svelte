@@ -19,7 +19,7 @@
       <ul class="my-4 flex flex-row justify-center divide-x">
           <li class="px-4"><Email /></li>
           <li class="px-4"><a href="https://github.com/b-sharman">GitHub</a></li>
-          <li class="px-4"><a href="https://www.linkedin.com/in/byron-sharman/">LinkedIn</a></li>
+          <li class="px-4"><a href="https://www.linkedin.com/in/b-sharman/">LinkedIn</a></li>
       </ul>
     </header>
 
