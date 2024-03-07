@@ -16,7 +16,7 @@ As we hopped between various tasks, we found that a [Kanban board](https://en.wi
 
 ![Kanban board with sticky notes denoting tasks for each group member](kanban.avif "By the end of the hackathon, our Kanban board made us look extremely productive.")
 
-Consistent and reliable notifications proved difficult and time-consuming; however, I mostly worked on the frontend while my teammates addressed that. I learned what [DataURLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs) are when writing the code that uploads images to the backend, and this was more rewarding than floundering through the image capture problem because DataURLs are an actual design solution rather than a rope made out of band-aids. Besides, I am more likely to use them in my career.
+Consistent and reliable notifications proved difficult and time-consuming; however, I mostly worked on the frontend while my teammates addressed that. I learned what DataURLs are when writing the code that uploads images to the backend, and this was more rewarding than floundering through the image capture problem because DataURLs are an actual design solution rather than a rope made out of band-aids. Besides, I am more likely to use them in my career.
 
 Until I started typing this, I didn't realize how much the Red Bull eroded my recollection. One memory I do retain from Saturday is the mini competitive programming competition. I already attend the Competitive Programming club, but these problems were exceptionally satisfying for my skill level; they were mostly two- or three-liners in Python, but still tricky enough to require thought. Even though I placed third, a series of technicalities caused me to win the first place prize, which was described to me as a plush ducky.
 
