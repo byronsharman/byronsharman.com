@@ -22,9 +22,9 @@ Until I started typing this, I didn't realize how much the Red Bull eroded my re
 
 ![plush duck pillow held in midair](duck.avif "I was not expecting to win this.")
 
-On Saturday, I also tweaked a lot of the frontend, working extensively with Tailwind and Svelte. Overall, I like Svelte, and at the time of writing, I'm using it to generate my website. Because it elminates a lot of boilerplate, it makes the app-writing process relatively simple.
+On Saturday, I also tweaked a lot of the frontend, working extensively with Tailwind and Svelte. Overall, I like Svelte, and at the time of writing, I'm using it to generate my website. Because it eliminates a lot of boilerplate, it makes the app-writing process relatively simple.
 
-The fact that I don't remember much else from Saturday corroborates my teammates' assertion that I needed to sleep. By Saturday night, they basically coerced me into going to bed, and I reluctantly complied. In retrospect, it's probably good they did, given my steady decrease in productivity since Friday night. The next morning, I woke up to discover that push notifications were mostly working, and we finished writing our project description on DevPost just before the 08:00 ending time.
+The fact that I don't remember much else from Saturday corroborates my teammates' assertion that I needed to sleep. By Saturday night, they basically coerced me into going to bed, and I reluctantly complied. In retrospect, it's probably good they did, given my steady decrease in productivity since Friday night. The next morning, I woke up to discover that push notifications were mostly working, and we finished writing our project description on Devpost just before the 08:00 ending time.
 
 We probably should have prepared more for the presentation, but winging it served us well; we got second place in the general track!
 
