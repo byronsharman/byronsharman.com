@@ -9,6 +9,7 @@
 </script>
 
 <svelte:head>
+  <title>Byron Sharman</title>
   <meta name="description" content="Byron Sharman's blog and website" />
 </svelte:head>
 
