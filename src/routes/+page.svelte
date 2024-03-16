@@ -31,9 +31,7 @@
         install.
       </p>
       <p>
-        I am also obsessed with the musical compositions of this old Russian
-        guy named Sergei Rachmaninoff. Currently, my favorite piece is his
-        choral symphony <em>The Bells</em>, op.&nbsp;35.
+        I am also obsessed with the musical compositions of Sergei Rachmaninoff. Currently, my favorite piece is his <em>Sonata for Cello and Piano</em>, op.&nbsp;19.
       </p>
     </article>
 
