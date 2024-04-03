@@ -31,7 +31,7 @@
         install.
       </p>
       <p>
-        I am also obsessed with the musical compositions of Sergei Rachmaninoff. Currently, my favorite piece is his <em>Sonata for Cello and Piano</em>, op.&nbsp;19.
+        I am also obsessed with the musical compositions of Sergei Rachmaninoff. Currently, my favorite piece is his <em>Symphony No.&nbsp;3</em>, op.&nbsp;44.
       </p>
     </article>
 
