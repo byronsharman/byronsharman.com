@@ -1,4 +1,0 @@
-[submodule "AdventCalendar"]
-	path = AdventCalendar
-	url = git@github.com:b-sharman/advent-calendar-trivia.git
-
