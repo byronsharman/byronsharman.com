@@ -1,4 +1,10 @@
 {
+  "three-snazzy-vim-commands": {
+    "slug": "three-snazzy-vim-commands",
+    "date": 1713386692,
+    "preview": "One of the things I like about Vim is that each Vim user I know has their own distinct style. Some have installed hundreds of plugins, committing to memory the keybindings of each. Some use insert mode the whole time and pretend they're in an ordinary text editor. Some know all the cool Visual mode commands. Some read the entire manual out loud recreationally. And I like using Ex commands.",
+    "title": "Three Snazzy Commands to Enhance Your Vim Personality"
+  },
   "hackcu-x": {
     "slug": "hackcu-x",
     "date": 1712017815,

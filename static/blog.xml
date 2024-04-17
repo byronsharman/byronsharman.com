@@ -7,6 +7,20 @@
     <language>en-us</language>
     <atom:link href="https://b-sharman.dev/blog.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>Three Snazzy Commands to Enhance Your Vim Personality</title>
+      <description>One of the things I like about Vim is that each Vim user I know has their own distinct style. Some have installed hundreds of plugins, committing to memory the keybindings of each. Some use insert mode the whole time and pretend they're in an ordinary text editor. Some know all the cool Visual mode commands. Some read the entire manual out loud recreationally. And I like using Ex commands.</description>
+      <link>https://b-sharman.dev/blog/three-snazzy-vim-commands/</link>
+      <guid>https://b-sharman.dev/blog/three-snazzy-vim-commands/</guid>
+      <pubDate>Wed, 17 Apr 2024 20:44:52 GMT</pubDate>
+    </item>
+    <item>
+      <title>HackCU X</title>
+      <description>After having a blast at Blasterhacks, it was a no-brainer to attend HackCU in Boulder, which is only a 45-minute drive from Mines. Seven Mines students attended in total, so we split into two Lyft rides. Tyler and I had already agreed to be teammates, so we started brainstorming in the car. Our driver was friendly, and our ride was pleasant but uneventful.</description>
+      <link>https://b-sharman.dev/blog/hackcu-x/</link>
+      <guid>https://b-sharman.dev/blog/hackcu-x/</guid>
+      <pubDate>Tue, 02 Apr 2024 00:30:15 GMT</pubDate>
+    </item>
+    <item>
       <title>3l: The keyboard layout that took me from 0 to 100 WPM in 13 days</title>
       <description>3l, also known as threelayout, is a keyboard layout designed by Mines alumnus Jack Rosenthal. It's distinguished by its two additional layers, a symbols layer and a cursor layer, in addition to the usual lowercase and uppercase. With 3l, any special character can be typed with just the three letter rows, which is very handy for writing code. Additionally, the home row of 3l comprises the most common letters in English, minimizing finger travel distance. The project's README says the goals of this arrangement are "to increase hand alternation, reduce bottom-to-top row jumps, [and] decrease lateral motion."</description>
       <link>https://b-sharman.dev/blog/learning-3l/</link>
