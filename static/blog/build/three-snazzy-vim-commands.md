@@ -1,3 +1,5 @@
+![screenshot of Vim's opening screen](vim_screenshot.png)
+
 One of the things I like about Vim is that each Vim user I know has their own distinct style. Some have installed hundreds of plugins, committing to memory the keybindings of each. Some use insert mode the whole time and pretend they're in an ordinary text editor. Some know all the cool Visual mode commands like `gCtrl-A`. Some [read the entire manual out loud recreationally](https://youtu.be/rT-fbLFOCy0). And I like using Ex commands.
 
 For those that don't know, an Ex command is a command starting with `:`, like `:w` or `:qa` (see `:h :`). They're inherited from the [historic editor](https://en.wikipedia.org/wiki/Ex_(text_editor)) that Vi replaced. If you have some time to kill, you can see all of them with `:h holy-grail`. They're like a command line for Vim. In fact, you've probably already heard them referred to as Command-line mode.
