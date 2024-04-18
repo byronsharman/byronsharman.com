@@ -10,7 +10,7 @@
 
 <svelte:head>
   <title>Byron Sharman</title>
-  <meta name="description" content="Byron Sharman's blog and website" />
+  <meta name="description" content="I'm Byron, a computer science student at Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
 </svelte:head>
 
 <div class="flex justify-center p-4">
