@@ -26,12 +26,10 @@
 
     <article class="my-6 prose lg:prose-xl">
       <p>
-        I'm Byron, a computer science student at Mines. Of course, I really like to
-        write code, learn new technologies, and (sometimes) even un-break my Arch
-        install.
+        I'm Byron, a computer science student at Mines. I love to go to hackathons, learn tools and technologies, and improve my Arch Linux installation.
       </p>
       <p>
-        I am also obsessed with the musical compositions of Sergei Rachmaninoff. Currently, my favorite piece is his <em>Symphony No.&nbsp;3</em>, op.&nbsp;44.
+        I am obsessed with the music of Sergei Rachmaninoff. Currently, my favorite piece is his <em>Symphony No.&nbsp;2</em>, op.&nbsp;27. I think it's the best post-Beethoven symphony ever written.
       </p>
     </article>
 
