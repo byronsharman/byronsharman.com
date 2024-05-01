@@ -13,9 +13,9 @@
   <meta property="og:title" content={data.title} />
   <meta property="og:type" content="article" />
   <meta property="og:url" content={data.url} />
-  <meta property="og:image" content={data.firstImage} />
-  <meta property="og:image:secure_url" content={data.firstImage} />
-  <meta property="og:image:alt" content={data.firstImageAlt} />
+  <meta property="og:image" content={data.previewImage} />
+  <meta property="og:image:secure_url" content={data.previewImage} />
+  <meta property="og:image:alt" content={data.previewImageAlt} />
   <meta property="og:description" content={data.preview} />
   <meta property="og:site_name" content="Byron Sharman's blog" />
 </svelte:head>
