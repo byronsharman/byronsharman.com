@@ -21,7 +21,7 @@
 </svelte:head>
 
 <div class="flex justify-center p-4">
-  <main class="max-w-prose">
+  <main class="min-w-0 max-w-prose">
     <article class="my-6 prose lg:prose-lg prose-img:mb-0 prose-img:w-max prose-img:object-scale-down sm:prose-img:max-h-96 md:prose-img:max-h-[34rem] prose-h1:mb-0 prose-code:whitespace-pre prose-code:font-normal prose-code:prose-strong:font-bold prose-code:before:content-none prose-code:after:content-none prose-code:bg-neutral-200 prose-code:p-1 prose-code:rounded prose-pre:bg-neutral-200 prose-pre:text-inherit prose-code:prose-pre:block">
       <header class="mb-8 lg:mb-12">
         <h1>{data.title}</h1>
