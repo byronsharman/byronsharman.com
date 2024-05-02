@@ -29,6 +29,8 @@
     "slug": "blasterhacks-2024",
     "date": 1709159930,
     "preview": "I describe my first-ever hackathon experience as a first-year college student.",
-    "title": "Blasterhacks 2024: My first hackathon"
+    "title": "Blasterhacks 2024: My first hackathon",
+    "previewImage": "blasterhacks_screenshot.png",
+    "previewImageAlt": "The feed page of our finished app."
   }
 }
