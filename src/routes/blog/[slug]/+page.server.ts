@@ -23,7 +23,7 @@ export const load: PageLoad = async (p) => {
       }
       let out = `<figure class="flex flex-col text-center"><img src="/blog/images/${p.params.slug}/${href}" alt="${text}" class="mx-auto" />`;
       if (title) {
-        out += `<figcaption>${title}</figcaption>`;
+        out += `<figcaption>${marked(title)}</figcaption>`;
       }
       out += '</figure>';
       return out;
