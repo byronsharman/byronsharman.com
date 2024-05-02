@@ -26,7 +26,7 @@
 
     <article class="my-6 prose lg:prose-xl">
       <p>
-        I'm Byron, a computer science student at Mines. I love to go to hackathons, learn tools and technologies, and improve my Arch Linux installation.
+        I'm Byron, a computer science student at Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
       </p>
       <p>
         I am obsessed with the music of Sergei Rachmaninoff. Currently, my favorite piece is his <em>Symphony No.&nbsp;2</em>, op.&nbsp;27.
