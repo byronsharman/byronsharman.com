@@ -1,12 +1,10 @@
 {
   "paremski-rach-3": {
-    "slug": "paremski-rach-3",
     "date": 1715296345,
     "preview": "Rarely do I feel this awesome walking out of a concerto performance.",
     "title": "Natasha Paremski's Rach 3 is the best thing that happened to me the week before finals"
   },
   "hackku-2024": {
-    "slug": "hackku-2024",
     "date": 1714663989,
     "preview": "I narrate the happenings of my last hackathon of the 2023–2024 school year.",
     "title": "HackKU 2024",
@@ -14,25 +12,21 @@
     "previewImageAlt": "Me and my two teammates posing for a photo during judging at HackKU"
   },
   "three-snazzy-vim-commands": {
-    "slug": "three-snazzy-vim-commands",
     "date": 1713386692,
     "preview": "I passionately advocate for the inclusion of Ex commands in your quotidian Vim usage.",
     "title": "Three Snazzy Commands to Enhance Your Vim Personality"
   },
   "hackcu-x": {
-    "slug": "hackcu-x",
     "date": 1712017815,
     "preview": "I summarize my experience at the 10th HackCU hackathon hosted by the University of Colorado Boulder.",
     "title": "HackCU X"
   },
   "learning-3l": {
-    "slug": "learning-3l",
     "date": 1710351277,
     "preview": "I champion the use of a unique keyboard layout specially crafted for writing code.",
     "title": "3l: The keyboard layout that took me from 0 to 100 WPM in 13 days"
   },
   "blasterhacks-2024": {
-    "slug": "blasterhacks-2024",
     "date": 1709159930,
     "preview": "I describe my first-ever hackathon experience as a first-year college student.",
     "title": "Blasterhacks 2024: My first hackathon",

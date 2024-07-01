@@ -45,6 +45,7 @@ export const load: PageLoad = async (p) => {
   // blog data
   const blogs = await p.fetch('/blog/build/index.json')
     .then(res => res.json());
+  /*
   await Promise.all(Object.values(blogs).map(
     async (blog) => {
       const text = await p.fetch(`/blog/build/${blog['slug']}.md`)
@@ -56,6 +57,12 @@ export const load: PageLoad = async (p) => {
       retval.blog_data = values;
     })
     .catch((e) => console.log('oopsy woopsy:', e));
+  */
+
+  retval.blog_data = new Array();
+  for (const [key, value] of Object.entries(blogs)) {
+    retval.blog_data.push({...value, slug: key});
+  }
 
   return retval;
 };

@@ -5,7 +5,11 @@ import { marked } from 'marked';
 export const load: PageLoad = async (p) => {
   const blogs = await p.fetch('/blog/build/index.json')
     .then(res => res.json());
+
+  // return 404 if the data has no slug
   if (!Object.keys(blogs).includes(p.params.slug)) return error(404, 'Not found');
+
+  // grab the data provided by the json file using the slug provided by svelte
   let retval = blogs[p.params.slug];
 
   let previewImage: string = retval.previewImage === undefined ? "" : retval.previewImage;
@@ -31,15 +35,15 @@ export const load: PageLoad = async (p) => {
   }
   marked.use({ renderer });
 
-  const text = await p.fetch(`/blog/build/${retval["slug"]}.md`)
+  const text = await p.fetch(`/blog/build/${p.params.slug}.md`)
     .then(res => res.text());
   retval.html = marked(text);
 
   // ended up hardcoding because I didn't want to have to set up env variables or something else nasty
   // (p.url doesn't work with prerendering; it only resolves after javascript is called, which most sites don't like)
   // retval.url = p.url.toString();
-  retval.url = `https://b-sharman.dev/blog/${retval["slug"]}/`;
-  retval.previewImage = `https://b-sharman.dev/blog/images/${retval["slug"]}/${previewImage}`;
+  retval.url = `https://b-sharman.dev/blog/${p.params.slug}/`;
+  retval.previewImage = `https://b-sharman.dev/blog/images/${p.params.slug}/${previewImage}`;
   retval.previewImageAlt = previewImageAlt;
 
   return retval;
