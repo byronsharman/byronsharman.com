@@ -1,5 +1,3 @@
-<small>For the unfamiliar, the "hack" in "hackathon" refers to the incomplete, duck-taped mess that results from writing so much code during such a small time window. It is different from the "hack" which refers to maliciously infiltrating someone else's computer system.</small>
-
 Well, well. There's only one more week left in my first year of college. It's a good time to look back on the year and also to cover my last hackathon as a first-year student. HackKU, hosted in Lawrence, Kansas, was my first official [Major League Hacking (MLH)](https://mlh.io/) event. I was accompanied by teammates [Tyler](https://tbwright.dev/) and Danial.
 
 ## Pre-hacking Events
