@@ -26,6 +26,9 @@
       <header class="mb-8 lg:mb-12">
         <h1>{data.title}</h1>
         <DateP unixtime={data.date} />
+        {#if data.customHeaderHTML}
+          {@html data.customHeaderHTML}
+        {/if}
       </header>
       {@html data.html}
       <a href="/" class="text-sm underline">Back to home</a>
