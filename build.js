@@ -23,16 +23,16 @@ async function runBuild() {
     <atom:link href="https://b-sharman.dev/blog.xml" rel="self" type="application/rss+xml"/>
 `;
     const data = readFileSync('static/blog/build/index.json');
-    Object.values(JSON.parse(data)).forEach((blog) => {
+    for (const [blogSlug, blog] of Object.entries(JSON.parse(data))) {
       xml_output += `    <item>
       <title>${blog.title}</title>
       <description>${blog.preview}</description>
-      <link>https://b-sharman.dev/blog/${blog.slug}/</link>
-      <guid>https://b-sharman.dev/blog/${blog.slug}/</guid>
+      <link>https://b-sharman.dev/blog/${blogSlug}/</link>
+      <guid>https://b-sharman.dev/blog/${blogSlug}/</guid>
       <pubDate>${new Date(blog.date * 1000).toUTCString()}</pubDate>
     </item>
 `;
-    });
+    }
     xml_output += `
   </channel>
 </rss>
