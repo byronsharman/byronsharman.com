@@ -26,7 +26,7 @@ From here onward, the rest of my trip consisted of visiting various interesting-
 
 ### Mount Eden
 ![The crater of Mount Eden in the foreground and the Auckland skyline in the background](mount_eden.webp)
-Mount Eden is a dormant volcano crater within walking distance of the hostel. It provided panaromic views of the city in every direction, and unlike the famous Sky Tower, it was completely free to climb.
+Mount Eden is a dormant volcano crater within walking distance of the hostel. It provided panoramic views of the city in every direction, and unlike the famous Sky Tower, it was completely free to climb.
 
 ### Auckland Maritime Museum
 Unfortunately, I don't have any pictures of this museum, but I would recommend it. There are many artifacts from Māori seafarers as well as extensive historical information concerning both the Māori and European discoveries of New Zealand, not to mention other exhibits I didn't have time to explore.
