@@ -1,0 +1,16 @@
+{
+  "bangbang": {
+    "type": "github",
+    "category": "personal"
+  },
+  "hackcu-x": {
+    "type": "blog",
+    "category": "hackathon",
+    "description": "a whiteboard for productivity and studying",
+    "languages": [
+      "Typescript",
+      "Python"
+    ],
+    "name": "HackCU X"
+  }
+}
