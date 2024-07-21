@@ -16,7 +16,7 @@ async function runBuild() {
     let xml_output = `
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>Byron Sharman's blog</title>
+    <title>Byron Sharman</title>
     <link>https://b-sharman.dev/</link>
     <description>The latest blog posts from Byron Sharman</description>
     <language>en-us</language>
