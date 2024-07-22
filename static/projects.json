@@ -1,16 +1,50 @@
 {
+  "b-sharman.dev": {
+    "type": "github",
+    "category": "personal"
+  },
   "bangbang": {
     "type": "github",
     "category": "personal"
+  },
+  "hackku-2024": {
+    "type": "blog",
+    "category": "hackathon",
+    "description": "counteract dementia with puzzles and games",
+    "languages": [
+      "Svelte",
+      "Python",
+      "Typescript"
+    ],
+    "name": "HackKU 2024"
   },
   "hackcu-x": {
     "type": "blog",
     "category": "hackathon",
     "description": "a whiteboard for productivity and studying",
     "languages": [
-      "Typescript",
+      "Typescript React",
       "Python"
     ],
     "name": "HackCU X"
+  },
+  "blasterhacks-2024": {
+    "type": "blog",
+    "category": "hackathon",
+    "description": "make good habits contagious",
+    "languages": [
+      "Svelte",
+      "Typescript",
+      "Go"
+    ],
+    "name": "Blasterhacks 2024"
+  },
+  "aoc2023": {
+    "type": "github",
+    "category": "personal"
+  },
+  "ultimate-tic-tac-toe": {
+    "type": "github",
+    "category": "school"
   }
 }
