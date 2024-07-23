@@ -18,6 +18,7 @@ export type Project = {
   bottomText: string;
   category: ProjectCategory;
   description: string;
+  hackathonName?: string;
   languages: Array<string>;
   name: string;
   type: ProjectType;

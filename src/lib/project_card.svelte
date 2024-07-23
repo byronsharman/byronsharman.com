@@ -7,7 +7,12 @@
 <li in:slide={{duration: 100}} out:slide={{duration: 250}} class="group my-4 overflow-hidden border hover:border-gray-400 rounded-xl">
   <a href={project.url} class="block rounded-xl">
     <div class="p-4">
-      <h3 class="font-bold text-xl mb-2">{project.name}</h3>
+      <h3 class="font-bold text-xl mb-2">
+        {project.name}
+        {#if project.hackathonName !== undefined}
+          <span class="font-normal text-gray-600">{`[${project.hackathonName}]`}</span>
+        {/if}
+      </h3>
       <p class="text-sm text-gray-600 mb-4">{project.category}</p>
       <p>{project.description}</p>
       <p class="mt-2 text-sm text-gray-600">{project.languages.join(', ')}</p>

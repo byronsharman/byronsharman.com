@@ -11,33 +11,36 @@
     "type": "blog",
     "category": "hackathon",
     "description": "counteract dementia with puzzles and games",
+    "hackathonName": "HackKU 2024",
     "languages": [
       "Svelte",
       "Python",
       "Typescript"
     ],
-    "name": "HackKU 2024"
+    "name": "Kioku"
   },
   "hackcu-x": {
     "type": "blog",
     "category": "hackathon",
     "description": "a whiteboard for productivity and studying",
+    "hackathonName": "HackCU X",
     "languages": [
       "Typescript React",
       "Python"
     ],
-    "name": "HackCU X"
+    "name": "Multinotes"
   },
   "blasterhacks-2024": {
     "type": "blog",
     "category": "hackathon",
     "description": "make good habits contagious",
+    "hackathonName": "Blasterhacks 2024",
     "languages": [
       "Svelte",
       "Typescript",
       "Go"
     ],
-    "name": "Blasterhacks 2024"
+    "name": "StandUp"
   },
   "aoc2023": {
     "type": "github",
