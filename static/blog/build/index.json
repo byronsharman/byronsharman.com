@@ -3,7 +3,9 @@
     "date": 1721454101,
     "preview": "A lifetime American ventures into the far South.",
     "title": "My first week in Aotearoa New Zealand: Touring Auckland",
-    "previewImage": "cove_at_takapuna.jpg",
+    "previewImage": "cove_at_takapuna",
+    "previewImageExt": "webp",
+    "openGraphImageExt": "jpg",
     "previewImageAlt": "sunset over the ocean seen from inside a cave on the beach",
     "customHeaderHTML": "<small>All photos in this blog post are licensed <a href=\"https://creativecommons.org/publicdomain/zero/1.0/legalcode\">CC0</a> and are taken by me, Byron Sharman.</small>"
   },
@@ -16,30 +18,46 @@
     "date": 1714663989,
     "preview": "I narrate the happenings of my last hackathon of the 2023–2024 school year.",
     "title": "HackKU 2024",
-    "previewImage": "judging.jpg",
+    "previewImage": "judging",
+    "previewImageExt": "jpg",
+    "openGraphImageExt": "jpg",
     "previewImageAlt": "Me and my two teammates posing for a photo during judging at HackKU",
     "customHeaderHTML": "<small>For the unfamiliar, the \"hack\" in \"hackathon\" refers to the incomplete, duck-taped mess that results from writing so much code during such a small time window. It is different from the \"hack\" which refers to maliciously infiltrating someone else's computer system.</small>"
   },
   "three-snazzy-vim-commands": {
     "date": 1713386692,
     "preview": "I passionately advocate for the inclusion of Ex commands in your quotidian Vim usage.",
-    "title": "Three Snazzy Commands to Enhance Your Vim Personality"
+    "title": "Three Snazzy Commands to Enhance Your Vim Personality",
+    "previewImage": "vim_screenshot",
+    "previewImageExt": "png",
+    "openGraphImageExt": "png",
+    "previewImageAlt": "screenshot of Vim's opening screen"
   },
   "hackcu-x": {
     "date": 1712017815,
     "preview": "I summarize my experience at the 10th HackCU hackathon hosted by the University of Colorado Boulder.",
-    "title": "HackCU X"
+    "title": "HackCU X",
+    "previewImage": "caffeine",
+    "previewImageExt": "jpg",
+    "openGraphImageExt": "jpg",
+    "previewImageAlt": "I code on my laptop behind a row of 3 Monsters and a Red Bull."
   },
   "learning-3l": {
     "date": 1710351277,
     "preview": "I champion the use of a unique keyboard layout specially crafted for writing code.",
-    "title": "3l: The keyboard layout that took me from 0 to 100 WPM in 13 days"
+    "title": "3l: The keyboard layout that took me from 0 to 100 WPM in 13 days",
+    "previewImage": "standard_three",
+    "previewImageExt": "png",
+    "openGraphImageExt": "png",
+    "previewImageAlt": "diagram of the 3l keyboard layout"
   },
   "blasterhacks-2024": {
     "date": 1709159930,
     "preview": "I describe my first-ever hackathon experience as a first-year college student.",
     "title": "Blasterhacks 2024: My first hackathon",
-    "previewImage": "blasterhacks_screenshot.png",
+    "previewImage": "secondplace",
+    "previewImageExt": "avif",
+    "openGraphImageExt": "jpg",
     "previewImageAlt": "The feed page of our finished app."
   }
 }
