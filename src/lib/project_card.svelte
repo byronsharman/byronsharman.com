@@ -13,7 +13,7 @@
       <p class="mt-2 text-sm text-gray-600">{project.languages.join(', ')}</p>
     </div>
     <footer class="flex justify-end items-center bg-gray-200">
-      <div class="m-3 flex">
+      <div class="m-2 sm:m-3 flex">
         <div class="flex items-center px-4">
           <p class="text-sm">{project.bottomText}</p>
         </div>
