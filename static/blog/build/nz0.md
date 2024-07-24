@@ -1,3 +1,5 @@
+![sunset over the ocean seen from inside a cave on Takapuna Beach](cove_at_takapuna.webp "A small cave at Takapuna Beach offers a lovely view of the evening sunlight.")
+
 When researching universities in my last year of high school, I held in the back of my mind a wish to study somewhere unfamiliar and far from home, where I could expose myself to new ideas and an environment conducive to personal growth. Though I am happy I chose Mines, it is neither unfamiliar nor far from home, so I sought to study internationally for a semester. Planning, researching, and consulting trusted parties led me to decide to study at the University of Canterbury in Christchurch, New Zealand.
 
 My journey there starts not directly with study but rather with a week of leisure time I spent in Auckland, New Zealand's largest city, before flying south to Christchurch. The trip is narrated below.
