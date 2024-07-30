@@ -16,7 +16,7 @@
 
 <svelte:head>
   <title>Byron Sharman</title>
-  <meta name="description" content="I'm Byron, a computer science student at Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
+  <meta name="description" content="I'm Byron, a computer science student at Colorado School of Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
 </svelte:head>
 
 <div class="flex justify-center p-4">
@@ -32,7 +32,7 @@
 
     <article class="my-6 prose lg:prose-xl">
       <p>
-        I'm Byron, a computer science student at Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
+        I'm Byron, a computer science student at Colorado School of Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
       </p>
     </article>
 
