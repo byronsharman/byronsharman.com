@@ -1,9 +1,9 @@
 <script lang='ts'>
   import '../output.css';
   import type { PageData } from './$types';
-  import Email from '../lib/email.svelte';
-  import BlogCard from '../lib/blog_card.svelte';
-  import ProjectCard from '../lib/project_card.svelte';
+  import Email from '$lib/email.svelte';
+  import BlogCard from '$lib/blog_card.svelte';
+  import ProjectCard from '$lib/project_card.svelte';
 
   export let data: PageData;
 
