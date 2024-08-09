@@ -4,7 +4,7 @@
   export let project: Project;
 </script>
 
-<li in:slide={{duration: 100}} out:slide={{duration: 250}} class="group my-4 overflow-hidden border hover:border-gray-400 rounded-xl">
+<li in:slide={{duration: 150}} out:slide={{duration: 275}} class="group my-4 overflow-hidden border hover:border-gray-400 rounded-xl">
   <a href={project.url} class="block rounded-xl">
     <div class="p-4">
       <h3 class="font-bold text-xl mb-2">
