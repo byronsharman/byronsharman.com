@@ -6,7 +6,7 @@ For those that don't know, an Ex command is a command starting with `:`, like `:
 
 ## `:t` and `:m`
 
-Some of my favorite Ex commands, aside from the universal ones, are `:copy` and `:move`, or their short forms `:t` and `:m`, which, when given a range and an address, copy or move the range to the line after the address. If you aren't familiar with ranges, take a moment to read [`:h :range`](https://neovim.io/doc/user/cmdline.html#%3Arange), which explains them better than I can.
+Some of my favorite Ex commands, aside from the universal ones, are `:copy` and `:move`, or their short forms `:t` and `:m`, which, when given a range and an address, copy or move the range to the line after the address. If you aren't familiar with ranges, take a moment to read [`:h cmdline-ranges`](https://neovim.io/doc/user/cmdline.html#_4.-ex-command-line-ranges), which explains them better than I can.
 
 `:t` is useful for single-use operations, where it is often less cumbersome than switching to Visual mode, selecting the lines you want to copy, yanking, and putting. Need to duplicate the previous two lines and the current line? Just do `:-2,t.`. Way smoother than `V2ky2jp`.
 
