@@ -19,7 +19,7 @@
 
       <article class="my-6 prose lg:prose-lg">
         <p>
-          A hackathon is a large weekend event where students gather (usually in teams of 1–4) to build and develop programming projects. Since there is generally a time limit anywhere from 24 to 48 hours, there's often lots of caffeine involved.
+          A hackathon is a large weekend event where students gather (usually in teams of 1–4) to build and develop programming projects. Since there is generally a time limit anywhere from 24 to 48 hours, there's often lots of caffeine involved. The biggest and best hackathons are run by <a href="https://mlh.io/">Major League Hacking (MLH)</a>.
         </p>
         <p>
           Below are listed all the hackathons I've attended in reverse chronological order.
