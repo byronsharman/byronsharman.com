@@ -1,6 +1,6 @@
 <script lang='ts'>
   import { slide } from 'svelte/transition';
-  import type { Project } from '../routes/+page.server.ts';
+  import type { Project } from '$lib/types.ts';
   export let project: Project;
 </script>
 
