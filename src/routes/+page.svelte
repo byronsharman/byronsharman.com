@@ -1,5 +1,5 @@
 <script lang='ts'>
-  import '../output.css';
+  import '$lib/css/output.css';
   import type { PageData } from './$types';
   import Email from '$lib/email.svelte';
   import BlogCard from '$lib/blog_card.svelte';
