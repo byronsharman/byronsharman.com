@@ -13,7 +13,7 @@ export const load: PageLoad = async (p) => {
   let retval = blogs[p.params.slug];
 
   const renderer = {
-    // this is just the defualt renderer
+    // this is just the default renderer
     // https://github.com/markedjs/marked/blob/master/src/Renderer.ts#L135-L148
     // but modified to wrap everything in a <figure> and use titles as captions
     image(href: string, title: string | null, text: string): string {
