@@ -1,65 +1,72 @@
 import type { Project } from '$lib/types';
 import { ProjectType } from '$lib/types';
 
-const failPlaceholder: Project = {
-  category: "error",
-  bottomText: '',
-  description: 'probably got rate limited by the GitHub API =/',
-  languages: [],
-  name: 'failed to load',
-  type: ProjectType.NetworkError,
-  url: '',
-};
+/* return a Project modified to include metadata fetched from the Github API */
+type FetchFunction = (url: string) => Promise<Response>;
+async function createGithubProject(
+  projectName: string,
+  project: Project,
+  fetchFunc: FetchFunction
+): Promise<Project> {
+  const res: Response = await fetchFunc(`https://api.github.com/repos/b-sharman/${projectName}`);
+  try {
+    const githubProject = await res.json() as {
+      description: string;
+      html_url: string;
+      languages_url: string;
+      name: string;
+    };
 
-export const getProjects = async (p) => {
-  let projects = await p.fetch('/projects.json')
-    .then((res: Response) => res.json())
-    .then((obj: Object) => Object.entries(obj));
+    // set project.languages by querying the URL returned by the API
+    const lang_res: Response = await fetchFunc(githubProject.languages_url);
+    project.languages = Object.keys(await lang_res.json());
 
-  // use information from projects.json to build metadata for ProjectCards
-  const retval = await Promise.all(
-    projects.map(async ([projectName, project]: [string, Project]) => {
-      switch (project.type) {
-        // ----- GitHub project -----
-        case 'github':
-          /* If this breaks during a time of high traffic, it may be related to rate limiting:
-           * https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
-           */
-          const res = await p.fetch(`https://api.github.com/repos/b-sharman/${projectName}`);
-          if (!res.ok) {
-            console.error('There was an error when fetching from the GitHub API');
-            console.error('The response was:', res);
-            return failPlaceholder;
-          }
-          const githubProject = await res.json();
-          const lang_res = await p.fetch(githubProject.languages_url);
-          if (!lang_res.ok) {
-            console.error('There was an error when fetching from the GitHub API');
-            console.error('The response was:', lang_res);
-            return failPlaceholder;
-          }
-          project.languages = Object.keys(await lang_res.json());
-          project.bottomText = 'see it on GitHub';
-          project.description = githubProject.description;
-          project.name = githubProject.name;
-          project.url = githubProject.html_url;
-          break;
+    project.bottomText = 'see it on GitHub';
+    project.description = githubProject.description;
+    project.name = githubProject.name;
+    project.url = githubProject.html_url;
+  } catch {
+    // https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
+    project.bottomText = '';
+    project.category = 'error';
+    project.description = 'probably got rate limited by the GitHub API =/';
+    project.languages = [];
+    project.name = 'failed to load';
+    project.type = ProjectType.NetworkError;
+    project.url = '';
+  }
 
-        // ----- blog project -----
-        case 'blog':
-          project.bottomText = 'read the blog post';
-          // TODO: don't hardcode the domain
-          project.url = `https://b-sharman.dev/blog/${projectName}/`;
-          break;
+  return project;
+}
 
-        // ----- project.type error handling -----
-        default:
-          console.error('Error when parsing projects: project type is invalid');
-      }
+/* doesn't need to be async, but that makes it consistent with createGithubProject */
+async function createBlogProject(projectName: string, project: Project): Promise<Project> {
+  project.bottomText = 'read the blog post';
+  // TODO: don't hardcode the domain
+  project.url = `https://b-sharman.dev/blog/${projectName}/`;
+  return project;
+}
 
-      return project;
-    })
-  );
+export async function getProjects(p): Promise<Project[]> {
+  const res: Response = await p.fetch('/projects.json');
+  const obj: Object = await res.json();
 
-  return retval;
+  let projects: Project[] = [];
+
+  for (let [projectName, project] of Object.entries(obj) as [string, Project][]) {
+    switch (project.type) {
+      case 'github':
+        projects.push(await createGithubProject(projectName, project, p.fetch));
+        break;
+
+      case 'blog':
+        projects.push(await createBlogProject(projectName, project));
+        break;
+
+      default:
+        console.error('Error when parsing projects: project type is invalid');
+    }
+  }
+
+  return projects;
 }
