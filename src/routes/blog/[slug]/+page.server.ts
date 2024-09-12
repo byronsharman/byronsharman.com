@@ -4,7 +4,7 @@ import { marked } from 'marked';
 
 export const load: PageLoad = async (p) => {
   const blogs = await p.fetch('/blog/build/index.json')
-    .then(res => res.json());
+    .then((res: Response) => res.json());
 
   // return 404 if the data has no slug
   if (!Object.keys(blogs).includes(p.params.slug)) return error(404, 'Not found');
@@ -29,7 +29,7 @@ export const load: PageLoad = async (p) => {
   marked.use({ renderer });
 
   const text = await p.fetch(`/blog/build/${p.params.slug}.md`)
-    .then(res => res.text());
+    .then((res: Response) => res.text());
   retval.html = marked(text);
 
   // TODO: use environment variables or something other than hardcoding the domain
