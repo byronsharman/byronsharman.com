@@ -6,13 +6,8 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            'color': '#030712',
-            '.hljs, pre code': {
+            '.hljs': {
               'background-color': 'inherit',
-              'color': 'inherit !important',  // don't use theme color for non-highlighted text
-              'display': 'block',
-              'overflow-x': 'inherit !important',
-              'padding': '1.25rem !important',
             }
           },
         },
