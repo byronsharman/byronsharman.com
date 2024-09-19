@@ -1,17 +1,10 @@
 <script lang='ts'>
-  import hljs from 'highlight.js/lib/common';
   import 'highlight.js/styles/base16/papercolor-light.css';
-  import { onMount } from 'svelte';
 
   import type { PageData } from './$types';
   import DateP from '$lib/datep.svelte';
 
   export let data: PageData;
-
-  onMount(() => {
-    hljs.highlightAll();
-  });
-
 </script>
 
 <svelte:head>

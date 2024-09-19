@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageLoad } from './$types';
 import { marked } from 'marked';
+import hljs from 'highlight.js/lib/common';
 
 export const load: PageLoad = async (p) => {
   const blogs = await p.fetch('/blog/build/index.json')
@@ -13,9 +14,27 @@ export const load: PageLoad = async (p) => {
   let retval = blogs[p.params.slug];
 
   const renderer = {
-    // this is just the default renderer
-    // https://github.com/markedjs/marked/blob/master/src/Renderer.ts#L135-L148
-    // but modified to wrap everything in a <figure> and use titles as captions
+    // these are modifications of the default renderer
+    // https://github.com/markedjs/marked/blob/master/src/Renderer.ts
+
+    code(text: string, lang: string): string {
+      const langString: string | undefined = (lang || '').match(/^\S*/)?.[0];
+
+      let code: string = text.replace(/\n$/, '') + '\n';
+
+      if (!langString) {
+        code = `<pre><code>${code}</code></pre>\n`;
+        return code;
+      }
+
+      try {
+        code = hljs.highlight(code, {language: langString}).value;
+      } finally {
+        code = `<pre><code class="language-${langString}">${code}</code></pre>\n`;
+        return code;
+      }
+    },
+
     image(href: string, title: string | null, text: string): string {
       if (href === "") return text;
       let out = `<figure class="flex flex-col text-center"><img src="/blog/images/${p.params.slug}/${href}" alt="${text}" class="mx-auto" />`;
