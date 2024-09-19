@@ -30,9 +30,6 @@
 
 <div class="flex justify-center p-4">
   <main class="min-w-0">
-    <!-- TODO: This massive wall of ugliness is due to the fact that I am
-    trying to create my own theme for a single element. Most of this should
-    eventually be moved to tailwind.config.js. -->
     <article class="my-6 prose">
       <header class="mb-8 lg:mb-12">
         <h1>{data.title}</h1>
