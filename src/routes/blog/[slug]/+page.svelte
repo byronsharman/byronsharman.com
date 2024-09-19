@@ -3,7 +3,6 @@
   import 'highlight.js/styles/github.css';
   import { onMount } from 'svelte';
 
-  import '$lib/css/output.css';
   import type { PageData } from './$types';
   import DateP from '$lib/datep.svelte';
 
