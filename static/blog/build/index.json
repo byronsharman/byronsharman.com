@@ -1,4 +1,9 @@
 {
+  "fixing-google-calendar": {
+    "date": 0,
+    "preview": "A little automation overcomes Google's questionable UX design.",
+    "title": "I messed up my calendar and wrote a script to fix it"
+  },
   "nz0": {
     "date": 1721454101,
     "preview": "A lifetime American ventures into the far South.",

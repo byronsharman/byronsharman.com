@@ -7,6 +7,13 @@
     <language>en-us</language>
     <atom:link href="https://b-sharman.dev/blog.xml" rel="self" type="application/rss+xml"/>
     <item>
+      <title>I messed up my calender and wrote a script to fix it</title>
+      <description>A little automation overcomes Google's questionable UX design.</description>
+      <link>https://b-sharman.dev/blog/fixing-google-calendar/</link>
+      <guid>https://b-sharman.dev/blog/fixing-google-calendar/</guid>
+      <pubDate>Thu, 01 Jan 1970 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>My first week in Aotearoa New Zealand: Touring Auckland</title>
       <description>A lifetime American ventures into the far South.</description>
       <link>https://b-sharman.dev/blog/nz0/</link>
