@@ -1,7 +1,8 @@
 <script lang='ts'>
+  import type { Blog } from '$lib/types';
   import DateP from '$lib/datep.svelte';
 
-  export let blog;
+  export let blog: Blog;
 </script>
 
 <li class="border hover:border-gray-400 rounded-xl my-4">
