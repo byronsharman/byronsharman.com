@@ -4,7 +4,6 @@
 
 @layer base {
     .prose {
-        font-size: 17px !important;
         @apply text-gray-950 marker:text-gray-950 !important;
     }
     .prose code {

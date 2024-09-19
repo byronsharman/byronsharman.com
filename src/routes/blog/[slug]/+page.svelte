@@ -30,7 +30,7 @@
 
 <div class="flex justify-center p-4">
   <main class="min-w-0">
-    <article class="my-6 prose">
+    <article class="my-6 prose text-[17px]">
       <header class="mb-8 lg:mb-12">
         <h1>{data.title}</h1>
         <DateP unixtime={data.date} />
