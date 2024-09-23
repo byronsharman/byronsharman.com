@@ -11,7 +11,7 @@ In order to save my time management skills from certain demise, I needed to dele
 Thankfully, however, Google Calendar has an API.
 
 ## The Solution
-Like most Google Workspace products, Calendar offers a REST API as well as language-specific bindings that abstract it. I chose to use the Python bindings because the language seemed like the natural choice for a quick script. I started by browsing the documentation and finding a template that prints the user's first 10 upcoming events. As this template contained all the boilerplate for authentication, error handling, etc., all I had to do was modify it to search for class events and delete them.
+[Like most Google Workspace products](https://developers.google.com/workspace/explore?filter=), Calendar offers a REST API as well as language-specific bindings that abstract it. I chose to use the Python bindings because the language seemed like the natural choice for a quick script. I started by browsing the documentation and finding a template that prints the user's first 10 upcoming events. As this template contained all the boilerplate for authentication, error handling, etc., all I had to do was modify it to search for class events and delete them.
 
 Here's what the relevant part of the template looked like before I modified it.
 ```py
