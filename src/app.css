@@ -6,6 +6,9 @@
     .prose {
         @apply text-gray-950 marker:text-gray-950 !important;
     }
+    .prose blockquote {
+        quotes: none;
+    }
     .prose code {
         @apply font-normal p-1 rounded bg-neutral-200 before:content-none after:content-none;
     }
