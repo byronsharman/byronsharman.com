@@ -6,12 +6,14 @@ I like to confine class events to their own calendar so that I can color-code an
 
 ![screenshot of calendar with all events the same color, including an interview event that is easily missed because it is the same duration and color as the classes](messed_up_calendar.png "How long does it take you to find when my interview is?")
 
-In order to save my time management skills from certain demise, I needed to delete all these rogue events. Doing it manually would be a very sad way to spend a weekend.
+In order to save my time management skills from certain demise, I needed to move all these rogue events into the other calendar, one by one. Doing it manually would be a very sad way to spend a weekend.
 
 Thankfully, however, Google Calendar has an API.
 
 ## The Solution
 [Like most Google Workspace products](https://developers.google.com/workspace/explore?filter=), Calendar offers a REST API as well as language-specific bindings that abstract it. I chose to use the Python bindings because the language seemed like the natural choice for a quick script. I started by browsing the documentation and finding a template that prints the user's first 10 upcoming events. As this template contained all the boilerplate for authentication, error handling, etc., all I had to do was modify it to search for class events and delete them.
+
+<small>**Note:** An astute reader wondered why I deleted these events and re-imported the `.ics` file rather than simply moving the events to the correct calendar. My class schedule had changed, rendering my calendar obsolete, so I wanted to import an updated `.ics` file.</small>
 
 Here's what the relevant part of the template looked like before I modified it.
 ```py
