@@ -1,8 +1,12 @@
 ![sunset over the ocean seen from inside a cave on Takapuna Beach](cove_at_takapuna.webp "A small cave at Takapuna Beach offers a lovely view of the evening sunlight.")
 
+## Motivation
+
 When researching universities in my last year of high school, I held in the back of my mind a wish to study somewhere unfamiliar and far from home, where I could expose myself to new ideas and an environment conducive to personal growth. Though I am happy I chose Mines, it is neither unfamiliar nor far from home, so I sought to study internationally for a semester. Planning, researching, and consulting trusted parties led me to decide to study at the University of Canterbury in Christchurch, New Zealand.
 
 My journey there starts not directly with study but rather with a week of leisure time I spent in Auckland, New Zealand's largest city, before flying south to Christchurch. The trip is narrated below.
+
+## Getting There
 
 My semi-minimalist philosophy, which deserves its own blog post sometime, caused me to bring only what I could fit in a backpack—essentially just clothes and electronics—for my five-month stay. This was extremely convenient during the flight, though it forced me to make some purchases later. My plane lifted off from Denver International Airport in the evening, starting a roughly 24-hour journey, including a 3.5-hour layover in Los Angeles and a 2-hour layover in Tahiti.
 
@@ -14,6 +18,8 @@ From Los Angeles, I switched terminals to catch a flight to Tahiti. It was dark 
 
 As far as I can remember, this was my first flight long enough to merit a full-size meal. Air Tahiti Nui served us a moderate breakfast containing an omelet, some fruit, a roll of bread, and yogurt. Though I've certainly eaten more enjoyable breakfasts, I was impressed by the size of the breakfast given how many passengers needed feeding.
 
+## Day One
+
 I arrived in Auckland right on time in the afternoon, where I spent just enough time in the airport to figure out how to use the public transport system. Having lived in the United States my whole life, my standard for public transportation was quite low, so Auckland Transport easily surpassed it. A bus and a train and a brief walk took me right to my hostel, The Attic Backpackers, in downtown Auckland.
 
 I stopped by a restaurant to grab a bite to eat and then spent some time walking the city. Half by luck and half by design, I found myself along the track at Westhaven Marina, where I enjoyed a beautiful sunset over the waters. Auckland is a sailing city, and all sorts of boats were parked along the wharves for the night.
@@ -23,6 +29,8 @@ I stopped by a restaurant to grab a bite to eat and then spent some time walking
 Next, I retraced my route and found my way to the Auckland Town Hall to see a concert to which I had bought tickets several months ago. Here my expectations, though high, were quite satiated; I witnessed a wonderful performance of Prokofiev's Second Piano Concerto, a violent and dissonant piece that I have heard live only twice before. It is among the more rarely performed piano concerti due to its difficulty and narrow audience. A friendly lady next to me struck up a conversation about the piece and told me a little bit about her experiences living in New Zealand. I was grateful for this friendly gesture which made me feel welcome in the country and gave me a companion with whom I could enjoy the concert.
 
 The Auckland Philharmonia was incredibly skilled, and though the first half of the concert drew me to purchase a ticket, I daresay I enjoyed the second even more. Rimsky-Korsakov's famous *Scheherazade* practically sprayed excitement into the audience, akin to what one would expect from a famous soloist. It was a truly excellent piece, and I wish I could have heard it again. The combination of some 24 hours of flying and 18 hours of time change had rendered me less attentive than I would have liked!
+
+## Daily Adventures
 
 From here onward, the rest of my trip consisted of visiting various interesting-sounding locations in Auckland interspersed with occasional trips to the grocery store. These places were:
 
@@ -47,7 +55,7 @@ Takapuna Beach is one of several adjacent beaches offering views of the nearby R
 ![a track in Cornwall park amidst a lush lawn lined with palm trees](cornwall_park.webp "Despite its central location, Cornwall Park was characterized by huge trees and green, grassy fields.")
 A convenient destination before my flight to Christchurch, this park was filled with pastures, forests, and the occasional herd of cattle, offering a peaceful place to escape the city bustle. The café inside the park must have been good, judging from how many people it held, but I didn't have time to try it.
 
-# Retrospective
+## Retrospective
 After a few months of working full-time in the summer, I was quite ready for this freedom I had not known before. This was my first time traveling alone; there was no itinerary, no classwork, no assigned tasks, no meal plan. I had (within reason) unlimited time and money saved to spend however I pleased at whatever pace suited me as I explored New Zealand.
 
 Were I to change anything about the trip, I would plan more. I lost most of my mornings outlining afternoon activities, and moreover, my plans needed to be comprehensive because I didn't have a SIM card. Advance preparation would have permitted longer and more ambitious adventures. Additionally, I might try a different hostel next time—The Attic's staff was wonderful, but the place didn't deliver the social opportunities I expected.
