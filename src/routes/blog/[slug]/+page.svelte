@@ -14,11 +14,15 @@
   <meta property="og:title" content={data.title} />
   <meta property="og:type" content="article" />
   <meta property="og:url" content={data.url} />
-  <meta property="og:image" content={data.openGraphImageUrl} />
-  <meta property="og:image:secure_url" content={data.openGraphImageUrl} />
-  <meta property="og:image:alt" content={data.previewImageAlt} />
+  {#if data.previewImage}
+    <meta property="og:image" content={data.openGraphImageUrl} />
+    <meta property="og:image:secure_url" content={data.openGraphImageUrl} />
+    <meta property="og:image:alt" content={data.previewImageAlt} />
+  {/if}
   <meta property="og:description" content={data.preview} />
   <meta property="og:site_name" content="Byron Sharman's blog" />
+
+  {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
 <div class="flex justify-center p-4">

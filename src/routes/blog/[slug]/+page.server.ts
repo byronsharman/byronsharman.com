@@ -53,8 +53,23 @@ export const load: PageLoad = async (p) => {
 
   // TODO: use environment variables or something other than hardcoding the domain
   retval.url = `https://b-sharman.dev/blog/${p.params.slug}/`;
-  retval.previewImageUrl = `https://b-sharman.dev/blog/images/${p.params.slug}/${retval.previewImage}.${retval.previewImageExt}`;
-  retval.openGraphImageUrl = `https://b-sharman.dev/blog/images/${p.params.slug}/${retval.previewImage}.${retval.openGraphImageExt}`;
+  if (retval.previewImage !== undefined) {
+    retval.previewImageUrl = `https://b-sharman.dev/blog/images/${p.params.slug}/${retval.previewImage}.${retval.previewImageExt}`;
+    retval.openGraphImageUrl = `https://b-sharman.dev/blog/images/${p.params.slug}/${retval.previewImage}.${retval.openGraphImageExt}`;
+  }
+
+  retval.ldjson = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": retval.title,
+    "image": retval.previewImage ? retval.previewImageUrl : undefined,
+    "datePublished": new Date(retval.date * 1000).toISOString(),
+    "author": [{
+      "@type": "Person",
+      "name": "Byron Sharman",
+      "url": "https://b-sharman.dev"
+    }]
+  });
 
   return retval;
 };
