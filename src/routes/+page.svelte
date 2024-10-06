@@ -20,7 +20,8 @@
 
 <div class="flex justify-center p-4">
   <main class="max-w-prose">
-    <header class="my-6 sm:my-24">
+    <header class="my-6 sm:mb-12">
+      <img alt="portrait of my face with blurred plants in the background" src="portrait.png" class="m-auto p-8 size-3/4 sm:size-1/2 max-w-[320px] rounded-full" />
       <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
       <ul class="my-4 flex flex-row justify-center divide-x">
           <li class="px-4"><Email /></li>
