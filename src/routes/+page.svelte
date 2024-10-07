@@ -1,5 +1,6 @@
 <script lang='ts'>
   import type { PageData } from './$types';
+  import { onMount } from 'svelte';
   import Email from '$lib/email.svelte';
   import BlogCard from '$lib/blog_card.svelte';
   import ProjectCard from '$lib/project_card.svelte';
@@ -9,9 +10,28 @@
   // whether the projects list is expanded to show all projects
   let projectsExpanded = false;
 
-  $: projectCount = projectsExpanded ? data.projects.length : 3;
-  $: expandButtonText = projectsExpanded ? "collapse" : `show all (${data.projects.length - 3} more)`;
+  let projectGrid: HTMLElement;
+
+  const defaultNumProjects = 3;
+  let numProjects = defaultNumProjects;
+  const calcNumProjects = () => {
+    const numCols = window
+      .getComputedStyle(projectGrid)
+      .getPropertyValue("grid-template-columns")
+      .split(" ")
+      .length;
+    if (numCols == 2) numProjects = 2;
+    else if (numCols > defaultNumProjects) numProjects = numCols;
+    else numProjects = defaultNumProjects;
+  };
+
+  onMount(calcNumProjects);
+
+  $: projectCount = projectsExpanded ? data.projects.length : numProjects;
+  $: expandButtonText = projectsExpanded ? "collapse" : `show all (${data.projects.length - numProjects} more)`;
 </script>
+
+<svelte:window on:resize={calcNumProjects} />
 
 <svelte:head>
   <title>Byron Sharman</title>
@@ -19,44 +39,47 @@
 </svelte:head>
 
 <div class="flex justify-center p-4">
-  <main class="max-w-prose">
-    <header class="my-6 sm:mb-12">
-      <img alt="portrait of my face with blurred plants in the background" src="portrait.png" class="m-auto p-8 size-3/4 sm:size-1/2 max-w-[320px] rounded-full" />
-      <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
-      <ul class="my-4 flex flex-row justify-center divide-x">
-          <li class="px-4"><Email /></li>
-          <li class="px-4"><a href="https://github.com/b-sharman">GitHub</a></li>
-          <li class="px-4"><a href="https://www.linkedin.com/in/b-sharman/">LinkedIn</a></li>
-      </ul>
-    </header>
+  <main class="size-full max-w-[1240px]">
 
-    <article class="my-6 prose lg:prose-xl">
-      <p>
-        I'm Byron, a computer science student at Colorado School of Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
-      </p>
-    </article>
+    <div class="flex flex-col items-center">
+      <header class="my-6 max-w-prose">
+        <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="m-auto p-8 size-3/4 max-w-[320px] rounded-full" />
+        <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
+        <ul class="my-4 flex flex-row justify-center divide-x">
+            <li class="px-4"><Email /></li>
+            <li class="px-4"><a href="https://github.com/b-sharman">GitHub</a></li>
+            <li class="px-4"><a href="https://www.linkedin.com/in/b-sharman/">LinkedIn</a></li>
+        </ul>
+      </header>
 
-    <section class="my-6 sm:my-16">
-      <h2 class="my-8 font-bold text-3xl lg:text-4xl">Projects</h2>
-      <ul>
+      <article class="my-6 prose md:prose-lg lg:prose-xl">
+        <p class="text-pretty">
+          I'm Byron, a computer science student at Colorado School of Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
+        </p>
+      </article>
+    </div>
+
+    <section class="my-6 md:my-10">
+      <h2 class="heading2">Projects</h2>
+      <ul bind:this={projectGrid} class="grid grid-flow-row grid-cols-1 sm:grid-cols-[repeat(auto-fill,_minmax(350px,_1fr))] gap-4">
         {#each data.projects.slice(0, projectCount) as project}
           <ProjectCard project={project} />
         {/each}
       </ul>
       <button
         on:click={() => {projectsExpanded = !projectsExpanded;}}
-        class="w-full items-center flex flex-row gap-4 lg:gap-6 text-gray-600 before:relative before:block before:flex-1 before:w-full before:h-px before:bg-gray-300 after:relative after:block after:flex-1 after:w-full after:h-px after:bg-gray-300 hover:underline"
+        class="mt-6 w-full items-center flex flex-row gap-4 lg:gap-6 text-gray-600 before:relative before:block before:flex-1 before:w-full before:h-px before:bg-gray-300 after:relative after:block after:flex-1 after:w-full after:h-px after:bg-gray-300 hover:underline"
       >
         {expandButtonText}
       </button>
     </section>
 
-    <section class="my-6 sm:my-16">
+    <section class="mb-6 md:mb-10">
       <div class="flex flex-row justify-between items-center">
-        <h2 class="my-8 font-bold text-3xl lg:text-4xl">Blog</h2>
+        <h2 class="heading2">Blog</h2>
         <a href="/blog.xml"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mb-2"><path fill-rule="evenodd" d="M3.75 4.5a.75.75 0 0 1 .75-.75h.75c8.284 0 15 6.716 15 15v.75a.75.75 0 0 1-.75.75h-.75a.75.75 0 0 1-.75-.75v-.75C18 11.708 12.292 6 5.25 6H4.5a.75.75 0 0 1-.75-.75V4.5Zm0 6.75a.75.75 0 0 1 .75-.75h.75a8.25 8.25 0 0 1 8.25 8.25v.75a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.75a6 6 0 0 0-6-6H4.5a.75.75 0 0 1-.75-.75v-.75Zm0 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" /></svg></a>
       </div>
-      <ul>
+      <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-4">
         {#each Object.values(data.blogs) as blog}
           <BlogCard blog={blog} />
         {/each}
