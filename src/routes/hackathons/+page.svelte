@@ -25,7 +25,7 @@
         </p>
       </article>
 
-      <ul class="mt-12 my-6">
+      <ul class="mt-12 my-6 flex flex-col gap-4">
         {#each data.projects as project}
           <ProjectCard project={project} />
         {/each}
