@@ -48,25 +48,30 @@ async function createBlogProject(projectName: string, project: Project): Promise
 }
 
 export async function getProjects(p): Promise<Project[]> {
-  const res: Response = await p.fetch('/projects.json');
-  const obj: Object = await res.json();
-
   let projects: Project[] = [];
 
-  for (let [projectName, project] of Object.entries(obj) as [string, Project][]) {
-    switch (project.type) {
-      case 'github':
-        projects.push(await createGithubProject(projectName, project, p.fetch));
-        break;
+  try {
+    const res: Response = await p.fetch('/projects.json');
+    const obj: Object = await res.json();
 
-      case 'blog':
-        projects.push(await createBlogProject(projectName, project));
-        break;
+    for (let [projectName, project] of Object.entries(obj) as [string, Project][]) {
+      switch (project.type) {
+        case 'github':
+          projects.push(await createGithubProject(projectName, project, p.fetch));
+          break;
 
-      default:
-        console.error('Error when parsing projects: project type is invalid');
+        case 'blog':
+          projects.push(await createBlogProject(projectName, project));
+          break;
+
+        default:
+          console.error('Error when parsing projects: project type is invalid');
+      }
     }
-  }
 
-  return projects;
+    return projects;
+  } catch (err) {
+    console.error(err);
+    return projects;
+  }
 }

@@ -13,5 +13,6 @@ export function blogJsonToObject(obj: Object, shouldSlice: boolean = false) {
 
 export async function getBlogsAsJson(fetchFunc: Function) {
   return await fetchFunc('/blog/build/index.json')
-    .then((res: Response) => res.json());
+    .then((res: Response) => res.json())
+    .catch((err: Error) => console.error(err));
 }

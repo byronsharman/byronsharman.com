@@ -49,7 +49,8 @@ export const load: PageLoad = async (p) => {
   marked.use({ renderer });
 
   const text = await p.fetch(`/blog/build/${p.params.slug}.md`)
-    .then((res: Response) => res.text());
+    .then((res: Response) => res.text())
+    .catch((err: Error) => console.error(err));
   retval.html = marked(text);
 
   // TODO: use environment variables or something other than hardcoding the domain
