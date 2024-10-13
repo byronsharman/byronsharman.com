@@ -1,9 +1,10 @@
 import type { Blog } from '$lib/types';
 
 /* pass in Response.json() and get back a Blog[] */
-export function blogJsonToObject(obj: Object, shouldSlice: boolean = false) {
+export function blogJsonToObject(obj: Object, toOmit?: string, shouldSlice: boolean = false) {
   let entries = Object.entries(obj);
-  if (shouldSlice) entries = entries.slice(1, 5);
+  if (toOmit !== undefined) entries = entries.filter((e) => e[0] != toOmit);
+  if (shouldSlice) entries = entries.slice(0, 4);
   return entries.map(
     ([key, value]: [string, any]) => {
       return {...value, slug: key};

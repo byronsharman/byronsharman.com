@@ -73,6 +73,6 @@ export const load: PageLoad = async (p) => {
     }]
   });
 
-  retval.blogs = blogJsonToObject(blogs, true);
+  retval.blogs = blogJsonToObject(blogs, p.params.slug, true);
   return retval;
 };
