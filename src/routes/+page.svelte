@@ -42,24 +42,21 @@
   <main class="size-full max-w-[1240px]">
 
     <div class="flex flex-col items-center">
-      <header class="my-3 md:my-6 max-w-prose">
-        <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="m-auto p-8 size-2/3 max-w-[320px] rounded-full" />
-        <div>
-          <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
-          <ul class="my-4 flex flex-row justify-center divide-x">
+      <header class="my-6 max-w-prose">
+        <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="m-auto p-8 size-3/4 max-w-[320px] rounded-full" />
+        <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
+        <ul class="my-4 flex flex-row justify-center divide-x">
             <li class="px-4"><Email /></li>
             <li class="px-4"><a href="https://github.com/b-sharman">GitHub</a></li>
             <li class="px-4"><a href="https://www.linkedin.com/in/b-sharman/">LinkedIn</a></li>
-          </ul>
-        </div>
-
-        <article class="my-6 prose md:prose-lg lg:prose-xl">
-          <p class="text-pretty">
-            I'm Byron, a computer science student at Colorado School of Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
-          </p>
-        </article>
+        </ul>
       </header>
 
+      <article class="my-6 prose md:prose-lg lg:prose-xl">
+        <p class="text-pretty">
+          I'm Byron, a computer science student at Colorado School of Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
+        </p>
+      </article>
     </div>
 
     <section class="my-6 md:my-10">
