@@ -53,8 +53,10 @@
       </header>
 
       <article class="my-6 prose md:prose-lg lg:prose-xl">
-        <p class="text-pretty">
-          I'm Byron, a computer science student at Colorado School of Mines. I love to go to hackathons, learn tools and technologies, and explore the world, both physically and conceptually.
+        <p>
+          I'm Byron, a computer science student at Colorado School of Mines. I
+          love to go to hackathons, learn technologies, and explore the world,
+          both physically and conceptually.
         </p>
       </article>
     </div>
