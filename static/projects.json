@@ -7,6 +7,17 @@
     "type": "github",
     "category": "personal"
   },
+  "hackutd-ripple-effect": {
+    "type": "blog",
+    "category": "hackathon",
+    "description": "unite through adventure",
+    "hackathonName": "HackUTD: Ripple Effect",
+    "languages": [
+      "Go",
+      "Svelte"
+    ],
+    "name": "Spontani"
+  },
   "hackku-2024": {
     "type": "blog",
     "category": "hackathon",
