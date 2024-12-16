@@ -3,7 +3,11 @@ perspective), I've found the time to publicize my travels again. This blog
 relates how I experienced November 15–17, my first weekend back in the US after
 [studying abroad in New Zealand](/blog/nz0) for a semester.
 
-My itinerary looked like this:
+When booking flights home, I faintly hoped circumstances might align just right
+for me to attend a hackathon on the way. I waited quite a while before booking
+a flight to maximize my flexibility and was elated to discover that [HackUTD:
+"Ripple Effect"]() conveniently met all my criteria. This gave me a busy
+itinerary:
 
 **Friday:** flying from Auckland to Dallas, sightseeing in Dallas, eating
 dinner with [Addison](https://tgrcode.com/)  
