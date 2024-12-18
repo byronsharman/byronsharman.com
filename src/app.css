@@ -9,6 +9,12 @@
     .prose blockquote {
         quotes: none;
     }
+    .prose blockquote em {
+        @apply not-italic;
+    }
+    .prose blockquote attribution {
+        @apply before:content-['—'] ps-8 not-italic;
+    }
     .prose code {
         @apply font-normal p-1 rounded bg-neutral-200 before:content-none after:content-none;
     }
