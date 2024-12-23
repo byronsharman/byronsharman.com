@@ -19,6 +19,7 @@ export type Project = {
   category: ProjectCategory;
   description: string;
   hackathonName?: string;
+  image?: string;
   languages: Array<string>;
   name: string;
   type: ProjectType;
