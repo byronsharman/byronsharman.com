@@ -10,28 +10,11 @@
   // whether the projects list is expanded to show all projects
   let projectsExpanded = false;
 
-  let projectGrid: HTMLElement;
-
-  const defaultNumProjects = 3;
-  let numProjects = defaultNumProjects;
-  const calcNumProjects = () => {
-    const numCols = window
-      .getComputedStyle(projectGrid)
-      .getPropertyValue("grid-template-columns")
-      .split(" ")
-      .length;
-    if (numCols == 2) numProjects = 2;
-    else if (numCols > defaultNumProjects) numProjects = numCols;
-    else numProjects = defaultNumProjects;
-  };
-
-  onMount(calcNumProjects);
+  const numProjects = 3;
 
   $: projectCount = projectsExpanded ? data.projects.length : numProjects;
   $: expandButtonText = projectsExpanded ? "collapse" : `show all (${data.projects.length - numProjects} more)`;
 </script>
-
-<svelte:window on:resize={calcNumProjects} />
 
 <svelte:head>
   <title>Byron Sharman</title>
@@ -39,7 +22,7 @@
 </svelte:head>
 
 <div class="flex justify-center p-4">
-  <main class="size-full max-w-[1240px]">
+  <main class="size-full max-w-screen-md">
 
     <div class="flex flex-col items-center">
       <header class="my-6 max-w-prose">
@@ -63,7 +46,7 @@
 
     <section class="my-6 md:my-10">
       <h2 class="heading2">Projects</h2>
-      <ul bind:this={projectGrid} class="grid grid-flow-row grid-cols-1 sm:grid-cols-[repeat(auto-fill,_minmax(350px,_1fr))] gap-4">
+      <ul class="space-y-4">
         {#each data.projects.slice(0, projectCount) as project}
           <ProjectCard project={project} />
         {/each}
@@ -81,7 +64,7 @@
         <h2 class="heading2">Blog</h2>
         <a href="/blog.xml"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mb-2"><path fill-rule="evenodd" d="M3.75 4.5a.75.75 0 0 1 .75-.75h.75c8.284 0 15 6.716 15 15v.75a.75.75 0 0 1-.75.75h-.75a.75.75 0 0 1-.75-.75v-.75C18 11.708 12.292 6 5.25 6H4.5a.75.75 0 0 1-.75-.75V4.5Zm0 6.75a.75.75 0 0 1 .75-.75h.75a8.25 8.25 0 0 1 8.25 8.25v.75a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.75a6 6 0 0 0-6-6H4.5a.75.75 0 0 1-.75-.75v-.75Zm0 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" /></svg></a>
       </div>
-      <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 gap-4">
+      <ul class="space-y-4">
         {#each Object.values(data.blogs) as blog}
           <BlogCard blog={blog} />
         {/each}

@@ -3,15 +3,16 @@
     "type": "github",
     "category": "personal"
   },
-  "bangbang": {
+  "adventofcode": {
     "type": "github",
-    "category": "personal"
+    "category": "personal",
+    "image": "/projects/images/adventofcode.avif"
   },
   "hackutd-ripple-effect": {
     "type": "blog",
     "category": "hackathon",
-    "description": "unite through adventure",
     "hackathonName": "HackUTD: Ripple Effect",
+    "image": "/projects/images/spontani.avif",
     "languages": [
       "Go",
       "Svelte"
@@ -21,8 +22,8 @@
   "hackku-2024": {
     "type": "blog",
     "category": "hackathon",
-    "description": "counteract dementia with puzzles and games",
     "hackathonName": "HackKU 2024",
+    "image": "/projects/images/kioku.avif",
     "languages": [
       "Svelte",
       "Python",
@@ -33,8 +34,8 @@
   "hackcu-x": {
     "type": "blog",
     "category": "hackathon",
-    "description": "a whiteboard for productivity and studying",
     "hackathonName": "HackCU X",
+    "image": "/blog/images/hackcu-x/multinotes.avif",
     "languages": [
       "Typescript React",
       "Python"
@@ -44,8 +45,8 @@
   "blasterhacks-2024": {
     "type": "blog",
     "category": "hackathon",
-    "description": "make good habits contagious",
     "hackathonName": "Blasterhacks 2024",
+    "image": "/blog/images/blasterhacks-2024/blasterhacks_screenshot.avif",
     "languages": [
       "Svelte",
       "Typescript",
@@ -53,12 +54,13 @@
     ],
     "name": "StandUp"
   },
-  "adventofcode": {
+  "bangbang": {
     "type": "github",
     "category": "personal"
   },
   "ultimate-tic-tac-toe": {
     "type": "github",
-    "category": "school"
+    "category": "school",
+    "image": "/projects/images/ultimate-tic-tac-toe.avif"
   }
 }
