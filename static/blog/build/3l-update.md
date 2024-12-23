@@ -2,14 +2,13 @@
 >
 > <attribution>Anonymous</attribution>
 
-It's been a while since my [original post](/blog/learning-3l) detailing what 3l
-is and why I started using it. In that post, I pledged to update my blog with
-my progress.
+3l is an alternative keyboard layout. It's been a while since my [original
+post](/blog/learning-3l) detailing what makes it different and why I started
+using it. In that post, I pledged to update my blog with my progress.
 
-The most common question I've gotten when mentioning the keyboard layout to
-people who knew I tried it is, "You're still using that thing?" I guess it was
-expected that I'd revert to QWERTY for whatever reason. Yes, I'm still using
-it.
+The most common question I've gotten when mentioning 3l to people who knew I
+tried it is, "You're still using that thing?" I guess it was expected that I'd
+revert to QWERTY for whatever reason. Yes, I'm still using it.
 
 I'd like to address the other common questions below as well as some thoughts
 which I think merit sharing.
@@ -62,12 +61,12 @@ superior keyboard layout for Vim users.
 
 ## What happens if you need to type on someone else's computer?
 
-Most computers I use run Linux, and 3l is built into almost all distros, so
-most of the time, I can just type `setxkbmap us 3l` (or `loadkeys 3l` for a
-TTY). If that doesn't work, I can still use QWERTY on a desktop computer at
-about 80&nbsp;WPM. I can change back and forth between the two like a bilingual
-person. I think this is mostly thanks to the fact that I still use QWERTY on my
-phone, so my brain isn't allowed to forget where the keys are.
+Most computers I use run Linux, and 3l is built into almost all distros, so I
+can usually just type `setxkbmap us 3l` (or `loadkeys 3l` for a TTY). If that
+doesn't work, I can still type on QWERTY at about 80&nbsp;WPM. I can change
+back and forth between the two like a bilingual person. I think this is mostly
+thanks to the fact that I use it on my phone, so my brain isn't allowed to
+forget where the keys are.
 
 ## What kept you from going back to QWERTY?
 
