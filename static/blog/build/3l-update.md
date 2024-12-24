@@ -3,15 +3,21 @@
 > <attribution>Anonymous</attribution>
 
 3l is an alternative keyboard layout. It's been a while since my [original
-post](/blog/learning-3l) detailing what makes it different and why I started
-using it. In that post, I pledged to update my blog with my progress.
+post](/blog/learning-3l) detailing what makes it unique and why I started using
+it. In that post, I pledged to update my blog with my progress.
 
-The most common question I've gotten when mentioning 3l to people who knew I
-tried it is, "You're still using that thing?" I guess it was expected that I'd
-revert to QWERTY for whatever reason. Yes, I'm still using it.
+The most common question I hear from the people who know I tried 3l is, "You're
+still using that thing?" I guess it was expected that I'd revert to QWERTY for
+whatever reason. Yes, I'm still using it.
 
-I'd like to address the other common questions below as well as some thoughts
-which I think merit sharing.
+I'd like to address some other common questions below.
+
+## What happens if you need to type on someone else's computer?
+
+3l is built into almost all Linux distros, so I can usually just type
+`setxkbmap us 3l` (or `loadkeys 3l` for a TTY). Otherwise, I can still use
+QWERTY at about 80&nbsp;WPM. I think this is mostly thanks to the fact that I
+use it on my phone, so my brain isn't allowed to forget where the keys are.
 
 ## I thought you use Vim; doesn't 3l mess up the `hjkl` keybindings?
 
@@ -58,15 +64,6 @@ ranges. My latest habit has been conjoining two Ex commands with a pipe, like
 one go. In QWERTY, that's much more gnarly than `jdd:w`. In 3l, the two are
 about the same speed. There are lots of little things like that, making 3l a
 superior keyboard layout for Vim users.
-
-## What happens if you need to type on someone else's computer?
-
-Most computers I use run Linux, and 3l is built into almost all distros, so I
-can usually just type `setxkbmap us 3l` (or `loadkeys 3l` for a TTY). If that
-doesn't work, I can still type on QWERTY at about 80&nbsp;WPM. I can change
-back and forth between the two like a bilingual person. I think this is mostly
-thanks to the fact that I use it on my phone, so my brain isn't allowed to
-forget where the keys are.
 
 ## What kept you from going back to QWERTY?
 
