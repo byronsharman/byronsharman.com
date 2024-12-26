@@ -1,8 +1,13 @@
 <script lang='ts'>
   // Given a unix timestamp, output a <p> containing a nicely formatted version thereof.
-  // Accounts for timezones.
+  
 
-  export let unixtime
+  interface Props {
+    // Accounts for timezones.
+    unixtime: any;
+  }
+
+  let { unixtime }: Props = $props();
 
   const tzOffset = new Date().getTimezoneOffset() * 60000;
 </script>

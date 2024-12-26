@@ -5,15 +5,19 @@
   import BlogCard from '$lib/blogCard.svelte';
   import ProjectCard from '$lib/projectCard.svelte';
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 
   // whether the projects list is expanded to show all projects
-  let projectsExpanded = false;
+  let projectsExpanded = $state(false);
 
   const numProjects = 3;
 
-  $: projectCount = projectsExpanded ? data.projects.length : numProjects;
-  $: expandButtonText = projectsExpanded ? "collapse" : `show all (${data.projects.length - numProjects} more)`;
+  let projectCount = $derived(projectsExpanded ? data.projects.length : numProjects);
+  let expandButtonText = $derived(projectsExpanded ? "collapse" : `show all (${data.projects.length - numProjects} more)`);
 </script>
 
 <svelte:head>
@@ -52,7 +56,7 @@
         {/each}
       </ul>
       <button
-        on:click={() => {projectsExpanded = !projectsExpanded;}}
+        onclick={() => {projectsExpanded = !projectsExpanded;}}
         class="mt-4 w-full items-center flex flex-row gap-4 lg:gap-6 text-gray-600 before:relative before:block before:flex-1 before:w-full before:h-px before:bg-gray-300 after:relative after:block after:flex-1 after:w-full after:h-px after:bg-gray-300 hover:underline"
       >
         {expandButtonText}
