@@ -6,7 +6,11 @@
   import BlogCard from '$lib/blogCard.svelte';
   import BackToHome from '$lib/backToHome.svelte';
 
-  export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
+
+  let { data }: Props = $props();
 </script>
 
 <svelte:head>

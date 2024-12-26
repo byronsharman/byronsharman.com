@@ -2,7 +2,11 @@
   import type { Blog } from '$lib/types';
   import DateP from '$lib/datep.svelte';
 
-  export let blog: Blog;
+  interface Props {
+    blog: Blog;
+  }
+
+  let { blog }: Props = $props();
 </script>
 
 <li class="border hover:border-gray-400 rounded-xl">
