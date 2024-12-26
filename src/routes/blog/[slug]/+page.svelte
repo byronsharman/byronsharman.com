@@ -3,7 +3,7 @@
 
   import type { PageData } from './$types';
   import DateP from '$lib/datep.svelte';
-  import BlogCard from '$lib/blog_card.svelte';
+  import BlogCard from '$lib/blogCard.svelte';
   import BackToHome from '$lib/backToHome.svelte';
 
   export let data: PageData;
