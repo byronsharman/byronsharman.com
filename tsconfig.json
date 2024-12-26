@@ -5,10 +5,13 @@
     "checkJs": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
+    "target": "ES2022",
+    "verbatimModuleSyntax": true,
     "moduleResolution": "bundler"
   }
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
