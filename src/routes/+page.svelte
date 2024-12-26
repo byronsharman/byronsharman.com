@@ -2,8 +2,8 @@
   import type { PageData } from './$types';
   import { onMount } from 'svelte';
   import Email from '$lib/email.svelte';
-  import BlogCard from '$lib/blog_card.svelte';
-  import ProjectCard from '$lib/project_card.svelte';
+  import BlogCard from '$lib/blogCard.svelte';
+  import ProjectCard from '$lib/projectCard.svelte';
 
   export let data: PageData;
 
