@@ -1,7 +1,7 @@
 <script lang='ts'>
   import { onMount } from 'svelte';
 
-  let ea: string = $state('');
+  let ea: string = '';
   onMount(() => {
     ea = atob('Ynlyb24ubi5zaGFybWFuQGdtYWlsLmNvbQ==');
   });
