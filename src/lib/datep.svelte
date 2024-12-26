@@ -1,10 +1,9 @@
 <script lang='ts'>
-  // Given a unix timestamp, output a <p> containing a nicely formatted version thereof.
+  // Given a unix timestamp, output a <p> containing a nicely formatted version
+  // thereof, accounting for timezones.
   
-
   interface Props {
-    // Accounts for timezones.
-    unixtime: any;
+    unixtime: number;
   }
 
   let { unixtime }: Props = $props();
