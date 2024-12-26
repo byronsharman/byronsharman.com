@@ -1,6 +1,5 @@
 <script lang='ts'>
   import type { PageData } from './$types';
-  import { onMount } from 'svelte';
   import Email from '$lib/email.svelte';
   import BlogCard from '$lib/blogCard.svelte';
   import ProjectCard from '$lib/projectCard.svelte';
