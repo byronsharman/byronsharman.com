@@ -2,7 +2,11 @@
   "3l-update": {
     "date": 1735498387,
     "preview": "The keyboard layout has served me well.",
-    "title": "An Update on 3l"
+    "title": "An Update on 3l",
+    "previewImage": "3l_with_hjkl_highlighted",
+    "previewImageExt": "png",
+    "openGraphImageExt": "png",
+    "previewImageAlt": "diagram of the 3l keyboard layout with the h, j, k, and l keys highlighted"
   },
   "hackutd-ripple-effect": {
     "date": 1734208091,
