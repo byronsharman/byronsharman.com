@@ -19,8 +19,8 @@ async function createGithubProject(
   project: Project,
   fetchFunc: FetchFunction
 ): Promise<Project> {
-  const res: Response = await fetchFunc(`https://api.github.com/repos/b-sharman/${projectName}`);
   try {
+    const res: Response = await fetchFunc(`https://api.github.com/repos/b-sharman/${projectName}`);
     const githubProject = await res.json() as {
       description: string;
       html_url: string;
@@ -42,7 +42,7 @@ async function createGithubProject(
     project.category = 'error';
     project.description = 'probably got rate limited by the GitHub API =/';
     project.languages = [];
-    project.name = 'failed to load';
+    project.name = projectName;
     project.type = ProjectType.NetworkError;
     project.url = '';
   }
