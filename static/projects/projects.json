@@ -3,6 +3,11 @@
     "type": "github",
     "category": "personal"
   },
+  "sushigo": {
+    "type": "github",
+    "category": "personal",
+    "image": "/projects/images/sushigo.avif"
+  },
   "adventofcode": {
     "type": "github",
     "category": "personal",
