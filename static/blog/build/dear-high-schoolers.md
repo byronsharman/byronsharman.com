@@ -6,42 +6,43 @@ In 11th or 12th grade—I can't remember which—I found myself sitting in an
 unfamiliar high school with truly impressive cascades of mucus emanating from
 my nostrils. This circumstance was especially awkward because I was in a room
 full of other students taking the SAT. I'd already taken it, but I was trying
-again because "my old score wasn't good enough." Unsure how to discreetly
-extract the snot with an already-soaked tissue, I attempted to use the tissue
-as a glove while pinching the albumen-like liquid and pulling away from my
-face. This was comically ineffective. A proctor noticed and offered me a box of
-tissues.
+again because I was unsatisfied with my previous score. Unsure how to
+discreetly extract the snot with an already-soaked tissue, I attempted to use
+the tissue as a glove while pinching the albumen-like liquid and pulling away
+from my face. This was comically ineffective. A proctor noticed and offered me
+a box of tissues.
 
 Gross, right? But not nearly as disgusting as the inane grindset imposed on
 high school students by corporate entities like the College Board and
 reinforced by society's obsessive veneration for the top 1% of postsecondary
-education institutions. My high school years were dominated by the idea of
-getting into a "good college". Anything less than an A was a calamity. Some
-extracurriculars were taken up for enjoyment; others were chosen to lengthen
-the list in my Common App account. Like-minded people on Reddit jokingly
-offered to exchange their firstborn children for 5s on their AP exams. *Our
-main focus should be acceptance into an elite university,* we thought. *After
-that, our path to wealth and happiness will be secured.*
+education institutions. Many of my classmates spent their high school years
+overemphasizing the idea of getting into a "good college." Anything less than
+an A was a calamity. Some extracurriculars were taken up for enjoyment; others
+were chosen to lengthen the lists in our Common App accounts. On Reddit, we
+could find more extreme versions of ourselves jokingly offering to exchange
+their firstborn children for 5s on their AP exams. *Our main focus should be
+acceptance into an elite university,* we subconsciously assured ourselves.
+*After that, our path to wealth and happiness is secured.*
 
 A person's wealth and success stem from their attitude, the ideals they pursue,
 and unfortunately, other circumstances outside their control. However, those
-are mostly independent of which university they attend. Life is not measured by
-test scores, grades, or some other numerical proxy for worthiness, but rather
-guided by intangibles like discovering what brings you fulfillment, making
-friends, practicing skills you'll need for your career, and enjoying
-opportunities that won't come again. You go to high school to develop those
-intangibles. When you let college worries overshadow them, you oversimplify
-what high school is supposed to prepare you for.
+factors are mostly independent of which university they attend. Life is not
+measured by test scores, grades, or some other numerical proxy for worthiness,
+but rather guided by intangibles like discovering what brings you fulfillment,
+making friends, practicing skills you'll need for your career, and enjoying
+opportunities that won't come again. High school develops those intangibles.
+Allowing college worries to overshadow them oversimplifies the purpose of high
+school.
 
-Although you don't have to know what you want to do with your life, you should
-know why you're going to college. Why would you spend so much money if you
-can't explain why you want to go? Most people, once they understand their
-motivations clearly enough to articulate them, will find that a lesser-known
-local school can meet their needs just as well as a prestigious one. Both
-enable you to enter a field that requires a degree, to discover the joy of
-spending four years with other people your age, or simply to act on your belief
-that education is intrinsically valuable. The most important lessons learned in
-college are not taught in classrooms.
+Common misunderstanding of purpose extends to college. When in high school,
+it's easy to become so focused on college applications that you forget why you
+are pursuing postsecondary education in the first case. Most people, once they
+understand their motivations clearly enough to articulate them, will find that
+a lesser-known local school can meet their needs just as well as a prestigious
+one. Both enable you to enter a field that requires a degree, to discover the
+joy of spending four years with other people your age, or simply to act on your
+belief that education is intrinsically valuable. The most important lessons
+learned in college are not taught in classrooms.
 
 Moreover, acceptance into an elite university does not guarantee wealth or
 happiness. Rather, elite universities seem to be conducive to success because
