@@ -15,25 +15,25 @@ actually getting real exercise. Though sometimes patches of ice lie in my way,
 it's nothing my mountain bike can't handle, as long as I'm not reckless. Often
 I wave to the broad demographic of other Golden residents who share my
 enjoyment of exercising outdoors. If I'm paying attention, sometimes I'll see
-birds flitting among the bushes, looking for a patch of morning sunlight.
+birds flitting among the bushes, looking for a patch of sunlight.
 
 The cool January air invigorates my mind on the way to school and clears it on
 the way back. I'm sure you've heard at some point that exercise is good for
 mental health. I haven't formally researched this, but anecdotally, it seems to
-be true. Besides, there's other health benefits from being outside. When I'm
-inside, or even in a car, I watch what happens around me. I'm surrounded by
-circumstances and must be content to observe them. But when my legs are
-churning in the highest gear, sending me flying over the bumps in the concrete,
-the wind rushing against my face and finding its way underneath my jacket,
-that's when I can be *part* of the world rather than watching it. Simply put,
-humans are meant to experience the world, and biking is a great way to
-habitualize that.
+be true. Besides, there's other health benefits from being outside. When
+inside, or even in a car, I watch the trees sliding by on the other side of the
+glass. I must be content to play the role of an observer. But when my legs are
+pumping the pedals in the highest gear, sending me flying over the bumps in the
+concrete, the wind rushing against my face and finding its way underneath my
+jacket, that's when I can be *part* of the world rather than watching it.
+Humans are meant to experience, not to simply behold, and biking is a great way
+to habitualize that.
 
 The merits of biking, however, are not confined to the soul. I save $25/month
-on gas money alone, not counting trips to places besides school. I save 40
-minutes a day by parallelizing cardio and commuting. (And besides, it's not
-like I would be disciplined enough to go to the gym daily if I didn't bike.) I
-reduce my greenhouse gas emissions.
+on gas money alone, not counting trips to places besides school. I reduce my
+greenhouse gas emissions. I save 40 minutes a day by parallelizing cardio and
+commuting. (And besides, it's not like I would be disciplined enough to go to
+the gym daily if I didn't bike.)
 
 The few problems a bike commute does impose are easily handled. The danger is
 mitigated by living in a place where I can mostly take residential roads and
@@ -50,4 +50,4 @@ hungrier than usual, in the most delightful way. You won't have to refuel your
 car or change your oil as often. In short, you will reap large mental,
 physical, and financial benefits by making small compromises. If you're
 able-bodied enough to ride a bike, and fortunate enough to have the resources
-to live close to your daily commute, I'd highly recommend it over a car. 
+to live close to work or school, I'd highly recommend it over a car. 
