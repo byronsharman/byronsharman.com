@@ -6,18 +6,21 @@
   "sushigo": {
     "type": "github",
     "category": "personal",
-    "image": "/projects/images/sushigo.avif"
+    "image": "/projects/images/sushigo.avif",
+    "imageAlt": "a collection of cartoon sushi pieces with smiling faces"
   },
   "adventofcode": {
     "type": "github",
     "category": "personal",
-    "image": "/projects/images/adventofcode.avif"
+    "image": "/projects/images/adventofcode.avif",
+    "imageAlt": "A screenshot of the Advent of Code homepage showing ASCII art of the number 10"
   },
   "hackutd-ripple-effect": {
     "type": "blog",
     "category": "hackathon",
     "hackathonName": "HackUTD: Ripple Effect",
     "image": "/projects/images/spontani.avif",
+    "imageAlt": "A screenshot of an application homepage showing a user interface and a map",
     "languages": [
       "Go",
       "Svelte"
@@ -29,6 +32,7 @@
     "category": "hackathon",
     "hackathonName": "HackKU 2024",
     "image": "/projects/images/kioku.avif",
+    "imageAlt": "A screenshot of a web application showing a gray box",
     "languages": [
       "Svelte",
       "Python",
@@ -41,6 +45,7 @@
     "category": "hackathon",
     "hackathonName": "HackCU X",
     "image": "/blog/images/hackcu-x/multinotes.avif",
+    "imageAlt": "A screenshot of a productivity application showing a videos and notes relating to high-level mathematics",
     "languages": [
       "Typescript React",
       "Python"
@@ -52,6 +57,7 @@
     "category": "hackathon",
     "hackathonName": "Blasterhacks 2024",
     "image": "/blog/images/blasterhacks-2024/blasterhacks_screenshot.avif",
+    "imageAlt": "A screenshot of a social media application showing a images in a feed",
     "languages": [
       "Svelte",
       "Typescript",
@@ -66,6 +72,7 @@
   "ultimate-tic-tac-toe": {
     "type": "github",
     "category": "school",
-    "image": "/projects/images/ultimate-tic-tac-toe.avif"
+    "image": "/projects/images/ultimate-tic-tac-toe.avif",
+    "imageAlt": "A screenshot of a text-based game showing a tic-tac-toe board, with each square itself containing another tic-tac-toe board"
   }
 }
