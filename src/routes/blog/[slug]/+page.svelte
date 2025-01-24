@@ -47,11 +47,11 @@
     <hr class="size-full border-gray-300 my-10"/>
 
     <h2 class="w-full heading2">Recent Posts</h2>
-      <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 w-full gap-4">
-        {#each Object.values(data.blogs) as blog}
-          <BlogCard blog={blog} />
-        {/each}
-      </ul>
+    <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 w-full gap-4">
+      {#each Object.values(data.blogs) as blog}
+        <BlogCard blog={blog} />
+      {/each}
+    </ul>
 
     <BackToHome />
 
