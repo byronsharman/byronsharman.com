@@ -1,4 +1,13 @@
 {
+  "biking": {
+    "date": 1737662893,
+    "preview": "A healthier way of life.",
+    "title": "Biking",
+    "previewImage": "path",
+    "previewImageExt": "jpg",
+    "openGraphImageExt": "jpg",
+    "previewImageAlt": "A concrete path leads down a hill. There is snow on either side, and mountains are in the background."
+  },
   "3l-update": {
     "date": 1735498387,
     "preview": "The keyboard layout has served me well.",
