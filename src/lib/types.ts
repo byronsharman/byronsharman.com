@@ -20,6 +20,7 @@ export type Project = {
   description: string;
   hackathonName?: string;
   image?: string;
+  imageAlt?: string;
   languages: Array<string>;
   name: string;
   type: ProjectType;
