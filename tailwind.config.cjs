@@ -6,9 +6,6 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
-            '.hljs': {
-              'background-color': 'inherit',
-            }
           },
         },
       },
