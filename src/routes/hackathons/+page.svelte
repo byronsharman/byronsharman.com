@@ -16,7 +16,7 @@
 </svelte:head>
 
 <div class="flex justify-center p-4">
-  <main class="max-w-prose w-[65ch]">
+  <main class="max-w-(--breakpoint-md)">
 
     <section>
       <h1 class="my-8 font-bold text-3xl lg:text-4xl">Hackathons</h1>
