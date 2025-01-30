@@ -13,7 +13,7 @@
   // whether the projects list is expanded to show all projects
   let projectsExpanded = $state(false);
 
-  const numProjects = 3;
+  const numProjects = 2;
 
   let projectCount = $derived(projectsExpanded ? data.projects.length : numProjects);
   let expandButtonText = $derived(projectsExpanded ? "collapse" : `show all (${data.projects.length - numProjects} more)`);

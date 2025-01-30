@@ -9,7 +9,7 @@
   let { project }: Props = $props();
 </script>
 
-<li in:slide={{duration: 150}} out:slide={{duration: 275}} class="overflow-hidden border rounded-xl sm:min-w-[250px] flex flex-col size-full rounded-xl">
+<li in:slide={{duration: 150}} out:slide={{duration: 325}} class="overflow-hidden border rounded-xl sm:min-w-[250px] flex flex-col size-full rounded-xl">
 
   <div class="p-4">
     {#if project.image !== undefined}
