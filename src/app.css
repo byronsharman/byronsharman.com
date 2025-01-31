@@ -25,6 +25,15 @@
     .prose code strong {
         @apply font-bold;
     }
+    .prose figcaption {
+        @apply mt-4!;
+    }
+    .prose figcaption p {
+        @apply my-0!;
+    }
+    .prose figure {
+        @apply my-6!;
+    }
     .prose pre {
         @apply p-0! overflow-x-auto bg-neutral-100! text-inherit! text-sm!;
     }
