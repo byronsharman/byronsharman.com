@@ -6,6 +6,9 @@ module.exports = {
       typography: {
         DEFAULT: {
           css: {
+            h1: {
+              margin: '0px',
+            },
           },
         },
       },

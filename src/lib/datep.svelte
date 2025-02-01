@@ -11,4 +11,4 @@
   const tzOffset = new Date().getTimezoneOffset() * 60000;
 </script>
 
-<p class="text-sm text-gray-600">{new Date(unixtime * 1000 - tzOffset).toISOString().slice(0,10)}</p>
+<p class="m-0! text-sm text-gray-600">{new Date(unixtime * 1000 - tzOffset).toISOString().slice(0,10)}</p>
