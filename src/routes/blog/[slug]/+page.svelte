@@ -33,9 +33,9 @@
 
 <div class="flex justify-center p-4">
   <main class="size-full max-w-[1240px] min-w-0 flex flex-col items-center">
-    <article class="w-full my-6 prose text-[17px]">
+    <article class="w-full mt-4 prose text-[17px]">
       <header class="mb-8 lg:mb-12">
-        <h1 class="mb-2 text-pretty">{data.title}</h1>
+        <h1 class="mb-2! text-pretty">{data.title}</h1>
         <DateP unixtime={data.date} />
         {#if data.customHeaderHTML}
           {@html data.customHeaderHTML}
@@ -46,7 +46,7 @@
 
     <hr class="size-full border-gray-300 my-10"/>
 
-    <h2 class="w-full heading2">Recent Posts</h2>
+    <h2 class="w-full mt-4 heading2">Recent Posts</h2>
     <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 w-full gap-4">
       {#each Object.values(data.blogs) as blog}
         <BlogCard blog={blog} />
