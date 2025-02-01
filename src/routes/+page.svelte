@@ -24,11 +24,11 @@
   <meta name="description" content="I'm Byron, a computer science student at Colorado School of Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
 </svelte:head>
 
-<div class="flex justify-center p-4">
+<div class="flex justify-center p-4 pt-0">
   <main class="size-full max-w-(--breakpoint-md)">
 
     <div class="flex flex-col items-center">
-      <header class="my-6 max-w-prose">
+      <header class="mt-3 lg:mt-6 mb-6 max-w-prose">
         <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="m-auto p-8 size-3/4 max-w-[320px] rounded-full" />
         <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
         <ul class="my-4 flex flex-row justify-center divide-x divide-gray-800">
@@ -38,7 +38,7 @@
         </ul>
       </header>
 
-      <article class="my-6 prose md:prose-lg lg:prose-xl">
+      <article class="mb-4 prose md:prose-lg lg:prose-xl">
         <p class="m-0!">
           I'm Byron, a computer science student at Colorado School of Mines. I
           love to go to hackathons, learn technologies, and explore the world,
