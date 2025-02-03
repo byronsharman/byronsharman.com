@@ -5,7 +5,7 @@ export enum ProjectType {
 }
 
 export type Blog = {
-  customHeaderHTML: string;
+  customHeaderMD: string;
   date: number;
   preview: string;
   previewImage: string;
