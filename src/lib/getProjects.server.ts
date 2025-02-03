@@ -60,7 +60,7 @@ async function createBlogProject(
   fetchFunc: FetchFunction
 ): Promise<Project> {
   project.bottomText = 'read the blog post';
-  project.url = `${import.meta.env.VITE_URL}/blog/${projectName}`;
+  project.url = `/blog/${projectName}`;
 
   // grab description from associated markdown file
   project.description = await getDescription(projectName, fetchFunc);
