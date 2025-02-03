@@ -34,7 +34,7 @@
 <div class="flex justify-center p-4">
   <main class="size-full max-w-[1240px] min-w-0 flex flex-col items-center">
     <article class="w-full mt-4 prose text-[17px]">
-      <header class="mb-8 lg:mb-12">
+      <header class="mb-6">
         <h1 class="mb-2! text-pretty">{data.title}</h1>
         <DateP unixtime={data.date} />
         {#if data.customHeaderHTML}
