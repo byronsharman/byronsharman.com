@@ -1,7 +1,7 @@
 <script lang='ts'>
   // Given a unix timestamp, output a <p> containing a nicely formatted version
   // thereof, accounting for timezones.
-  
+
   interface Props {
     unixtime: number;
   }
