@@ -1,5 +1,5 @@
 import type { PageLoad } from './$types';
-import type { Project, ProjectCategory } from '$lib/types';
+import type { Project } from '$lib/types';
 import { getProjects } from '$lib/getProjects.server';
 
 export const load: PageLoad = async (p) => {
