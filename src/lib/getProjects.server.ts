@@ -77,7 +77,7 @@ export async function getProjects(p): Promise<Project[]> {
     return projects;
   }
 
-  const obj: Object = await res.json();
+  const obj: object = await res.json();
 
   for (let [projectName, project] of Object.entries(obj) as [string, Project][]) {
     switch (project.type) {

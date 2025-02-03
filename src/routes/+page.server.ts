@@ -8,7 +8,7 @@ export const load: PageLoad = async (p) => {
 
   // blog data
   retval.blogs = await getBlogsAsJson(p.fetch)
-    .then((obj: Object) => blogJsonToObject(obj))
+    .then((obj: object) => blogJsonToObject(obj))
     .catch((err: Error) => console.error(err));
 
   retval.projects = await getProjects(p);
