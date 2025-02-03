@@ -1,6 +1,8 @@
 <script lang='ts'>
   import 'highlight.js/styles/base16/papercolor-light.css';
 
+  import { marked } from 'marked';
+
   import type { PageData } from './$types';
   import DateP from '$lib/datep.svelte';
   import BlogCard from '$lib/blogCard.svelte';
@@ -37,8 +39,10 @@
       <header class="mb-6">
         <h1 class="mb-2! text-pretty">{data.title}</h1>
         <DateP unixtime={data.date} />
-        {#if data.customHeaderHTML}
-          {@html data.customHeaderHTML}
+        {#if data.customHeaderMD}
+          <small class="block">
+            {@html marked(data.customHeaderMD)}
+          </small>
         {/if}
       </header>
       {@html data.html}
