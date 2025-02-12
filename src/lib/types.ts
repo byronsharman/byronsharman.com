@@ -19,11 +19,11 @@ export interface Blog {
 
 // contains all the extra fields necessary to render a full blog page
 export interface RenderBlog extends Blog {
-  blogs: Blog[];
   html: string;
   ldjson: string;
   openGraphImageUrl?: string;
   previewImageUrl?: string;
+  recentBlogs: Blog[];
   url: string;
 }
 
