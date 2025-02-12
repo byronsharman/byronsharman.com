@@ -4,15 +4,28 @@ export enum ProjectType {
   NetworkError = 'networkerror',
 }
 
-export type Blog = {
+// describes the blogs in index.json
+export interface Blog {
   customHeaderMD: string;
   date: number;
+  openGraphImageExt?: string;
   preview: string;
-  previewImage: string;
-  previewImageAlt: string;
+  previewImage?: string;
+  previewImageAlt?: string;
+  previewImageExt?: string;
   slug: string;
   title: string;
 };
+
+// contains all the extra fields necessary to render a full blog page
+export interface RenderBlog extends Blog {
+  blogs: Blog[];
+  html: string;
+  ldjson: string;
+  openGraphImageUrl?: string;
+  previewImageUrl?: string;
+  url: string;
+}
 
 export type Project = {
   bottomText: string;

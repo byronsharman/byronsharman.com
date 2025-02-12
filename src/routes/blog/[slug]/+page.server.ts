@@ -3,16 +3,16 @@ import type { PageServerLoad } from './$types';
 import { marked } from 'marked';
 import hljs from 'highlight.js/lib/common';
 
+import type { RenderBlog } from '$lib/types';
 import { blogJsonToObject, getBlogsAsJson } from '$lib/blogUtils.server';
 
-export const load: PageServerLoad = async ({ fetch, params }) => {
-  const blogs = await getBlogsAsJson(fetch);
-
-  // return 404 if the data has no slug
-  if (!Object.keys(blogs).includes(params.slug)) return error(404, 'Not found');
+export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlog> => {
+  const blogsJson = await getBlogsAsJson(fetch);
 
   // grab the data provided by the json file using the slug provided by svelte
-  let retval = blogs[params.slug];
+  let builder = blogsJson[params.slug];
+  // return 404 if the data has no slug
+  if (builder === undefined) return error(404, 'Not found');
 
   const renderer = {
     // these are modifications of the default renderer
@@ -48,23 +48,31 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
   }
   marked.use({ renderer });
 
-  const text = await fetch(`/blog/build/${params.slug}.md`)
-    .then((res: Response) => res.text())
-    .catch((err: Error) => console.error(err));
-  retval.html = marked(text);
-
-  retval.url = `${import.meta.env.VITE_URL}/blog/${params.slug}/`;
-  if (retval.previewImage !== undefined) {
-    retval.previewImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${retval.previewImage}.${retval.previewImageExt}`;
-    retval.openGraphImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${retval.previewImage}.${retval.openGraphImageExt}`;
+  let html;
+  try {
+    const res = await fetch(`/blog/build/${params.slug}.md`);
+    if (!res.ok) throw Error(`failed to fetch from /blog/build/${params.slug}.md`);
+    const text = await res.text();
+    html = await marked(text);
+  } catch (e: unknown) {
+    console.error(e);
+    throw e;
   }
 
-  retval.ldjson = JSON.stringify({
+  let previewImageUrl;
+  let openGraphImageUrl;
+  const url = `${import.meta.env.VITE_URL}/blog/${params.slug}/`;
+  if (builder.previewImage !== undefined) {
+    previewImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${builder.previewImage}.${builder.previewImageExt}`;
+    openGraphImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${builder.previewImage}.${builder.openGraphImageExt}`;
+  }
+
+  const ldjson = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": retval.title,
-    "image": retval.previewImage ? retval.previewImageUrl : undefined,
-    "datePublished": new Date(retval.date * 1000).toISOString(),
+    "headline": builder.title,
+    "image": builder.previewImage ? previewImageUrl : undefined,
+    "datePublished": new Date(builder.date * 1000).toISOString(),
     "author": [{
       "@type": "Person",
       "name": "Byron Sharman",
@@ -72,6 +80,16 @@ export const load: PageServerLoad = async ({ fetch, params }) => {
     }]
   });
 
-  retval.blogs = blogJsonToObject(blogs, params.slug, true);
+  const blogs = blogJsonToObject(blogsJson, params.slug, true);
+
+  const retval: RenderBlog = {
+    ...builder,
+    blogs: blogs,
+    html: html,
+    ldjson: ldjson,
+    openGraphImageUrl: openGraphImageUrl,
+    previewImageUrl: previewImageUrl,
+    url: url,
+  };
   return retval;
 };
