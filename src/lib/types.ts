@@ -23,7 +23,7 @@ export interface RenderBlog extends Blog {
   ldjson: string;
   openGraphImageUrl?: string;
   previewImageUrl?: string;
-  recentBlogs: Blog[];
+  recentBlogs: { [slug: string]: Blog };
   url: string;
 }
 
