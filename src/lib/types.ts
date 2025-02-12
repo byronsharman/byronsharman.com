@@ -41,3 +41,10 @@ export type Project = {
 };
 
 export type ProjectCategory = "error" | "hackathon" | "personal" | "school";
+
+export type GitHubAPIResponse = {
+  description: string;
+  html_url: string;
+  languages_url: string;
+  name: string;
+};
