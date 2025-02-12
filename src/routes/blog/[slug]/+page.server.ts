@@ -1,18 +1,18 @@
 import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageServerLoad } from './$types';
 import { marked } from 'marked';
 import hljs from 'highlight.js/lib/common';
 
 import { blogJsonToObject, getBlogsAsJson } from '$lib/blogUtils.server';
 
-export const load: PageLoad = async (p) => {
-  const blogs = await getBlogsAsJson(p.fetch);
+export const load: PageServerLoad = async ({ fetch, params }) => {
+  const blogs = await getBlogsAsJson(fetch);
 
   // return 404 if the data has no slug
-  if (!Object.keys(blogs).includes(p.params.slug)) return error(404, 'Not found');
+  if (!Object.keys(blogs).includes(params.slug)) return error(404, 'Not found');
 
   // grab the data provided by the json file using the slug provided by svelte
-  let retval = blogs[p.params.slug];
+  let retval = blogs[params.slug];
 
   const renderer = {
     // these are modifications of the default renderer
@@ -38,7 +38,7 @@ export const load: PageLoad = async (p) => {
 
     image(href: string, title: string | null, text: string): string {
       if (href === "") return text;
-      let out = `<figure class="flex flex-col text-center"><img src="/blog/images/${p.params.slug}/${href}" alt="${text}" class="mx-auto" />`;
+      let out = `<figure class="flex flex-col text-center"><img src="/blog/images/${params.slug}/${href}" alt="${text}" class="mx-auto" />`;
       if (title) {
         out += `<figcaption>${marked(title)}</figcaption>`;
       }
@@ -48,15 +48,15 @@ export const load: PageLoad = async (p) => {
   }
   marked.use({ renderer });
 
-  const text = await p.fetch(`/blog/build/${p.params.slug}.md`)
+  const text = await fetch(`/blog/build/${params.slug}.md`)
     .then((res: Response) => res.text())
     .catch((err: Error) => console.error(err));
   retval.html = marked(text);
 
-  retval.url = `${import.meta.env.VITE_URL}/blog/${p.params.slug}/`;
+  retval.url = `${import.meta.env.VITE_URL}/blog/${params.slug}/`;
   if (retval.previewImage !== undefined) {
-    retval.previewImageUrl = `${import.meta.env.VITE_URL}/blog/images/${p.params.slug}/${retval.previewImage}.${retval.previewImageExt}`;
-    retval.openGraphImageUrl = `${import.meta.env.VITE_URL}/blog/images/${p.params.slug}/${retval.previewImage}.${retval.openGraphImageExt}`;
+    retval.previewImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${retval.previewImage}.${retval.previewImageExt}`;
+    retval.openGraphImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${retval.previewImage}.${retval.openGraphImageExt}`;
   }
 
   retval.ldjson = JSON.stringify({
@@ -72,6 +72,6 @@ export const load: PageLoad = async (p) => {
     }]
   });
 
-  retval.blogs = blogJsonToObject(blogs, p.params.slug, true);
+  retval.blogs = blogJsonToObject(blogs, params.slug, true);
   return retval;
 };

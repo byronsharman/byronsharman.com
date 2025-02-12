@@ -68,10 +68,10 @@ async function createBlogProject(
   return project;
 }
 
-export async function getProjects(p): Promise<Project[]> {
+export async function getProjects(fetchFunc: FetchFunction): Promise<Project[]> {
   let projects: Project[] = [];
 
-  const res: Response = await p.fetch('/projects/projects.json');
+  const res: Response = await fetchFunc('/projects/projects.json');
   if (!res.ok) {
     console.error('Failed to fetch from projects.json');
     return projects;
@@ -82,11 +82,11 @@ export async function getProjects(p): Promise<Project[]> {
   for (let [projectName, project] of Object.entries(obj) as [string, Project][]) {
     switch (project.type) {
       case 'github':
-        projects.push(await createGithubProject(projectName, project, p.fetch));
+        projects.push(await createGithubProject(projectName, project, fetchFunc));
         break;
 
       case 'blog':
-        projects.push(await createBlogProject(projectName, project, p.fetch));
+        projects.push(await createBlogProject(projectName, project, fetchFunc));
         break;
 
       default:
