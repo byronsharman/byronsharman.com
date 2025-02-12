@@ -13,7 +13,7 @@ export function blogJsonToObject(
     ([key, value]: [string, any]) => {
       return {...value, slug: key};
     }
-  ) as Blog[];
+  );
 }
 
 export async function getBlogsAsJson(fetchFunc: typeof fetch): Promise<{ [slug: string]: Blog }> {
