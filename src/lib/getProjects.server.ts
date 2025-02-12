@@ -3,9 +3,7 @@ import { ProjectType } from '$lib/types';
 
 import { marked } from 'marked';
 
-type FetchFunction = (url: string) => Promise<Response>;
-
-async function getDescription(projectName: string, fetchFunc: FetchFunction): Promise<string> {
+async function getDescription(projectName: string, fetchFunc: typeof fetch): Promise<string> {
   const res: Response = await fetchFunc(`/projects/descriptions/${projectName}.md`);
   if (!res.ok) {
     return '<p>(no description provided)</p>';
@@ -17,7 +15,7 @@ async function getDescription(projectName: string, fetchFunc: FetchFunction): Pr
 async function createGithubProject(
   projectName: string,
   project: Project,
-  fetchFunc: FetchFunction
+  fetchFunc: typeof fetch
 ): Promise<Project> {
   try {
     const res: Response = await fetchFunc(`https://api.github.com/repos/b-sharman/${projectName}`);
@@ -57,7 +55,7 @@ async function createGithubProject(
 async function createBlogProject(
   projectName: string,
   project: Project,
-  fetchFunc: FetchFunction
+  fetchFunc: typeof fetch
 ): Promise<Project> {
   project.bottomText = 'read the blog post';
   project.url = `/blog/${projectName}`;
@@ -68,7 +66,7 @@ async function createBlogProject(
   return project;
 }
 
-export async function getProjects(fetchFunc: FetchFunction): Promise<Project[]> {
+export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
   let projects: Project[] = [];
 
   const res: Response = await fetchFunc('/projects/projects.json');
