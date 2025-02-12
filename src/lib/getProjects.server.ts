@@ -1,4 +1,4 @@
-import type { Project } from '$lib/types';
+import type { GitHubAPIResponse, Project } from '$lib/types';
 import { ProjectType } from '$lib/types';
 
 import { marked } from 'marked';
@@ -15,19 +15,14 @@ async function getDescription(projectName: string, fetchFunc: typeof fetch): Pro
 async function createGithubProject(
   projectName: string,
   project: Project,
-  fetchFunc: typeof fetch
+  fetchFunc: typeof fetch,
 ): Promise<Project> {
   try {
     const res: Response = await fetchFunc(`https://api.github.com/repos/b-sharman/${projectName}`);
-    const githubProject = await res.json() as {
-      description: string;
-      html_url: string;
-      languages_url: string;
-      name: string;
-    };
+    const githubProject: GitHubAPIResponse = await res.json();
 
     // set project.languages by querying the URL returned by the API
-    const lang_res: Response = await fetchFunc(githubProject.languages_url);
+    const lang_res = await fetchFunc(githubProject.languages_url);
     project.languages = Object.keys(await lang_res.json());
 
     project.bottomText = 'see it on GitHub';
@@ -55,7 +50,7 @@ async function createGithubProject(
 async function createBlogProject(
   projectName: string,
   project: Project,
-  fetchFunc: typeof fetch
+  fetchFunc: typeof fetch,
 ): Promise<Project> {
   project.bottomText = 'read the blog post';
   project.url = `/blog/${projectName}`;
@@ -75,9 +70,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
     return projects;
   }
 
-  const obj: object = await res.json();
-
-  for (let [projectName, project] of Object.entries(obj) as [string, Project][]) {
+  for (const [projectName, project] of Object.entries(await res.json()) as [string, Project][]) {
     switch (project.type) {
       case 'github':
         projects.push(await createGithubProject(projectName, project, fetchFunc));
@@ -88,7 +81,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         break;
 
       default:
-        console.error('Error when parsing projects: project type is invalid');
+        console.error(`Error when parsing projects: unrecognized project type ${project.type}`);
     }
   }
 
