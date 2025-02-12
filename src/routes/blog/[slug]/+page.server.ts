@@ -3,8 +3,8 @@ import type { PageServerLoad } from './$types';
 import { marked } from 'marked';
 import hljs from 'highlight.js/lib/common';
 
-import type { RenderBlog } from '$lib/types';
-import { jsonToBlogArray, getBlogsAsJson } from '$lib/blogUtils.server';
+import type { Blog, RenderBlog } from '$lib/types';
+import { getBlogsAsJson } from '$lib/blogUtils.server';
 
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
@@ -83,7 +83,16 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
     }]
   });
 
-  const recentBlogs = jsonToBlogArray(blogsJson, RECENT_LIMIT, params.slug);
+  let recentBlogs: { [slug: string]: Blog } = {};
+  let num = 0;
+  // populate recentBlogs with the first RECENT_LIMIT blogs that are not the same as the current blog
+  for (const slug of Object.getOwnPropertyNames(blogsJson)) {
+    if (slug != params.slug) {
+      recentBlogs[slug] = blogsJson[slug];
+      num++;
+    }
+    if (num >= RECENT_LIMIT) break;
+  }
 
   const retval: RenderBlog = {
     ...builder,

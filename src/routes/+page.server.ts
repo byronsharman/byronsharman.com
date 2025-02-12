@@ -1,19 +1,18 @@
 import type { PageServerLoad } from './$types';
 
-import type { Blog, Project } from '$lib/types';
-import { jsonToBlogArray, getBlogsAsJson } from '$lib/blogUtils.server';
+import type { Blog } from '$lib/types';
+import { getBlogsAsJson } from '$lib/blogUtils.server';
 import { getProjects } from '$lib/getProjects.server';
 
 export const load: PageServerLoad = async ({ fetch }) => {
-  let blogs: Blog[];
+  let blogs: { [slug: string]: Blog };
 
   // blog data
   try {
-    const json = await getBlogsAsJson(fetch);
-    blogs = jsonToBlogArray(json);
+    blogs = await getBlogsAsJson(fetch);
   } catch (e: unknown) {
+    blogs = {};
     console.error(e);
-    blogs = []
   }
 
   const projects = await getProjects(fetch);
