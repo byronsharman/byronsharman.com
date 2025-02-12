@@ -4,7 +4,10 @@ import { marked } from 'marked';
 import hljs from 'highlight.js/lib/common';
 
 import type { RenderBlog } from '$lib/types';
-import { blogJsonToObject, getBlogsAsJson } from '$lib/blogUtils.server';
+import { jsonToBlogArray, getBlogsAsJson } from '$lib/blogUtils.server';
+
+// how many other blogs to put in the "Recent Posts" section
+const RECENT_LIMIT = 4;
 
 export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlog> => {
   const blogsJson = await getBlogsAsJson(fetch);
@@ -80,11 +83,11 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
     }]
   });
 
-  const blogs = blogJsonToObject(blogsJson, params.slug, true);
+  const recentBlogs = jsonToBlogArray(blogsJson, RECENT_LIMIT, params.slug);
 
   const retval: RenderBlog = {
     ...builder,
-    blogs: blogs,
+    recentBlogs: recentBlogs,
     html: html,
     ldjson: ldjson,
     openGraphImageUrl: openGraphImageUrl,
