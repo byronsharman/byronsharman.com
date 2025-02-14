@@ -3,8 +3,8 @@
 
   let ea: string = '';
   onMount(() => {
-    ea = atob('Ynlyb24ubi5zaGFybWFuQGdtYWlsLmNvbQ==');
+    ea = atob('bWFpbHRvOmJ5cm9uLm4uc2hhcm1hbkBnbWFpbC5jb20=');
   });
 </script>
 
-<a href={`mailto:${ea}`}>Email</a>
+<a href={`${ea}`}>Email</a>
