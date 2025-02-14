@@ -32,8 +32,7 @@ export type Project = {
   category: ProjectCategory;
   description: string;
   hackathonName?: string;
-  image?: string;
-  imageAlt?: string;
+  image?: Image;
   languages: Array<string>;
   name: string;
   type: ProjectType;
@@ -47,4 +46,11 @@ export type GitHubAPIResponse = {
   html_url: string;
   languages_url: string;
   name: string;
+};
+
+export type Image = {
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
 };
