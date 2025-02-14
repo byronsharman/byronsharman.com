@@ -46,7 +46,7 @@ async function createGithubProject(
   return project;
 }
 
-/* doesn't need to be async, but that makes it consistent with createGithubProject */
+/* return a Project initialized from JSON in project.json */
 async function createBlogProject(
   projectName: string,
   project: Project,
