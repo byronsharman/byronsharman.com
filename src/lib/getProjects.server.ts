@@ -1,6 +1,7 @@
 import type { GitHubAPIResponse, Project } from '$lib/types';
 import { ProjectType } from '$lib/types';
 
+import imageSizeFromFile from 'image-size';
 import { marked } from 'marked';
 
 async function getDescription(projectName: string, fetchFunc: typeof fetch): Promise<string> {
@@ -71,6 +72,11 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
   }
 
   for (const [projectName, project] of Object.entries(await res.json()) as [string, Project][]) {
+    if (project.image !== undefined) {
+      const { width, height } = await imageSizeFromFile(`static/${project.image.path}`);
+      project.image.width = width;
+      project.image.height = height;
+    }
     switch (project.type) {
       case 'github':
         projects.push(await createGithubProject(projectName, project, fetchFunc));

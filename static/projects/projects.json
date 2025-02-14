@@ -6,21 +6,27 @@
   "sushigo": {
     "type": "github",
     "category": "personal",
-    "image": "/projects/images/sushigo.avif",
-    "imageAlt": "a collection of cartoon sushi pieces with smiling faces"
+    "image": {
+      "path": "/projects/images/sushigo.avif",
+      "alt": "a collection of cartoon sushi pieces with smiling faces"
+    }
   },
   "adventofcode": {
     "type": "github",
     "category": "personal",
-    "image": "/projects/images/adventofcode.avif",
-    "imageAlt": "A screenshot of the Advent of Code homepage showing ASCII art of the number 10"
+    "image": {
+      "path": "/projects/images/adventofcode.avif",
+      "alt": "A screenshot of the Advent of Code homepage showing ASCII art of the number 10"
+    }
   },
   "hackutd-ripple-effect": {
     "type": "blog",
     "category": "hackathon",
     "hackathonName": "HackUTD: Ripple Effect",
-    "image": "/projects/images/spontani.avif",
-    "imageAlt": "A screenshot of an application homepage showing a user interface and a map",
+    "image": {
+      "path": "/projects/images/spontani.avif",
+      "alt": "A screenshot of an application homepage showing a user interface and a map"
+    },
     "languages": [
       "Go",
       "Svelte"
@@ -31,8 +37,10 @@
     "type": "blog",
     "category": "hackathon",
     "hackathonName": "HackKU 2024",
-    "image": "/projects/images/kioku.avif",
-    "imageAlt": "A screenshot of a web application showing a gray box",
+    "image": {
+      "path": "/projects/images/kioku.avif",
+      "alt": "A screenshot of a web application showing a gray box"
+    },
     "languages": [
       "Svelte",
       "Python",
@@ -44,8 +52,10 @@
     "type": "blog",
     "category": "hackathon",
     "hackathonName": "HackCU X",
-    "image": "/blog/images/hackcu-x/multinotes.avif",
-    "imageAlt": "A screenshot of a productivity application showing a videos and notes relating to high-level mathematics",
+    "image": {
+      "path": "/blog/images/hackcu-x/multinotes.avif",
+      "alt": "A screenshot of a productivity application showing a videos and notes relating to high-level mathematics"
+    },
     "languages": [
       "Typescript React",
       "Python"
@@ -56,8 +66,10 @@
     "type": "blog",
     "category": "hackathon",
     "hackathonName": "Blasterhacks 2024",
-    "image": "/blog/images/blasterhacks-2024/blasterhacks_screenshot.avif",
-    "imageAlt": "A screenshot of a social media application showing a images in a feed",
+    "image": {
+      "path": "/blog/images/blasterhacks-2024/blasterhacks_screenshot.avif",
+      "alt": "A screenshot of a social media application showing a images in a feed"
+    },
     "languages": [
       "Svelte",
       "Typescript",
@@ -72,7 +84,9 @@
   "ultimate-tic-tac-toe": {
     "type": "github",
     "category": "school",
-    "image": "/projects/images/ultimate-tic-tac-toe.avif",
-    "imageAlt": "A screenshot of a text-based game showing a tic-tac-toe board, with each square itself containing another tic-tac-toe board"
+    "image": {
+      "path": "/projects/images/ultimate-tic-tac-toe.avif",
+      "alt": "A screenshot of a text-based game showing a tic-tac-toe board, with each square itself containing another tic-tac-toe board"
+    }
   }
 }
