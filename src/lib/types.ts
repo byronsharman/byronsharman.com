@@ -5,26 +5,23 @@ export enum ProjectType {
 }
 
 // describes the blogs in index.json
+// TODO: tighten Blog interface so it only contains the minimum necessary to load a BlogCard
 export interface Blog {
   customHeaderMD: string;
   date: number;
-  openGraphImageExt?: string;
+  openGraphImageUrl?: string;
   preview: string;
-  previewImage?: string;
-  previewImageAlt?: string;
-  previewImageExt?: string;
+  previewImage?: Image;
   slug: string;
   title: string;
+  url: string;
 };
 
 // contains all the extra fields necessary to render a full blog page
 export interface RenderBlog extends Blog {
   html: string;
   ldjson: string;
-  openGraphImageUrl?: string;
-  previewImageUrl?: string;
   recentBlogs: { [slug: string]: Blog };
-  url: string;
 }
 
 export type Project = {
@@ -51,6 +48,6 @@ export type GitHubAPIResponse = {
 export type Image = {
   path: string;
   alt: string;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
 };
