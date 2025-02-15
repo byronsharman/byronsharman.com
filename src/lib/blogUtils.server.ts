@@ -22,7 +22,7 @@ export async function getBlogsAsJson(fetchFunc: typeof fetch): Promise<{ [slug: 
         json[slug].openGraphImageUrl = pathWithoutExt + json[slug].openGraphImageExt;
       }
       json[slug].slug = slug;
-      json[slug].url = `${import.meta.env.VITE_URL}/blog/${slug}/`;
+      json[slug].url = `/blog/${slug}`;
     }
 
     return json;

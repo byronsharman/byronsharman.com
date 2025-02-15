@@ -19,6 +19,7 @@ export interface Blog {
 
 // contains all the extra fields necessary to render a full blog page
 export interface RenderBlog extends Blog {
+  absoluteUrl: string;
   html: string;
   ldjson: string;
   recentBlogs: { [slug: string]: Blog };
