@@ -18,7 +18,8 @@ const config = {
       fallback: undefined,
       precompress: false,
       strict: true,
-    })
+    }),
+    inlineStyleThreshold: 100000,
   }
 };
 
