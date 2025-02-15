@@ -21,7 +21,7 @@
 
   <meta property="og:title" content={data.title} />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content={data.url} />
+  <meta property="og:url" content={data.absoluteUrl} />
   {#if data.previewImage}
     <meta property="og:image" content={data.openGraphImageUrl} />
     <meta property="og:image:secure_url" content={data.openGraphImageUrl} />

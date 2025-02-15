@@ -88,9 +88,10 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
 
   const retval: RenderBlog = {
     ...builder,
-    recentBlogs: recentBlogs,
+    absoluteUrl: import.meta.env.VITE_URL + builder.url,
     html: html,
     ldjson: ldjson,
+    recentBlogs: recentBlogs,
   };
   return retval;
 };
