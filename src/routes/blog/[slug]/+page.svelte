@@ -25,7 +25,7 @@
   {#if data.previewImage}
     <meta property="og:image" content={data.openGraphImageUrl} />
     <meta property="og:image:secure_url" content={data.openGraphImageUrl} />
-    <meta property="og:image:alt" content={data.previewImageAlt} />
+    <meta property="og:image:alt" content={data.previewImage.alt} />
   {/if}
   <meta property="og:description" content={data.preview} />
   <meta property="og:site_name" content="Byron Sharman's blog" />

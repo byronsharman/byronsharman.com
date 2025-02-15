@@ -62,24 +62,16 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
     throw e;
   }
 
-  let previewImageUrl;
-  let openGraphImageUrl;
-  const url = `${import.meta.env.VITE_URL}/blog/${params.slug}/`;
-  if (builder.previewImage !== undefined) {
-    previewImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${builder.previewImage}.${builder.previewImageExt}`;
-    openGraphImageUrl = `${import.meta.env.VITE_URL}/blog/images/${params.slug}/${builder.previewImage}.${builder.openGraphImageExt}`;
-  }
-
   const ldjson = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": builder.title,
-    "image": builder.previewImage ? previewImageUrl : undefined,
+    "image": builder.previewImage ? builder.previewImage.path : undefined,
     "datePublished": new Date(builder.date * 1000).toISOString(),
     "author": [{
       "@type": "Person",
       "name": "Byron Sharman",
-      "url": "https://b-sharman.dev"
+      "url": import.meta.env.VITE_URL,
     }]
   });
 
@@ -99,9 +91,6 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
     recentBlogs: recentBlogs,
     html: html,
     ldjson: ldjson,
-    openGraphImageUrl: openGraphImageUrl,
-    previewImageUrl: previewImageUrl,
-    url: url,
   };
   return retval;
 };
