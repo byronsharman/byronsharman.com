@@ -1,5 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+
+import imageSizeFromFile from 'image-size';
 import { marked } from 'marked';
 import hljs from 'highlight.js/lib/common';
 
@@ -41,7 +43,9 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
 
     image(href: string, title: string | null, text: string): string {
       if (href === "") return text;
-      let out = `<figure class="flex flex-col text-center"><img src="/blog/images/${params.slug}/${href}" alt="${text}" class="mx-auto" />`;
+      const imgPath = `/blog/images/${params.slug}/${href}`;
+      const { width, height } = imageSizeFromFile('static' + imgPath);
+      let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto" />`;
       if (title) {
         out += `<figcaption>${marked(title)}</figcaption>`;
       }
