@@ -13,7 +13,12 @@
 
   <div class="p-4">
     {#if project.image !== undefined}
-      <img class="object-contain max-h-60 mx-auto mb-4 sm:float-right sm:max-w-72 sm:ml-4 aspect-[{project.image.width/project.image.height}]" src={project.image.path} alt={project.image.alt} />
+      <img
+        alt={project.image.alt}
+        class="object-contain max-h-60 mx-auto mb-4 sm:float-right sm:max-w-72 sm:ml-4 aspect-[{project.image.width/project.image.height}]"
+        loading="lazy"
+        src={project.image.path}
+      />
     {/if}
     <h3 class="font-bold text-xl mb-2">
       {project.name}
