@@ -1,15 +1,15 @@
 // my first time copy and pasting a script from ChatGPT :P
 
-import { mkdirSync, readFileSync, writeFileSync } from 'fs';
-import fs from 'fs-extra';
-import { build } from 'vite';
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import fs from "fs-extra";
+import { build } from "vite";
 
 async function runBuild() {
   try {
-    console.log('Writing RSS file...');
+    console.log("Writing RSS file...");
     try {
       // writeFile will throw an error on Cloudflare since build doesn't exist
-      mkdirSync('build');
+      mkdirSync("build");
     } catch {
       // mkdirSync throws an error if the directory already exists
     }
@@ -22,7 +22,7 @@ async function runBuild() {
     <language>en-us</language>
     <atom:link href="https://b-sharman.dev/blog.xml" rel="self" type="application/rss+xml"/>
 `;
-    const data = readFileSync('static/blog/build/index.json');
+    const data = readFileSync("static/blog/build/index.json");
     for (const [blogSlug, blog] of Object.entries(JSON.parse(data))) {
       xml_output += `    <item>
       <title>${blog.title}</title>
@@ -37,25 +37,24 @@ async function runBuild() {
   </channel>
 </rss>
 `;
-    writeFileSync('build/blog.xml', xml_output);
+    writeFileSync("build/blog.xml", xml_output);
     // needed to stop Vite from complaining about not finding blog.xml
-    writeFileSync('static/blog.xml', xml_output);
+    writeFileSync("static/blog.xml", xml_output);
 
     // Run Vite build
-    console.log('Building Svelte project with Vite...');
+    console.log("Building Svelte project with Vite...");
     await build();
-    console.log('Vite build successful.');
+    console.log("Vite build successful.");
 
     // Remove the assets you don't want to ship
-    console.log('Removing unnecessary assets...');
-    await fs.remove('build/blog/build');
+    console.log("Removing unnecessary assets...");
+    await fs.remove("build/blog/build");
 
-    console.log('Build process completed successfully.');
+    console.log("Build process completed successfully.");
   } catch (error) {
-    console.error('Error during build process:', error);
+    console.error("Error during build process:", error);
     process.exit(1);
   }
 }
 
 runBuild();
-

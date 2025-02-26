@@ -1,21 +1,27 @@
 <script lang='ts'>
-  import type { PageData } from './$types';
-  import Email from '$lib/email.svelte';
-  import BlogCard from '$lib/blogCard.svelte';
-  import ProjectCard from '$lib/projectCard.svelte';
+import BlogCard from "$lib/blogCard.svelte";
+import Email from "$lib/email.svelte";
+import ProjectCard from "$lib/projectCard.svelte";
+import type { PageData } from "./$types";
 
-  interface Props {
-    data: PageData;
-  }
+interface Props {
+  data: PageData;
+}
 
-  let { data }: Props = $props();
+let { data }: Props = $props();
 
-  // whether the projects list is expanded to show all projects
-  let projectsExpanded = $state(false);
+// whether the projects list is expanded to show all projects
+let projectsExpanded = $state(false);
 
-  const NUM_PROJECTS = 2;
-  let projectCount = $derived(projectsExpanded ? data.projects.length : NUM_PROJECTS);
-  let expandButtonText = $derived(projectsExpanded ? "collapse" : `show all (${data.projects.length - NUM_PROJECTS} more)`);
+const NUM_PROJECTS = 2;
+let projectCount = $derived(
+  projectsExpanded ? data.projects.length : NUM_PROJECTS,
+);
+let expandButtonText = $derived(
+  projectsExpanded
+    ? "collapse"
+    : `show all (${data.projects.length - NUM_PROJECTS} more)`,
+);
 </script>
 
 <svelte:head>

@@ -1,8 +1,8 @@
-import type { PageServerLoad } from './$types';
+import type { PageServerLoad } from "./$types";
 
-import type { Blog } from '$lib/types';
-import { getBlogsAsJson } from '$lib/blogUtils.server';
-import { getProjects } from '$lib/getProjects.server';
+import { getBlogsAsJson } from "$lib/blogUtils.server";
+import { getProjects } from "$lib/getProjects.server";
+import type { Blog } from "$lib/types";
 
 export const load: PageServerLoad = async ({ fetch }) => {
   let blogs: { [slug: string]: Blog };
@@ -22,4 +22,3 @@ export const load: PageServerLoad = async ({ fetch }) => {
     projects: projects,
   };
 };
-

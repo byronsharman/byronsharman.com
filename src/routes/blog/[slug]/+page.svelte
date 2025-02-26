@@ -1,18 +1,18 @@
 <script lang='ts'>
-  import 'highlight.js/styles/base16/papercolor-light.css';
+import "highlight.js/styles/base16/papercolor-light.css";
 
-  import { marked } from 'marked';
+import { marked } from "marked";
 
-  import type { PageData } from './$types';
-  import DateP from '$lib/datep.svelte';
-  import BlogCard from '$lib/blogCard.svelte';
-  import BackToHome from '$lib/backToHome.svelte';
+import BackToHome from "$lib/backToHome.svelte";
+import BlogCard from "$lib/blogCard.svelte";
+import DateP from "$lib/datep.svelte";
+import type { PageData } from "./$types";
 
-  interface Props {
-    data: PageData;
-  }
+interface Props {
+  data: PageData;
+}
 
-  let { data }: Props = $props();
+let { data }: Props = $props();
 </script>
 
 <svelte:head>

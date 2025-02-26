@@ -1,15 +1,17 @@
-import type { Blog } from '$lib/types';
+import type { Blog } from "$lib/types";
 
 /* It's important to distinguish between the responsibilities of this function vs
  * the responsibilities of src/routes/blog/[slug]/+page.server.ts. This function
  * transforms data from JSON into a Blog. src/routes/blog/[slug]/+page.server.ts
  * transforms Blogs into RenderBlogs.
  */
-export async function getBlogsAsJson(fetchFunc: typeof fetch): Promise<{ [slug: string]: Blog }> {
+export async function getBlogsAsJson(
+  fetchFunc: typeof fetch,
+): Promise<{ [slug: string]: Blog }> {
   try {
-    const res = await fetchFunc('/blog/build/index.json');
-    if (!res.ok) throw Error('could not fetch /blog/build/index.json');
-    let json = await res.json();
+    const res = await fetchFunc("/blog/build/index.json");
+    if (!res.ok) throw Error("could not fetch /blog/build/index.json");
+    const json = await res.json();
 
     // massage the properties until they match the Blog type
     for (const slug of Object.getOwnPropertyNames(json)) {
@@ -19,7 +21,8 @@ export async function getBlogsAsJson(fetchFunc: typeof fetch): Promise<{ [slug: 
           alt: json[slug].previewImageAlt,
           path: pathWithoutExt + json[slug].previewImageExt,
         };
-        json[slug].openGraphImageUrl = pathWithoutExt + json[slug].openGraphImageExt;
+        json[slug].openGraphImageUrl =
+          pathWithoutExt + json[slug].openGraphImageExt;
       }
       json[slug].slug = slug;
       json[slug].url = `/blog/${slug}`;
