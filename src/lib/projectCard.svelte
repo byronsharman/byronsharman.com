@@ -1,12 +1,12 @@
 <script lang='ts'>
-  import { slide } from 'svelte/transition';
-  import type { Project } from '$lib/types.ts';
+import type { Project } from "$lib/types.ts";
+import { slide } from "svelte/transition";
 
-  interface Props {
-    project: Project;
-  }
+interface Props {
+  project: Project;
+}
 
-  let { project }: Props = $props();
+let { project }: Props = $props();
 </script>
 
 <li in:slide={{duration: 150}} out:slide={{duration: 325}} class="overflow-hidden border border-gray-200 rounded-xl sm:min-w-[250px] flex flex-col size-full rounded-xl">

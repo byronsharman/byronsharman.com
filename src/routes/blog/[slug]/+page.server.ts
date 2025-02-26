@@ -1,32 +1,35 @@
-import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
+import { error } from "@sveltejs/kit";
+import type { PageServerLoad } from "./$types";
 
-import imageSizeFromFile from 'image-size';
-import { marked } from 'marked';
-import hljs from 'highlight.js/lib/common';
+import hljs from "highlight.js/lib/common";
+import imageSizeFromFile from "image-size";
+import { marked } from "marked";
 
-import type { Blog, RenderBlog } from '$lib/types';
-import { getBlogsAsJson } from '$lib/blogUtils.server';
+import { getBlogsAsJson } from "$lib/blogUtils.server";
+import type { Blog, RenderBlog } from "$lib/types";
 
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
 
-export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlog> => {
+export const load: PageServerLoad = async ({
+  fetch,
+  params,
+}): Promise<RenderBlog> => {
   const blogsJson = await getBlogsAsJson(fetch);
 
   // grab the data provided by the json file using the slug provided by svelte
-  let builder = blogsJson[params.slug];
+  const builder = blogsJson[params.slug];
   // return 404 if the data has no slug
-  if (builder === undefined) return error(404, 'Not found');
+  if (builder === undefined) return error(404, "Not found");
 
   const renderer = {
     // these are modifications of the default renderer
     // https://github.com/markedjs/marked/blob/master/src/Renderer.ts
 
     code(text: string, lang: string): string {
-      const langString: string | undefined = (lang || '').match(/^\S*/)?.[0];
+      const langString: string | undefined = (lang || "").match(/^\S*/)?.[0];
 
-      let code: string = text.replace(/\n$/, '') + '\n';
+      let code = `${text.replace(/\n$/, "")}\n`;
 
       if (!langString) {
         code = `<pre><code>${code}</code></pre>\n`;
@@ -34,31 +37,32 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
       }
 
       try {
-        code = hljs.highlight(code, {language: langString}).value;
+        code = hljs.highlight(code, { language: langString }).value;
       } finally {
         code = `<pre><code class="language-${langString}">${code}</code></pre>\n`;
-        return code;
       }
+      return code;
     },
 
     image(href: string, title: string | null, text: string): string {
       if (href === "") return text;
       const imgPath = `/blog/images/${params.slug}/${href}`;
-      const { width, height } = imageSizeFromFile('static' + imgPath);
+      const { width, height } = imageSizeFromFile(`static${imgPath}`);
       let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto" />`;
       if (title) {
         out += `<figcaption>${marked(title)}</figcaption>`;
       }
-      out += '</figure>';
+      out += "</figure>";
       return out;
-    }
-  }
+    },
+  };
   marked.use({ renderer });
 
-  let html;
+  let html = "";
   try {
     const res = await fetch(`/blog/build/${params.slug}.md`);
-    if (!res.ok) throw Error(`failed to fetch from /blog/build/${params.slug}.md`);
+    if (!res.ok)
+      throw Error(`failed to fetch from /blog/build/${params.slug}.md`);
     const text = await res.text();
     html = await marked(text);
   } catch (e: unknown) {
@@ -69,21 +73,23 @@ export const load: PageServerLoad = async ({ fetch, params }): Promise<RenderBlo
   const ldjson = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": builder.title,
-    "image": builder.previewImage ? builder.previewImage.path : undefined,
-    "datePublished": new Date(builder.date * 1000).toISOString(),
-    "author": [{
-      "@type": "Person",
-      "name": "Byron Sharman",
-      "url": import.meta.env.VITE_URL,
-    }]
+    headline: builder.title,
+    image: builder.previewImage ? builder.previewImage.path : undefined,
+    datePublished: new Date(builder.date * 1000).toISOString(),
+    author: [
+      {
+        "@type": "Person",
+        name: "Byron Sharman",
+        url: import.meta.env.VITE_URL,
+      },
+    ],
   });
 
-  let recentBlogs: { [slug: string]: Blog } = {};
+  const recentBlogs: { [slug: string]: Blog } = {};
   let num = 0;
   // populate recentBlogs with the first RECENT_LIMIT blogs that are not the same as the current blog
   for (const slug of Object.getOwnPropertyNames(blogsJson)) {
-    if (slug != params.slug) {
+    if (slug !== params.slug) {
       recentBlogs[slug] = blogsJson[slug];
       num++;
     }

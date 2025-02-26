@@ -1,7 +1,7 @@
 export enum ProjectType {
-  Blog = 'blog',
-  GitHub = 'github',
-  NetworkError = 'networkerror',
+  Blog = "blog",
+  GitHub = "github",
+  NetworkError = "networkerror",
 }
 
 // describes the blogs in index.json
@@ -15,7 +15,7 @@ export interface Blog {
   slug: string;
   title: string;
   url: string;
-};
+}
 
 // contains all the extra fields necessary to render a full blog page
 export interface RenderBlog extends Blog {

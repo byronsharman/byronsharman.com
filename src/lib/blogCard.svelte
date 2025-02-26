@@ -1,12 +1,12 @@
 <script lang='ts'>
-  import type { Blog } from '$lib/types';
-  import DateP from '$lib/datep.svelte';
+import DateP from "$lib/datep.svelte";
+import type { Blog } from "$lib/types";
 
-  interface Props {
-    blog: Blog;
-  }
+interface Props {
+  blog: Blog;
+}
 
-  let { blog }: Props = $props();
+let { blog }: Props = $props();
 </script>
 
 <li class="border border-gray-200 hover:border-gray-400 rounded-xl">

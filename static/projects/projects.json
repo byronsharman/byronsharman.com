@@ -27,10 +27,7 @@
       "path": "/projects/images/spontani.avif",
       "alt": "A screenshot of an application homepage showing a user interface and a map"
     },
-    "languages": [
-      "Go",
-      "Svelte"
-    ],
+    "languages": ["Go", "Svelte"],
     "name": "Spontani"
   },
   "hackku-2024": {
@@ -41,11 +38,7 @@
       "path": "/projects/images/kioku.avif",
       "alt": "A screenshot of a web application showing a gray box"
     },
-    "languages": [
-      "Svelte",
-      "Python",
-      "Typescript"
-    ],
+    "languages": ["Svelte", "Python", "Typescript"],
     "name": "Kioku"
   },
   "hackcu-x": {
@@ -56,10 +49,7 @@
       "path": "/blog/images/hackcu-x/multinotes.avif",
       "alt": "A screenshot of a productivity application showing a videos and notes relating to high-level mathematics"
     },
-    "languages": [
-      "Typescript React",
-      "Python"
-    ],
+    "languages": ["Typescript React", "Python"],
     "name": "Multinotes"
   },
   "blasterhacks-2024": {
@@ -70,11 +60,7 @@
       "path": "/blog/images/blasterhacks-2024/blasterhacks_screenshot.avif",
       "alt": "A screenshot of a social media application showing a images in a feed"
     },
-    "languages": [
-      "Svelte",
-      "Typescript",
-      "Go"
-    ],
+    "languages": ["Svelte", "Typescript", "Go"],
     "name": "StandUp"
   },
   "bangbang": {
