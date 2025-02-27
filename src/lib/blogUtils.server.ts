@@ -1,3 +1,4 @@
+import { VITE_URL } from "$env/static/private";
 import type { Blog } from "$lib/types";
 
 /* It's important to distinguish between the responsibilities of this function vs
@@ -16,7 +17,7 @@ export async function getBlogsAsJson(
     // massage the properties until they match the Blog type
     for (const slug of Object.getOwnPropertyNames(json)) {
       if (json[slug].previewImage !== undefined) {
-        const pathWithoutExt = `${import.meta.env.VITE_URL}/blog/images/${slug}/${json[slug].previewImage}.`;
+        const pathWithoutExt = `${VITE_URL}/blog/images/${slug}/${json[slug].previewImage}.`;
         json[slug].previewImage = {
           alt: json[slug].previewImageAlt,
           path: pathWithoutExt + json[slug].previewImageExt,
