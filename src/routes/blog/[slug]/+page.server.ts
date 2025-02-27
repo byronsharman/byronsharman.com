@@ -1,3 +1,4 @@
+import { VITE_URL } from "$env/static/private";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
@@ -80,7 +81,7 @@ export const load: PageServerLoad = async ({
       {
         "@type": "Person",
         name: "Byron Sharman",
-        url: import.meta.env.VITE_URL,
+        url: VITE_URL,
       },
     ],
   });
@@ -98,7 +99,7 @@ export const load: PageServerLoad = async ({
 
   const retval: RenderBlog = {
     ...builder,
-    absoluteUrl: import.meta.env.VITE_URL + builder.url,
+    absoluteUrl: VITE_URL + builder.url,
     html: html,
     ldjson: ldjson,
     recentBlogs: recentBlogs,
