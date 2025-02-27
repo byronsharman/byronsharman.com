@@ -3,14 +3,6 @@
     "type": "github",
     "category": "personal"
   },
-  "sushigo": {
-    "type": "github",
-    "category": "personal",
-    "image": {
-      "path": "/projects/images/sushigo.avif",
-      "alt": "a collection of cartoon sushi pieces with smiling faces"
-    }
-  },
   "adventofcode": {
     "type": "github",
     "category": "personal",
