@@ -46,7 +46,7 @@ let expandButtonText = $derived(
       <article class="mb-4 prose md:prose-lg lg:prose-xl">
         <p class="m-0!">
           I'm Byron, a computer science student at Colorado School of Mines. I
-          love to go to hackathons, learn technologies, and explore the world,
+          like to make things, learn technologies, and explore the world,
           both physically and conceptually.
         </p>
       </article>
