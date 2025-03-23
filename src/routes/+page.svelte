@@ -36,10 +36,10 @@ let expandButtonText = $derived(
       <header class="mt-3 lg:mt-6 mb-6 max-w-prose">
         <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="m-auto p-8 aspect-square size-3/4 max-w-[320px] rounded-full" />
         <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
-        <ul class="my-4 flex flex-row justify-center divide-x divide-gray-800">
-            <li class="px-4"><Email /></li>
-            <li class="px-4"><a href="https://github.com/b-sharman">GitHub</a></li>
-            <li class="px-4"><a href="https://www.linkedin.com/in/b-sharman/">LinkedIn</a></li>
+        <ul class="my-4 flex flex-row justify-center divide-x divide-gray-400 text-sm md:text-base">
+            <li class="text-gray-700 px-4"><Email /></li>
+            <li class="text-gray-700 px-4"><a href="https://github.com/b-sharman">GitHub</a></li>
+            <li class="text-gray-700 px-4"><a href="https://www.linkedin.com/in/b-sharman/">LinkedIn</a></li>
         </ul>
       </header>
 
