@@ -4,6 +4,11 @@ import { ProjectType } from "$lib/types";
 import imageSizeFromFile from "image-size";
 import { marked } from "marked";
 
+const LANG_EXCLUDES = [
+    "Dockerfile",
+    "Makefile",
+];
+
 async function getDescription(
   projectName: string,
   fetchFunc: typeof fetch,
@@ -23,6 +28,7 @@ async function createGithubProject(
   project: Project,
   fetchFunc: typeof fetch,
 ): Promise<Project> {
+  // TODO: properly inspect the response instead of blindly catching all exceptions
   try {
     const res: Response = await fetchFunc(
       `https://api.github.com/repos/b-sharman/${projectName}`,
@@ -31,7 +37,17 @@ async function createGithubProject(
 
     // set project.languages by querying the URL returned by the API
     const lang_res = await fetchFunc(githubProject.languages_url);
-    project.languages = Object.keys(await lang_res.json());
+    const lang_json = await lang_res.json();
+    // when we are rate limited, the response includes a "message" field
+    if ("message" in lang_json) {
+      project.languages = [];
+      console.log(
+        `skipping languages for project ${githubProject.name} because of Github API rate limiting`,
+      );
+    } else {
+      project.languages = Object.keys(lang_json)
+        .filter(lang => !LANG_EXCLUDES.includes(lang));
+    }
 
     project.bottomText = "see it on GitHub";
     project.description = githubProject.description;
