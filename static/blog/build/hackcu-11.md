@@ -1,6 +1,3 @@
-**TODO:** Ask Renn if he wants me to link to his GitHub  
-**TODO:** Ask for permissions using the pictures and incorporate them.
-
 This time, the teammates with whom I collaborated were
 [Megan](https://github.com/megankulshekar) and
 [Renn](https://github.com/kylo33). We left for CU with plenty of time to spare
@@ -73,8 +70,7 @@ the time we were done. This was important because one of the project's main
 motivations was overcoming the dated and technical UI offered by the
 first-party Congress website.
 
-![a screenshot showing a bill with information like the status, probability it
-passes, summary, and history](bill_screenshot.avif)
+![a screenshot showing a bill with information like the status, probability it passes, summary, and history](bill_screenshot.avif)
 
 Seeing the "Action" timeline at the bottom reminds me of another little
 problem. Megan had added the timeline using a third-party timeline library. It
@@ -106,3 +102,5 @@ architecture and processing a big dataset. Overall, the hackathon was a great
 way to spend a weekend, and I'm excited to attend it again next year! Thanks
 very much to all the organizers, volunteers, and sponsors for making it
 possible.
+
+![a selfie with three students looking up from their laptops](teamphoto.avif "From left to right: Megan, me (Byron), and Renn.")
