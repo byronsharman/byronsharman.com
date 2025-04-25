@@ -1,4 +1,13 @@
 {
+  "hackcu-11": {
+    "date": 1745599436,
+    "preview": "My first hackathon of the Spring 2025 semester.",
+    "title": "HackCU 11",
+    "previewImage": "teamphoto",
+    "previewImageExt": "avif",
+    "openGraphImageExt": "jpg",
+    "previewImageAlt": "a selfie with three students looking up from their laptops"
+  },
   "use-your-boredom": {
     "date": 1738871741,
     "preview": "It's there for a reason.",
