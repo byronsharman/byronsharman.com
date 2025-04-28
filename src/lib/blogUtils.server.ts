@@ -53,7 +53,7 @@ export function checkImageProperties(
 
   if (existingProperties.length !== 0) {
     console.error(
-      `Some, but not all of the required properties for a preview image were found in index.json for slug \`${slug}\`. The following properties were missing: ${existingProperties.join(", ")}`,
+      `Some, but not all of the required properties for a preview image were found in index.json for slug \`${slug}\`. The following properties were missing: ${imgProperties.filter(property => !(property in blog)).join(", ")}`,
     );
   }
 
