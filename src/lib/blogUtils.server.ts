@@ -11,8 +11,8 @@ import type { BlogCardData, BlogInJson } from "$lib/types";
 export async function getBlogsAsJson(
   fetchFunc: typeof fetch,
 ): Promise<BlogCardData[]> {
-  const res = await fetchFunc("/blog/build/index.json");
-  if (!res.ok) throw Error("could not fetch /blog/build/index.json");
+  const res = await fetchFunc("/blog/index.json");
+  if (!res.ok) throw Error("could not fetch /blog/index.json");
 
   const entries = Object.entries(
     (await res.json()) as { [slug: string]: BlogInJson },
