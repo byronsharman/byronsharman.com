@@ -8,7 +8,7 @@ import type { BlogCardData, BlogInJson } from "$lib/types";
 
 // return BlogCardData[] populated from index.json
 // does not return blogs with published=false
-export async function getBlogsAsJson(
+export async function getBlogCardData(
   fetchFunc: typeof fetch,
 ): Promise<BlogCardData[]> {
   const res = await fetchFunc("/blog/index.json");
