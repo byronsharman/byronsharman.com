@@ -6,8 +6,13 @@ import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
 import { marked } from "marked";
 
-import { getBlogsAsJson } from "$lib/blogUtils.server";
-import type { Blog, RenderBlog } from "$lib/types";
+import { checkImageProperties, getBlogsAsJson } from "$lib/blogUtils.server";
+import type {
+  BlogCardData,
+  BlogInJson,
+  BlogPreviewImage,
+  RenderBlog,
+} from "$lib/types";
 
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
@@ -16,13 +21,6 @@ export const load: PageServerLoad = async ({
   fetch,
   params,
 }): Promise<RenderBlog> => {
-  const blogsJson = await getBlogsAsJson(fetch);
-
-  // grab the data provided by the json file using the slug provided by svelte
-  const builder = blogsJson[params.slug];
-  // return 404 if the data has no slug
-  if (builder === undefined) return error(404, "Not found");
-
   const renderer = {
     // these are modifications of the default renderer
     // https://github.com/markedjs/marked/blob/master/src/Renderer.ts
@@ -59,6 +57,33 @@ export const load: PageServerLoad = async ({
   };
   marked.use({ renderer });
 
+  // Why do we query index.json twice, once in blogUtils and once here? The
+  // motive is to do as much of the data processing as possible server-side (in
+  // .server.ts files). This means that blogUtils, which is only used to
+  // populate blog cards, removes data in index.json only needed to make a
+  // RenderBlog. To get that data again, we have to load index.json again.
+  // Loading it twice isn't an issue because this is all (theoretically) done
+  // at compile time.
+
+  const res = await fetch("/blog/build/index.json");
+  if (!res.ok) throw Error("could not fetch /blog/build/index.json");
+
+  const builder = ((await res.json()) as { [slug: string]: BlogInJson })[
+    params.slug
+  ];
+  if (builder === undefined) return error(404, "Not found");
+
+  let previewImage: BlogPreviewImage | undefined = undefined;
+  if (checkImageProperties(params.slug, builder)) {
+    const imgPathWithoutExt = `${VITE_URL}/blog/images/${params.slug}/${builder.previewImage}.`;
+    previewImage = {
+      alt: builder.previewImageAlt,
+      openGraphImageUrl: imgPathWithoutExt + builder.openGraphImageExt,
+      absolutePath: imgPathWithoutExt + builder.previewImageExt,
+    };
+  }
+
+  // TODO: more graceful error handling here
   let html = "";
   try {
     const res = await fetch(`/blog/build/${params.slug}.md`);
@@ -75,7 +100,7 @@ export const load: PageServerLoad = async ({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: builder.title,
-    image: builder.previewImage ? builder.previewImage.path : undefined,
+    image: previewImage === undefined ? undefined : previewImage.absolutePath,
     datePublished: new Date(builder.date * 1000).toISOString(),
     author: [
       {
@@ -86,23 +111,22 @@ export const load: PageServerLoad = async ({
     ],
   });
 
-  const recentBlogs: { [slug: string]: Blog } = {};
-  let num = 0;
-  // populate recentBlogs with the first RECENT_LIMIT blogs that are not the same as the current blog
-  for (const slug of Object.getOwnPropertyNames(blogsJson)) {
-    if (slug !== params.slug) {
-      recentBlogs[slug] = blogsJson[slug];
-      num++;
-    }
-    if (num >= RECENT_LIMIT) break;
-  }
+  const recentBlogs: BlogCardData[] = (await getBlogsAsJson(fetch))
+    .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
+    .slice(0, RECENT_LIMIT);
 
   const retval: RenderBlog = {
-    ...builder,
-    absoluteUrl: VITE_URL + builder.url,
+    date: builder.date,
+    preview: builder.preview,
+    title: builder.title,
+
+    // TODO: some duplication here with blogUtils, what to do about that?
+    absoluteUrl: `${VITE_URL}/blog/${params.slug}`,
     html: html,
     ldjson: ldjson,
+    previewImage: previewImage,
     recentBlogs: recentBlogs,
+    slug: params.slug,
   };
   return retval;
 };
