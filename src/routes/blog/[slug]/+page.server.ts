@@ -6,7 +6,7 @@ import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
 import { marked } from "marked";
 
-import { checkImageProperties, getBlogsAsJson } from "$lib/blogUtils.server";
+import { checkImageProperties, getBlogCardData } from "$lib/blogUtils.server";
 import type {
   BlogCardData,
   BlogInJson,
@@ -111,7 +111,7 @@ export const load: PageServerLoad = async ({
     ],
   });
 
-  const recentBlogs: BlogCardData[] = (await getBlogsAsJson(fetch))
+  const recentBlogs: BlogCardData[] = (await getBlogCardData(fetch))
     .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
     .slice(0, RECENT_LIMIT);
 
