@@ -1,4 +1,14 @@
 {
+  "dear-high-schoolers": {
+    "published": false,
+    "date": 0,
+    "title": "Dear High Schoolers, Don't Forget to Live",
+    "preview": "It's easy to lose sight of why we go to college in the first place.",
+    "previewImage": "pre_ap_cesspool",
+    "previewImageExt": "avif",
+    "openGraphImageExt": "jpg",
+    "previewImageAlt": "piles of boxes labeled Pre-AP strewn across a computer lab"
+  },
   "hackcu-11": {
     "published": true,
     "date": 1745599436,
