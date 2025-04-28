@@ -22,7 +22,7 @@ async function runBuild() {
     <language>en-us</language>
     <atom:link href="https://b-sharman.dev/blog.xml" rel="self" type="application/rss+xml"/>
 `;
-    const data = readFileSync("static/blog/build/index.json");
+    const data = readFileSync("static/blog/index.json");
     for (const [blogSlug, blog] of Object.entries(JSON.parse(data))) {
       if (!blog.published) continue;
       xml_output += `    <item>

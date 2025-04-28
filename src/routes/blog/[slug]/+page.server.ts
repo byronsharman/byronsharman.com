@@ -65,8 +65,8 @@ export const load: PageServerLoad = async ({
   // Loading it twice isn't an issue because this is all (theoretically) done
   // at compile time.
 
-  const res = await fetch("/blog/build/index.json");
-  if (!res.ok) throw Error("could not fetch /blog/build/index.json");
+  const res = await fetch("/blog/index.json");
+  if (!res.ok) throw Error("could not fetch /blog/index.json");
 
   const builder = ((await res.json()) as { [slug: string]: BlogInJson })[
     params.slug
