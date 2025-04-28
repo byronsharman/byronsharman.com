@@ -24,6 +24,7 @@ async function runBuild() {
 `;
     const data = readFileSync("static/blog/build/index.json");
     for (const [blogSlug, blog] of Object.entries(JSON.parse(data))) {
+      if (!blog.published) continue;
       xml_output += `    <item>
       <title>${blog.title}</title>
       <description>${blog.preview}</description>

@@ -75,7 +75,7 @@ let expandButtonText = $derived(
         </a>
       </div>
       <ul class="space-y-4">
-        {#each Object.values(data.blogs) as blog}
+        {#each data.blogs as blog}
           <BlogCard blog={blog} />
         {/each}
       </ul>

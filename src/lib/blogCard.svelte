@@ -1,9 +1,9 @@
 <script lang='ts'>
 import DateP from "$lib/datep.svelte";
-import type { Blog } from "$lib/types";
+import type { BlogCardData } from "$lib/types";
 
 interface Props {
-  blog: Blog;
+  blog: BlogCardData;
 }
 
 let { blog }: Props = $props();
