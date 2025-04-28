@@ -71,7 +71,8 @@ export const load: PageServerLoad = async ({
   const builder = ((await res.json()) as { [slug: string]: BlogInJson })[
     params.slug
   ];
-  if (builder === undefined || !builder.published) return error(404, "Not found");
+  if (builder === undefined || !builder.published)
+    return error(404, "Not found");
 
   let previewImage: BlogPreviewImage | undefined = undefined;
   if (checkImageProperties(params.slug, builder)) {
