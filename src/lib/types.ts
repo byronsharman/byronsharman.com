@@ -36,8 +36,6 @@ export interface RenderBlog extends Blog {
   ldjson: string;
   previewImage?: BlogPreviewImage;
   recentBlogs: BlogCardData[];
-  // TODO: there's all these different interfaces to avoid duplication and I still had to duplicate a field. Surely there is a better way to accomplish this.
-  slug: string;
 }
 
 export type Project = {
