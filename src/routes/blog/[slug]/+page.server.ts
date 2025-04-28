@@ -126,7 +126,6 @@ export const load: PageServerLoad = async ({
     ldjson: ldjson,
     previewImage: previewImage,
     recentBlogs: recentBlogs,
-    slug: params.slug,
   };
   return retval;
 };
