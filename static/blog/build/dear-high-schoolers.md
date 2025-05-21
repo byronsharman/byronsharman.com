@@ -4,21 +4,23 @@ I'm a second-year undergrad at the Colorado School of Mines, and I haven't
 thought about my SAT score for ages. In fact, I've forgotten what it was. I
 also couldn't tell you how many AP classes I took, or how many 5s I earned from
 them. My high school academic endeavors saved me credits, and therefore money,
-but have not affected my day-to-day life. Despite this, during the month before
+but they don't affect my day-to-day life. Despite this, during the month before
 I published this essay, millions of high school students reached their highest
 stress levels of the year taking AP exams and turning in IB papers, and the
-months before that were spent worrying about them. There's an immense
-discrepancy between how much we stress about these classes in high school and
-how much they actually matter. Why are we doing this to ourselves?
+months before *that* were spent worrying about those things. For many of
+these students, there's an immense discrepancy between how much we prioritize
+academics in high school and how much they actually matter. Why are we doing
+this to ourselves?
 
 In 11th or 12th grade—I can't remember which—I found myself sitting in an
 unfamiliar high school with truly impressive amounts of mucus cascading from my
 nostrils. This circumstance was especially awkward because I was in a room full
 of other students taking the SAT. I'd already taken it, but I was trying again,
-unsatisfied with my previous score. Unsure how to discreetly extract the snot
-with an already-soaked tissue, I attempted to use the tissue as a glove while
-pinching the albumen-like liquid and pulling away from my face. This was
-comically ineffective. A proctor noticed and offered me more tissues.
+unsatisfied with my previous score, and no mere cold was going to prevent me
+from improving. Unsure how to discreetly extract the snot with an
+already-soaked tissue, I attempted to use the tissue as a glove while pinching
+the albumen-like liquid and pulling away from my face. This was comically
+ineffective. A proctor noticed and offered me more tissues.
 
 Gross, right? But not nearly as disgusting as the inane grindset imposed on
 high school students by corporate entities like the College Board and
@@ -27,10 +29,12 @@ education institutions. Many of my classmates spent their high school years
 overemphasizing the idea of getting into a "good college." Anything less than
 an A was a calamity. Some extracurriculars were taken up for enjoyment; others
 were chosen to lengthen the lists in our Common App accounts. On Reddit, we
-could find more extreme versions of ourselves jokingly offering to exchange
-their firstborn children for 5s on their AP exams. *Our main focus should be
-acceptance into an elite university,* we subconsciously assured ourselves.
-*After that, our path to wealth and happiness is secured.*
+could find more extreme versions of ourselves jokingly [offering to exchange
+their firstborn
+children](https://www.reddit.com/r/APStudents/comments/14qsvh0/comment/jqpv9a9)
+for 5s on their AP exams. *Our main focus should be acceptance into an elite
+university,* we subconsciously assured ourselves. *After that, our path to
+wealth and happiness is secured.*
 
 Wealth and success stem from attitude, ideals, and unfortunately, other factors
 outside your control. However, those factors are mostly independent of which
