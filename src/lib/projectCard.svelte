@@ -25,7 +25,7 @@ let { project }: Props = $props();
       {#if project.hackathonName !== undefined}
         <span class="font-normal text-gray-600">{`[${project.hackathonName}]`}</span>
       {/if}
-      {#if project.name === 'b-sharman.dev'}
+      {#if project.name === 'byronsharman.com'}
         <span class="font-normal text-gray-600">{`(this website!)`}</span>
       {/if}
     </h3>
