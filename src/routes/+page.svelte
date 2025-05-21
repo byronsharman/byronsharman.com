@@ -38,7 +38,7 @@ let expandButtonText = $derived(
         <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
         <ul class="my-4 flex flex-row justify-center divide-x divide-gray-400 text-sm md:text-base">
             <li class="text-gray-700 px-4"><Email /></li>
-            <li class="text-gray-700 px-4"><a href="https://github.com/b-sharman">GitHub</a></li>
+            <li class="text-gray-700 px-4"><a href="https://github.com/byronsharman">GitHub</a></li>
             <li class="text-gray-700 px-4"><a href="https://www.linkedin.com/in/b-sharman/">LinkedIn</a></li>
         </ul>
       </header>

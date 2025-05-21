@@ -28,7 +28,7 @@ async function createGithubProject(
   // TODO: properly inspect the response instead of blindly catching all exceptions
   try {
     const res: Response = await fetchFunc(
-      `https://api.github.com/repos/b-sharman/${projectName}`,
+      `https://api.github.com/repos/byronsharman/${projectName}`,
     );
     const githubProject: GitHubAPIResponse = await res.json();
 
