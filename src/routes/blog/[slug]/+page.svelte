@@ -23,8 +23,8 @@ let { data }: Props = $props();
   <meta property="og:type" content="article" />
   <meta property="og:url" content={data.absoluteUrl} />
   {#if data.previewImage}
-    <meta property="og:image" content={data.openGraphImageUrl} />
-    <meta property="og:image:secure_url" content={data.openGraphImageUrl} />
+    <meta property="og:image" content={data.previewImage.openGraphImageUrl} />
+    <meta property="og:image:secure_url" content={data.previewImage.openGraphImageUrl} />
     <meta property="og:image:alt" content={data.previewImage.alt} />
   {/if}
   <meta property="og:description" content={data.preview} />
@@ -52,7 +52,7 @@ let { data }: Props = $props();
 
     <h2 class="w-full mt-4 heading2">Recent Posts</h2>
     <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 w-full gap-4">
-      {#each Object.values(data.recentBlogs) as blog}
+      {#each data.recentBlogs as blog}
         <BlogCard blog={blog} />
       {/each}
     </ul>

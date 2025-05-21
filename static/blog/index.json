@@ -1,5 +1,6 @@
 {
   "hackcu-11": {
+    "published": true,
     "date": 1745599436,
     "preview": "My first hackathon of the Spring 2025 semester.",
     "title": "HackCU 11",
@@ -9,11 +10,13 @@
     "previewImageAlt": "a selfie with three students looking up from their laptops"
   },
   "use-your-boredom": {
+    "published": true,
     "date": 1738871741,
     "preview": "It's there for a reason.",
     "title": "Use Your Boredom"
   },
   "biking": {
+    "published": true,
     "date": 1737662893,
     "preview": "A healthier way of life.",
     "title": "Biking",
@@ -23,6 +26,7 @@
     "previewImageAlt": "A concrete path leads down a hill. There is snow on either side, and mountains are in the background."
   },
   "3l-update": {
+    "published": true,
     "date": 1735498387,
     "preview": "The keyboard layout has served me well.",
     "title": "An Update on 3l",
@@ -32,6 +36,7 @@
     "previewImageAlt": "diagram of the 3l keyboard layout with the h, j, k, and l keys highlighted"
   },
   "hackutd-ripple-effect": {
+    "published": true,
     "date": 1734208091,
     "preview": "I enjoy an action-packed return to the United States.",
     "title": "HackUTD 2024: Ripple Effect",
@@ -41,11 +46,13 @@
     "previewImageExt": "webp"
   },
   "fixing-google-calendar": {
+    "published": true,
     "date": 1727050409,
     "preview": "A little automation overcomes Google's questionable UX design.",
     "title": "I messed up my calendar and wrote a script to fix it"
   },
   "nz0": {
+    "published": true,
     "date": 1721454101,
     "preview": "A lifetime American ventures into the far South.",
     "title": "My first week in Aotearoa New Zealand: Touring Auckland",
@@ -56,11 +63,13 @@
     "customHeaderMD": "All photos in this blog post are licensed [CC0](https://creativecommons.org/publicdomain/zero/1.0/legalcode) and are taken by me, Byron Sharman."
   },
   "paremski-rach-3": {
+    "published": true,
     "date": 1715296345,
     "preview": "Rarely do I feel so elated walking out of a concerto performance.",
     "title": "Natasha Paremski's Rach 3 is the best thing that happened to me the week before finals"
   },
   "hackku-2024": {
+    "published": true,
     "date": 1714663989,
     "preview": "I narrate the happenings of my last hackathon of the 2023–2024 school year.",
     "title": "HackKU 2024",
@@ -71,6 +80,7 @@
     "customHeaderMD": "For the unfamiliar, the \"hack\" in \"hackathon\" refers to the incomplete, duck-taped mess that results from writing so much code during such a small time window. It is different from the \"hack\" which refers to maliciously infiltrating someone else's computer system."
   },
   "three-snazzy-vim-commands": {
+    "published": true,
     "date": 1713386692,
     "preview": "I passionately advocate for the inclusion of Ex commands in your quotidian Vim usage.",
     "title": "Three Snazzy Commands to Enhance Your Vim Personality",
@@ -80,6 +90,7 @@
     "previewImageAlt": "screenshot of Vim's opening screen"
   },
   "hackcu-x": {
+    "published": true,
     "date": 1712017815,
     "preview": "I summarize my experience at the 10th HackCU hackathon hosted by the University of Colorado Boulder.",
     "title": "HackCU X",
@@ -89,6 +100,7 @@
     "previewImageAlt": "I code on my laptop behind a row of 3 Monsters and a Red Bull."
   },
   "learning-3l": {
+    "published": true,
     "date": 1710351277,
     "preview": "I champion the use of a unique keyboard layout specially crafted for writing code.",
     "title": "3l: The keyboard layout that took me from 0 to 100 WPM in 13 days",
@@ -98,6 +110,7 @@
     "previewImageAlt": "diagram of the 3l keyboard layout"
   },
   "blasterhacks-2024": {
+    "published": true,
     "date": 1709159930,
     "preview": "I describe my first-ever hackathon experience as a first-year college student.",
     "title": "Blasterhacks 2024: My first hackathon",

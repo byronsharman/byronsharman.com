@@ -17,18 +17,19 @@ async function runBuild() {
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Byron Sharman</title>
-    <link>https://b-sharman.dev/</link>
+    <link>https://byronsharman.com/</link>
     <description>The latest blog posts from Byron Sharman</description>
     <language>en-us</language>
-    <atom:link href="https://b-sharman.dev/blog.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://byronsharman.com/blog.xml" rel="self" type="application/rss+xml"/>
 `;
-    const data = readFileSync("static/blog/build/index.json");
+    const data = readFileSync("static/blog/index.json");
     for (const [blogSlug, blog] of Object.entries(JSON.parse(data))) {
+      if (!blog.published) continue;
       xml_output += `    <item>
       <title>${blog.title}</title>
       <description>${blog.preview}</description>
-      <link>https://b-sharman.dev/blog/${blogSlug}/</link>
-      <guid>https://b-sharman.dev/blog/${blogSlug}/</guid>
+      <link>https://byronsharman.com/blog/${blogSlug}/</link>
+      <guid>https://byronsharman.com/blog/${blogSlug}/</guid>
       <pubDate>${new Date(blog.date * 1000).toUTCString()}</pubDate>
     </item>
 `;

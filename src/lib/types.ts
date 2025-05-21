@@ -4,17 +4,29 @@ export enum ProjectType {
   NetworkError = "networkerror",
 }
 
-// describes the blogs in index.json
-// TODO: tighten Blog interface so it only contains the minimum necessary to load a BlogCard
-export interface Blog {
-  customHeaderMD: string;
+interface BaseBlog {
   date: number;
-  openGraphImageUrl?: string;
   preview: string;
-  previewImage?: Image;
-  slug: string;
   title: string;
+}
+
+export interface BlogCardData extends BaseBlog {
+  slug: string;
   url: string;
+}
+
+// helper type to avoid duplication
+interface Blog extends BaseBlog {
+  customHeaderMD?: string;
+}
+
+// describes the blogs in index.json
+export interface BlogInJson extends Blog {
+  openGraphImageExt?: string;
+  previewImage?: string;
+  previewImageAlt?: string;
+  previewImageExt?: string;
+  published: boolean;
 }
 
 // contains all the extra fields necessary to render a full blog page
@@ -22,7 +34,8 @@ export interface RenderBlog extends Blog {
   absoluteUrl: string;
   html: string;
   ldjson: string;
-  recentBlogs: { [slug: string]: Blog };
+  previewImage?: BlogPreviewImage;
+  recentBlogs: BlogCardData[];
 }
 
 export type Project = {
@@ -30,7 +43,7 @@ export type Project = {
   category: ProjectCategory;
   description: string;
   hackathonName?: string;
-  image?: Image;
+  image?: ProjectImage;
   languages: Array<string>;
   name: string;
   type: ProjectType;
@@ -46,9 +59,17 @@ export type GitHubAPIResponse = {
   name: string;
 };
 
-export type Image = {
-  path: string;
+type BaseImage = {
   alt: string;
+};
+
+export type ProjectImage = BaseImage & {
+  path: string;
   width: number;
   height: number;
+};
+
+export type BlogPreviewImage = BaseImage & {
+  absolutePath: string;
+  openGraphImageUrl: string;
 };

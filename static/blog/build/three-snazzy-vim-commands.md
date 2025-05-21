@@ -50,4 +50,4 @@ Right away, I knew I needed to automate this task because there were many tables
 
 This is just the beginning. There's nothing stopping you from combining `:g` and `:norm` *and macros!*
 
-Things like this are why I don't see myself ever returning to VS&nbsp;Code or other alternatives. What sort of text editor or IDE has this capability out of the box? OK, [Emacs probably does](https://xkcd.com/378/). However, as an amateur pianist and [typist](https://b-sharman.dev/blog/learning-3l), I'd rather keep my pinky fingers intact for the next few years.
+Things like this are why I don't see myself ever returning to VS&nbsp;Code or other alternatives. What sort of text editor or IDE has this capability out of the box? OK, [Emacs probably does](https://xkcd.com/378/). However, as an amateur pianist and [typist](/blog/learning-3l), I'd rather keep my pinky fingers intact for the next few years.
