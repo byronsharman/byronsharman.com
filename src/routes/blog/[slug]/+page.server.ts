@@ -1,4 +1,4 @@
-import { VITE_URL } from "$env/static/private";
+import { PUBLIC_BASE_URL } from "$env/static/public";
 import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
@@ -76,7 +76,7 @@ export const load: PageServerLoad = async ({
 
   let previewImage: BlogPreviewImage | undefined = undefined;
   if (checkImageProperties(params.slug, builder)) {
-    const imgPathWithoutExt = `${VITE_URL}/blog/images/${params.slug}/${builder.previewImage}.`;
+    const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${builder.previewImage}.`;
     previewImage = {
       alt: builder.previewImageAlt,
       openGraphImageUrl: imgPathWithoutExt + builder.openGraphImageExt,
@@ -107,7 +107,7 @@ export const load: PageServerLoad = async ({
       {
         "@type": "Person",
         name: "Byron Sharman",
-        url: VITE_URL,
+        url: PUBLIC_BASE_URL,
       },
     ],
   });
@@ -122,7 +122,7 @@ export const load: PageServerLoad = async ({
     title: builder.title,
 
     // TODO: some duplication here with blogUtils, what to do about that?
-    absoluteUrl: `${VITE_URL}/blog/${params.slug}`,
+    absoluteUrl: `${PUBLIC_BASE_URL}/blog/${params.slug}`,
     html: html,
     ldjson: ldjson,
     previewImage: previewImage,
