@@ -6,8 +6,7 @@ also couldn't tell you how many AP classes I took, or how many 5s I earned from
 them. My high school academic endeavors saved me credits, and therefore money,
 but they don't affect my day-to-day life. Despite this, during the month before
 I published this essay, millions of high school students reached their highest
-stress levels of the year taking AP exams and turning in IB papers, and the
-months before *that* were spent worrying about those things. For many of
+stress levels of the year taking AP exams and turning in IB papers. For many of
 these students, there's an immense discrepancy between how much we prioritize
 academics in high school and how much they actually matter. Why are we doing
 this to ourselves?
@@ -70,6 +69,5 @@ growth, an asset whose importance never fades.
 
 So, if any overachieving high school students have happened upon this little
 essay, I ask you to use your last pre-college years well. You'll never get to
-be a high schooler again. You'll never get to be a non-adult again. Don't
-burden yourself with relatively short-term concerns. Go do stuff. Make the most
-of it.
+go to high school again. You'll never get to be a teenager again. Don't burden
+yourself with relatively short-term concerns. Go do stuff. Make the most of it.
