@@ -59,8 +59,9 @@ at Mines, an undergraduate with the same major at MIT will enjoy a
 much-improved networking profile which will probably lead to a higher-paying
 job. They'll also have more research opportunities, sponsored by a larger
 endowment. I confess that I'd be going to an elite university now if I had been
-accepted to one. But it's difficult to justify dedicating four years of high
-school for these benefits.
+accepted to one. But if earning these benefits equates to spending class time
+and free time on increasing numbers rather than learning, it all becomes very
+difficult to justify.
 
 This doesn't mean things like grades or the SAT are unimportant. I'm only
 stressing that they instantly lose their importance the moment you submit your
