@@ -17,7 +17,7 @@ async function runBuild() {
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>Byron Sharman</title>
-    <link>https://byronsharman.com/</link>
+    <link>https://byronsharman.com</link>
     <description>The latest blog posts from Byron Sharman</description>
     <language>en-us</language>
     <atom:link href="https://byronsharman.com/blog.xml" rel="self" type="application/rss+xml"/>
@@ -28,8 +28,8 @@ async function runBuild() {
       xml_output += `    <item>
       <title>${blog.title}</title>
       <description>${blog.preview}</description>
-      <link>https://byronsharman.com/blog/${blogSlug}/</link>
-      <guid>https://byronsharman.com/blog/${blogSlug}/</guid>
+      <link>https://byronsharman.com/blog/${blogSlug}</link>
+      <guid>https://byronsharman.com/blog/${blogSlug}</guid>
       <pubDate>${new Date(blog.date * 1000).toUTCString()}</pubDate>
     </item>
 `;
