@@ -21,16 +21,14 @@
     "svelte-check": "^4.0.0",
     "tailwindcss": "^4.0.0",
     "tslib": "^2.4.1",
-    "typescript": "^5.5.0"
+    "typescript": "^5.5.0",
+    "vite": "^5.4.4"
   },
   "type": "module",
   "dependencies": {
     "fs-extra": "^11.2.0",
     "highlight.js": "^11.10.0",
     "image-size": "^1.2.0",
-    "marked": "^15.0.12"
-  },
-  "overrides": {
-    "vite": "npm:rolldown-vite@latest"
+    "marked": "^12.0.0"
   }
 }
