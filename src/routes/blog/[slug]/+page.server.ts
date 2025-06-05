@@ -120,6 +120,7 @@ export const load: PageServerLoad = async ({
     date: builder.date,
     preview: builder.preview,
     title: builder.title,
+    customHeaderMD: builder.customHeaderMD,
 
     // TODO: some duplication here with blogUtils, what to do about that?
     absoluteUrl: `${PUBLIC_BASE_URL}/blog/${params.slug}`,
