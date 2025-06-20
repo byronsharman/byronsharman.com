@@ -25,47 +25,50 @@ async function createGithubProject(
   project: Project,
   fetchFunc: typeof fetch,
 ): Promise<Project> {
-  // TODO: properly inspect the response instead of blindly catching all exceptions
-  try {
-    const res: Response = await fetchFunc(
-      `https://api.github.com/repos/byronsharman/${projectName}`,
+  const errorPlaceholder: Project = {
+    bottomText: "",
+    category: "error",
+    description: "Error loading project information",
+    languages: [],
+    name: projectName,
+    type: ProjectType.NetworkError,
+    url: "",
+  };
+
+  const res: Response = await fetchFunc(
+    `https://api.github.com/repos/byronsharman/${projectName}`,
+  );
+  if (!res.ok) {
+    console.error(
+      `Fetch from GitHub API failed with code ${res.status}: ${res.statusText}`,
     );
-    const githubProject: GitHubAPIResponse = await res.json();
+    return errorPlaceholder;
+  }
+  const githubProject: GitHubAPIResponse = await res.json();
 
-    // set project.languages by querying the URL returned by the API
-    const lang_res = await fetchFunc(githubProject.languages_url);
-    const lang_json = await lang_res.json();
-    // when we are rate limited, the response includes a "message" field
-    if ("message" in lang_json) {
-      project.languages = [];
-      console.log(
-        `skipping languages for project ${githubProject.name} because of Github API rate limiting`,
-      );
-    } else {
-      project.languages = Object.keys(lang_json).filter(
-        (lang) => !LANG_EXCLUDES.includes(lang),
-      );
-    }
-
-    project.bottomText = "see it on GitHub";
-    project.description = githubProject.description;
-    project.name = githubProject.name;
-    project.url = githubProject.html_url;
-  } catch {
-    // https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api
-    project.bottomText = "";
-    project.category = "error";
-    project.description = "probably got rate limited by the GitHub API =/";
-    project.languages = [];
-    project.name = projectName;
-    project.type = ProjectType.NetworkError;
-    project.url = "";
+  // get project languages by querying the URL returned by the API
+  let languages: string[] = [];
+  const lang_res = await fetchFunc(githubProject.languages_url);
+  if (!res.ok) {
+    console.error(`\
+Fetch from GitHub API failed with code ${res.status}: ${res.statusText}.
+Skipping languages for project ${githubProject.name}.`);
+  } else {
+    languages = Object.keys(await lang_res.json()).filter(
+      (lang) => !LANG_EXCLUDES.includes(lang),
+    );
   }
 
-  // grab description from associated markdown file
-  project.description = await getDescription(projectName, fetchFunc);
-
-  return project;
+  return {
+    ...errorPlaceholder,
+    ...project,
+    name: githubProject.name,
+    url: githubProject.html_url,
+    languages,
+    bottomText: "see it on GitHub",
+    // grab description from associated markdown file
+    description: await getDescription(projectName, fetchFunc),
+  };
 }
 
 /* return a Project initialized from JSON in project.json */
@@ -74,13 +77,13 @@ async function createBlogProject(
   project: Project,
   fetchFunc: typeof fetch,
 ): Promise<Project> {
-  project.bottomText = "read the blog post";
-  project.url = `/blog/${projectName}`;
-
-  // grab description from associated markdown file
-  project.description = await getDescription(projectName, fetchFunc);
-
-  return project;
+  return {
+    ...project,
+    url: `/blog/${projectName}`,
+    bottomText: "read the blog post",
+    // grab description from associated markdown file
+    description: await getDescription(projectName, fetchFunc),
+  };
 }
 
 export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
@@ -92,36 +95,31 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
     return projects;
   }
 
-  for (const [projectName, project] of Object.entries(await res.json()) as [
-    string,
-    Project,
-  ][]) {
-    if (project.image !== undefined) {
-      const { width, height } = await imageSizeFromFile(
-        `static/${project.image.path}`,
-      );
-      if (width !== undefined && height !== undefined) {
-        project.image.width = width;
-        project.image.height = height;
-      }
-    }
-    switch (project.type) {
-      case "github":
-        projects.push(
-          await createGithubProject(projectName, project, fetchFunc),
-        );
-        break;
-
-      case "blog":
-        projects.push(await createBlogProject(projectName, project, fetchFunc));
-        break;
-
-      default:
-        console.error(
-          `Error when parsing projects: unrecognized project type ${project.type}`,
-        );
-    }
-  }
-
-  return projects;
+  return Promise.all(
+    (Object.entries(await res.json()) as [string, Project][])
+      .map(async ([projectName, project]) => {
+        if (project.image !== undefined) {
+          const { width, height } = await imageSizeFromFile(
+            `static/${project.image.path}`,
+          );
+          // TODO: ProjectImage.{ width, height } should probably have type number | undefined
+          if (width !== undefined && height !== undefined) {
+            project.image.width = width;
+            project.image.height = height;
+          }
+        }
+        switch (project.type) {
+          case "github":
+            return await createGithubProject(projectName, project, fetchFunc);
+          case "blog":
+            return await createBlogProject(projectName, project, fetchFunc);
+          default:
+            console.error(
+              `Error when parsing projects: unrecognized project type ${project.type}`,
+            );
+            return null;
+        }
+      })
+      .filter((projectPromise) => projectPromise !== null),
+  );
 }

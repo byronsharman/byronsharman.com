@@ -17,10 +17,8 @@ export async function getBlogCardData(
   const entries = Object.entries(
     (await res.json()) as { [slug: string]: BlogInJson },
   );
-  for (const [slug, blog] of entries) {
-    // print an error message if any of the blogs are invalid
-    checkImageProperties(slug, blog);
-  }
+
+  entries.forEach(([slug, blog]) => checkImageProperties(slug, blog));
 
   return entries
     .filter(([_, blog]) => blog.published)
@@ -40,20 +38,20 @@ export function checkImageProperties(
   slug: string,
   blog: BlogInJson,
 ): blog is Required<BlogInJson> {
-  const imgProperties = [
+  const imgProperties = new Set([
     "openGraphImageExt",
     "previewImage",
     "previewImageAlt",
     "previewImageExt",
-  ];
-  const existingProperties = imgProperties.filter(
-    (property) => property in blog,
-  );
-  if (existingProperties.length === imgProperties.length) return true;
+  ]);
+  const blogProperties = new Set(Object.keys(blog));
 
-  if (existingProperties.length !== 0) {
+  const difference = imgProperties.difference(blogProperties);
+  if (difference.size === 0) return true;
+  if (difference.size !== imgProperties.size) {
     console.error(
-      `Some, but not all of the required properties for a preview image were found in index.json for slug \`${slug}\`. The following properties were missing: ${imgProperties.filter((property) => !(property in blog)).join(", ")}`,
+      `Some (but not all) of the required properties for a preview image were found in index.json for slug \`${slug}\`. The following properties are missing: \
+${[...difference].join(", ")}`,
     );
   }
 
