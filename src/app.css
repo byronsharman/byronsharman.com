@@ -11,10 +11,8 @@
     @apply text-gray-950! marker:text-gray-950!;
   }
   .prose blockquote {
-    quotes: none;
-  }
-  .prose blockquote em {
-    @apply not-italic;
+    quotes: none !important;
+    @apply not-italic!;
   }
   .prose blockquote attribution {
     @apply before:content-['—'] ps-8 not-italic;
