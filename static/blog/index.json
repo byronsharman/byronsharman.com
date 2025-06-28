@@ -3,7 +3,11 @@
     "published": true,
     "date": 1751069077,
     "title": "Blasterhacks 2025",
-    "preview": "I narrate the last hackathon of my second year at Mines."
+    "preview": "I narrate the last hackathon of my second year at Mines.",
+    "previewImage": "lukas_and_byron",
+    "previewImageExt": "avif",
+    "openGraphImageExt": "jpg",
+    "previewImageAlt": "two students work on their laptops in a university building"
   },
   "dear-high-schoolers": {
     "published": true,
