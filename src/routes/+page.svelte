@@ -32,25 +32,25 @@ let expandButtonText = $derived(
 <div class="flex justify-center p-4 pt-0">
   <main class="size-full max-w-(--breakpoint-md)">
 
-    <div class="flex flex-col items-center">
-      <header class="mt-3 lg:mt-6 mb-6 max-w-prose">
-        <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="m-auto p-8 aspect-square size-3/4 max-w-[320px] rounded-full" />
-        <h1 class="font-bold text-4xl lg:text-5xl text-center">Byron Sharman</h1>
-        <ul class="my-4 flex flex-row justify-center divide-x divide-gray-400 text-sm md:text-base">
-            <li class="text-gray-700 px-4"><Email /></li>
-            <li class="text-gray-700 px-4"><a href="https://github.com/byronsharman">GitHub</a></li>
-            <li class="text-gray-700 px-4"><a href="https://www.linkedin.com/in/byronsharman/">LinkedIn</a></li>
+    <header class="flex flex-row flex-wrap items-center w-max h-24 lg:h-36 my-4 lg:my-12 mx-auto gap-6 lg:gap-8">
+      <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="h-full rounded-full" />
+      <div>
+        <h1 class="font-bold text-4xl lg:text-6xl text-center">Byron Sharman</h1>
+        <ul class="mt-2 lg:mt-4 flex flex-row divide-x divide-gray-400 text-sm lg:text-base">
+            <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><Email /></li>
+            <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://github.com/byronsharman">GitHub</a></li>
+            <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://www.linkedin.com/in/byronsharman/">LinkedIn</a></li>
         </ul>
-      </header>
+      </div>
+    </header>
 
-      <article class="mb-4 prose md:prose-lg lg:prose-xl">
-        <p class="m-0!">
-          I'm Byron, a computer science student at Colorado School of Mines. I
-          like to make things, learn technologies, and explore the world,
-          both physically and conceptually.
-        </p>
-      </article>
-    </div>
+    <article class="my-4 prose md:prose-lg lg:prose-xl">
+      <p class="m-0!">
+        I'm Byron, a computer science student at Colorado School of Mines. I
+        like to make things, learn technologies, and explore the world,
+        both physically and conceptually.
+      </p>
+    </article>
 
     <section class="my-6 md:my-10">
       <h2 class="heading2">Projects</h2>
