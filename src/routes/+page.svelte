@@ -1,27 +1,44 @@
 <script lang='ts'>
 import BlogCard from "$lib/blogCard.svelte";
 import Email from "$lib/email.svelte";
-import ProjectCard from "$lib/projectCard.svelte";
-import type { PageData } from "./$types";
+import type { PageProps } from "./$types";
 
-interface Props {
-  data: PageData;
-}
+// assets
+import envelopeIcon from "$lib/assets/icons/envelope.svg";
+import githubLogo from "$lib/assets/icons/github.svg";
+import linkedinLogo from "$lib/assets/icons/linkedin.png";
+import rssIcon from "$lib/assets/icons/rss.svg";
 
-let { data }: Props = $props();
+type SocialLink = {
+  iconSrc: string;
+  iconAlt: string;
+  targetUrl: string;
+};
 
-// whether the projects list is expanded to show all projects
-let projectsExpanded = $state(false);
+const socials: SocialLink[] = [
+  {
+    iconSrc: envelopeIcon,
+    iconAlt: "envelope icon",
+    targetUrl: "mailto:byron.n.sharman@gmail.com",
+  },
+  {
+    iconSrc: githubLogo,
+    iconAlt: "GitHub logo",
+    targetUrl: "https://github.com/byronsharman",
+  },
+  {
+    iconSrc: linkedinLogo,
+    iconAlt: "LinkedIn logo",
+    targetUrl: "https://www.linkedin.com/in/byronsharman/",
+  },
+  {
+    iconSrc: rssIcon,
+    iconAlt: "RSS icon",
+    targetUrl: "/blog.xml",
+  },
+]
 
-const NUM_PROJECTS = 2;
-let projectCount = $derived(
-  projectsExpanded ? data.projects.length : NUM_PROJECTS,
-);
-let expandButtonText = $derived(
-  projectsExpanded
-    ? "collapse"
-    : `show all (${data.projects.length - NUM_PROJECTS} more)`,
-);
+let { data }: PageProps = $props();
 </script>
 
 <svelte:head>
@@ -36,11 +53,15 @@ let expandButtonText = $derived(
       <div class="flex flex-row flex-wrap items-center h-24 my-4 lg:my-8 mx-auto gap-4 lg:gap-6">
         <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="h-full rounded-full" />
         <div>
-          <h1 class="font-bold text-2xl lg:text-4xl text-center">Byron Sharman</h1>
-          <ul class="mt-2 lg:mt-4 flex flex-row divide-x divide-gray-400 text-sm lg:text-base">
-              <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><Email /></li>
-              <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://github.com/byronsharman">GitHub</a></li>
-              <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://www.linkedin.com/in/byronsharman/">LinkedIn</a></li>
+          <h1 class="font-bold text-2xl lg:text-4xl">Byron Sharman</h1>
+          <ul class="mt-2 lg:mt-4 flex flex-row space-x-2">
+            {#each socials as social}
+              <li>
+                <a href={social.targetUrl}>
+                  <img alt={social.iconAlt} src={social.iconSrc} class="size-5 fill-blue-600" />
+                </a>
+              </li>
+            {/each}
           </ul>
         </div>
       </div>
@@ -51,30 +72,13 @@ let expandButtonText = $derived(
         both physically and conceptually.
       </p>
 
-      <a href="/projects" class="block my-4 lg:my-8 underline">
+      <a href="/projects" class="my-4 lg:my-8 underline">
         Explore my projects
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline">
           <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
         </svg>
       </a>
     </header>
-
-    <!--
-    <section class="my-6 md:my-10">
-      <h2 class="heading2">Projects</h2>
-      <ul class="space-y-4">
-        {#each data.projects.slice(0, projectCount) as project}
-          <ProjectCard project={project} />
-        {/each}
-      </ul>
-      <button
-        onclick={() => {projectsExpanded = !projectsExpanded;}}
-        class="mt-4 w-full items-center flex flex-row gap-4 lg:gap-6 text-gray-600 before:relative before:block before:flex-1 before:w-full before:h-px before:bg-gray-300 after:relative after:block after:flex-1 after:w-full after:h-px after:bg-gray-300 hover:underline cursor-pointer"
-      >
-        {expandButtonText}
-      </button>
-    </section>
-    -->
 
     <section class="my-6 md:mb-10">
 
