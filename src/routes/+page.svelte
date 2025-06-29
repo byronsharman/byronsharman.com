@@ -29,29 +29,37 @@ let expandButtonText = $derived(
   <meta name="description" content="I'm Byron, a computer science student at Colorado School of Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
 </svelte:head>
 
-<div class="flex justify-center p-4 pt-0">
+<div class="flex justify-center p-4 pt-0 bg-gray-100">
   <main class="size-full max-w-(--breakpoint-md)">
 
-    <header class="flex flex-row flex-wrap items-center w-max h-24 lg:h-36 my-4 lg:my-12 mx-auto gap-6 lg:gap-8">
-      <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="h-full rounded-full" />
-      <div>
-        <h1 class="font-bold text-4xl lg:text-6xl text-center">Byron Sharman</h1>
-        <ul class="mt-2 lg:mt-4 flex flex-row divide-x divide-gray-400 text-sm lg:text-base">
-            <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><Email /></li>
-            <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://github.com/byronsharman">GitHub</a></li>
-            <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://www.linkedin.com/in/byronsharman/">LinkedIn</a></li>
-        </ul>
+    <header class="my-36">
+      <div class="flex flex-row flex-wrap items-center h-24 my-4 lg:my-8 mx-auto gap-4 lg:gap-6">
+        <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="h-full rounded-full" />
+        <div>
+          <h1 class="font-bold text-2xl lg:text-4xl text-center">Byron Sharman</h1>
+          <ul class="mt-2 lg:mt-4 flex flex-row divide-x divide-gray-400 text-sm lg:text-base">
+              <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><Email /></li>
+              <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://github.com/byronsharman">GitHub</a></li>
+              <li class="text-gray-700 px-4 first:pl-0 last:pr-0"><a href="https://www.linkedin.com/in/byronsharman/">LinkedIn</a></li>
+          </ul>
+        </div>
       </div>
-    </header>
 
-    <article class="my-4 prose md:prose-lg lg:prose-xl">
-      <p class="m-0!">
+      <p class="my-4 max-w-xl text-gray-800">
         I'm Byron, a computer science student at Colorado School of Mines. I
         like to make things, learn technologies, and explore the world,
         both physically and conceptually.
       </p>
-    </article>
 
+      <a href="/projects" class="block my-4 lg:my-8 underline">
+        Explore my projects
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline">
+          <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </header>
+
+    <!--
     <section class="my-6 md:my-10">
       <h2 class="heading2">Projects</h2>
       <ul class="space-y-4">
@@ -66,15 +74,20 @@ let expandButtonText = $derived(
         {expandButtonText}
       </button>
     </section>
+    -->
 
-    <section class="mb-6 md:mb-10">
+    <section class="my-6 md:mb-10">
+
+      <!--
       <div class="flex flex-row justify-between items-center">
         <h2 class="heading2">Blog</h2>
         <a aria-label="RSS feed" href="/blog.xml">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mb-2"><path fill-rule="evenodd" d="M3.75 4.5a.75.75 0 0 1 .75-.75h.75c8.284 0 15 6.716 15 15v.75a.75.75 0 0 1-.75.75h-.75a.75.75 0 0 1-.75-.75v-.75C18 11.708 12.292 6 5.25 6H4.5a.75.75 0 0 1-.75-.75V4.5Zm0 6.75a.75.75 0 0 1 .75-.75h.75a8.25 8.25 0 0 1 8.25 8.25v.75a.75.75 0 0 1-.75.75H12a.75.75 0 0 1-.75-.75v-.75a6 6 0 0 0-6-6H4.5a.75.75 0 0 1-.75-.75v-.75Zm0 7.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Z" clip-rule="evenodd" /></svg>
         </a>
       </div>
-      <ul class="space-y-4">
+      -->
+
+      <ul class="space-y-8">
         {#each data.blogs as blog}
           <BlogCard blog={blog} />
         {/each}

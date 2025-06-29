@@ -3,7 +3,7 @@
 @plugin "@tailwindcss/typography";
 
 @utility heading2 {
-  @apply my-8 font-bold text-3xl lg:text-4xl;
+  @apply my-8 font-bold text-2xl lg:text-3xl;
 }
 
 @layer base {

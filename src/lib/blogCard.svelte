@@ -9,10 +9,16 @@ interface Props {
 let { blog }: Props = $props();
 </script>
 
-<li class="border border-gray-200 hover:border-gray-400 rounded-xl">
-  <a href={blog.url} class="flex flex-col size-full p-4 rounded-lg">
-    <h3 class="font-bold text-xl mb-3 text-pretty">{blog.title}</h3>
+<li>
+  <a href={blog.url} class="block p-4 lg:p-6 bg-white border-2 border-transparent rounded-xl shadow-xs">
+    <p class="font-bold text-xl mb-3 text-pretty">{blog.title}</p>
     <p class="grow mb-2 line-clamp-3">{blog.preview}</p>
     <DateP unixtime={blog.date} />
   </a>
 </li>
+
+<style>
+a:hover {
+  background: linear-gradient(white, white) padding-box, linear-gradient(135deg, var(--color-cyan-500), var(--color-purple-600)) border-box;
+}
+</style>
