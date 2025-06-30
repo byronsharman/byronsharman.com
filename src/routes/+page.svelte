@@ -1,6 +1,5 @@
 <script lang='ts'>
 import BlogCard from "$lib/blogCard.svelte";
-import Email from "$lib/email.svelte";
 import type { PageProps } from "./$types";
 
 // assets
