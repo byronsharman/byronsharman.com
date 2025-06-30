@@ -3,7 +3,8 @@
 @plugin "@tailwindcss/typography";
 
 @utility hero-header {
-  @apply my-12 lg:my-36;
+  /* It was horribly difficult trying to get the header and main margins to collapse without messing up the background color, so instead I adjust the header top margin so that it plus the main padding equal the header bottom margin, thus making equal space above and below the header. */
+  @apply mb-12 lg:mb-36 mt-[calc(calc(var(--spacing)_*_12)_-_var(--spc-std))] lg:mt-[calc(calc(var(--spacing)_*_36)_-_var(--spc-lg))];
 }
 
 .hero-header h1 {
