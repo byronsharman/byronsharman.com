@@ -21,7 +21,7 @@ const socials: SocialLink[] = [
   {
     iconSrc: envelopeIcon,
     iconAlt: "envelope icon",
-    targetUrl: "mailto:byron.n.sharman@gmail.com",
+    targetUrl: "mailto:me@byronsharman.com",
   },
   {
     iconSrc: githubLogo,
