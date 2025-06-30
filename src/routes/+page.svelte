@@ -47,15 +47,16 @@ let { data }: PageProps = $props();
 </svelte:head>
 
 <header class="hero-header">
-  <div class="flex flex-row flex-wrap items-center h-24 my-4 lg:my-8 mx-auto gap-4 lg:gap-6">
+  <div class="flex flex-row items-center h-24 my-4 lg:my-8 gap-4 lg:gap-6">
     <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="h-full rounded-full" />
     <div>
       <h1>Byron Sharman</h1>
-      <ul class="mt-2 lg:mt-4 flex flex-row space-x-2">
+      <!-- The icons are bigger on smaller screens so they are easier touch targets. -->
+      <ul class="mt-2 lg:mt-4 flex flex-row space-x-4 md:space-x-2">
         {#each socials as social}
           <li>
             <a href={social.targetUrl}>
-              <img alt={social.iconAlt} src={social.iconSrc} class="size-5 fill-blue-600" />
+              <img alt={social.iconAlt} src={social.iconSrc} class="size-6 md:size-5" />
             </a>
           </li>
         {/each}
