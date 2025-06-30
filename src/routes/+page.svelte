@@ -1,6 +1,5 @@
 <script lang='ts'>
 import BlogCard from "$lib/blogCard.svelte";
-import Email from "$lib/email.svelte";
 import type { PageProps } from "./$types";
 
 // assets
@@ -21,7 +20,7 @@ const socials: SocialLink[] = [
   {
     iconSrc: envelopeIcon,
     iconAlt: "envelope icon",
-    targetUrl: "mailto:byron.n.sharman@gmail.com",
+    targetUrl: "mailto:me@byronsharman.com",
   },
   {
     iconSrc: githubLogo,
