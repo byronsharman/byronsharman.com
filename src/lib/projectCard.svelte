@@ -9,7 +9,7 @@ interface Props {
 let { project }: Props = $props();
 </script>
 
-<li class="sm:min-w-[250px] card">
+<article class="sm:min-w-[250px] card">
   <a href={project.url}>
     {#if project.image !== undefined}
       <img
@@ -31,4 +31,4 @@ let { project }: Props = $props();
     <p class="text-sm text-gray-600 mb-4">{project.languages.join(', ')}</p>
     <div class="prose max-w-max">{@html project.description}</div>
   </a>
-</li>
+</article>

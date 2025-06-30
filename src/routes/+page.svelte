@@ -79,11 +79,12 @@ let { data }: PageProps = $props();
   </a>
 </header>
 
-<ul class="card-list my-(--spc-std) lg:my-(--spc-lg)">
+<section class="card-list my-(--spc-std) lg:my-(--spc-lg)">
+  <h2 class="sr-only">Blog Posts</h2>
   {#each data.blogs as blog}
     <BlogCard blog={blog} />
   {/each}
-</ul>
+</section>
 
 <footer class="flex flex-row justify-between mt-8 lg:mt-16 text-gray-500 text-xs">
   <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">

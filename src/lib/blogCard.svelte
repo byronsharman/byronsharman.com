@@ -9,11 +9,10 @@ interface Props {
 let { blog }: Props = $props();
 </script>
 
-<li class="card">
-  <!-- These classes are to make the suggestion grid look even -->
+<article class="card">
   <a href={blog.url}>
-    <h2 class="font-bold text-xl mb-3 text-pretty">{blog.title}</h2>
+    <h3 class="font-bold text-xl mb-3 text-pretty">{blog.title}</h3>
     <p class="grow mb-2 line-clamp-3 text-gray-800">{blog.preview}</p>
     <DateP unixtime={blog.date} />
   </a>
-</li>
+</article>

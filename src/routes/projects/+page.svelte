@@ -14,8 +14,8 @@ let { data }: PageProps = $props();
   <h1>Projects</h1>
 </header>
 
-<ul class="card-list">
+<div class="card-list">
   {#each data.projects as project}
     <ProjectCard {project} />
   {/each}
-</ul>
+</div>

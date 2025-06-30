@@ -49,12 +49,12 @@ let { data }: Props = $props();
 <hr class="border-gray-600" />
 
 <section class="my-12 lg:my-24">
-  <h2 class="w-full my-12 font-bold text-3xl">Recent Posts</h2>
-  <ul class="card-list">
+  <h2 class="my-12 font-bold text-3xl">Recent Posts</h2>
+  <div class="card-list">
     {#each data.recentBlogs as blog}
       <BlogCard blog={blog} />
     {/each}
-  </ul>
+  </div>
 </section>
 
 <BackToHome />
