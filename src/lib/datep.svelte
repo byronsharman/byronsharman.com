@@ -5,10 +5,12 @@
 interface Props {
   unixtime: number;
 }
-
 let { unixtime }: Props = $props();
 
 const tzOffset = new Date().getTimezoneOffset() * 60000;
+const iso8601 = new Date(unixtime * 1000 - tzOffset).toISOString().slice(0,10)
 </script>
 
-<p class="m-0! text-sm text-gray-600">{new Date(unixtime * 1000 - tzOffset).toISOString().slice(0,10)}</p>
+<p class="m-0! text-sm text-gray-600">
+  <time datetime={iso8601}>{iso8601}</time>
+</p>

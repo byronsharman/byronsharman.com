@@ -2,8 +2,25 @@
 
 @plugin "@tailwindcss/typography";
 
-@utility heading2 {
-  @apply my-8 font-bold text-2xl lg:text-3xl;
+@utility hero-header {
+  @apply my-12 lg:my-36;
+}
+
+.hero-header h1 {
+  @apply font-bold text-2xl lg:text-4xl;
+}
+
+@utility card-list {
+  @apply space-y-(--spc-std) lg:space-y-(--spc-lg);
+}
+
+.card > a {
+  @apply block p-4 lg:p-6 bg-white rounded-xl shadow-xs;
+}
+
+@theme {
+  --spc-std: calc(var(--spacing) * 4);
+  --spc-lg: calc(var(--spacing) * 8);
 }
 
 @layer base {
@@ -33,13 +50,13 @@
     @apply my-6!;
   }
   .prose pre {
-    @apply p-0! overflow-x-auto bg-neutral-100! text-inherit! text-sm!;
+    @apply p-0! overflow-x-auto bg-white! text-inherit! text-sm!;
   }
   .prose pre code {
-    @apply mx-4! my-3.5! block! min-w-fit whitespace-pre!;
+    @apply m-5! block! min-w-fit whitespace-pre!;
   }
   .prose img {
-    @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem];
+    @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem] rounded-md;
   }
 }
 
