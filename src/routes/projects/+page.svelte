@@ -5,8 +5,13 @@ import type { PageProps } from "./$types";
 let { data }: PageProps = $props();
 </script>
 
-<h1>Projects</h1>
-<ul class="space-y-4">
+<!-- TODO: add a svelte:head with a title -->
+
+<header class="hero-header">
+  <h1>Projects</h1>
+</header>
+
+<ul class="card-list">
   {#each data.projects as project}
     <ProjectCard {project} />
   {/each}
