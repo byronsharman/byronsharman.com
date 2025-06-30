@@ -51,12 +51,11 @@ let { data }: PageProps = $props();
     <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="h-full rounded-full" />
     <div>
       <h1>Byron Sharman</h1>
-      <!-- The icons are bigger on smaller screens so they are easier touch targets. -->
-      <ul class="mt-2 lg:mt-4 flex flex-row space-x-4 md:space-x-2">
+      <ul class="mt-2 lg:mt-4 flex flex-row space-x-2 pointer-coarse:space-x-4">
         {#each socials as social}
           <li>
             <a href={social.targetUrl}>
-              <img alt={social.iconAlt} src={social.iconSrc} class="size-6 md:size-5" />
+              <img alt={social.iconAlt} src={social.iconSrc} class="size-5 pointer-coarse:size-6" />
             </a>
           </li>
         {/each}
