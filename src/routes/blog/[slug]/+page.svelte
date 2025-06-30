@@ -16,7 +16,7 @@ let { data }: Props = $props();
 </script>
 
 <svelte:head>
-  <title>{`${data.title} - Byron Sharman's blog`}</title>
+  <title>{data.title}</title>
   <meta name="description" content={data.preview} />
 
   <meta property="og:title" content={data.title} />
@@ -33,31 +33,28 @@ let { data }: Props = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<div class="flex justify-center p-4">
-  <main class="size-full max-w-[1240px] min-w-0 flex flex-col items-center">
-    <article class="w-full mt-4 prose text-[17px]">
-      <header class="mb-6">
-        <h1 class="mb-2! text-pretty">{data.title}</h1>
-        <DateP unixtime={data.date} />
-        {#if data.customHeaderMD}
-          <small class="block">
-            {@html marked(data.customHeaderMD)}
-          </small>
-        {/if}
-      </header>
-      {@html data.html}
-    </article>
+<article class="w-full mt-4 prose text-[17px] my-12 lg:my-24">
+  <header class="my-12! lg:my-24!">
+    <h1 class="mb-2! text-pretty">{data.title}</h1>
+    <DateP unixtime={data.date} />
+    {#if data.customHeaderMD}
+      <small class="block">
+        {@html marked(data.customHeaderMD)}
+      </small>
+    {/if}
+  </header>
+  {@html data.html}
+</article>
 
-    <hr class="size-full border-gray-300 my-10"/>
+<hr class="border-gray-600" />
 
-    <h2 class="w-full mt-4 heading2">Recent Posts</h2>
-    <ul class="grid grid-flow-row grid-cols-1 md:grid-cols-2 w-full gap-4">
-      {#each data.recentBlogs as blog}
-        <BlogCard blog={blog} />
-      {/each}
-    </ul>
+<section class="my-12 lg:my-24">
+  <h2 class="my-12 font-bold text-3xl">Recent Posts</h2>
+  <div class="card-list">
+    {#each data.recentBlogs as blog}
+      <BlogCard blog={blog} />
+    {/each}
+  </div>
+</section>
 
-    <BackToHome />
-
-  </main>
-</div>
+<BackToHome />

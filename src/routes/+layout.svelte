@@ -1,4 +1,6 @@
 <script lang='ts'>
+import "../app.css";
+
 import { page } from "$app/state";
 import { PUBLIC_BASE_URL } from "$env/static/public";
 
@@ -13,4 +15,6 @@ let { children } = $props();
   <link rel="canonical" href={canonicalUrl} />
 </svelte:head>
 
-{@render children()}
+<main class="h-full max-w-(--breakpoint-md) p-(--spc-std) lg:p-(--spc-lg) mx-auto">
+  {@render children()}
+</main>
