@@ -9,6 +9,8 @@ import githubLogo from "$lib/assets/icons/github.svg";
 import linkedinLogo from "$lib/assets/icons/linkedin.png";
 import rssIcon from "$lib/assets/icons/rss.svg";
 
+import portrait from "$lib/assets/portraits/portrait.avif";
+
 type SocialLink = {
   iconSrc: string;
   iconAlt: string;
@@ -48,7 +50,7 @@ let { data }: PageProps = $props();
 
 <header class="hero-header">
   <div class="flex flex-row items-center h-24 my-4 lg:my-8 gap-4 lg:gap-6">
-    <img alt="portrait of my face with blurred plants in the background" src="portrait.avif" class="h-full rounded-full" />
+    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="h-full rounded-full" />
     <div>
       <h1>Byron Sharman</h1>
       <ul class="mt-2 lg:mt-4 flex flex-row space-x-2 pointer-coarse:space-x-4">
