@@ -35,7 +35,7 @@ let { data }: Props = $props();
 
 <article class="w-full mt-4 prose text-[17px] my-12 lg:my-24">
   <header class="my-12! lg:my-24!">
-    <h1 class="mb-2! text-pretty">{data.title}</h1>
+    <h1 class="mb-2! text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
     {#if data.customHeaderMD}
       <small class="block">
