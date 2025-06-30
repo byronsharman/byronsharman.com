@@ -1,4 +1,5 @@
 <script lang='ts'>
+import BackToHome from "$lib/backToHome.svelte";
 import ProjectCard from "$lib/projectCard.svelte";
 import type { PageProps } from "./$types";
 
@@ -19,3 +20,5 @@ let { data }: PageProps = $props();
     <ProjectCard {project} />
   {/each}
 </div>
+
+<BackToHome />
