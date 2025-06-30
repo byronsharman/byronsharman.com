@@ -16,7 +16,7 @@ let { data }: Props = $props();
 </script>
 
 <svelte:head>
-  <title>{`${data.title} - Byron Sharman's blog`}</title>
+  <title>{data.title}</title>
   <meta name="description" content={data.preview} />
 
   <meta property="og:title" content={data.title} />

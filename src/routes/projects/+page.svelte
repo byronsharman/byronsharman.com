@@ -5,7 +5,10 @@ import type { PageProps } from "./$types";
 let { data }: PageProps = $props();
 </script>
 
-<!-- TODO: add a svelte:head with a title -->
+<svelte:head>
+  <title>Projects | Byron Sharman</title>
+  <meta name="description" content={`View ${data.projects.length} projects in Byron's project portfolio.`} />
+</svelte:head>
 
 <header class="hero-header">
   <h1>Projects</h1>
