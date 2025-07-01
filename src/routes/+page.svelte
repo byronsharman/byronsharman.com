@@ -37,7 +37,7 @@ const socials: SocialLink[] = [
     iconAlt: "RSS icon",
     targetUrl: "/blog.xml",
   },
-]
+];
 
 let { data }: PageProps = $props();
 </script>

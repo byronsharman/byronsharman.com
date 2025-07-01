@@ -17,7 +17,9 @@ async function buildProcess() {
     <description>The latest blog posts from Byron Sharman</description>
     <language>en-us</language>
     <atom:link href="https://byronsharman.com/blog.xml" rel="self" type="application/rss+xml"/>`;
-  const data = await fs.readFile("static/blog/index.json", { encoding: "utf8" });
+  const data = await fs.readFile("static/blog/index.json", {
+    encoding: "utf8",
+  });
   const xml_output = Object.entries(JSON.parse(data))
     .filter(([_, blog]) => blog.published)
     .reduce(
