@@ -8,7 +8,9 @@ interface Props {
 let { unixtime }: Props = $props();
 
 const tzOffset = new Date().getTimezoneOffset() * 60000;
-const iso8601 = $derived(new Date(unixtime * 1000 - tzOffset).toISOString().slice(0,10));
+const iso8601 = $derived(
+  new Date(unixtime * 1000 - tzOffset).toISOString().slice(0, 10),
+);
 </script>
 
 <p class="m-0! text-sm text-gray-600">
