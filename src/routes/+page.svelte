@@ -1,5 +1,5 @@
 <script lang='ts'>
-import BlogCard from "$lib/blogCard.svelte";
+import BlogCard from "$lib/components/BlogCard.svelte";
 import type { PageProps } from "./$types";
 
 // assets

@@ -6,7 +6,7 @@ import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
 import { marked } from "marked";
 
-import { checkImageProperties, getBlogCardData } from "$lib/blogUtils.server";
+import { checkImageProperties, getBlogCardData } from "$lib/server/blogUtils";
 import type {
   BlogCardData,
   BlogInJson,
