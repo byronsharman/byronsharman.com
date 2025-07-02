@@ -1,5 +1,5 @@
 <script lang='ts'>
-import DateP from "$lib/datep.svelte";
+import DateP from "$lib/components/DateP.svelte";
 import type { BlogCardData } from "$lib/types";
 
 interface Props {

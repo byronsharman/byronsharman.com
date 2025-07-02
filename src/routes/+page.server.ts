@@ -1,7 +1,7 @@
-import type { PageServerLoad } from "./$types";
+import { getBlogCardData } from "$lib/server/blogUtils";
 
-import { getBlogCardData } from "$lib/blogUtils.server";
 import type { BlogCardData } from "$lib/types";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ fetch }) => {
   let blogs: BlogCardData[] = [];

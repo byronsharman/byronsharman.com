@@ -3,9 +3,9 @@ import "highlight.js/styles/base16/papercolor-light.css";
 
 import { marked } from "marked";
 
-import BackToHome from "$lib/backToHome.svelte";
-import BlogCard from "$lib/blogCard.svelte";
-import DateP from "$lib/datep.svelte";
+import BackToHome from "$lib/components/BackToHome.svelte";
+import BlogCard from "$lib/components/BlogCard.svelte";
+import DateP from "$lib/components/DateP.svelte";
 import type { PageData } from "./$types";
 
 interface Props {

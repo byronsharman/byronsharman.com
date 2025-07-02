@@ -1,6 +1,6 @@
 import type { PageServerLoad } from "./$types";
 
-import { getProjects } from "$lib/getProjects.server";
+import { getProjects } from "$lib/server/getProjects";
 import type { Project } from "$lib/types";
 
 export const load: PageServerLoad = async ({ fetch }) => {
