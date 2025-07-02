@@ -6,7 +6,7 @@ import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
 import { marked } from "marked";
 
-import { checkImageProperties, getBlogCardData } from "$lib/blogUtils.server";
+import { checkImageProperties, getBlogCardData } from "$lib/server/blogUtils";
 import type {
   BlogCardData,
   BlogInJson,
@@ -21,6 +21,8 @@ export const load: PageServerLoad = async ({
   fetch,
   params,
 }): Promise<RenderBlog> => {
+  let first_image = true;
+
   const renderer = {
     // these are modifications of the default renderer
     // https://github.com/markedjs/marked/blob/master/src/Renderer.ts
@@ -47,11 +49,12 @@ export const load: PageServerLoad = async ({
       if (href === "") return text;
       const imgPath = `/blog/images/${params.slug}/${href}`;
       const { width, height } = imageSizeFromFile(`static${imgPath}`);
-      let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto" />`;
+      let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto"${first_image ? "" : "loading=lazy"} />`;
       if (title) {
         out += `<figcaption>${marked(title)}</figcaption>`;
       }
       out += "</figure>";
+      first_image = false;
       return out;
     },
   };

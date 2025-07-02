@@ -1,6 +1,6 @@
 <script lang='ts'>
-import BackToHome from "$lib/backToHome.svelte";
-import ProjectCard from "$lib/projectCard.svelte";
+import BackToHome from "$lib/components/BackToHome.svelte";
+import ProjectCard from "$lib/components/ProjectCard.svelte";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
