@@ -33,7 +33,7 @@ let { data }: Props = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<article class="w-full mt-4 prose text-[17px] my-12 lg:my-24">
+<article class="mx-auto mt-4 prose text-[17px] my-12 lg:my-24">
   <header class="my-12! lg:my-24!">
     <h1 class="mb-2! text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
