@@ -1,6 +1,5 @@
 <script lang='ts'>
 import type { Project } from "$lib/types.ts";
-import { slide } from "svelte/transition";
 
 interface Props {
   project: Project;
