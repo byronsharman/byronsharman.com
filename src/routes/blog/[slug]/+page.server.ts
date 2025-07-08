@@ -5,6 +5,7 @@ import type { PageServerLoad } from "./$types";
 import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
 import { marked } from "marked";
+import type { Tokens } from "marked";
 
 import { checkImageProperties, getBlogCardData } from "$lib/server/blogUtils";
 import type {
@@ -27,7 +28,7 @@ export const load: PageServerLoad = async ({
     // these are modifications of the default renderer
     // https://github.com/markedjs/marked/blob/master/src/Renderer.ts
 
-    code(text: string, lang: string): string {
+    code({ text, lang }: Tokens.Code): string {
       const langString: string | undefined = (lang || "").match(/^\S*/)?.[0];
 
       let code = `${text.replace(/\n$/, "")}\n`;
@@ -45,7 +46,7 @@ export const load: PageServerLoad = async ({
       return code;
     },
 
-    image(href: string, title: string | null, text: string): string {
+    image({ href, title, text }: Tokens.Image): string {
       if (href === "") return text;
       const imgPath = `/blog/images/${params.slug}/${href}`;
       const { width, height } = imageSizeFromFile(`static${imgPath}`);
