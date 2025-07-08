@@ -97,13 +97,12 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
 
   return (
     await Promise.allSettled(
-      (Object.entries(await res.json()) as [string, Project][]).map(
+      Object.entries((await res.json()) as Record<string, Project>).map(
         async ([projectName, project]) => {
           if (project.image !== undefined) {
             const { width, height } = await imageSizeFromFile(
               `static/${project.image.path}`,
             );
-            // TODO: ProjectImage.{ width, height } should probably have type number | undefined
             if (width !== undefined && height !== undefined) {
               project.image.width = width;
               project.image.height = height;

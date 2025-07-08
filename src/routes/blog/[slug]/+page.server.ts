@@ -72,13 +72,13 @@ export const load: PageServerLoad = async ({
   const res = await fetch("/blog/index.json");
   if (!res.ok) throw Error("could not fetch /blog/index.json");
 
-  const builder = ((await res.json()) as { [slug: string]: BlogInJson })[
+  const builder = ((await res.json()) as Record<string, BlogInJson>)[
     params.slug
   ];
   if (builder === undefined || !builder.published)
     return error(404, "Not found");
 
-  let previewImage: BlogPreviewImage | undefined = undefined;
+  let previewImage: BlogPreviewImage | undefined;
   if (checkImageProperties(params.slug, builder)) {
     const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${builder.previewImage}.`;
     previewImage = {
