@@ -109,9 +109,9 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
           }
         }
         switch (project.type) {
-          case "github":
+          case ProjectType.GitHub:
             return await createGithubProject(projectName, project, fetchFunc);
-          case "blog":
+          case ProjectType.Blog:
             return await createBlogProject(projectName, project, fetchFunc);
           default:
             console.error(
