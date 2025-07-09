@@ -13,7 +13,7 @@ let { project }: Props = $props();
     {#if project.image !== undefined}
       <img
         alt={project.image.alt}
-        class="object-contain max-h-60 mb-4 sm:float-right sm:max-w-72 sm:ml-4 aspect-[{project.image.width/project.image.height}]"
+        class="object-contain max-h-60 mb-(--spc-std) sm:float-right sm:max-w-72 sm:ml-(--spc-std) aspect-[{project.image.width/project.image.height}]"
         loading="lazy"
         src={project.image.path}
       />
@@ -27,7 +27,7 @@ let { project }: Props = $props();
         <span class="font-normal text-gray-800">{`(this website!)`}</span>
       {/if}
     </h2>
-    <p class="text-sm text-gray-600 mb-4">{project.languages.join(', ')}</p>
+    <p class="text-sm text-gray-600 mb-(--spc-std)">{project.languages.join(', ')}</p>
     <div class="prose max-w-max">{@html project.description}</div>
   </a>
 </article>

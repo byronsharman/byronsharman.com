@@ -29,9 +29,9 @@ let { data }: PageProps = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<article class="mx-auto mt-4 prose text-[17px] my-12 lg:my-24">
+<article class="prose text-[17px] my-12 lg:my-24">
   <header class="my-12! lg:my-24!">
-    <h1 class="mb-2! text-balance">{data.title}</h1>
+    <h1 class="mb-(--spc-sm)! text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
     {#if data.customHeaderMD}
       <small class="block">
@@ -44,7 +44,7 @@ let { data }: PageProps = $props();
 
 <hr class="border-gray-600" />
 
-<section class="my-12 lg:my-24">
+<section class="mt-12 lg:mt-24">
   <h2 class="my-12 font-bold text-3xl">Recent Posts</h2>
   <div class="card-list">
     {#each data.recentBlogs as blog}
