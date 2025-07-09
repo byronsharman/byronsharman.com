@@ -22,16 +22,15 @@ also reunited with us.
 ## The first few hours
 ![Lukas and I work on our laptops in a nice campus building. We are both smiling.](lukas_and_byron.avif "Lukas (left) and I (right) worked all night long on Friday.")
 
-The most memorable part of opening ceremonies was
-[Sumner](https://sumnerevans.com/)'s keynote. His competitive approach to
-hackathons contrasts with my casual one, so I was interested to hear what he
-had to say. Although I recognize that hacking with pressure to win can be a
-really fun way to experience a hackathon, I've found that what judges find cool
-or interesting rarely aligns with what I find cool or interesting, especially
-given the current prevalence of AI. Hackathons are like marathons; some aspire
-to be the fastest, but most participate because it's really hard to run
-26&nbsp;miles nonstop, and the feeling of finally accomplishing that feat after
-months of training is fun and fulfilling.
+The most memorable part of opening ceremonies was the keynote, given by Sumner
+Evans. His competitive approach to hackathons contrasts with my casual one, so
+I was interested to hear what he had to say. Although I recognize that hacking
+with pressure to win can be a really fun way to experience a hackathon, I've
+found that what judges find cool or interesting rarely aligns with what I find
+cool or interesting, especially given the current prevalence of AI. Hackathons
+are like marathons; some aspire to be the fastest, but most participate because
+it's really hard to run 26&nbsp;miles nonstop, and the feeling of finally
+accomplishing that feat after months of training is fun and fulfilling.
 
 Similarly preferring the intrinsic fun of coding over the thrill of winning, my
 teammates elected to avoid the web apps and AI wrappers that so often win
