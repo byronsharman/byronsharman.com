@@ -48,15 +48,15 @@ let { data }: PageProps = $props();
 </svelte:head>
 
 <header class="hero-header">
-  <div class="flex flex-row items-center h-24 my-4 lg:my-8 gap-4 lg:gap-6">
-    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="h-full rounded-full" />
+  <div class="flex flex-col md:flex-row md:flex-wrap items-center my-4 lg:my-8 gap-4 md:gap-8">
+    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-42 rounded-full" />
     <div>
-      <h1>Byron Sharman</h1>
-      <ul class="mt-2 lg:mt-4 flex flex-row space-x-2 pointer-coarse:space-x-4">
+      <h1 class="text-4xl! lg:text-5xl!">Byron Sharman</h1>
+      <ul class="mt-2 lg:mt-4 place-content-center md:place-content-start flex flex-row space-x-3 pointer-coarse:space-x-4">
         {#each socials as social}
           <li>
             <a href={social.targetUrl}>
-              <img alt={social.iconAlt} src={social.iconSrc} class="size-5 pointer-coarse:size-6" />
+              <img alt={social.iconAlt} src={social.iconSrc} class="size-5 pointer-coarse:size-6 opacity-75" />
             </a>
           </li>
         {/each}
@@ -64,7 +64,7 @@ let { data }: PageProps = $props();
     </div>
   </div>
 
-  <p class="my-4 max-w-xl text-gray-700">
+  <p class="my-4 max-w-xl lg:text-lg text-gray-700">
     I'm Byron, a computer science student at Colorado School of Mines. I
     like to make things, learn technologies, and explore the world,
     both physically and conceptually.
