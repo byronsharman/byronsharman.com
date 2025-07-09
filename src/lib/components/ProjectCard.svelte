@@ -31,3 +31,15 @@ let { project }: Props = $props();
     <div class="prose max-w-max">{@html project.description}</div>
   </a>
 </article>
+
+<style>
+@reference "../../app.css";
+
+/* code needs to be a little darker when rendered on a non-white background */
+/* note that this style is applied globally through the whole project, since scoped styling doesn't work with @html tags */
+:global {
+  .card .prose code {
+    @apply bg-gray-300;
+  }
+}
+</style>
