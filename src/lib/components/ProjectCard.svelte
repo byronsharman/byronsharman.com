@@ -18,13 +18,13 @@ let { project }: Props = $props();
         src={project.image.path}
       />
     {/if}
-    <h2 class="font-bold text-xl mb-2">
+    <h2>
       {project.name}
       {#if project.hackathonName !== undefined}
-        <span class="font-normal text-gray-600">{`[${project.hackathonName}]`}</span>
+        <span class="font-normal text-gray-800">{`[${project.hackathonName}]`}</span>
       {/if}
       {#if project.name === 'byronsharman.com'}
-        <span class="font-normal text-gray-600">{`(this website!)`}</span>
+        <span class="font-normal text-gray-800">{`(this website!)`}</span>
       {/if}
     </h2>
     <p class="text-sm text-gray-600 mb-4">{project.languages.join(', ')}</p>

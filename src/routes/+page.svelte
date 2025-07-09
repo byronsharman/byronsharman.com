@@ -64,7 +64,7 @@ let { data }: PageProps = $props();
     </div>
   </div>
 
-  <p class="my-4 max-w-xl text-gray-800">
+  <p class="my-4 max-w-xl text-gray-700">
     I'm Byron, a computer science student at Colorado School of Mines. I
     like to make things, learn technologies, and explore the world,
     both physically and conceptually.

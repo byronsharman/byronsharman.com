@@ -8,7 +8,7 @@
 }
 
 .hero-header h1 {
-  @apply font-bold text-2xl lg:text-4xl;
+  @apply font-extrabold text-2xl lg:text-4xl;
 }
 
 @utility card-list {
@@ -16,17 +16,22 @@
 }
 
 .card > a {
-  @apply block p-4 lg:p-6 bg-white rounded-xl shadow-xs;
+  @apply block p-6 bg-gray-100 rounded-lg;
+}
+
+.card h2, .card h3 {
+  @apply font-semibold text-lg mb-2;
 }
 
 @theme {
   --spc-std: calc(var(--spacing) * 4);
   --spc-lg: calc(var(--spacing) * 8);
+  --blog-text: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
 }
 
 @layer base {
-  .prose {
-    @apply text-gray-950! marker:text-gray-950!;
+  .prose, .prose::marker {
+    color: var(--blog-text) !important;
   }
   .prose blockquote {
     quotes: none !important;
