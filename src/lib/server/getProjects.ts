@@ -95,31 +95,33 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
     return projects;
   }
 
-  return Promise.all(
-    (Object.entries(await res.json()) as [string, Project][])
-      .map(async ([projectName, project]) => {
-        if (project.image !== undefined) {
-          const { width, height } = await imageSizeFromFile(
-            `static/${project.image.path}`,
-          );
-          // TODO: ProjectImage.{ width, height } should probably have type number | undefined
-          if (width !== undefined && height !== undefined) {
-            project.image.width = width;
-            project.image.height = height;
-          }
-        }
-        switch (project.type) {
-          case "github":
-            return await createGithubProject(projectName, project, fetchFunc);
-          case "blog":
-            return await createBlogProject(projectName, project, fetchFunc);
-          default:
-            console.error(
-              `Error when parsing projects: unrecognized project type ${project.type}`,
+  return (
+    await Promise.allSettled(
+      Object.entries((await res.json()) as Record<string, Project>).map(
+        async ([projectName, project]) => {
+          if (project.image !== undefined) {
+            const { width, height } = await imageSizeFromFile(
+              `static/${project.image.path}`,
             );
-            return null;
-        }
-      })
-      .filter((projectPromise) => projectPromise !== null),
-  );
+            if (width !== undefined && height !== undefined) {
+              project.image.width = width;
+              project.image.height = height;
+            }
+          }
+          switch (project.type) {
+            case ProjectType.GitHub:
+              return await createGithubProject(projectName, project, fetchFunc);
+            case ProjectType.Blog:
+              return await createBlogProject(projectName, project, fetchFunc);
+            default:
+              throw new Error(
+                `Error when parsing projects: unrecognized project type ${project.type}`,
+              );
+          }
+        },
+      ),
+    )
+  )
+    .filter((outcome) => outcome.status === "fulfilled")
+    .map((outcome) => outcome.value);
 }

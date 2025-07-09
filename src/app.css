@@ -3,30 +3,41 @@
 @plugin "@tailwindcss/typography";
 
 @utility hero-header {
-  /* It was horribly difficult trying to get the header and main margins to collapse without messing up the background color, so instead I adjust the header top margin so that it plus the main padding equal the header bottom margin, thus making equal space above and below the header. */
-  @apply mb-12 lg:mb-36 mt-[calc(calc(var(--spacing)_*_12)_-_var(--spc-std))] lg:mt-[calc(calc(var(--spacing)_*_36)_-_var(--spc-lg))];
+  @apply my-12 lg:my-36;
 }
 
 .hero-header h1 {
-  @apply font-bold text-2xl lg:text-4xl;
+  @apply font-extrabold text-4xl;
 }
 
 @utility card-list {
-  @apply space-y-(--spc-std) lg:space-y-(--spc-lg);
+  @apply space-y-(--spc-std) lg:space-y-(--spc-lg) my-(--spc-std) lg:my-(--spc-lg);
 }
 
 .card > a {
-  @apply block p-4 lg:p-6 bg-white rounded-xl shadow-xs;
+  @apply block p-6 bg-gray-100 rounded-lg;
+}
+
+.card h2, .card h3 {
+  @apply font-semibold text-lg mb-(--spc-sm);
 }
 
 @theme {
+  --spc-sm: calc(var(--spacing) * 2);
   --spc-std: calc(var(--spacing) * 4);
   --spc-lg: calc(var(--spacing) * 8);
+  --blog-text: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
 }
 
 @layer base {
-  .prose {
-    @apply text-gray-950! marker:text-gray-950!;
+  .prose, .prose::marker {
+    color: var(--blog-text) !important;
+  }
+  .prose aside {
+    @apply border-l-4 pl-4 text-sm/6 text-gray-600 border-gray-200;
+  }
+  .prose aside code {
+    @apply p-0.5;
   }
   .prose blockquote {
     quotes: none !important;
@@ -36,7 +47,7 @@
     @apply before:content-['—'] ps-8 not-italic;
   }
   .prose code {
-    @apply font-normal! p-1 rounded-sm bg-neutral-200 before:content-none! after:content-none!;
+    @apply font-normal! p-1 rounded-sm bg-neutral-100 before:content-none! after:content-none!;
   }
   .prose code strong {
     @apply font-bold;
@@ -51,7 +62,7 @@
     @apply my-6!;
   }
   .prose pre {
-    @apply p-0! overflow-x-auto bg-white! text-inherit! text-sm!;
+    @apply p-0! overflow-x-auto bg-neutral-100! text-inherit! text-sm!;
   }
   .prose pre code {
     @apply m-5! block! min-w-fit whitespace-pre!;

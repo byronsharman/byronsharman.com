@@ -4,39 +4,37 @@ export enum ProjectType {
   NetworkError = "networkerror",
 }
 
-interface BaseBlog {
+type BaseBlog = {
+  customHeaderMD?: string;
   date: number;
   preview: string;
   title: string;
-}
+};
 
-export interface BlogCardData extends BaseBlog {
+export type BlogCardData = Omit<BaseBlog, "customHeaderMD"> & {
   slug: string;
   url: string;
-}
-
-// helper type to avoid duplication
-interface Blog extends BaseBlog {
-  customHeaderMD?: string;
-}
+};
 
 // describes the blogs in index.json
-export interface BlogInJson extends Blog {
-  openGraphImageExt?: string;
-  previewImage?: string;
-  previewImageAlt?: string;
-  previewImageExt?: string;
-  published: boolean;
-}
+export type BlogInJson = Readonly<
+  BaseBlog & {
+    openGraphImageExt?: string;
+    previewImage?: string;
+    previewImageAlt?: string;
+    previewImageExt?: string;
+    published: boolean;
+  }
+>;
 
 // contains all the extra fields necessary to render a full blog page
-export interface RenderBlog extends Blog {
+export type RenderBlog = BaseBlog & {
   absoluteUrl: string;
   html: string;
   ldjson: string;
   previewImage?: BlogPreviewImage;
   recentBlogs: BlogCardData[];
-}
+};
 
 export type Project = {
   bottomText: string;
@@ -65,8 +63,8 @@ type BaseImage = {
 
 export type ProjectImage = BaseImage & {
   path: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 };
 
 export type BlogPreviewImage = BaseImage & {

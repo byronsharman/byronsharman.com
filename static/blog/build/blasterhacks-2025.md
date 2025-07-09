@@ -8,11 +8,9 @@ hackathon and one of the most enjoyable yet. I'm a little behind the times with
 this blog post—the event happened in April—but thanks to my trusty notes, I
 haven't lost any details.
 
-<aside class="text-sm">
-    <strong>Aside:</strong> If you're thinking, "Em dashes? He's using AI!"
-    you're incorrect. A loyal, long-term em dash fan, I have had the codepoint
-    <code>U+2024</code> memorized since high school.
-</aside>
+> **Aside:** If you're thinking, "Em dashes? He's using AI!" you're incorrect.
+> A loyal, long-term em dash fan, I have had the codepoint `U+2024` memorized
+> since high school.
 
 [Lukas](https://lukaswerner.com/) was on my team last Blasterhacks, but since
 then, he transferred to Oregon State. Thankfully, he flew all the way back to
@@ -22,16 +20,15 @@ also reunited with us.
 ## The first few hours
 ![Lukas and I work on our laptops in a nice campus building. We are both smiling.](lukas_and_byron.avif "Lukas (left) and I (right) worked all night long on Friday.")
 
-The most memorable part of opening ceremonies was
-[Sumner](https://sumnerevans.com/)'s keynote. His competitive approach to
-hackathons contrasts with my casual one, so I was interested to hear what he
-had to say. Although I recognize that hacking with pressure to win can be a
-really fun way to experience a hackathon, I've found that what judges find cool
-or interesting rarely aligns with what I find cool or interesting, especially
-given the current prevalence of AI. Hackathons are like marathons; some aspire
-to be the fastest, but most participate because it's really hard to run
-26&nbsp;miles nonstop, and the feeling of finally accomplishing that feat after
-months of training is fun and fulfilling.
+The most memorable part of opening ceremonies was the keynote, given by Sumner
+Evans. His competitive approach to hackathons contrasts with my casual one, so
+I was interested to hear what he had to say. Although I recognize that hacking
+with pressure to win can be a really fun way to experience a hackathon, I've
+found that what judges find cool or interesting rarely aligns with what I find
+cool or interesting, especially given the current prevalence of AI. Hackathons
+are like marathons; some aspire to be the fastest, but most participate because
+it's really hard to run 26&nbsp;miles nonstop, and the feeling of finally
+accomplishing that feat after months of training is fun and fulfilling.
 
 Similarly preferring the intrinsic fun of coding over the thrill of winning, my
 teammates elected to avoid the web apps and AI wrappers that so often win

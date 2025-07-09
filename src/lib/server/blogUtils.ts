@@ -15,7 +15,7 @@ export async function getBlogCardData(
   if (!res.ok) throw Error("could not fetch /blog/index.json");
 
   const entries = Object.entries(
-    (await res.json()) as { [slug: string]: BlogInJson },
+    (await res.json()) as Record<string, BlogInJson>,
   );
 
   entries.forEach(([slug, blog]) => checkImageProperties(slug, blog));

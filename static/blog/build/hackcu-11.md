@@ -100,12 +100,9 @@ for all direct and non-direct child elements of the timeline with that class
 attribute. Turns out the Tailwind syntax for this is
 `**:[&.opposite-block]:hidden`.
 
-<small>
-    No, I did not use AI to figure this out. I read the documentation! (Whoa!)
-    This was important because at the time there was a new
-    backwards-incompatible release of Tailwind for which AI had little training
-    data.
-</small>
+> No, I did not use AI to figure this out. I read the documentation! (Whoa!)
+> This was important because at the time there was a new backwards-incompatible
+> release of Tailwind for which AI had little training data.
 
 As the end drew near, most of my commits were minor things like [`text-wrap:
 pretty`](https://developer.mozilla.org/en-US/docs/Web/CSS/text-wrap), showing
