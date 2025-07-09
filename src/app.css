@@ -8,7 +8,7 @@
 }
 
 .hero-header h1 {
-  @apply font-extrabold text-2xl lg:text-4xl;
+  @apply font-extrabold text-4xl;
 }
 
 @utility card-list {
