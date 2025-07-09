@@ -28,6 +28,10 @@ export const load: PageServerLoad = async ({
     // these are modifications of the default renderer
     // https://github.com/markedjs/marked/blob/master/src/Renderer.ts
 
+    blockquote({ text }: Tokens.Blockquote): string {
+      return `<aside>${marked(text)}</aside>`;
+    },
+
     code({ text, lang }: Tokens.Code): string {
       const langString: string | undefined = (lang || "").match(/^\S*/)?.[0];
 

@@ -8,11 +8,9 @@ hackathon and one of the most enjoyable yet. I'm a little behind the times with
 this blog post—the event happened in April—but thanks to my trusty notes, I
 haven't lost any details.
 
-<aside class="text-sm">
-    <strong>Aside:</strong> If you're thinking, "Em dashes? He's using AI!"
-    you're incorrect. A loyal, long-term em dash fan, I have had the codepoint
-    <code>U+2024</code> memorized since high school.
-</aside>
+> **Aside:** If you're thinking, "Em dashes? He's using AI!" you're incorrect.
+> A loyal, long-term em dash fan, I have had the codepoint `U+2024` memorized
+> since high school.
 
 [Lukas](https://lukaswerner.com/) was on my team last Blasterhacks, but since
 then, he transferred to Oregon State. Thankfully, he flew all the way back to

@@ -33,6 +33,12 @@
   .prose, .prose::marker {
     color: var(--blog-text) !important;
   }
+  .prose aside {
+    @apply border-l-4 pl-4 text-sm/6 text-gray-600 border-gray-200;
+  }
+  .prose aside code {
+    @apply p-0.5;
+  }
   .prose blockquote {
     quotes: none !important;
     @apply not-italic!;

@@ -14,7 +14,9 @@ Some of my favorite Ex commands, aside from the universal ones, are `:copy` and 
 
 Also, remember marks? I never understood how marks could be very useful until I realized their power when it comes to specifying ranges. Say your cursor is near the bottom of the screen, and there are some lines near the top that you want to copy to your current position. They're far away, so it's unwieldy to find the relative numbers and type `:-17,-14t.`. Instead, you want to select those lines with your mouse. So you mark the current line with `ma` and select the target lines graphically. This updates the `'<` and `'>` marks to reflect the start and end of the selection, respectively, and when you type `:` in Visual mode, the corresponding range `'<,'>` is automatically inserted. Now, type `:t'a` and your selection magically appears exactly where you wanted. Isn't that so much more natural than making a mouse selection, pressing `V` to make sure you've got everything, yanking it, then pressing `Ctrl-O` and ascertaining whether to choose `p` or `P`? Even better, if the starting line was the line you had edited most recently, you could have used the built-in mark `'.` that records the position of the last modification, skipping the `ma` step!
 
-<small>**Note:** If you accidentally exit Visual mode before entering Command-line mode, you can use `*` as a shorthand for `'<,'>`. See [`:h :star`](https://neovim.io/doc/user/cmdline.html#%3Astar).</small>
+> **Note:** If you accidentally exit Visual mode before entering Command-line
+> mode, you can use `*` as a shorthand for `'<,'>`. See
+> [`:h :star`](https://neovim.io/doc/user/cmdline.html#%3Astar).
 
 At this point, you might be unconvinced. You've spent the last few minutes inventing counterexamples to the greatness of Ex commands. I concede that Ex commands are not universally superior; rather, they are preferable often enough to deserve incorporation into your Vim style. They're also just a ton of fun to use when the right situation arises.
 
@@ -33,11 +35,14 @@ Let's look at a more concrete example. Suppose you have this CSV data and you wa
 ```
 To convert this to LaTeX, you need to replace the commas with ampersands and append `\\` to each line. Let's say you address the first of those with the canonical `:%s/,/ \&`. Then, you have a couple options for the second. You could spend a few seconds coming up with a fancy regex like `:%s/.*/\0\\\\` or the slightly slimmer `:%s/$/\\\\`. You could painfully record a macro and replay it, `qaA\\^Escjq5@a`. You could think back to your multiple-cursor IDE days and reach for the setup-intensive Visual Block solution, `gg$Ctrl-VGA\\^Esc`. Or, you could do the **natural** and **brainless (in a good way)** option: `:%norm A\\`. This combines the power of `:s` with the intuition of the Visual block solution.
 
-<small>**Note:** One useful command stemming from this is `:%norm ==`, which auto-indents every line in the buffer.</small>
+> **Note:** One useful command stemming from this is `:%norm ==`, which
+> auto-indents every line in the buffer.
 
 Still unconvinced? I've just gotten started on `:norm`. You know how when you discover macros for the very first time and play out a really good one, you feel immense satisfaction as everything falls into order and you briefly experience omnipotence? Well, if you want more of that feeling, try combining `:norm` with the [power of `:g[lobal]`](https://vim.fandom.com/wiki/Power_of_g). Say that you're writing a quick Python script to solve an Advent of Code problem and you want to comment out your multitudinous debug `print`s. `:g/print/norm I# `. Boom. You just commented every single line containing `print` in the entire file. If you have a keybinding configured for one of those new-fangled extensions that comment code depending on what language you're in, that'll work with `:norm` as well. You can also use `:g` with ranges if you have some non-debug `print`s that you want to keep.
 
-<small>**Note:** If you don't want `:norm` to adapt to your custom mappings, use `:norm!`, which executes the vanilla keystrokes. This is especially useful for sending configuration-agnostic Vim tricks.</small>
+> **Note:** If you don't want `:norm` to adapt to your custom mappings, use
+> `:norm!`, which executes the vanilla keystrokes. This is especially useful
+> for sending configuration-agnostic Vim tricks.
 
 This can get even more powerful. I was doing some discrete math homework in LaTeX with a template that caused tables to appear awkwardly without a line break.
 ![screenshot of the strange LaTeX artifact](inline_table.png "Look, an excuse to practice our Vim skills!")
