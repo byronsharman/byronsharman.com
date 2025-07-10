@@ -18,10 +18,7 @@ import type {
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
 
-export const load: PageServerLoad = async ({
-  fetch,
-  params,
-}): Promise<RenderBlog> => {
+function configureMarked(slug: string): void {
   let first_image = true;
 
   const renderer = {
@@ -52,7 +49,7 @@ export const load: PageServerLoad = async ({
 
     image({ href, title, text }: Tokens.Image): string {
       if (href === "") return text;
-      const imgPath = `/blog/images/${params.slug}/${href}`;
+      const imgPath = `/blog/images/${slug}/${href}`;
       const { width, height } = imageSizeFromFile(`static${imgPath}`);
       let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto"${first_image ? "" : "loading=lazy"} />`;
       if (title) {
@@ -63,7 +60,16 @@ export const load: PageServerLoad = async ({
       return out;
     },
   };
+
   marked.use({ renderer });
+}
+
+export const load: PageServerLoad = async ({
+  fetch,
+  params,
+}): Promise<RenderBlog> => {
+  // TODO: some duplication here with blogUtils, what to do about that?
+  const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
 
   // Why do we query index.json twice, once in blogUtils and once here? The
   // motive is to do as much of the data processing as possible server-side (in
@@ -73,13 +79,10 @@ export const load: PageServerLoad = async ({
   // Loading it twice isn't an issue because this is all (theoretically) done
   // at compile time.
 
+  configureMarked(params.slug);
+
   const res = await fetch("/blog/index.json");
   if (!res.ok) throw Error("could not fetch /blog/index.json");
-
-  // TODO: some duplication here with blogUtils, what to do about that?
-  const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
-
-
   const builder = ((await res.json()) as Record<string, BlogInJson>)[
     params.slug
   ];
