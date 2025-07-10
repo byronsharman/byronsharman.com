@@ -1,79 +1,67 @@
 @import "tailwindcss";
-
 @plugin "@tailwindcss/typography";
 
-@utility hero-header {
-  @apply my-12 lg:my-36;
-}
-
-.hero-header h1 {
-  @apply font-extrabold text-4xl;
-}
-
-@utility card-list {
-  @apply space-y-(--spc-std) lg:space-y-(--spc-lg) my-(--spc-std) lg:my-(--spc-lg);
-}
-
-.card > a {
-  @apply block p-6 bg-gray-100 rounded-lg;
-}
-
-.card h2, .card h3 {
-  @apply font-semibold text-lg mb-(--spc-sm);
-}
-
-@theme {
+:root {
   --spc-sm: calc(var(--spacing) * 2);
   --spc-std: calc(var(--spacing) * 4);
   --spc-lg: calc(var(--spacing) * 8);
   --blog-text: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
 }
 
-@layer base {
-  .prose, .prose::marker {
-    color: var(--blog-text) !important;
+@layer components {
+  .hero-header {
+    @apply my-12 lg:my-36;
+    h1 {
+      @apply font-extrabold text-4xl;
+    }
   }
-  .prose aside {
-    @apply border-l-4 pl-4 text-sm/6 text-gray-600 border-gray-200;
-  }
-  .prose aside code {
-    @apply p-0.5;
-  }
-  .prose blockquote {
-    quotes: none !important;
-    @apply not-italic!;
-  }
-  .prose blockquote attribution {
-    @apply before:content-['—'] ps-8 not-italic;
-  }
-  .prose code {
-    @apply font-normal! p-1 rounded-sm bg-neutral-100 before:content-none! after:content-none!;
-  }
-  .prose code strong {
-    @apply font-bold;
-  }
-  .prose figcaption {
-    @apply mt-4! text-gray-700!;
-  }
-  .prose figcaption p {
-    @apply my-0!;
-  }
-  .prose figure {
-    @apply my-6!;
-  }
-  .prose pre {
-    @apply p-0! overflow-x-auto bg-neutral-100! text-inherit! text-sm!;
-  }
-  .prose pre code {
-    @apply m-5! block! min-w-fit whitespace-pre!;
-  }
-  .prose img {
-    @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem] rounded-md;
-  }
-}
 
-@layer typography {
-  h1 {
-    @apply m-0;
+  .card-heading {
+    @apply font-semibold text-lg mb-(--spc-sm);
+  }
+
+  .prose {
+    color: var(--blog-text) !important;
+
+    li::marker {
+      color: var(--blog-text) !important;
+    }
+    aside {
+      @apply border-l-4 pl-4 text-sm/6 text-gray-600 border-gray-200;
+    }
+    aside code {
+      @apply p-0.5;
+    }
+    blockquote {
+      quotes: none !important;
+      @apply not-italic!;
+    }
+    blockquote attribution {
+      @apply before:content-['—'] ps-8 not-italic;
+    }
+    code {
+      @apply font-normal! p-1 rounded-sm bg-neutral-100 before:content-none! after:content-none!;
+    }
+    code strong {
+      @apply font-bold;
+    }
+    figcaption {
+      @apply mt-4! text-gray-700!;
+    }
+    figcaption p {
+      @apply my-0!;
+    }
+    figure {
+      @apply my-6!;
+    }
+    pre {
+      @apply p-0! overflow-x-auto bg-neutral-100! text-inherit! text-sm!;
+    }
+    pre code {
+      @apply m-5! block! min-w-fit whitespace-pre!;
+    }
+    img {
+      @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem] rounded-md;
+    }
   }
 }

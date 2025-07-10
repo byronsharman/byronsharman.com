@@ -1,5 +1,6 @@
 <script lang='ts'>
 import BlogCard from "$lib/components/BlogCard.svelte";
+import CardList from "$lib/components/CardList.svelte";
 import type { PageProps } from "./$types";
 
 // assets
@@ -78,12 +79,12 @@ let { data }: PageProps = $props();
   </a>
 </header>
 
-<section class="card-list my-(--spc-std) lg:my-(--spc-lg)">
+<CardList>
   <h2 class="sr-only">Blog Posts</h2>
   {#each data.blogs as blog}
     <BlogCard blog={blog} />
   {/each}
-</section>
+</CardList>
 
 <footer class="flex flex-row justify-between text-gray-600 text-xs">
   <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">

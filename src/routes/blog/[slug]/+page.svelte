@@ -5,6 +5,7 @@ import { marked } from "marked";
 
 import BackToHome from "$lib/components/BackToHome.svelte";
 import BlogCard from "$lib/components/BlogCard.svelte";
+import CardList from "$lib/components/CardList.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
 
@@ -46,11 +47,11 @@ let { data }: PageProps = $props();
 
 <section class="mt-12 lg:mt-24">
   <h2 class="my-12 font-bold text-3xl">Recent Posts</h2>
-  <div class="card-list">
+  <CardList>
     {#each data.recentBlogs as blog}
       <BlogCard blog={blog} />
     {/each}
-  </div>
+  </CardList>
 </section>
 
 <BackToHome />
