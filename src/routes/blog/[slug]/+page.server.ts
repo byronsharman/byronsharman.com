@@ -76,6 +76,10 @@ export const load: PageServerLoad = async ({
   const res = await fetch("/blog/index.json");
   if (!res.ok) throw Error("could not fetch /blog/index.json");
 
+  // TODO: some duplication here with blogUtils, what to do about that?
+  const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
+
+
   const builder = ((await res.json()) as Record<string, BlogInJson>)[
     params.slug
   ];
@@ -124,18 +128,18 @@ export const load: PageServerLoad = async ({
     .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
     .slice(0, RECENT_LIMIT);
 
-  const retval: RenderBlog = {
-    date: builder.date,
-    preview: builder.preview,
-    title: builder.title,
-    customHeaderMD: builder.customHeaderMD,
+  const { date, preview, title, customHeaderMD } = builder;
 
-    // TODO: some duplication here with blogUtils, what to do about that?
-    absoluteUrl: `${PUBLIC_BASE_URL}/blog/${params.slug}`,
-    html: html,
-    ldjson: ldjson,
-    previewImage: previewImage,
-    recentBlogs: recentBlogs,
+  const retval: RenderBlog = {
+    absoluteUrl,
+    customHeaderMD,
+    date,
+    html,
+    ldjson,
+    preview,
+    previewImage,
+    recentBlogs,
+    title,
   };
   return retval;
 };
