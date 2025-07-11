@@ -40,7 +40,7 @@
       @apply text-fg-blog! dark:text-fg-blog-dark!;
     }
     aside {
-      @apply border-l-std pl-std text-sm/6 text-fg-tertiary dark:text-fg-tertiary-dark border-neutral-200 dark:border-neutral-700;
+      @apply border-s-4 ps-std text-sm/6 text-fg-tertiary dark:text-fg-tertiary-dark border-neutral-200 dark:border-neutral-700;
     }
     aside code {
       @apply p-0.5;
