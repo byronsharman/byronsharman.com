@@ -8,9 +8,12 @@ import CardList from "$lib/components/CardList.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
 
+import darkThemeUrl from "$lib/assets/styles/dark.css?url";
+import lightThemeUrl from "$lib/assets/styles/light.css?url";
+
 const darkMode = new MediaQuery("prefers-color-scheme: dark");
 const syntaxHighlightingSrc = $derived(
-  darkMode.current ? "/src/lib/assets/styles/dark.css" : "/src/lib/assets/styles/light.css"
+  darkMode.current ? darkThemeUrl : lightThemeUrl
 )
 
 let { data }: PageProps = $props();
