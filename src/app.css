@@ -1,13 +1,11 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-:root {
-  --spc-sm: calc(var(--spacing) * 2);
-  --spc-std: calc(var(--spacing) * 4);
-  --spc-lg: calc(var(--spacing) * 8);
-}
-
 @theme {
+  --spacing-sm: calc(var(--spacing) * 2);
+  --spacing-std: calc(var(--spacing) * 4);
+  --spacing-lg: calc(var(--spacing) * 8);
+
   --color-fg-blog: color-mix(in oklch, var(--color-neutral-800), var(--color-neutral-900));
   --color-fg-primary: var(--color-black);
   --color-fg-secondary: var(--color-neutral-700);
@@ -32,7 +30,7 @@
   }
 
   .card-heading {
-    @apply font-semibold text-lg mb-(--spc-sm) text-fg-primary dark:text-fg-primary-dark;
+    @apply font-semibold text-lg mb-sm text-fg-primary dark:text-fg-primary-dark;
   }
 
   .prose {
@@ -42,7 +40,7 @@
       @apply text-fg-blog! dark:text-fg-blog-dark!;
     }
     aside {
-      @apply border-l-4 pl-4 text-sm/6 text-fg-tertiary dark:text-fg-tertiary-dark border-neutral-200 dark:border-neutral-700;
+      @apply border-l-std pl-std text-sm/6 text-fg-tertiary dark:text-fg-tertiary-dark border-neutral-200 dark:border-neutral-700;
     }
     aside code {
       @apply p-0.5;
@@ -61,7 +59,7 @@
       @apply font-bold;
     }
     figcaption {
-      @apply mt-4! text-fg-secondary! dark:text-fg-secondary-dark!;
+      @apply mt-std! text-fg-secondary! dark:text-fg-secondary-dark!;
     }
     figcaption p {
       @apply my-0!;

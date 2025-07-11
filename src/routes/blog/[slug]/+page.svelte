@@ -38,7 +38,7 @@ let { data }: PageProps = $props();
 
 <article class="prose dark:prose-invert text-[17px] my-12 lg:my-24">
   <header class="my-12! lg:my-24!">
-    <h1 class="mb-(--spc-sm)! text-balance">{data.title}</h1>
+    <h1 class="mb-sm! text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
     {#if data.customHeaderMD}
       <small class="block">

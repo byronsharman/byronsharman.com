@@ -13,7 +13,7 @@ let { project }: Props = $props();
   {#if project.image !== undefined}
     <img
       alt={project.image.alt}
-      class="object-contain max-h-60 mb-(--spc-std) sm:float-right sm:max-w-72 sm:ml-(--spc-std) aspect-[{project.image.width/project.image.height}]"
+      class="object-contain max-h-60 mb-std sm:float-right sm:max-w-72 sm:ml-std aspect-[{project.image.width/project.image.height}]"
       loading="lazy"
       src={project.image.path}
     />
@@ -27,7 +27,7 @@ let { project }: Props = $props();
       <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`(this website!)`}</span>
     {/if}
   </h2>
-  <p class="text-sm text-fg-tertiary dark:text-fg-tertiary-dark mb-(--spc-std)">{project.languages.join(', ')}</p>
+  <p class="text-sm text-fg-tertiary dark:text-fg-tertiary-dark mb-std">{project.languages.join(', ')}</p>
   <div class="prose dark:prose-invert max-w-max">{@html project.description}</div>
 </GenericCard>
 
