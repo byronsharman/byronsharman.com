@@ -1,6 +1,5 @@
 <script lang='ts'>
-import "highlight.js/styles/base16/papercolor-light.css";
-
+import { MediaQuery } from "svelte/reactivity";
 import { marked } from "marked";
 
 import BackToHome from "$lib/components/BackToHome.svelte";
@@ -8,6 +7,11 @@ import BlogCard from "$lib/components/BlogCard.svelte";
 import CardList from "$lib/components/CardList.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
+
+const darkMode = new MediaQuery("prefers-color-scheme: dark");
+const syntaxHighlightingSrc = $derived(
+  darkMode.current ? "/src/lib/assets/styles/dark.css" : "/src/lib/assets/styles/light.css"
+)
 
 let { data }: PageProps = $props();
 </script>
@@ -27,10 +31,12 @@ let { data }: PageProps = $props();
   <meta property="og:description" content={data.preview} />
   <meta property="og:site_name" content="Byron Sharman's blog" />
 
+  <link rel="stylesheet" href={syntaxHighlightingSrc} />
+
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<article class="prose text-[17px] my-12 lg:my-24">
+<article class="prose dark:prose-invert text-[17px] my-12 lg:my-24">
   <header class="my-12! lg:my-24!">
     <h1 class="mb-(--spc-sm)! text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
@@ -43,10 +49,10 @@ let { data }: PageProps = $props();
   {@html data.html}
 </article>
 
-<hr class="border-gray-600" />
+<hr class="border-neutral-600 dark:border-neutral-300" />
 
 <section class="mt-12 lg:mt-24">
-  <h2 class="my-12 font-bold text-3xl">Recent Posts</h2>
+  <h2 class="my-12 font-bold text-3xl text-black dark:text-white">Recent Posts</h2>
   <CardList>
     {#each data.recentBlogs as blog}
       <BlogCard blog={blog} />

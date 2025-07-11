@@ -21,14 +21,14 @@ let { project }: Props = $props();
   <h2 class="card-heading">
     {project.name}
     {#if project.hackathonName !== undefined}
-      <span class="font-normal text-gray-800">{`[${project.hackathonName}]`}</span>
+      <span class="font-normal text-neutral-800">{`[${project.hackathonName}]`}</span>
     {/if}
     {#if project.name === 'byronsharman.com'}
-      <span class="font-normal text-gray-800">{`(this website!)`}</span>
+      <span class="font-normal text-neutral-800">{`(this website!)`}</span>
     {/if}
   </h2>
-  <p class="text-sm text-gray-600 mb-(--spc-std)">{project.languages.join(', ')}</p>
-  <div class="prose max-w-max">{@html project.description}</div>
+  <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-(--spc-std)">{project.languages.join(', ')}</p>
+  <div class="prose dark:prose-invert max-w-max">{@html project.description}</div>
 </GenericCard>
 
 <style>
@@ -38,7 +38,7 @@ let { project }: Props = $props();
 /* note that this style is applied globally through the whole project, since scoped styling doesn't work with @html tags */
 :global {
   .card .prose code {
-    @apply bg-gray-300;
+    @apply bg-neutral-300 dark:bg-neutral-700;
   }
 }
 </style>

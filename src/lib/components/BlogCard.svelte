@@ -12,6 +12,6 @@ let { blog }: Props = $props();
 
 <GenericCard href={blog.url}>
   <h3 class="card-heading text-pretty">{blog.title}</h3>
-  <p class="grow mb-(--spc-sm) line-clamp-3 text-gray-700">{blog.preview}</p>
+  <p class="grow mb-(--spc-sm) line-clamp-3 text-neutral-700 dark:text-neutral-200">{blog.preview}</p>
   <DateP unixtime={blog.date} />
 </GenericCard>
