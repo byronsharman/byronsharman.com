@@ -65,13 +65,13 @@ let { data }: PageProps = $props();
     </div>
   </div>
 
-  <p class="my-4 max-w-xl lg:text-lg text-neutral-700 dark:text-neutral-300">
+  <p class="my-4 max-w-xl lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
     I'm Byron, a computer science student at Colorado School of Mines. I
     like to make things, learn technologies, and explore the world,
     both physically and conceptually.
   </p>
 
-  <a href="/projects" class="my-4 lg:my-8 underline text-black dark:text-white">
+  <a href="/projects" class="my-4 lg:my-8 underline text-fg-primary dark:text-fg-primary-dark">
     Explore my projects
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline">
       <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
@@ -86,7 +86,7 @@ let { data }: PageProps = $props();
   {/each}
 </CardList>
 
-<footer class="flex flex-row justify-between text-neutral-600 dark:text-neutral-400 text-xs">
+<footer class="flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
   <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">
     <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M4.205 8.72805L12.205 3.72805C13.2041 3.10363 14.5 3.82189 14.5 5.00004V15C14.5 16.1782 13.2041 16.8965 12.205 16.272L4.205 11.272C3.265 10.6845 3.265 9.31555 4.205 8.72805Z" />

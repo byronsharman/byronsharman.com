@@ -21,24 +21,27 @@ let { project }: Props = $props();
   <h2 class="card-heading">
     {project.name}
     {#if project.hackathonName !== undefined}
-      <span class="font-normal text-neutral-800">{`[${project.hackathonName}]`}</span>
+      <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`[${project.hackathonName}]`}</span>
     {/if}
     {#if project.name === 'byronsharman.com'}
-      <span class="font-normal text-neutral-800">{`(this website!)`}</span>
+      <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`(this website!)`}</span>
     {/if}
   </h2>
-  <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-(--spc-std)">{project.languages.join(', ')}</p>
+  <p class="text-sm text-fg-tertiary dark:text-fg-tertiary-dark mb-(--spc-std)">{project.languages.join(', ')}</p>
   <div class="prose dark:prose-invert max-w-max">{@html project.description}</div>
 </GenericCard>
 
 <style>
 @reference "../../app.css";
 
-/* code needs to be a little darker when rendered on a non-white background */
+/* code needs to have a little more contrast when on a secondary background */
 /* note that this style is applied globally through the whole project, since scoped styling doesn't work with @html tags */
 :global {
   .card .prose code {
-    @apply bg-neutral-300 dark:bg-neutral-700;
+    background-color: oklch(from var(--color-bg-secondary) calc(l - 0.1) c h);
+    @media (prefers-color-scheme: dark) {
+      background-color: oklch(from var(--color-bg-secondary-dark) calc(l + 0.1) c h);
+    }
   }
 }
 </style>

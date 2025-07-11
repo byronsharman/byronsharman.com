@@ -49,10 +49,10 @@ let { data }: PageProps = $props();
   {@html data.html}
 </article>
 
-<hr class="border-neutral-600 dark:border-neutral-300" />
+<hr class="border-fg-tertiary dark:border-fg-tertiary-dark" />
 
 <section class="mt-12 lg:mt-24">
-  <h2 class="my-12 font-bold text-3xl text-black dark:text-white">Recent Posts</h2>
+  <h2 class="my-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
   <CardList>
     {#each data.recentBlogs as blog}
       <BlogCard blog={blog} />

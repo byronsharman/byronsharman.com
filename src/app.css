@@ -5,30 +5,44 @@
   --spc-sm: calc(var(--spacing) * 2);
   --spc-std: calc(var(--spacing) * 4);
   --spc-lg: calc(var(--spacing) * 8);
-  --blog-text: color-mix(in oklch, var(--color-neutral-800), var(--color-neutral-900));
-  --blog-text-dark: color-mix(in oklch, var(--color-neutral-200), var(--color-neutral-100));
+}
+
+@theme {
+  --color-fg-blog: color-mix(in oklch, var(--color-neutral-800), var(--color-neutral-900));
+  --color-fg-primary: var(--color-black);
+  --color-fg-secondary: var(--color-neutral-700);
+  --color-fg-tertiary: var(--color-neutral-600);
+  --color-bg-primary: var(--color-white);
+  --color-bg-secondary: var(--color-neutral-100);
+
+  --color-fg-blog-dark: color-mix(in oklch, var(--color-neutral-200), var(--color-neutral-100));
+  --color-fg-primary-dark: var(--color-white);
+  --color-fg-secondary-dark: var(--color-neutral-300);
+  --color-fg-tertiary-dark: var(--color-neutral-400);
+  --color-bg-primary-dark: var(--color-neutral-900);
+  --color-bg-secondary-dark: var(--color-neutral-800);
 }
 
 @layer components {
   .hero-header {
     @apply my-12 lg:my-36;
     h1 {
-      @apply font-extrabold text-4xl text-black dark:text-white;
+      @apply font-extrabold text-4xl text-fg-primary dark:text-fg-primary-dark;
     }
   }
 
   .card-heading {
-    @apply font-semibold text-lg mb-(--spc-sm) text-black dark:text-white;
+    @apply font-semibold text-lg mb-(--spc-sm) text-fg-primary dark:text-fg-primary-dark;
   }
 
   .prose {
-    @apply text-(--blog-text)! dark:text-(--blog-text-dark)!;
+    @apply text-fg-blog! dark:text-fg-blog-dark!;
 
     li::marker {
-      @apply text-(--blog-text)! dark:text-(--blog-text-dark)!;
+      @apply text-fg-blog! dark:text-fg-blog-dark!;
     }
     aside {
-      @apply border-l-4 pl-4 text-sm/6 text-neutral-600 dark:text-neutral-400 border-neutral-200 dark:border-neutral-800;
+      @apply border-l-4 pl-4 text-sm/6 text-fg-tertiary dark:text-fg-tertiary-dark border-neutral-200 dark:border-neutral-700;
     }
     aside code {
       @apply p-0.5;
@@ -41,13 +55,13 @@
       @apply before:content-['—'] ps-8 not-italic;
     }
     code {
-      @apply font-normal! p-1 rounded-sm bg-neutral-100 dark:bg-neutral-800 before:content-none! after:content-none!;
+      @apply font-normal! p-1 rounded-sm bg-bg-secondary dark:bg-bg-secondary-dark before:content-none! after:content-none!;
     }
     code strong {
       @apply font-bold;
     }
     figcaption {
-      @apply mt-4! text-neutral-700! dark:text-neutral-300!;
+      @apply mt-4! text-fg-secondary! dark:text-fg-secondary-dark!;
     }
     figcaption p {
       @apply my-0!;
@@ -56,7 +70,7 @@
       @apply my-6!;
     }
     pre {
-      @apply p-0! overflow-x-auto bg-neutral-100! dark:bg-neutral-800! text-inherit! text-sm!;
+      @apply p-0! overflow-x-auto bg-bg-secondary! dark:bg-bg-secondary-dark! text-inherit! text-sm!;
     }
     pre code {
       @apply m-5! block! min-w-fit whitespace-pre!;
