@@ -30,18 +30,3 @@ let { project }: Props = $props();
   <p class="text-sm text-fg-tertiary dark:text-fg-tertiary-dark mb-std">{project.languages.join(', ')}</p>
   <div class="prose dark:prose-invert max-w-max">{@html project.description}</div>
 </GenericCard>
-
-<style>
-@reference "../../app.css";
-
-/* code needs to have a little more contrast when on a secondary background */
-/* note that this style is applied globally through the whole project, since scoped styling doesn't work with @html tags */
-:global {
-  .card .prose code {
-    background-color: oklch(from var(--color-bg-secondary) calc(l - 0.1) c h);
-    @variant dark {
-      background-color: oklch(from var(--color-bg-secondary-dark) calc(l + 0.1) c h);
-    }
-  }
-}
-</style>

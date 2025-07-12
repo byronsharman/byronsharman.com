@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+:root {
+  /* how much primary and secondary colors should differ in lightness in oklch */
+  --lightness-diff: 0.1;
+}
+
 @theme {
   --spacing-sm: calc(var(--spacing) * 2);
   --spacing-std: calc(var(--spacing) * 4);
@@ -11,14 +16,16 @@
   --color-fg-secondary: var(--color-neutral-700);
   --color-fg-tertiary: var(--color-neutral-600);
   --color-bg-primary: var(--color-white);
-  --color-bg-secondary: oklch(from var(--color-bg-primary) calc(l - 0.1) c h);
+  --color-bg-secondary: oklch(from var(--color-bg-primary) calc(l - var(--lightness-diff)) c h);
+  --color-bg-tertiary: oklch(from var(--color-bg-primary) calc(l - calc(2 * var(--lightness-diff))) c h);
 
   --color-fg-blog-dark: color-mix(in oklch, var(--color-neutral-200), var(--color-neutral-100));
   --color-fg-primary-dark: var(--color-white);
   --color-fg-secondary-dark: var(--color-neutral-300);
   --color-fg-tertiary-dark: var(--color-neutral-400);
   --color-bg-primary-dark: var(--color-neutral-900);
-  --color-bg-secondary-dark: oklch(from var(--color-bg-primary-dark) calc(l + 0.1) c h);
+  --color-bg-secondary-dark: oklch(from var(--color-bg-primary-dark) calc(l + var(--lightness-diff)) c h);
+  --color-bg-tertiary-dark: oklch(from var(--color-bg-primary-dark) calc(l + calc(2 * var(--lightness-diff))) c h);
 }
 
 @layer components {
@@ -27,6 +34,10 @@
     h1 {
       @apply font-extrabold text-4xl text-fg-primary dark:text-fg-primary-dark;
     }
+  }
+
+  .card .prose code {
+    @apply bg-bg-tertiary dark:bg-bg-tertiary-dark
   }
 
   .card-heading {
