@@ -39,7 +39,7 @@ let { project }: Props = $props();
 :global {
   .card .prose code {
     background-color: oklch(from var(--color-bg-secondary) calc(l - 0.1) c h);
-    @media (prefers-color-scheme: dark) {
+    @variant dark {
       background-color: oklch(from var(--color-bg-secondary-dark) calc(l + 0.1) c h);
     }
   }
