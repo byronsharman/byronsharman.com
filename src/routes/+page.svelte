@@ -1,4 +1,6 @@
 <script lang='ts'>
+import { onMount } from "svelte";
+
 import BlogCard from "$lib/components/BlogCard.svelte";
 import CardList from "$lib/components/CardList.svelte";
 import type { PageProps } from "./$types";
@@ -17,11 +19,17 @@ type SocialLink = {
   targetUrl: string;
 };
 
-const socials: SocialLink[] = [
+let emailAddress = $state("");
+
+onMount(() => {
+  emailAddress = atob("bWFpbHRvOmJ5cm9uLm4uc2hhcm1hbkBnbWFpbC5jb20=");
+});
+
+const socials: SocialLink[] = $derived([
   {
     iconSrc: envelopeIcon,
     iconAlt: "envelope icon",
-    targetUrl: "mailto:me@byronsharman.com",
+    targetUrl: emailAddress,
   },
   {
     iconSrc: githubLogo,
@@ -38,7 +46,7 @@ const socials: SocialLink[] = [
     iconAlt: "RSS icon",
     targetUrl: "/blog.xml",
   },
-];
+]);
 
 let { data }: PageProps = $props();
 </script>
