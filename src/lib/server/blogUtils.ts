@@ -1,23 +1,17 @@
 import type { BlogCardData, BlogInJson } from "$lib/types";
 
+import blogsJson from "$lib/assets/json/blogs.json";
+
 /* It's important to distinguish between the responsibilities of this function vs
  * the responsibilities of src/routes/blog/[slug]/+page.server.ts. This function
  * transforms JSON into BlogCardDatas. src/routes/blog/[slug]/+page.server.ts
  * transforms JSON into RenderBlogs.
  */
 
-// return BlogCardData[] populated from index.json
+// return BlogCardData[] populated from blogs.json
 // does not return blogs with published=false
-export async function getBlogCardData(
-  fetchFunc: typeof fetch,
-): Promise<BlogCardData[]> {
-  const res = await fetchFunc("/blog/index.json");
-  if (!res.ok) throw Error("could not fetch /blog/index.json");
-
-  const entries = Object.entries(
-    (await res.json()) as Record<string, BlogInJson>,
-  );
-
+export async function getBlogCardData(): Promise<BlogCardData[]> {
+  const entries = Object.entries(blogsJson as Record<string, BlogInJson>);
   entries.forEach(([slug, blog]) => checkImageProperties(slug, blog));
 
   return entries
@@ -50,7 +44,7 @@ export function checkImageProperties(
   if (difference.size === 0) return true;
   if (difference.size !== imgProperties.size) {
     console.error(
-      `Some (but not all) of the required properties for a preview image were found in index.json for slug \`${slug}\`. The following properties are missing: \
+      `Some (but not all) of the required properties for a preview image were found in blogs.json for slug \`${slug}\`. The following properties are missing: \
 ${[...difference].join(", ")}`,
     );
   }

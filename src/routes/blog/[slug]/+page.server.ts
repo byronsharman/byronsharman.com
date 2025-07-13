@@ -15,6 +15,8 @@ import type {
   RenderBlog,
 } from "$lib/types";
 
+import blogsJson from "$lib/assets/json/blogs.json";
+
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
 
@@ -64,28 +66,21 @@ function configureMarked(slug: string): void {
   marked.use({ renderer });
 }
 
-export const load: PageServerLoad = async ({
-  fetch,
-  params,
-}): Promise<RenderBlog> => {
+export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
   // TODO: some duplication here with blogUtils, what to do about that?
   const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
 
-  // Why do we query index.json twice, once in blogUtils and once here? The
+  // Why do we query blogs.json twice, once in blogUtils and once here? The
   // motive is to do as much of the data processing as possible server-side (in
   // .server.ts files). This means that blogUtils, which is only used to
-  // populate blog cards, removes data in index.json only needed to make a
-  // RenderBlog. To get that data again, we have to load index.json again.
+  // populate blog cards, removes data in blogs.json only needed to make a
+  // RenderBlog. To get that data again, we have to load blogs.json again.
   // Loading it twice isn't an issue because this is all (theoretically) done
   // at compile time.
 
   configureMarked(params.slug);
 
-  const res = await fetch("/blog/index.json");
-  if (!res.ok) throw Error("could not fetch /blog/index.json");
-  const builder = ((await res.json()) as Record<string, BlogInJson>)[
-    params.slug
-  ];
+  const builder = (blogsJson as Record<string, BlogInJson>)[params.slug];
   if (builder === undefined || !builder.published)
     return error(404, "Not found");
 
@@ -102,11 +97,10 @@ export const load: PageServerLoad = async ({
   // TODO: more graceful error handling here
   let html = "";
   try {
-    const res = await fetch(`/blog/build/${params.slug}.md`);
-    if (!res.ok)
-      throw Error(`failed to fetch from /blog/build/${params.slug}.md`);
-    const text = await res.text();
-    html = await marked(text);
+    const content = await import(
+      `$lib/assets/markdown/blogs/${params.slug}.md?raw`
+    );
+    html = await marked(content.default);
   } catch (e: unknown) {
     console.error(e);
     throw e;
@@ -127,7 +121,7 @@ export const load: PageServerLoad = async ({
     ],
   });
 
-  const recentBlogs: BlogCardData[] = (await getBlogCardData(fetch))
+  const recentBlogs: BlogCardData[] = (await getBlogCardData())
     .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
     .slice(0, RECENT_LIMIT);
 
