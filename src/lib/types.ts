@@ -16,7 +16,7 @@ export type BlogCardData = Omit<BaseBlog, "customHeaderMD"> & {
   url: string;
 };
 
-// describes the blogs in index.json
+// describes the blogs in blogs.json
 export type BlogInJson = Readonly<
   BaseBlog & {
     openGraphImageExt?: string;

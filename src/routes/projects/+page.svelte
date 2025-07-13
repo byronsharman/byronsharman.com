@@ -1,5 +1,6 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
+import CardList from "$lib/components/CardList.svelte";
 import ProjectCard from "$lib/components/ProjectCard.svelte";
 import type { PageProps } from "./$types";
 
@@ -15,10 +16,10 @@ let { data }: PageProps = $props();
   <h1>Projects</h1>
 </header>
 
-<div class="card-list">
+<CardList>
   {#each data.projects as project}
     <ProjectCard {project} />
   {/each}
-</div>
+</CardList>
 
 <BackToHome />

@@ -1,79 +1,104 @@
 @import "tailwindcss";
-
 @plugin "@tailwindcss/typography";
 
-@utility hero-header {
-  @apply my-12 lg:my-36;
-}
-
-.hero-header h1 {
-  @apply font-extrabold text-4xl;
-}
-
-@utility card-list {
-  @apply space-y-(--spc-std) lg:space-y-(--spc-lg) my-(--spc-std) lg:my-(--spc-lg);
-}
-
-.card > a {
-  @apply block p-6 bg-gray-100 rounded-lg;
-}
-
-.card h2, .card h3 {
-  @apply font-semibold text-lg mb-(--spc-sm);
+:root {
+  /* how much primary and secondary colors should differ in lightness in oklch */
+  --lightness-diff: 0.1;
 }
 
 @theme {
-  --spc-sm: calc(var(--spacing) * 2);
-  --spc-std: calc(var(--spacing) * 4);
-  --spc-lg: calc(var(--spacing) * 8);
-  --blog-text: color-mix(in oklch, var(--color-gray-800), var(--color-gray-900));
+  --spacing-sm: calc(var(--spacing) * 2);
+  --spacing-std: calc(var(--spacing) * 4);
+  --spacing-lg: calc(var(--spacing) * 8);
+
+  --color-fg-blog: color-mix(
+    in oklch,
+    var(--color-neutral-800),
+    var(--color-neutral-900)
+  );
+  --color-fg-primary: var(--color-black);
+  --color-fg-secondary: var(--color-neutral-700);
+  --color-fg-tertiary: var(--color-neutral-600);
+  --color-bg-primary: var(--color-white);
+  --color-bg-secondary: oklch(
+    from var(--color-bg-primary) calc(l - var(--lightness-diff)) c h
+  );
+  --color-bg-tertiary: oklch(
+    from var(--color-bg-primary) calc(l - calc(2 * var(--lightness-diff))) c h
+  );
+
+  --color-fg-blog-dark: color-mix(
+    in oklch,
+    var(--color-neutral-200),
+    var(--color-neutral-100)
+  );
+  --color-fg-primary-dark: var(--color-white);
+  --color-fg-secondary-dark: var(--color-neutral-300);
+  --color-fg-tertiary-dark: var(--color-neutral-400);
+  --color-bg-primary-dark: var(--color-neutral-900);
+  --color-bg-secondary-dark: oklch(
+    from var(--color-bg-primary-dark) calc(l + var(--lightness-diff)) c h
+  );
+  --color-bg-tertiary-dark: oklch(
+    from var(--color-bg-primary-dark) calc(l + calc(2 * var(--lightness-diff)))
+      c h
+  );
 }
 
 @layer base {
-  .prose, .prose::marker {
-    color: var(--blog-text) !important;
-  }
-  .prose aside {
-    @apply border-l-4 pl-4 text-sm/6 text-gray-600 border-gray-200;
-  }
-  .prose aside code {
-    @apply p-0.5;
-  }
-  .prose blockquote {
-    quotes: none !important;
-    @apply not-italic!;
-  }
-  .prose blockquote attribution {
-    @apply before:content-['—'] ps-8 not-italic;
-  }
-  .prose code {
-    @apply font-normal! p-1 rounded-sm bg-neutral-100 before:content-none! after:content-none!;
-  }
-  .prose code strong {
-    @apply font-bold;
-  }
-  .prose figcaption {
-    @apply mt-4! text-gray-700!;
-  }
-  .prose figcaption p {
-    @apply my-0!;
-  }
-  .prose figure {
-    @apply my-6!;
-  }
-  .prose pre {
-    @apply p-0! overflow-x-auto bg-neutral-100! text-inherit! text-sm!;
-  }
-  .prose pre code {
-    @apply m-5! block! min-w-fit whitespace-pre!;
-  }
-  .prose img {
-    @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem] rounded-md;
+  .prose {
+    @apply text-fg-blog! dark:text-fg-blog-dark!;
+
+    li::marker {
+      @apply text-fg-blog! dark:text-fg-blog-dark!;
+    }
+    aside {
+      @apply border-s-4 ps-std text-sm/6 text-fg-tertiary dark:text-fg-tertiary-dark border-neutral-200 dark:border-neutral-700;
+    }
+    aside code {
+      @apply p-0.5;
+    }
+    /* biome-ignore lint/style/noDescendingSpecificity: prefer to sort rules alphabetically */
+    code {
+      @apply font-normal! p-1 rounded-sm bg-bg-secondary dark:bg-bg-secondary-dark before:content-none! after:content-none!;
+    }
+    code strong {
+      @apply font-bold;
+    }
+    figcaption {
+      @apply mt-std! text-fg-secondary! dark:text-fg-secondary-dark!;
+    }
+    figcaption p {
+      @apply my-0!;
+    }
+    figure {
+      @apply my-6!;
+    }
+    pre {
+      @apply p-0! overflow-x-auto bg-bg-secondary! dark:bg-bg-secondary-dark! text-inherit! text-sm!;
+    }
+    pre code {
+      @apply m-5! block! min-w-fit whitespace-pre!;
+    }
+    img {
+      @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem] rounded-md;
+    }
   }
 }
 
-@layer typography {
-  h1 {
-    @apply m-0;
+@layer components {
+  .hero-header {
+    @apply my-12 lg:my-36;
+    h1 {
+      @apply font-extrabold text-4xl text-fg-primary dark:text-fg-primary-dark;
+    }
+  }
+
+  .card .prose code {
+    @apply bg-bg-tertiary dark:bg-bg-tertiary-dark;
+  }
+
+  .card-heading {
+    @apply font-semibold text-lg mb-sm text-fg-primary dark:text-fg-primary-dark;
   }
 }

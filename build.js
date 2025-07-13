@@ -17,7 +17,7 @@ async function buildProcess() {
     <description>The latest blog posts from Byron Sharman</description>
     <language>en-us</language>
     <atom:link href="https://byronsharman.com/blog.xml" rel="self" type="application/rss+xml"/>`;
-  const data = await fs.readFile("static/blog/index.json", {
+  const data = await fs.readFile("src/lib/assets/json/blogs.json", {
     encoding: "utf8",
   });
   const xml_output = Object.entries(JSON.parse(data))
@@ -46,12 +46,6 @@ ${output}
   console.log("Building Svelte project with Vite...");
   await build();
   console.log("Vite build successful.");
-
-  // Remove the assets we don't want to ship
-  console.log("Removing unnecessary assets...");
-  await fs.rm("build/blog/build", { recursive: true });
-
-  console.log("Build process completed successfully.");
 }
 
 async function runBuild() {

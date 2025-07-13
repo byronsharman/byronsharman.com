@@ -13,6 +13,6 @@ const iso8601 = $derived(
 );
 </script>
 
-<p class="m-0! text-sm text-gray-600">
+<p class="m-0! text-sm text-fg-tertiary dark:text-fg-tertiary-dark">
   <time datetime={iso8601}>{iso8601}</time>
 </p>

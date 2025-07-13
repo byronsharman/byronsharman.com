@@ -1,12 +1,20 @@
 <script lang='ts'>
-import "highlight.js/styles/base16/papercolor-light.css";
-
+import { MediaQuery } from "svelte/reactivity";
 import { marked } from "marked";
 
 import BackToHome from "$lib/components/BackToHome.svelte";
 import BlogCard from "$lib/components/BlogCard.svelte";
+import CardList from "$lib/components/CardList.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
+
+import darkThemeUrl from "$lib/assets/styles/dark.css?url";
+import lightThemeUrl from "$lib/assets/styles/light.css?url";
+
+const darkMode = new MediaQuery("prefers-color-scheme: dark");
+const syntaxHighlightingSrc = $derived(
+  darkMode.current ? darkThemeUrl : lightThemeUrl,
+);
 
 let { data }: PageProps = $props();
 </script>
@@ -26,12 +34,14 @@ let { data }: PageProps = $props();
   <meta property="og:description" content={data.preview} />
   <meta property="og:site_name" content="Byron Sharman's blog" />
 
+  <link rel="stylesheet" href={syntaxHighlightingSrc} />
+
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<article class="prose text-[17px] my-12 lg:my-24">
+<article class="prose dark:prose-invert text-[17px] my-12 lg:my-24">
   <header class="my-12! lg:my-24!">
-    <h1 class="mb-(--spc-sm)! text-balance">{data.title}</h1>
+    <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
     {#if data.customHeaderMD}
       <small class="block">
@@ -42,15 +52,15 @@ let { data }: PageProps = $props();
   {@html data.html}
 </article>
 
-<hr class="border-gray-600" />
+<hr class="border-fg-tertiary dark:border-fg-tertiary-dark" />
 
 <section class="mt-12 lg:mt-24">
-  <h2 class="my-12 font-bold text-3xl">Recent Posts</h2>
-  <div class="card-list">
+  <h2 class="my-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
+  <CardList>
     {#each data.recentBlogs as blog}
       <BlogCard blog={blog} />
     {/each}
-  </div>
+  </CardList>
 </section>
 
 <BackToHome />

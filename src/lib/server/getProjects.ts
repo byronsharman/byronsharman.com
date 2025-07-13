@@ -1,28 +1,24 @@
-import type { GitHubAPIResponse, Project } from "$lib/types";
+import type { GitHubAPIResponse, Project, ProjectCategory } from "$lib/types";
 import { ProjectType } from "$lib/types";
 
 import imageSizeFromFile from "image-size";
 import { marked } from "marked";
 
+import projectsJson from "$lib/assets/json/projects.json";
+
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
-async function getDescription(
-  projectName: string,
-  fetchFunc: typeof fetch,
-): Promise<string> {
-  const res: Response = await fetchFunc(
-    `/projects/descriptions/${projectName}.md`,
+async function getDescription(projectName: string): Promise<string> {
+  const content = await import(
+    `$lib/assets/markdown/projects/${projectName}.md?raw`
   );
-  if (!res.ok) {
-    return "<p>(no description provided)</p>";
-  }
-  return marked(await res.text());
+  return marked(content.default);
 }
 
 /* return a Project modified to include metadata fetched from the Github API */
 async function createGithubProject(
   projectName: string,
-  project: Project,
+  project: (typeof projectsJson)[keyof typeof projectsJson],
   fetchFunc: typeof fetch,
 ): Promise<Project> {
   const errorPlaceholder: Project = {
@@ -67,7 +63,13 @@ Skipping languages for project ${githubProject.name}.`);
     languages,
     bottomText: "see it on GitHub",
     // grab description from associated markdown file
-    description: await getDescription(projectName, fetchFunc),
+    description: await getDescription(projectName),
+
+    /* TODO: use a data validation library or write narrowing functions or just
+     * convert the json files to TypeScript object literals instead of this
+     * error-prone workaround */
+    category: project.category as ProjectCategory,
+    type: project.type as ProjectType,
   };
 }
 
@@ -75,51 +77,42 @@ Skipping languages for project ${githubProject.name}.`);
 async function createBlogProject(
   projectName: string,
   project: Project,
-  fetchFunc: typeof fetch,
 ): Promise<Project> {
   return {
     ...project,
     url: `/blog/${projectName}`,
     bottomText: "read the blog post",
     // grab description from associated markdown file
-    description: await getDescription(projectName, fetchFunc),
+    description: await getDescription(projectName),
   };
 }
 
 export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
-  const projects: Project[] = [];
-
-  const res: Response = await fetchFunc("/projects/projects.json");
-  if (!res.ok) {
-    console.error("Failed to fetch from projects.json");
-    return projects;
-  }
-
   return (
     await Promise.allSettled(
-      Object.entries((await res.json()) as Record<string, Project>).map(
-        async ([projectName, project]) => {
-          if (project.image !== undefined) {
-            const { width, height } = await imageSizeFromFile(
-              `static/${project.image.path}`,
+      Object.entries(projectsJson).map(async ([projectName, project]) => {
+        // TODO: same as above TODO ^
+        const retVal: any = project;
+        if ("image" in project) {
+          const { width, height } = await imageSizeFromFile(
+            `static/${project.image.path}`,
+          );
+          if (width !== undefined && height !== undefined) {
+            retVal.image.width = width;
+            retVal.image.height = height;
+          }
+        }
+        switch (project.type) {
+          case ProjectType.GitHub:
+            return await createGithubProject(projectName, retVal, fetchFunc);
+          case ProjectType.Blog:
+            return await createBlogProject(projectName, retVal);
+          default:
+            throw new Error(
+              `Error when parsing projects: unrecognized project type ${project.type}`,
             );
-            if (width !== undefined && height !== undefined) {
-              project.image.width = width;
-              project.image.height = height;
-            }
-          }
-          switch (project.type) {
-            case ProjectType.GitHub:
-              return await createGithubProject(projectName, project, fetchFunc);
-            case ProjectType.Blog:
-              return await createBlogProject(projectName, project, fetchFunc);
-            default:
-              throw new Error(
-                `Error when parsing projects: unrecognized project type ${project.type}`,
-              );
-          }
-        },
-      ),
+        }
+      }),
     )
   )
     .filter((outcome) => outcome.status === "fulfilled")
