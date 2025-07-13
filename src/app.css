@@ -28,22 +28,7 @@
   --color-bg-tertiary-dark: oklch(from var(--color-bg-primary-dark) calc(l + calc(2 * var(--lightness-diff))) c h);
 }
 
-@layer components {
-  .hero-header {
-    @apply my-12 lg:my-36;
-    h1 {
-      @apply font-extrabold text-4xl text-fg-primary dark:text-fg-primary-dark;
-    }
-  }
-
-  .card .prose code {
-    @apply bg-bg-tertiary dark:bg-bg-tertiary-dark
-  }
-
-  .card-heading {
-    @apply font-semibold text-lg mb-sm text-fg-primary dark:text-fg-primary-dark;
-  }
-
+@layer base {
   .prose {
     @apply text-fg-blog! dark:text-fg-blog-dark!;
 
@@ -87,5 +72,22 @@
     img {
       @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem] rounded-md;
     }
+  }
+}
+
+@layer components {
+  .hero-header {
+    @apply my-12 lg:my-36;
+    h1 {
+      @apply font-extrabold text-4xl text-fg-primary dark:text-fg-primary-dark;
+    }
+  }
+
+  .card .prose code {
+    @apply bg-bg-tertiary dark:bg-bg-tertiary-dark
+  }
+
+  .card-heading {
+    @apply font-semibold text-lg mb-sm text-fg-primary dark:text-fg-primary-dark;
   }
 }
