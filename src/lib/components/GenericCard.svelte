@@ -2,7 +2,7 @@
 import type { Snippet } from "svelte";
 
 interface Props {
-  minWidth: boolean;
+  minWidth?: boolean;
   href: string;
   children: Snippet;
 }

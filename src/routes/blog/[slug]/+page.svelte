@@ -13,8 +13,8 @@ import lightThemeUrl from "$lib/assets/styles/light.css?url";
 
 const darkMode = new MediaQuery("prefers-color-scheme: dark");
 const syntaxHighlightingSrc = $derived(
-  darkMode.current ? darkThemeUrl : lightThemeUrl
-)
+  darkMode.current ? darkThemeUrl : lightThemeUrl,
+);
 
 let { data }: PageProps = $props();
 </script>

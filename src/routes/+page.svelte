@@ -5,12 +5,10 @@ import BlogCard from "$lib/components/BlogCard.svelte";
 import CardList from "$lib/components/CardList.svelte";
 import type { PageProps } from "./$types";
 
-// assets
 import envelopeIcon from "$lib/assets/icons/envelope.svg";
 import githubLogo from "$lib/assets/icons/github.svg";
 import linkedinLogo from "$lib/assets/icons/linkedin.png";
 import rssIcon from "$lib/assets/icons/rss.svg";
-
 import portrait from "$lib/assets/portraits/portrait.avif";
 
 type SocialLink = {
@@ -20,7 +18,6 @@ type SocialLink = {
 };
 
 let emailAddress = $state("");
-
 onMount(() => {
   emailAddress = atob("bWFpbHRvOmJ5cm9uLm4uc2hhcm1hbkBnbWFpbC5jb20=");
 });
@@ -48,7 +45,7 @@ const socials: SocialLink[] = $derived([
   },
 ]);
 
-let { data }: PageProps = $props();
+const { data }: PageProps = $props();
 </script>
 
 <svelte:head>
