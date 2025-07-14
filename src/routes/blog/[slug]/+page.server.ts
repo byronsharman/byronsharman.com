@@ -4,7 +4,7 @@ import type { PageServerLoad } from "./$types";
 
 import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
-import { marked } from "marked";
+import * as marked from "marked";
 import type { Tokens } from "marked";
 
 import { checkImageProperties, getBlogCardData } from "$lib/server/blogUtils";
@@ -27,8 +27,8 @@ function configureMarked(slug: string): void {
     // these are modifications of the default renderer
     // https://github.com/markedjs/marked/blob/master/src/Renderer.ts
 
-    blockquote({ text }: Tokens.Blockquote): string {
-      return `<aside>${marked(text)}</aside>`;
+    blockquote({ tokens }: Tokens.Blockquote): string {
+      return `<aside>${marked.parser(tokens)}</aside>`;
     },
 
     code({ text, lang }: Tokens.Code): string {
@@ -55,7 +55,7 @@ function configureMarked(slug: string): void {
       const { width, height } = imageSizeFromFile(`static${imgPath}`);
       let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto"${first_image ? "" : "loading=lazy"} />`;
       if (title) {
-        out += `<figcaption>${marked(title)}</figcaption>`;
+        out += `<figcaption>${marked.parseInline(title)}</figcaption>`;
       }
       out += "</figure>";
       first_image = false;
@@ -100,7 +100,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     const content = await import(
       `$lib/assets/markdown/blogs/${params.slug}.md?raw`
     );
-    html = await marked(content.default);
+    html = await marked.parse(content.default);
   } catch (e: unknown) {
     console.error(e);
     throw e;

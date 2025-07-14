@@ -9,7 +9,7 @@ import { PROJECT_CATEGORIES, ProjectType } from "$lib/types";
 
 import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
-import { marked } from "marked";
+import * as marked from "marked";
 import { basename } from "node:path";
 
 import blogsJson from "$lib/assets/json/blogs.json";
@@ -119,7 +119,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         return {
           category,
           date,
-          description: marked(content),
+          description: marked.parse(content),
           ...(data.hackathonName && { hackathonName: data.hackathonName }),
           ...(image && { image }),
           languages,
