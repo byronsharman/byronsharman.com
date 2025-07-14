@@ -1,4 +1,5 @@
 import type {
+  BlogInJson,
   GitHubAPIResponse,
   Project,
   ProjectCategory,
@@ -10,6 +11,8 @@ import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { basename } from "node:path";
+
+import blogsJson from "$lib/assets/json/blogs.json";
 
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
@@ -53,6 +56,7 @@ async function fetchGitHubMetadata(
 
   return {
     name: githubProject.name,
+    date: new Date(githubProject.updated_at),
     url: githubProject.html_url,
     languages,
   };
@@ -71,7 +75,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
   return (
     await Promise.allSettled(
       Object.entries(rawProjectData).map(async ([filename, rawMarkdown]) => {
-        const projectName = basename(filename, ".md");
+        const projectName: string = basename(filename, ".md");
         const { content, data } = matter(rawMarkdown);
 
         let image: ProjectImage | undefined;
@@ -85,23 +89,31 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         }
 
         let { languages, name } = data;
+        let date: Date | undefined;
+
         const projectType: ProjectType = validateProjectType(data.type)
           ? data.type
           : ProjectType.Error;
         let url: string | undefined;
         switch (projectType) {
           case ProjectType.GitHub:
-            ({ languages, name, url } = await fetchGitHubMetadata(
+            ({ date, languages, name, url } = await fetchGitHubMetadata(
               projectName,
               fetchFunc,
             ));
             break;
           case ProjectType.Blog:
+            date = new Date(
+              (blogsJson as Record<string, BlogInJson>)[projectName].date *
+                1000,
+            );
             url = `/blog/${projectName}`;
             break;
         }
+
         return {
           category: validateCategory(data.category) ? data.category : "error",
+          date,
           description: marked(content),
           ...(data.hackathonName && { hackathonName: data.hackathonName }),
           ...(image && { image }),
@@ -114,5 +126,6 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
     )
   )
     .filter((outcome) => outcome.status === "fulfilled")
-    .map((outcome) => outcome.value);
+    .map((outcome) => outcome.value)
+    .toSorted((a, b) => b.date.valueOf() - a.date.valueOf());
 }

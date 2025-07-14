@@ -38,6 +38,7 @@ export type RenderBlog = BaseBlog & {
 
 export type Project = {
   category: ProjectCategory;
+  date: Date;
   description: string;
   hackathonName?: string;
   image?: ProjectImage;
@@ -55,8 +56,10 @@ export const PROJECT_CATEGORIES = [
 ] as const;
 export type ProjectCategory = (typeof PROJECT_CATEGORIES)[number];
 
+/* This is by no means exhaustive, but I *think* it's better than nothing? */
 export type GitHubAPIResponse = {
   description: string;
+  updated_at: string;
   html_url: string;
   languages_url: string;
   name: string;
