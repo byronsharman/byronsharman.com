@@ -76,7 +76,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
     await Promise.allSettled(
       Object.entries(rawProjectData).map(async ([filename, rawMarkdown]) => {
         const projectName: string = basename(filename, ".md");
-        const { content, data } = matter(rawMarkdown);
+        let { content, data } = matter(rawMarkdown);
 
         let image: ProjectImage | undefined;
         if ("image" in data) {
@@ -90,6 +90,11 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
 
         let { languages, name } = data;
         let date: Date | undefined;
+
+        const category: ProjectCategory = validateCategory(data.category) ? data.category : "error";
+        if (category === "hackathon") {
+          content += `\nLike all hackathon projects, ${name} was a collaborative effort created in a weekend.`;
+        }
 
         const projectType: ProjectType = validateProjectType(data.type)
           ? data.type
@@ -112,7 +117,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         }
 
         return {
-          category: validateCategory(data.category) ? data.category : "error",
+          category,
           date,
           description: marked(content),
           ...(data.hackathonName && { hackathonName: data.hackathonName }),
