@@ -81,8 +81,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         let image: ProjectImage | undefined;
         if ("image" in data) {
           const { alt, path } = data.image;
-          // TODO: update image-size and use new API
-          const { width, height } = await imageSizeFromFile(`static${path}`);
+          const { width, height } = imageSizeFromFile(`static${path}`);
           if (width !== undefined && height !== undefined) {
             image = { alt, path, width, height };
           }

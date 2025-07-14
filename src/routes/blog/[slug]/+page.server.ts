@@ -52,6 +52,8 @@ function configureMarked(slug: string): void {
     image({ href, title, text }: Tokens.Image): string {
       if (href === "") return text;
       const imgPath = `/blog/images/${slug}/${href}`;
+      // TODO: figure out how to asynchronously determine image size
+      // probably involves making walkTokens return custom tokens for images
       const { width, height } = imageSizeFromFile(`static${imgPath}`);
       let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto"${first_image ? "" : "loading=lazy"} />`;
       if (title) {
@@ -67,7 +69,6 @@ function configureMarked(slug: string): void {
 }
 
 export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
-  // TODO: some duplication here with blogUtils, what to do about that?
   const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
 
   // Why do we query blogs.json twice, once in blogUtils and once here? The
@@ -94,17 +95,10 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     };
   }
 
-  // TODO: more graceful error handling here
-  let html = "";
-  try {
-    const content = await import(
-      `$lib/assets/markdown/blogs/${params.slug}.md?raw`
-    );
-    html = await marked.parse(content.default);
-  } catch (e: unknown) {
-    console.error(e);
-    throw e;
-  }
+  const content = await import(
+    `$lib/assets/markdown/blogs/${params.slug}.md?raw`
+  );
+  const html = await marked.parse(content.default);
 
   const ldjson = JSON.stringify({
     "@context": "https://schema.org",
