@@ -24,7 +24,7 @@ let { project }: Props = $props();
       <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`[${project.hackathonName}]`}</span>
     {/if}
     {#if project.name === 'byronsharman.com'}
-      <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`(this website!)`}</span>
+      <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">(this website!)</span>
     {/if}
   </h2>
   <p class="text-sm text-fg-tertiary dark:text-fg-tertiary-dark mb-std">{project.languages.join(', ')}</p>

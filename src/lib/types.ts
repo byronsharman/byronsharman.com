@@ -1,7 +1,7 @@
 export enum ProjectType {
   Blog = "blog",
   GitHub = "github",
-  NetworkError = "networkerror",
+  Error = "error",
 }
 
 type BaseBlog = {
@@ -37,18 +37,23 @@ export type RenderBlog = BaseBlog & {
 };
 
 export type Project = {
-  bottomText: string;
   category: ProjectCategory;
   description: string;
   hackathonName?: string;
   image?: ProjectImage;
-  languages: Array<string>;
+  languages: string[];
   name: string;
   type: ProjectType;
   url: string;
 };
 
-export type ProjectCategory = "error" | "hackathon" | "personal" | "school";
+export const PROJECT_CATEGORIES = [
+  "error",
+  "hackathon",
+  "personal",
+  "school",
+] as const;
+export type ProjectCategory = (typeof PROJECT_CATEGORIES)[number];
 
 export type GitHubAPIResponse = {
   description: string;
