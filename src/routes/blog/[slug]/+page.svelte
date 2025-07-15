@@ -32,7 +32,7 @@ let { data }: PageProps = $props();
     <meta property="og:image:alt" content={data.previewImage.alt} />
   {/if}
   <meta property="og:description" content={data.preview} />
-  <meta property="og:site_name" content="Byron Sharman's blog" />
+  <meta property="og:site_name" content="Byron Sharman" />
 
   <link rel="stylesheet" href={syntaxHighlightingSrc} />
 
