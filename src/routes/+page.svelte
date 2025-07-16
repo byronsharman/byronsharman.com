@@ -25,22 +25,22 @@ onMount(() => {
 const socials: SocialLink[] = $derived([
   {
     iconSrc: envelopeIcon,
-    iconAlt: "envelope icon",
+    iconAlt: "email",
     targetUrl: emailAddress,
   },
   {
     iconSrc: githubLogo,
-    iconAlt: "GitHub logo",
+    iconAlt: "GitHub",
     targetUrl: "https://github.com/byronsharman",
   },
   {
     iconSrc: linkedinLogo,
-    iconAlt: "LinkedIn logo",
+    iconAlt: "LinkedIn",
     targetUrl: "https://www.linkedin.com/in/byronsharman/",
   },
   {
     iconSrc: rssIcon,
-    iconAlt: "RSS icon",
+    iconAlt: "RSS",
     targetUrl: "/blog.xml",
   },
 ]);
