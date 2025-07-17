@@ -4,18 +4,12 @@ import type { PageServerLoad } from "./$types";
 
 import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
+import matter from "gray-matter";
 import * as marked from "marked";
 import type { Tokens } from "marked";
 
-import { checkImageProperties, getBlogCardData } from "$lib/server/blogUtils";
-import type {
-  BlogCardData,
-  BlogInJson,
-  BlogPreviewImage,
-  RenderBlog,
-} from "$lib/types";
-
-import blogsJson from "$lib/assets/json/blogs.json";
+import { getBlogCardData } from "$lib/server/blogUtils";
+import type { BlogCardData, BlogPreviewImage, RenderBlog } from "$lib/types";
 
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
@@ -69,6 +63,11 @@ function configureMarked(slug: string): void {
 }
 
 export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
+  const raw = await import(`$lib/assets/markdown/blogs/${params.slug}.md?raw`);
+  const { content, data } = matter(raw.default);
+  // TODO: use a data validation library to verify data has the required properties
+  if (!data.published) return error(404, "Not found");
+
   const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
 
   // Why do we query blogs.json twice, once in blogUtils and once here? The
@@ -81,31 +80,24 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
 
   configureMarked(params.slug);
 
-  const builder = (blogsJson as Record<string, BlogInJson>)[params.slug];
-  if (builder === undefined || !builder.published)
-    return error(404, "Not found");
-
   let previewImage: BlogPreviewImage | undefined;
-  if (checkImageProperties(params.slug, builder)) {
-    const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${builder.previewImage}.`;
+  if ("image" in data) {
+    const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${data.image.name}.`;
     previewImage = {
-      alt: builder.previewImageAlt,
-      openGraphImageUrl: imgPathWithoutExt + builder.openGraphImageExt,
-      absolutePath: imgPathWithoutExt + builder.previewImageExt,
+      alt: data.image.alt,
+      ogUrl: imgPathWithoutExt + data.image.ogExt,
+      absolutePath: imgPathWithoutExt + data.image.optimizedExt,
     };
   }
 
-  const content = await import(
-    `$lib/assets/markdown/blogs/${params.slug}.md?raw`
-  );
-  const html = await marked.parse(content.default);
+  const html = await marked.parse(content);
 
   const ldjson = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: builder.title,
-    image: previewImage === undefined ? undefined : previewImage.absolutePath,
-    datePublished: new Date(builder.date * 1000).toISOString(),
+    headline: data.title,
+    ...(previewImage && { image: previewImage.absolutePath }),
+    datePublished: new Date(data.date * 1000).toISOString(),
     author: [
       {
         "@type": "Person",
@@ -115,19 +107,18 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     ],
   });
 
-  const recentBlogs: BlogCardData[] = (await getBlogCardData())
+  const recentBlogs: BlogCardData[] = getBlogCardData()
     .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
     .slice(0, RECENT_LIMIT);
 
-  const { date, preview, title, customHeaderMD } = builder;
+  const { date, description, title } = data;
 
   const retval: RenderBlog = {
     absoluteUrl,
-    customHeaderMD,
     date,
     html,
     ldjson,
-    preview,
+    description,
     previewImage,
     recentBlogs,
     title,

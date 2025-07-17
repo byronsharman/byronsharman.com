@@ -1,3 +1,16 @@
+---
+title: Biking
+published: true
+date: 1737662893
+description: A healthier way of life.
+image:
+  alt: >-
+    A concrete path leads down a hill. There is snow on either side, and
+    mountains are in the background.
+  name: path
+  ogExt: jpg
+  optimizedExt: avif
+---
 ![A concrete path leads down a hill. There is snow on either side, and mountains are in the background.](path.avif "The paved trail I take to campus every day. Not a spectacular view, but not bad either.")
 
 Every weekday morning, I wake up, make breakfast, and bike to school. It's one

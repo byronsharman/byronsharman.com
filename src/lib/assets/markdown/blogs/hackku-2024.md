@@ -1,3 +1,14 @@
+---
+title: HackKU 2024
+published: true
+date: 1714663989
+description: I narrate the happenings of my last hackathon of the 2023–2024 school year.
+image:
+  alt: Me and my two teammates posing for a photo during judging at HackKU
+  name: judging
+  ogExt: jpg
+  optimizedExt: jpg
+---
 Well, well. There's only one more week left in my first year of college. It's a good time to look back on the year and also to cover my last hackathon as a first-year student. HackKU, hosted in Lawrence, Kansas, was my first official [Major League Hacking (MLH)](https://mlh.io/) event. I was accompanied by teammates [Tyler](https://tbwright.dev/) and Danial.
 
 ## Pre-hacking Events

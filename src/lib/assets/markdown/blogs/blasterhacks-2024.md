@@ -1,3 +1,16 @@
+---
+title: 'Blasterhacks 2024: My first hackathon'
+published: true
+date: 1709159930
+description: I describe my first-ever hackathon experience as a first-year college student.
+image:
+  alt: >-
+    me and my team members accepting our second place prize at the closing
+    ceremonies
+  name: secondplace
+  ogExt: jpg
+  optimizedExt: avif
+---
 ![a screenshot of our finished application's image feed page](blasterhacks_screenshot.avif "The feed page of our finished app.")
 
 I'm trying to maximize the amount of fun I have in college, so when I heard my friends were signing up for a hackathon, I knew I had to try. As a freshman, I wasn't really sure it would be for me, but it turned out to be a blast! Here's how it played out.

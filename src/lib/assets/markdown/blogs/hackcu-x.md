@@ -1,3 +1,16 @@
+---
+title: HackCU X
+published: true
+date: 1712017815
+description: >-
+  I summarize my experience at the 10th HackCU hackathon hosted by the
+  University of Colorado Boulder.
+image:
+  alt: I code on my laptop behind a row of 3 Monsters and a Red Bull.
+  name: caffeine
+  ogExt: jpg
+  optimizedExt: jpg
+---
 After having a blast at [Blasterhacks](/blog/blasterhacks-2024), it was a no-brainer to attend HackCU in Boulder, which is only a 45-minute drive from Mines. Seven Mines students attended in total, so we split into two Lyft rides. Because [Tyler](https://tbwright.dev/) and I had already agreed to be teammates, we started brainstorming in the car. Our driver was friendly, and our ride was pleasant but uneventful.
 
 Upon arrival, we signed in and breakfasted on some Einstein's bagels. Then, during a continued brainstorming session, we came up with the idea of a productivity note-taking workspace in which various kinds of content—Markdown, images, videos, etc.—can be manipulated. These would be tied together by an LLM-powered chat that could read their contents. This idea sounded fun to [Addison](https://tgrcode.com/) and Ryan, also Mines students, who joined our team, growing it to the maximum size of four.

@@ -1,3 +1,14 @@
+---
+title: 'HackUTD 2024: Ripple Effect'
+published: true
+date: 1734208091
+description: I enjoy an action-packed return to the United States.
+image:
+  alt: my team poses in front of a HackUTD banner
+  name: big_four
+  ogExt: jpg
+  optimizedExt: webp
+---
 After a few months of troglodytism (at least from the greater internet's
 perspective), I've found the time to publicize my travels again. This blog
 relates how I experienced November 15–17, my first weekend back in the US after

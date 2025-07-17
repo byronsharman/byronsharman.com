@@ -1,3 +1,9 @@
+---
+title: Use Your Boredom
+published: true
+date: 1738871741
+description: It's there for a reason.
+---
 When was the last time you were bored?
 
 It may take a while to name the exact moment because we design our lives to

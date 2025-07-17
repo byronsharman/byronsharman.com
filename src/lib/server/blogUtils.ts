@@ -1,53 +1,35 @@
-import type { BlogCardData, BlogInJson } from "$lib/types";
+import type { BlogCardData } from "$lib/types";
+import matter from "gray-matter";
+import { basename } from "node:path";
 
-import blogsJson from "$lib/assets/json/blogs.json";
-
-/* It's important to distinguish between the responsibilities of this function vs
- * the responsibilities of src/routes/blog/[slug]/+page.server.ts. This function
- * transforms JSON into BlogCardDatas. src/routes/blog/[slug]/+page.server.ts
- * transforms JSON into RenderBlogs.
+/* It's important to distinguish the responsibilities of this function from
+ * those of src/routes/blog/[slug]/+page.server.ts. This function only returns
+ * BlogCardData, whereas src/routes/blog/[slug]/+page.server.ts returns full
+ * RenderBlogs.
  */
 
-// return BlogCardData[] populated from blogs.json
+// return BlogCardData[] populated from blog frontmatter
 // does not return blogs with published=false
-export async function getBlogCardData(): Promise<BlogCardData[]> {
-  const entries = Object.entries(blogsJson as Record<string, BlogInJson>);
-  entries.forEach(([slug, blog]) => checkImageProperties(slug, blog));
-
-  return entries
-    .filter(([_, blog]) => blog.published)
-    .map(
-      ([slug, blog]): BlogCardData => ({
-        date: blog.date,
-        preview: blog.preview,
-        slug: slug,
-        title: blog.title,
+export function getBlogCardData(): BlogCardData[] {
+  const rawBlogData = import.meta.glob("$lib/assets/markdown/blogs/*.md", {
+    query: "?raw",
+    import: "default",
+    eager: true,
+  });
+  return Object.entries(rawBlogData)
+    .map(([filename, rawMarkdown]): BlogCardData | undefined => {
+      const slug: string = basename(filename, ".md");
+      const { data } = matter(rawMarkdown);
+      const { date, description, published, title } = data;
+      if (!published) return undefined;
+      return {
+        date,
+        description,
+        slug,
+        title,
         url: `/blog/${slug}`,
-      }),
-    );
-}
-
-// Returns whether the given blog contains a preview image. Prints an error if some but not all the required preview image properties are found.
-export function checkImageProperties(
-  slug: string,
-  blog: BlogInJson,
-): blog is Required<BlogInJson> {
-  const imgProperties = new Set([
-    "openGraphImageExt",
-    "previewImage",
-    "previewImageAlt",
-    "previewImageExt",
-  ]);
-  const blogProperties = new Set(Object.keys(blog));
-
-  const difference = imgProperties.difference(blogProperties);
-  if (difference.size === 0) return true;
-  if (difference.size !== imgProperties.size) {
-    console.error(
-      `Some (but not all) of the required properties for a preview image were found in blogs.json for slug \`${slug}\`. The following properties are missing: \
-${[...difference].join(", ")}`,
-    );
-  }
-
-  return false;
+      };
+    })
+    .filter((bcd) => bcd !== undefined)
+    .toSorted((a, b) => b.date - a.date);
 }

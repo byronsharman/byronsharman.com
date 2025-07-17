@@ -1,3 +1,14 @@
+---
+title: HackCU 11
+published: true
+date: 1745599436
+description: My first hackathon of the Spring 2025 semester.
+image:
+  alt: a selfie with three students looking up from their laptops
+  name: teamphoto
+  ogExt: jpg
+  optimizedExt: avif
+---
 Another year, another hackathon season! This time, I'm recounting the 11th
 iteration of HackCU, which I attended with
 [Megan](https://github.com/megankulshekar) and

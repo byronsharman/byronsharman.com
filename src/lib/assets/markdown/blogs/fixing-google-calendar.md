@@ -1,3 +1,9 @@
+---
+title: I messed up my calendar and wrote a script to fix it
+published: true
+date: 1727050409
+description: A little automation overcomes Google's questionable UX design.
+---
 If you follow my blog, you know that I'm studying abroad at the University of Canterbury this semester. One of the things I appreciate about UC's IT tooling is that its class scheduling app allows you to export to `.ics` files, a feature that to the best of my knowledge is missing from Geode or SSB, the equivalents we have at Mines. This makes it easy to import your class schedule into apps like Outlook or Google Calendar.
 
 ## The Problem

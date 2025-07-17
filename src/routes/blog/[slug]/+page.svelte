@@ -1,6 +1,5 @@
 <script lang='ts'>
 import { MediaQuery } from "svelte/reactivity";
-import { marked } from "marked";
 
 import BackToHome from "$lib/components/BackToHome.svelte";
 import BlogCard from "$lib/components/BlogCard.svelte";
@@ -21,17 +20,17 @@ let { data }: PageProps = $props();
 
 <svelte:head>
   <title>{data.title}</title>
-  <meta name="description" content={data.preview} />
+  <meta name="description" content={data.description} />
 
   <meta property="og:title" content={data.title} />
   <meta property="og:type" content="article" />
   <meta property="og:url" content={data.absoluteUrl} />
   {#if data.previewImage}
-    <meta property="og:image" content={data.previewImage.openGraphImageUrl} />
-    <meta property="og:image:secure_url" content={data.previewImage.openGraphImageUrl} />
+    <meta property="og:image" content={data.previewImage.ogUrl} />
+    <meta property="og:image:secure_url" content={data.previewImage.ogUrl} />
     <meta property="og:image:alt" content={data.previewImage.alt} />
   {/if}
-  <meta property="og:description" content={data.preview} />
+  <meta property="og:description" content={data.description} />
   <meta property="og:site_name" content="Byron Sharman" />
 
   <link rel="stylesheet" href={syntaxHighlightingSrc} />
@@ -43,11 +42,6 @@ let { data }: PageProps = $props();
   <header class="my-12! lg:my-24!">
     <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
-    {#if data.customHeaderMD}
-      <small class="block">
-        {@html marked(data.customHeaderMD)}
-      </small>
-    {/if}
   </header>
   {@html data.html}
 </article>

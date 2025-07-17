@@ -1,5 +1,4 @@
 import type {
-  BlogInJson,
   GitHubAPIResponse,
   Project,
   ProjectCategory,
@@ -11,8 +10,6 @@ import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
 import * as marked from "marked";
 import { basename } from "node:path";
-
-import blogsJson from "$lib/assets/json/blogs.json";
 
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
@@ -90,7 +87,9 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         let { languages, name } = data;
         let date: Date | undefined;
 
-        const category: ProjectCategory = validateCategory(data.category) ? data.category : "error";
+        const category: ProjectCategory = validateCategory(data.category)
+          ? data.category
+          : "error";
         if (category === "hackathon") {
           content += `\nLike all hackathon projects, ${name} was a collaborative effort created in a weekend.`;
         }
@@ -106,13 +105,15 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
               fetchFunc,
             ));
             break;
-          case ProjectType.Blog:
-            date = new Date(
-              (blogsJson as Record<string, BlogInJson>)[projectName].date *
-                1000,
+          case ProjectType.Blog: {
+            const raw = await import(
+              `$lib/assets/markdown/blogs/${projectName}.md?raw`
             );
+            const { data } = matter(raw.default);
+            date = new Date(data.date * 1000);
             url = `/blog/${projectName}`;
             break;
+          }
         }
 
         return {

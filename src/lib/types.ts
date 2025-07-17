@@ -1,31 +1,13 @@
-export enum ProjectType {
-  Blog = "blog",
-  GitHub = "github",
-  Error = "error",
-}
-
 type BaseBlog = {
-  customHeaderMD?: string;
   date: number;
-  preview: string;
+  description: string;
   title: string;
 };
 
-export type BlogCardData = Omit<BaseBlog, "customHeaderMD"> & {
+export type BlogCardData = BaseBlog & {
   slug: string;
   url: string;
 };
-
-// describes the blogs in blogs.json
-export type BlogInJson = Readonly<
-  BaseBlog & {
-    openGraphImageExt?: string;
-    previewImage?: string;
-    previewImageAlt?: string;
-    previewImageExt?: string;
-    published: boolean;
-  }
->;
 
 // contains all the extra fields necessary to render a full blog page
 export type RenderBlog = BaseBlog & {
@@ -35,6 +17,12 @@ export type RenderBlog = BaseBlog & {
   previewImage?: BlogPreviewImage;
   recentBlogs: BlogCardData[];
 };
+
+export enum ProjectType {
+  Blog = "blog",
+  GitHub = "github",
+  Error = "error",
+}
 
 export type Project = {
   category: ProjectCategory;
@@ -77,5 +65,5 @@ export type ProjectImage = BaseImage & {
 
 export type BlogPreviewImage = BaseImage & {
   absolutePath: string;
-  openGraphImageUrl: string;
+  ogUrl: string;
 };
