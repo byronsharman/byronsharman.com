@@ -63,7 +63,12 @@ function configureMarked(slug: string): void {
 }
 
 export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
-  const raw = await import(`$lib/assets/markdown/blogs/${params.slug}.md?raw`);
+  let raw: { default: string };
+  try {
+    raw = await import(`$lib/assets/markdown/blogs/${params.slug}.md?raw`);
+  } catch {
+    return error(404, "Not found");
+  }
   const { content, data } = matter(raw.default);
   // TODO: use a data validation library to verify data has the required properties
   if (!data.published) return error(404, "Not found");
