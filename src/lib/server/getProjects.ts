@@ -97,7 +97,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         const projectType: ProjectType = validateProjectType(data.type)
           ? data.type
           : ProjectType.Error;
-        let url: string | undefined;
+        let url = "";
         switch (projectType) {
           case ProjectType.GitHub:
             ({ date, languages, name, url } = await fetchGitHubMetadata(
