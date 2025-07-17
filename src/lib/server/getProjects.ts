@@ -60,7 +60,7 @@ async function fetchGitHubMetadata(
 }
 
 export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
-  const rawProjectData = import.meta.glob(
+  const rawProjectData: Record<string, string> = import.meta.glob(
     "$lib/assets/markdown/projects/*.md",
     {
       query: "?raw",

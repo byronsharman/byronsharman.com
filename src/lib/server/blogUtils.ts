@@ -11,11 +11,14 @@ import { basename } from "node:path";
 // return BlogCardData[] populated from blog frontmatter
 // does not return blogs with published=false
 export function getBlogCardData(): BlogCardData[] {
-  const rawBlogData = import.meta.glob("$lib/assets/markdown/blogs/*.md", {
-    query: "?raw",
-    import: "default",
-    eager: true,
-  });
+  const rawBlogData: Record<string, string> = import.meta.glob(
+    "$lib/assets/markdown/blogs/*.md",
+    {
+      query: "?raw",
+      import: "default",
+      eager: true,
+    },
+  );
   return Object.entries(rawBlogData)
     .map(([filename, rawMarkdown]): BlogCardData | undefined => {
       const slug: string = basename(filename, ".md");

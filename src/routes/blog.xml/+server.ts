@@ -14,11 +14,14 @@ export const GET: RequestHandler = () => {
     <language>en-us</language>
     <atom:link href="https://byronsharman.com/blog.xml" rel="self" type="application/rss+xml"/>`;
 
-  const rawBlogData = import.meta.glob("$lib/assets/markdown/blogs/*.md", {
-    query: "?raw",
-    import: "default",
-    eager: true,
-  });
+  const rawBlogData: Record<string, string> = import.meta.glob(
+    "$lib/assets/markdown/blogs/*.md",
+    {
+      query: "?raw",
+      import: "default",
+      eager: true,
+    },
+  );
   return new Response(
     Object.entries(rawBlogData)
       .map(([filename, rawMarkdown]) => {

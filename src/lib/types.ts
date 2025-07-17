@@ -59,8 +59,8 @@ type BaseImage = {
 
 export type ProjectImage = BaseImage & {
   path: string;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
 };
 
 export type BlogPreviewImage = BaseImage & {
