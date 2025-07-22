@@ -1,31 +1,13 @@
-export enum ProjectType {
-  Blog = "blog",
-  GitHub = "github",
-  NetworkError = "networkerror",
-}
-
 type BaseBlog = {
-  customHeaderMD?: string;
   date: number;
-  preview: string;
+  description: string;
   title: string;
 };
 
-export type BlogCardData = Omit<BaseBlog, "customHeaderMD"> & {
+export type BlogCardData = BaseBlog & {
   slug: string;
   url: string;
 };
-
-// describes the blogs in blogs.json
-export type BlogInJson = Readonly<
-  BaseBlog & {
-    openGraphImageExt?: string;
-    previewImage?: string;
-    previewImageAlt?: string;
-    previewImageExt?: string;
-    published: boolean;
-  }
->;
 
 // contains all the extra fields necessary to render a full blog page
 export type RenderBlog = BaseBlog & {
@@ -36,22 +18,36 @@ export type RenderBlog = BaseBlog & {
   recentBlogs: BlogCardData[];
 };
 
+export enum ProjectType {
+  Blog = "blog",
+  GitHub = "github",
+  Error = "error",
+}
+
 export type Project = {
-  bottomText: string;
   category: ProjectCategory;
+  date: Date;
   description: string;
   hackathonName?: string;
   image?: ProjectImage;
-  languages: Array<string>;
+  languages: string[];
   name: string;
   type: ProjectType;
   url: string;
 };
 
-export type ProjectCategory = "error" | "hackathon" | "personal" | "school";
+export const PROJECT_CATEGORIES = [
+  "error",
+  "hackathon",
+  "personal",
+  "school",
+] as const;
+export type ProjectCategory = (typeof PROJECT_CATEGORIES)[number];
 
+/* This is by no means exhaustive, but I *think* it's better than nothing? */
 export type GitHubAPIResponse = {
   description: string;
+  updated_at: string;
   html_url: string;
   languages_url: string;
   name: string;
@@ -63,11 +59,11 @@ type BaseImage = {
 
 export type ProjectImage = BaseImage & {
   path: string;
-  width?: number;
-  height?: number;
+  width: number;
+  height: number;
 };
 
 export type BlogPreviewImage = BaseImage & {
   absolutePath: string;
-  openGraphImageUrl: string;
+  ogUrl: string;
 };

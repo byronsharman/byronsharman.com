@@ -1,3 +1,7 @@
+---
+category: personal
+type: github
+---
 Bang Bang is a multiplayer 3D tank shooter game made with Pygame and OpenGL.
 Last year, I started a major refactor which involved migrating from Python 2 to
 Python 3; rewriting the networking from the ground up, including building a

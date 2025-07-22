@@ -1,3 +1,14 @@
+---
+title: Blasterhacks 2025
+published: true
+date: 1751069077
+description: I narrate the last hackathon of my second year at Mines.
+image:
+  alt: two students work on their laptops in a university building
+  name: lukas_and_byron
+  ogExt: jpg
+  optimizedExt: avif
+---
 ## Background
 
 Blasterhacks is Mines' annual hackathon, an event where you spend a whole

@@ -1,3 +1,16 @@
+---
+title: Three Snazzy Commands to Enhance Your Vim Personality
+published: true
+date: 1713386692
+description: >-
+  I passionately advocate for the inclusion of Ex commands in your quotidian Vim
+  usage.
+image:
+  alt: screenshot of Vim's opening screen
+  name: vim_screenshot
+  ogExt: png
+  optimizedExt: png
+---
 ![screenshot of Vim's opening screen](vim_screenshot.png)
 
 One of the things I like about Vim is that each Vim user I know has their own distinct style. Some have installed hundreds of plugins, committing to memory the keybindings of each. Some use insert mode the whole time and pretend they're in an ordinary text editor. Some know all the cool Visual mode commands like `gCtrl-A`. Some [read the entire manual out loud recreationally](https://youtu.be/rT-fbLFOCy0). And I like using Ex commands.

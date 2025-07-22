@@ -1,3 +1,11 @@
+---
+title: >-
+  Natasha Paremski's Rach 3 is the best thing that happened to me the week
+  before finals
+published: true
+date: 1715296345
+description: Rarely do I feel so elated walking out of a concerto performance.
+---
 I had the opportunity to hear Natasha Paremski play Rachmaninoff's Piano Concerto No.&nbsp;3 (or Rach&nbsp;3 for short) with the Colorado Symphony a few weekends ago, and it was a tie for the best performance I've ever heard live, right up there with Yekwon Sunwoo, whom I saw with the Colorado Springs Philharmonic a while ago.
 
 Rach&nbsp;3 is the best piano concerto ever written. It's got catchy themes, good structure, inventive harmonies, virtuosic showcase, and, most importantly, it's more emotionally intense than any other piano concerto. Of course, that's subjective, since everyone feels a unique emotional response to a musical idea. To me, Rach&nbsp;3 combines the sophistication of Rach&nbsp;4 with the rawness of Rach&nbsp;2 in a perfect balance that stretches to its highest right at the end of the piece. I've been in love with it since middle school, and I feel a personal connection to it because I've known it for so long.

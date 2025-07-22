@@ -1,3 +1,16 @@
+---
+title: '3l: The keyboard layout that took me from 0 to 100 WPM in 13 days'
+published: true
+date: 1710351277
+description: >-
+  I champion the use of a unique keyboard layout specially crafted for writing
+  code.
+image:
+  alt: diagram of the 3l keyboard layout
+  name: standard_three
+  ogExt: png
+  optimizedExt: png
+---
 3l, also known as [threelayout](https://github.com/jackrosenthal/threelayout), is a keyboard layout designed by Mines alumnus Jack Rosenthal. It's distinguished by its two additional layers, a symbols layer and a cursor layer, in addition to the usual lowercase and uppercase. With 3l, any special character can be typed with just the three letter rows, which is very handy for writing code. Additionally, the home row of 3l comprises the most common letters in English, minimizing finger travel distance. The project's README says the goals of this arrangement are "to increase hand alternation, reduce bottom-to-top row jumps, [and] decrease lateral motion."
 
 I was already a decent typist on QWERTY, averaging about 120 WPM, and at the time of writing, my TypeRacer record is [156 WPM](https://data.typeracer.com/pit/result?id=|tr:nonoesimposible|355). I was at first skeptical of trying 3l because I've already tried Dvorak, another layout that congregates common letters on the home row. I reached 100 WPM on Dvorak in a few months in high school, but it felt uncomfortable, and I never reached my QWERTY speed, so I returned to QWERTY.

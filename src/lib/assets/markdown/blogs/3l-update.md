@@ -1,3 +1,14 @@
+---
+title: An Update on 3l
+published: true
+date: 1735498387
+description: The keyboard layout has served me well.
+image:
+  alt: 'diagram of the 3l keyboard layout with the h, j, k, and l keys highlighted'
+  name: 3l_with_hjkl_highlighted
+  ogExt: png
+  optimizedExt: png
+---
 3l is an alternative keyboard layout. It's been a while since my [original
 post](/blog/learning-3l) detailing what makes it unique and why I started using
 it. In that post, I pledged to update my blog with my progress.
