@@ -3,7 +3,8 @@
 
 :root {
   /* how much primary and secondary colors should differ in lightness in oklch */
-  --lightness-diff: 0.1;
+  --lightness-diff: 0.06;
+  --lightness-diff-dark: 0.15;
 }
 
 @theme {
@@ -37,10 +38,10 @@
   --color-fg-tertiary-dark: var(--color-neutral-400);
   --color-bg-primary-dark: var(--color-neutral-900);
   --color-bg-secondary-dark: oklch(
-    from var(--color-bg-primary-dark) calc(l + var(--lightness-diff)) c h
+    from var(--color-bg-primary-dark) calc(l + var(--lightness-diff-dark)) c h
   );
   --color-bg-tertiary-dark: oklch(
-    from var(--color-bg-primary-dark) calc(l + calc(2 * var(--lightness-diff)))
+    from var(--color-bg-primary-dark) calc(l + calc(2 * var(--lightness-diff-dark)))
       c h
   );
 }
