@@ -75,6 +75,10 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         const projectName: string = basename(filename, ".md");
         let { content, data } = matter(rawMarkdown);
 
+        if ("published" in data && data.published === false) {
+          throw new Error("unpublished");
+        }
+
         let image: ProjectImage | undefined;
         if ("image" in data) {
           const { alt, path } = data.image;
