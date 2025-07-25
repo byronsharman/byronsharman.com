@@ -1,5 +1,5 @@
 ---
-title: 'My first week in Aotearoa New Zealand: Touring Auckland'
+title: 'My first week in Aotearoa New Zealand'
 published: true
 date: 1721454101
 description: A lifetime American ventures into the far South.
@@ -17,7 +17,7 @@ When researching universities in my last year of high school, I held in the back
 
 My journey there starts not directly with study but rather with a week of leisure time I spent in Auckland, New Zealand's largest city, before flying south to Christchurch. The trip is narrated below.
 
-## Getting There
+## Getting there
 
 My semi-minimalist philosophy, which deserves its own blog post sometime, caused me to bring only what I could fit in a backpack—essentially just clothes and electronics—for my five-month stay. This was extremely convenient during the flight, though it forced me to make some purchases later. My plane lifted off from Denver International Airport in the evening, starting a roughly 24-hour journey, including a 3.5-hour layover in Los Angeles and a 2-hour layover in Tahiti.
 
@@ -29,7 +29,7 @@ From Los Angeles, I switched terminals to catch a flight to Tahiti. It was dark 
 
 As far as I can remember, this was my first flight long enough to merit a full-size meal. Air Tahiti Nui served us a moderate breakfast containing an omelet, some fruit, a roll of bread, and yogurt. Though I've certainly eaten more enjoyable breakfasts, I was impressed by the size of the breakfast given how many passengers needed feeding.
 
-## Day One
+## Day one
 
 I arrived in Auckland right on time in the afternoon, where I spent just enough time in the airport to figure out how to use the public transport system. Having lived in the United States my whole life, my standard for public transportation was quite low, so Auckland Transport easily surpassed it. A bus and a train and a brief walk took me right to my hostel, The Attic Backpackers, in downtown Auckland.
 
@@ -41,7 +41,7 @@ Next, I retraced my route and found my way to the Auckland Town Hall to see a co
 
 The Auckland Philharmonia was incredibly skilled, and though the first half of the concert drew me to purchase a ticket, I daresay I enjoyed the second even more. Rimsky-Korsakov's famous *Scheherazade* practically sprayed excitement into the audience, akin to what one would expect from a famous soloist. It was a truly excellent piece, and I wish I could have heard it again. The combination of some 24 hours of flying and 18 hours of time change had rendered me less attentive than I would have liked!
 
-## Daily Adventures
+## Daily adventures
 
 From here onward, the rest of my trip consisted of visiting various interesting-sounding locations in Auckland interspersed with occasional trips to the grocery store. These places were:
 

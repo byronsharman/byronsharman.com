@@ -1,5 +1,5 @@
 ---
-title: Three Snazzy Commands to Enhance Your Vim Personality
+title: Three snazzy commands to enhance your Vim personality
 published: true
 date: 1713386692
 description: >-

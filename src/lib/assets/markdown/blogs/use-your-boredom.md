@@ -1,5 +1,5 @@
 ---
-title: Use Your Boredom
+title: Use your boredom
 published: true
 date: 1738871741
 description: It's there for a reason.

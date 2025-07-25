@@ -1,5 +1,5 @@
 ---
-title: An Update on 3l
+title: An update on 3l
 published: true
 date: 1735498387
 description: The keyboard layout has served me well.

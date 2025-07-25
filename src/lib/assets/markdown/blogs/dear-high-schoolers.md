@@ -1,5 +1,5 @@
 ---
-title: 'Dear High Schoolers, Time Is Precious'
+title: 'Dear high schoolers, time is precious'
 published: true
 date: 1748066695
 description: It's easy to lose sight of why we go to college.
