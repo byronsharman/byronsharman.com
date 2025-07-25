@@ -6,7 +6,7 @@ description: A little automation overcomes Google's questionable UX design.
 ---
 If you follow my blog, you know that I'm studying abroad at the University of Canterbury this semester. One of the things I appreciate about UC's IT tooling is that its class scheduling app allows you to export to `.ics` files, a feature that to the best of my knowledge is missing from Geode or SSB, the equivalents we have at Mines. This makes it easy to import your class schedule into apps like Outlook or Google Calendar.
 
-## The Problem
+## The problem
 
 I like to confine class events to their own calendar so that I can color-code and toggle them. Unfortunately, when importing the `.ics` file with over 200 class events into Google Calendar, I forgot to select the calendar dedicated to school, polluting my main calendar with class events. This made it difficult to distinguish personal events from school ones; often I would be surprised by an important event because it was the same color as my classes.
 
@@ -16,7 +16,7 @@ In order to save my time management skills from certain demise, I needed to move
 
 Thankfully, however, Google Calendar has an API.
 
-## The Solution
+## The solution
 [Like most Google Workspace products](https://developers.google.com/workspace/explore?filter=), Calendar offers a REST API as well as language-specific bindings that abstract it. I chose to use the Python bindings because the language seemed like the natural choice for a quick script. I started by browsing the documentation and finding a template that prints the user's first 10 upcoming events. As this template contained all the boilerplate for authentication, error handling, etc., all I had to do was modify it to search for class events and delete them.
 
 > **Note:** An astute reader wondered why I deleted these events and

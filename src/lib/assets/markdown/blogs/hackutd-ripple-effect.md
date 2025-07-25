@@ -26,7 +26,7 @@ dinner with [Addison](https://tgrcode.com/)
 [Megan](https://github.com/megankulshekar), and [Tyler](https://tbwright.dev)  
 **Sunday night:** flying home to Denver  
 
-## A Friday of Considerable Duration
+## A Friday of considerable duration
 
 Friday morning found me watching the streets of Auckland slide past the train
 window for the last time as I made my way to the airport, where my flight
@@ -68,7 +68,7 @@ to imagine how our productivity could change if days were [longer than 24
 hours](https://xkcd.com/320). I was able to accomplish a lot with the extra
 time.
 
-## The Hackathon
+## The hackathon
 
 ![glass-walled university building with large HackUTD banner suspended over vestibule](waiting.webp "Waiting in line to check in.")
 

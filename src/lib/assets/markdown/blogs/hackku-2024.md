@@ -11,7 +11,7 @@ image:
 ---
 Well, well. There's only one more week left in my first year of college. It's a good time to look back on the year and also to cover my last hackathon as a first-year student. HackKU, hosted in Lawrence, Kansas, was my first official [Major League Hacking (MLH)](https://mlh.io/) event. I was accompanied by teammates [Tyler](https://tbwright.dev/) and Danial.
 
-## Pre-hacking Events
+## Pre-hacking events
 
 As with any hackathon, a major theme of my HackKU experience was disregard for sleep, starting from the very beginning, when I woke up at 03:40 in order to catch our flight to Kansas City. I met Danial on campus. He had arranged for another Mines student to drive us to the airport, which happened without event. We met Tyler at the airport. I looked for breakfast, but the lines were long, and many places weren't open, so I opted to eat in Kansas City instead.
 
