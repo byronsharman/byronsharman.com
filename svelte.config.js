@@ -19,7 +19,9 @@ const config = {
       precompress: false,
       strict: true,
     }),
-    inlineStyleThreshold: 1000,
+    output: {
+      bundleStrategy: 'inline',
+    },
   },
 };
 
