@@ -53,35 +53,39 @@ const { data }: PageProps = $props();
   <meta name="description" content="I'm Byron, a computer science student at Colorado School of Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
 </svelte:head>
 
-<header class="hero-header">
-  <div class="flex flex-col md:flex-row md:flex-wrap items-center my-std lg:my-lg gap-std md:gap-lg">
-    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-42 rounded-full" />
+<header class="hero-header mb-24">
+  <div class="flex items-center gap-12">
     <div>
-      <h1 class="text-4xl! lg:text-5xl!">Byron Sharman</h1>
-      <ul class="mt-2 lg:mt-std place-content-center md:place-content-start flex flex-row space-x-3 pointer-coarse:space-x-4">
+      <h1>Byron Sharman</h1>
+      <p class="my-std max-w-md lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
+        I'm Byron, a computer science student at Colorado School of Mines. I
+        like to make things, learn technologies, and explore the world,
+        both physically and conceptually.
+      </p>
+
+      <ul class="my-std flex flex-row space-x-[20px]">
         {#each socials as social}
           <li>
             <a href={social.targetUrl}>
-              <img alt={social.iconAlt} src={social.iconSrc} class="size-5 pointer-coarse:size-6 opacity-75 dark:invert" />
+              <img alt={social.iconAlt} src={social.iconSrc} class="size-[20px] opacity-60 dark:invert" />
             </a>
           </li>
         {/each}
       </ul>
+
+      <a href="/projects" class="block w-fit my-lg lg:my-std border-b text-fg-primary dark:text-fg-primary-dark group">
+        Explore my projects
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline motion-safe:transition motion-safe:group-hover:translate-x-0.5">
+          <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
+        </svg>
+      </a>
     </div>
+
+    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-48 rounded-full" />
+
   </div>
 
-  <p class="my-std max-w-xl lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
-    I'm Byron, a computer science student at Colorado School of Mines. I
-    like to make things, learn technologies, and explore the world,
-    both physically and conceptually.
-  </p>
 
-  <a href="/projects" class="my-std lg:my-lg border-b text-fg-primary dark:text-fg-primary-dark group">
-    Explore my projects
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline motion-safe:transition motion-safe:group-hover:translate-x-0.5">
-      <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
-    </svg>
-  </a>
 </header>
 
 <CardList>

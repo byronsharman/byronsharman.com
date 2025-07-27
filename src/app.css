@@ -106,7 +106,7 @@
   .hero-header {
     @apply my-12 lg:my-36;
     h1 {
-      @apply font-extrabold text-4xl text-fg-primary dark:text-fg-primary-dark;
+      @apply font-bold text-4xl text-fg-primary dark:text-fg-primary-dark;
     }
   }
 
