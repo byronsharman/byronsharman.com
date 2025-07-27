@@ -33,7 +33,9 @@ let { data }: PageProps = $props();
   <meta property="og:description" content={data.description} />
   <meta property="og:site_name" content="Byron Sharman" />
 
-  <link rel="stylesheet" href={syntaxHighlightingSrc} />
+  {#if data.requiresHighlight}
+    <link rel="stylesheet" href={syntaxHighlightingSrc} />
+  {/if}
 
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>

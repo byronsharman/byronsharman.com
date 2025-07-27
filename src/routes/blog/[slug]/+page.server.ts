@@ -14,8 +14,14 @@ import type { BlogCardData, BlogPreviewImage, RenderBlog } from "$lib/types";
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
 
+// whether the blog should fetch syntax highlighting CSS
+let requiresHighlight = false;
+
 function configureMarked(slug: string): void {
   let first_image = true;
+  // this is necessary because the top-level definition does not get updated on
+  // page refreshes
+  requiresHighlight = false;
 
   const renderer = {
     // these are modifications of the default renderer
@@ -37,6 +43,7 @@ function configureMarked(slug: string): void {
 
       try {
         code = hljs.highlight(code, { language: langString }).value;
+        requiresHighlight = true;
       } finally {
         code = `<pre><code class="language-${langString}">${code}</code></pre>\n`;
       }
@@ -126,6 +133,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     description,
     previewImage,
     recentBlogs,
+    requiresHighlight,
     title,
   };
   return retval;

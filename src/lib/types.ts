@@ -16,6 +16,7 @@ export type RenderBlog = BaseBlog & {
   ldjson: string;
   previewImage?: BlogPreviewImage;
   recentBlogs: BlogCardData[];
+  requiresHighlight: boolean;
 };
 
 export enum ProjectType {
