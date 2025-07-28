@@ -4,8 +4,8 @@ const common = {
   category: zod.literal(["personal", "school"]),
   image: zod.optional(
     zod.object({
-      alt: zod.string(),
-      path: zod.string(),
+      alt: zod.string().nonempty(),
+      path: zod.string().nonempty(),
     }),
   ),
   published: zod.optional(zod.boolean()),
@@ -13,7 +13,7 @@ const common = {
 };
 
 const notGitHub = {
-  languages: zod.array(zod.string()),
+  languages: zod.array(zod.string().nonempty()),
   name: zod.string(),
 };
 
