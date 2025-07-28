@@ -6,6 +6,7 @@ import * as marked from "marked";
 import { basename } from "node:path";
 
 import { project } from "$lib/zod-schemas/project";
+import { parseBlog } from "./blogUtils";
 
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
@@ -134,10 +135,10 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
             const raw = await import(
               `$lib/assets/markdown/blogs/${projectName}.md?raw`
             );
-            const { data } = matter(raw.default);
+            const { data: blogData } = parseBlog(raw.default);
             return {
               ...baseReturnValue,
-              date: new Date(data.date * 1000),
+              date: new Date(blogData.date * 1000),
               languages: data.languages,
               name: data.name,
               url: `/blog/${projectName}`,
