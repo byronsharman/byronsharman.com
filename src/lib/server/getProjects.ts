@@ -1,27 +1,13 @@
-import type {
-  GitHubAPIResponse,
-  Project,
-  ProjectCategory,
-  ProjectImage,
-} from "$lib/types";
-import { PROJECT_CATEGORIES, ProjectType } from "$lib/types";
+import type { GitHubAPIResponse, Project, ProjectImage } from "$lib/types";
 
 import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
 import * as marked from "marked";
 import { basename } from "node:path";
 
+import { project } from "$lib/zodSchemas";
+
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
-
-function validateCategory(category: string): category is ProjectCategory {
-  return (PROJECT_CATEGORIES as readonly string[]).includes(category);
-}
-
-function validateProjectType(projectType: string): projectType is ProjectType {
-  return (Object.values(ProjectType) as readonly string[]).includes(
-    projectType,
-  );
-}
 
 /* return a Project modified to include metadata fetched from the Github API */
 async function fetchGitHubMetadata(
@@ -72,15 +58,31 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
   return (
     await Promise.allSettled(
       Object.entries(rawProjectData).map(async ([filename, rawMarkdown]) => {
-        const projectName: string = basename(filename, ".md");
-        let { content, data } = matter(rawMarkdown);
+        const matterObject = matter(rawMarkdown);
+        const { content } = matterObject;
+        const untrustedData = matterObject.data;
+
+        const validated = project.safeParse(untrustedData);
+        let data: typeof validated.data | undefined;
+        if (validated.success) {
+          data = validated.data;
+        } else {
+          console.error(
+            `project '${filename}' did not pass data validation: ${validated.error}`,
+          );
+          throw new Error(
+            `project '${filename}' did not pass data validation: ${validated.error}`,
+          );
+        }
 
         if ("published" in data && data.published === false) {
           throw new Error("unpublished");
         }
 
+        const projectName: string = basename(filename, ".md");
+
         let image: ProjectImage | undefined;
-        if ("image" in data) {
+        if (data.image !== undefined) {
           const { alt, path } = data.image;
           const { width, height } = imageSizeFromFile(`static${path}`);
           if (width !== undefined && height !== undefined) {
@@ -88,49 +90,60 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
           }
         }
 
-        let { languages, name } = data;
-        let date: Date | undefined;
+        const description = marked.parse(content) as string;
 
-        const category: ProjectCategory = validateCategory(data.category)
-          ? data.category
-          : "error";
-        if (category === "hackathon") {
-          content += `\nLike all hackathon projects, ${name} was a collaborative effort created in a weekend.`;
+        // Unfortunately extremely verbose. Would love to know the idiomatic
+        // way to do this!
+        type MyType = Pick<Project, "description" | "type"> &
+          (
+            | {
+                category: "hackathon";
+                hackathonName: string;
+              }
+            | {
+                category: "personal" | "school";
+              }
+          );
+        let baseReturnValue: MyType;
+        if (data.category === "hackathon") {
+          baseReturnValue = {
+            category: data.category,
+            description: `${description}\nLike all hackathon projects, this was a collaborative effort created in a weekend.`,
+            hackathonName: data.hackathonName,
+            ...(image && { image }),
+            type: data.type,
+          };
+        } else {
+          baseReturnValue = {
+            category: data.category,
+            description,
+            ...(image && { image }),
+            type: data.type,
+          };
         }
 
-        const projectType: ProjectType = validateProjectType(data.type)
-          ? data.type
-          : ProjectType.Error;
-        let url = "";
-        switch (projectType) {
-          case ProjectType.GitHub:
-            ({ date, languages, name, url } = await fetchGitHubMetadata(
+        switch (data.type) {
+          case "github": {
+            const additionalData = await fetchGitHubMetadata(
               projectName,
               fetchFunc,
-            ));
-            break;
-          case ProjectType.Blog: {
+            );
+            return { ...baseReturnValue, ...additionalData };
+          }
+          case "blog": {
             const raw = await import(
               `$lib/assets/markdown/blogs/${projectName}.md?raw`
             );
             const { data } = matter(raw.default);
-            date = new Date(data.date * 1000);
-            url = `/blog/${projectName}`;
-            break;
+            return {
+              ...baseReturnValue,
+              date: new Date(data.date * 1000),
+              languages: data.languages,
+              name: data.name,
+              url: `/blog/${projectName}`,
+            };
           }
         }
-
-        return {
-          category,
-          date,
-          description: marked.parse(content),
-          ...(data.hackathonName && { hackathonName: data.hackathonName }),
-          ...(image && { image }),
-          languages,
-          name,
-          type: projectType,
-          url,
-        };
       }),
     )
   )

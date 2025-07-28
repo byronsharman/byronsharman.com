@@ -20,7 +20,7 @@ let { project }: Props = $props();
   {/if}
   <h2 class="card-heading">
     {project.name}
-    {#if project.hackathonName !== undefined}
+    {#if "hackathonName" in project}
       <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`[${project.hackathonName}]`}</span>
     {/if}
     {#if project.name === 'byronsharman.com'}

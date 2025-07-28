@@ -1,3 +1,6 @@
+import type * as zod from "zod";
+import type { project } from "$lib/zodSchemas";
+
 type BaseBlog = {
   date: number;
   description: string;
@@ -19,31 +22,14 @@ export type RenderBlog = BaseBlog & {
   requiresHighlight: boolean;
 };
 
-export enum ProjectType {
-  Blog = "blog",
-  GitHub = "github",
-  Error = "error",
-}
-
-export type Project = {
-  category: ProjectCategory;
+export type Project = zod.infer<typeof project> & {
   date: Date;
   description: string;
-  hackathonName?: string;
   image?: ProjectImage;
   languages: string[];
   name: string;
-  type: ProjectType;
   url: string;
 };
-
-export const PROJECT_CATEGORIES = [
-  "error",
-  "hackathon",
-  "personal",
-  "school",
-] as const;
-export type ProjectCategory = (typeof PROJECT_CATEGORIES)[number];
 
 /* This is by no means exhaustive, but I *think* it's better than nothing? */
 export type GitHubAPIResponse = {
