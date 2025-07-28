@@ -4,11 +4,10 @@ import type { PageServerLoad } from "./$types";
 
 import hljs from "highlight.js/lib/common";
 import imageSizeFromFile from "image-size";
-import matter from "gray-matter";
 import * as marked from "marked";
 import type { Tokens } from "marked";
 
-import { getBlogCardData } from "$lib/server/blogUtils";
+import { getBlogCardData, parseBlog } from "$lib/server/blogUtils";
 import type { BlogCardData, BlogPreviewImage, RenderBlog } from "$lib/types";
 
 // how many other blogs to put in the "Recent Posts" section
@@ -76,8 +75,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
   } catch {
     return error(404, "Not found");
   }
-  const { content, data } = matter(raw.default);
-  // TODO: use a data validation library to verify data has the required properties
+  const { content, data } = parseBlog(raw.default);
   if (!data.published) return error(404, "Not found");
 
   const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
@@ -93,7 +91,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
   configureMarked(params.slug);
 
   let previewImage: BlogPreviewImage | undefined;
-  if ("image" in data) {
+  if (data.image !== undefined) {
     const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${data.image.name}.`;
     previewImage = {
       alt: data.image.alt,

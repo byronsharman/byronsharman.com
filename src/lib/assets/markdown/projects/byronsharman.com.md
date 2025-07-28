@@ -2,7 +2,7 @@
 category: personal
 type: github
 ---
-My website does a lot of things, but they can all be simplified as using
-Javascript to turn JSON, images, and Markdown into a static site made of HTML
-and CSS. Almost all the content of the site is generated from metadata. I
-use the excellent [Svelte](https://svelte.dev/) framework to accomplish this.
+My website uses Svelte to generate web pages from Markdown files. The framework
+also provides features like client-side routing, link prefetching, CSS
+inlining, etc. I created a simple API which validates metadata in Markdown
+frontmatter with Zod and returns the typed result.

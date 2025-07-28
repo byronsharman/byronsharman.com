@@ -1,5 +1,5 @@
 import type { RequestHandler } from "./$types";
-import matter from "gray-matter";
+import { parseBlog } from "$lib/server/blogUtils";
 import { basename } from "node:path";
 
 export const prerender = true;
@@ -25,11 +25,11 @@ export const GET: RequestHandler = () => {
   return new Response(
     Object.entries(rawBlogData)
       .map(([filename, rawMarkdown]) => {
-        const { data } = matter(rawMarkdown);
-        const { date, description, published, title } = data;
+        const { data } = parseBlog(rawMarkdown);
+        const { image: _, ...rest } = data;
         const slug: string = basename(filename, ".md");
 
-        return { date, description, published, slug, title };
+        return { ...rest, slug };
       })
       .filter((blog) => blog.published)
       .toSorted((a, b) => b.date - a.date)
