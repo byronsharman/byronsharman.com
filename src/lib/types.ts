@@ -1,5 +1,5 @@
 import type * as zod from "zod";
-import type { project } from "$lib/zodSchemas";
+import type { project } from "$lib/zod-schemas/project";
 
 type BaseBlog = {
   date: number;

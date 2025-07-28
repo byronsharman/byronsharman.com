@@ -5,7 +5,7 @@ import matter from "gray-matter";
 import * as marked from "marked";
 import { basename } from "node:path";
 
-import { project } from "$lib/zodSchemas";
+import { project } from "$lib/zod-schemas/project";
 
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
