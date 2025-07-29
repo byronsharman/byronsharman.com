@@ -53,36 +53,37 @@ const { data }: PageProps = $props();
   <meta name="description" content="I'm Byron, a computer science student at Colorado School of Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
 </svelte:head>
 
-<header class="hero-header">
-  <div class="flex flex-col md:flex-row md:flex-wrap items-center my-std lg:my-lg gap-std md:gap-lg">
-    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-42 rounded-full" />
+<article class="max-w-(--content-width) my-8 lg:my-24">
+  <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
+    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
+
     <div>
-      <h1 class="text-4xl! lg:text-5xl!">Byron Sharman</h1>
-      <ul class="mt-2 lg:mt-std place-content-center md:place-content-start flex flex-row space-x-3 pointer-coarse:space-x-4">
+      <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Byron Sharman</h1>
+      <p class="my-std lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
+        I'm Byron, a computer science student at Colorado School of Mines. I
+        like to make things, learn technologies, and explore the world,
+        both physically and conceptually.
+      </p>
+
+      <ul class="my-std flex flex-row space-x-[20px]">
         {#each socials as social}
           <li>
             <a href={social.targetUrl}>
-              <img alt={social.iconAlt} src={social.iconSrc} class="size-5 pointer-coarse:size-6 opacity-75 dark:invert" />
+              <img alt={social.iconAlt} src={social.iconSrc} class="size-[20px] opacity-60 dark:invert" />
             </a>
           </li>
         {/each}
       </ul>
+
+      <a href="/projects" class="block w-fit my-lg lg:my-std border-b text-fg-primary dark:text-fg-primary-dark group">
+        Explore my projects
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline motion-safe:transition motion-safe:group-hover:translate-x-0.5">
+          <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
+        </svg>
+      </a>
     </div>
   </div>
-
-  <p class="my-std max-w-xl lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
-    I'm Byron, a computer science student at Colorado School of Mines. I
-    like to make things, learn technologies, and explore the world,
-    both physically and conceptually.
-  </p>
-
-  <a href="/projects" class="my-std lg:my-lg border-b text-fg-primary dark:text-fg-primary-dark group">
-    Explore my projects
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline motion-safe:transition motion-safe:group-hover:translate-x-0.5">
-      <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
-    </svg>
-  </a>
-</header>
+</article>
 
 <CardList>
   <h2 class="sr-only">Blog Posts</h2>
@@ -91,7 +92,7 @@ const { data }: PageProps = $props();
   {/each}
 </CardList>
 
-<footer class="flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
+<footer class="w-full max-w-(--content-width) mb-std lg:mb-lg flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
   <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">
     <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M4.205 8.72805L12.205 3.72805C13.2041 3.10363 14.5 3.82189 14.5 5.00004V15C14.5 16.1782 13.2041 16.8965 12.205 16.272L4.205 11.272C3.265 10.6845 3.265 9.31555 4.205 8.72805Z" />
