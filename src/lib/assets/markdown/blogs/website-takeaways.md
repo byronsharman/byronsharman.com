@@ -266,12 +266,11 @@ better way that only uses CSS.
 
 This illuminates a bigger theme, which is that it's best to try to implement
 features in HTML and CSS before resorting to JavaScript, for several reasons:
-* Features built without JavaScript are often faster.
 * The browser can fetch render-blocking resources ahead of time when it doesn't
   have to execute JavaScript to identify them.
+* Features built without JavaScript are often faster.
 * JavaScript is disabled more often than one would think.
-* What required JavaScript 10 or 5 or even 1 year ago might not anymore. For
-  example, image carousels can be implemented with pure HTML and CSS.
+* What required JavaScript 5 years ago—or even 5 months ago—might not anymore.
 
 ### 20. [Oklab](https://bottosson.github.io/posts/oklab/) is nice
 
