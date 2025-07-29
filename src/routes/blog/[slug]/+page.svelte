@@ -1,19 +1,11 @@
 <script lang='ts'>
-import { MediaQuery } from "svelte/reactivity";
-
 import BackToHome from "$lib/components/BackToHome.svelte";
 import BlogCard from "$lib/components/BlogCard.svelte";
 import CardList from "$lib/components/CardList.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
 
-import darkThemeUrl from "$lib/assets/styles/dark.css?url";
-import lightThemeUrl from "$lib/assets/styles/light.css?url";
-
-const darkMode = new MediaQuery("prefers-color-scheme: dark");
-const syntaxHighlightingSrc = $derived(
-  darkMode.current ? darkThemeUrl : lightThemeUrl,
-);
+import syntaxHighlighting from "$lib/assets/styles/syntax-highlighting.css?url";
 
 let { data }: PageProps = $props();
 </script>
@@ -34,7 +26,7 @@ let { data }: PageProps = $props();
   <meta property="og:site_name" content="Byron Sharman" />
 
   {#if data.requiresHighlight}
-    <link rel="stylesheet" href={syntaxHighlightingSrc} />
+    <link rel="stylesheet" href={syntaxHighlighting} />
   {/if}
 
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
