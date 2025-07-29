@@ -32,8 +32,10 @@ let { data }: PageProps = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
+<BackToHome />
+
 <article class="w-full max-w-(--content-width) prose dark:prose-invert text-[17px]">
-  <header>
+  <header class="mt-std lg:mt-lg">
     <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
   </header>

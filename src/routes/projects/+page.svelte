@@ -12,8 +12,10 @@ let { data }: PageProps = $props();
   <meta name="description" content={`View ${data.projects.length} projects in Byron's project portfolio.`} />
 </svelte:head>
 
-<header class="hero-header">
-  <h1>Projects</h1>
+<BackToHome />
+
+<header class="w-full max-w-(--content-width) my-std lg:my-lg">
+  <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Projects</h1>
 </header>
 
 <CardList>
@@ -21,5 +23,3 @@ let { data }: PageProps = $props();
     <ProjectCard {project} />
   {/each}
 </CardList>
-
-<BackToHome />
