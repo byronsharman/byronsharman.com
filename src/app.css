@@ -38,10 +38,10 @@
   --color-fg-tertiary-dark: var(--color-neutral-400);
   --color-bg-primary-dark: var(--color-neutral-900);
   --color-bg-secondary-dark: oklch(
-    from var(--color-bg-primary-dark) calc(l + var(--lightness-diff-dark)) c h
+    from var(--color-bg-primary-dark) calc(l - var(--lightness-diff-dark)) c h
   );
   --color-bg-tertiary-dark: oklch(
-    from var(--color-bg-primary-dark) calc(l + calc(2 * var(--lightness-diff-dark)))
+    from var(--color-bg-primary-dark) calc(l - calc(2 * var(--lightness-diff-dark)))
       c h
   );
 }
@@ -90,11 +90,10 @@
     figure {
       @apply my-6!;
     }
-    pre {
-      @apply p-0! overflow-x-auto code! text-inherit! text-sm!;
-    }
-    pre code {
-      @apply m-5! block! min-w-fit whitespace-pre!;
+    @media (prefers-color-scheme: light) {
+      pre {
+        @apply code! text-inherit!;
+      }
     }
     img {
       @apply mb-0 w-max object-scale-down sm:max-h-96 md:max-h-[34rem] rounded-md;

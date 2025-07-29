@@ -53,11 +53,13 @@ const { data }: PageProps = $props();
   <meta name="description" content="I'm Byron, a computer science student at Colorado School of Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
 </svelte:head>
 
-<header class="hero-header mb-24">
-  <div class="flex items-center gap-12">
+<header class="hero-header my-8 lg:my-24">
+  <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
+    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
+
     <div>
       <h1>Byron Sharman</h1>
-      <p class="my-std max-w-md lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
+      <p class="my-std sm:max-w-md lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
         I'm Byron, a computer science student at Colorado School of Mines. I
         like to make things, learn technologies, and explore the world,
         both physically and conceptually.
@@ -80,12 +82,7 @@ const { data }: PageProps = $props();
         </svg>
       </a>
     </div>
-
-    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-48 rounded-full" />
-
   </div>
-
-
 </header>
 
 <CardList>

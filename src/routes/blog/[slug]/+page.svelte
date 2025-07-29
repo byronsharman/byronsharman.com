@@ -40,7 +40,7 @@ let { data }: PageProps = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<article class="prose dark:prose-invert text-[17px] my-12 lg:my-24">
+<article class="w-full prose dark:prose-invert text-[17px]">
   <header class="my-12! lg:my-24!">
     <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
@@ -48,10 +48,10 @@ let { data }: PageProps = $props();
   {@html data.html}
 </article>
 
-<hr class="border-fg-tertiary dark:border-fg-tertiary-dark" />
+<hr class="my-12 lg:my-24 w-48 border-fg-tertiary dark:border-fg-tertiary-dark" />
 
-<section class="mt-12 lg:mt-24">
-  <h2 class="my-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
+<section>
+  <h2 class="mb-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
   <CardList>
     {#each data.recentBlogs as blog}
       <BlogCard blog={blog} />
