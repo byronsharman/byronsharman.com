@@ -50,13 +50,11 @@ let { data }: PageProps = $props();
 
 <hr class="my-12 lg:my-24 w-48 border-fg-tertiary dark:border-fg-tertiary-dark" />
 
-<section>
+<CardList>
   <h2 class="mb-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
-  <CardList>
-    {#each data.recentBlogs as blog}
-      <BlogCard blog={blog} />
-    {/each}
-  </CardList>
-</section>
+  {#each data.recentBlogs as blog}
+    <BlogCard blog={blog} />
+  {/each}
+</CardList>
 
 <BackToHome />
