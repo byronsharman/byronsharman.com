@@ -8,6 +8,8 @@
 }
 
 @theme {
+  --content-width: 700px;
+
   --spacing-sm: calc(var(--spacing) * 2);
   --spacing-std: calc(var(--spacing) * 4);
   --spacing-lg: calc(var(--spacing) * 8);

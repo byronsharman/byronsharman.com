@@ -32,8 +32,8 @@ let { data }: PageProps = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<article class="w-full prose dark:prose-invert text-[17px]">
-  <header class="my-12! lg:my-24!">
+<article class="w-full max-w-(--content-width) prose dark:prose-invert text-[17px]">
+  <header>
     <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />
   </header>
@@ -48,5 +48,3 @@ let { data }: PageProps = $props();
     <BlogCard blog={blog} />
   {/each}
 </CardList>
-
-<BackToHome />
