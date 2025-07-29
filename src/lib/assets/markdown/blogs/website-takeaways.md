@@ -251,33 +251,27 @@ of import type. The queries I use for my website are
 * `?url`, which directs Vite to import as a URL, and
 * `?raw`, which directs Vite to import as a string.
 
-### 19. Svelte supports reactive media queries
+### 19. CSS files can be imported conditionally on media queries
 
 After implementing the redesign, I decided to add dark mode. One complication I
 hadn't foreseen was changing the syntax highlighting theme based on the value
-of `prefers-color-scheme`. The [MediaQuery
-API](https://svelte.dev/docs/svelte/svelte-reactivity#MediaQuery) is relatively
-new, but it's worked well for this use case.
+of `prefers-color-scheme`. I first approached this by using JavaScript to
+import `light.css` or `dark.css` conditionally, but then I discovered a much
+better way that only uses CSS.
 
-I'm uncertain of the best way to solve this problem, but currently, I
-dynamically change an included CSS file based on the API:
-```html
-<script lang="ts">
-// ...
-
-import darkThemeUrl from "dark.css?url";
-import lightThemeUrl from "light.css?url";
-
-const darkMode = new MediaQuery("prefers-color-scheme: dark");
-const syntaxHighlightingSrc = $derived(
-  darkMode.current ? darkThemeUrl : lightThemeUrl,
-);
-</script>
-
-<svelte:head>
-  <link rel="stylesheet" href={syntaxHighlightingSrc} />
-</svelte:head>
+```css
+@import "light.css" (prefers-color-scheme: light);
+@import "dark.css" (prefers-color-scheme: dark);
 ```
+
+This illuminates a bigger theme, which is that it's best to try to implement
+features in HTML and CSS before resorting to JavaScript, for several reasons:
+* Features built without JavaScript are often faster.
+* The browser can fetch render-blocking resources ahead of time when it doesn't
+  have to execute JavaScript to identify them.
+* JavaScript is disabled more often than one would think.
+* What required JavaScript 10 or 5 or even 1 year ago might not anymore. For
+  example, image carousels can be implemented with pure HTML and CSS.
 
 ### 20. [Oklab](https://bottosson.github.io/posts/oklab/) is nice
 
