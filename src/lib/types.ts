@@ -29,6 +29,7 @@ type RenderProject = {
   image?: ProjectImage;
   languages: string[];
   name: string;
+  url?: string;
 };
 
 export type Project = Omit<zod.infer<typeof project>, keyof RenderProject> & RenderProject;
