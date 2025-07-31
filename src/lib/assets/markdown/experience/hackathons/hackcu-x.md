@@ -1,5 +1,4 @@
 ---
-category: hackathon
 parenthetical: HackCU X
 image:
   alt: A screenshot of a productivity application showing a videos and notes relating

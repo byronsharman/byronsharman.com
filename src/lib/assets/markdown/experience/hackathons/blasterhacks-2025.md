@@ -1,5 +1,4 @@
 ---
-category: hackathon
 date: 2025-03-30
 image:
   alt: a screenshot of two terminals synchronized with Pear

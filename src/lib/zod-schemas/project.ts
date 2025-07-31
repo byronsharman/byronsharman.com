@@ -1,7 +1,6 @@
 import * as zod from "zod";
 
 const common = {
-  category: zod.literal(["hackathon", "personal", "school", "work"]),
   date: zod.instanceof(Date).optional(),
   image: zod.optional(
     zod.object({

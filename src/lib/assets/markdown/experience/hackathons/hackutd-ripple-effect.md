@@ -1,5 +1,4 @@
 ---
-category: hackathon
 parenthetical: 'HackUTD: Ripple Effect'
 image:
   alt: A screenshot of an application homepage showing a user interface and a map

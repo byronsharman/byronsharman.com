@@ -3,7 +3,7 @@ import type { GitHubAPIResponse, Project, ProjectImage } from "$lib/types";
 import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
 import * as marked from "marked";
-import { basename } from "node:path";
+import { basename, dirname } from "node:path";
 
 import { project } from "$lib/zod-schemas/project";
 import { parseBlog } from "./blogUtils";
@@ -60,7 +60,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
     await Promise.allSettled(
       Object.entries(rawProjectData).map(async ([filename, rawMarkdown]) => {
         const matterObject = matter(rawMarkdown);
-        const { content } = matterObject;
+        let { content } = matterObject;
         const untrustedData = matterObject.data;
 
         const validated = project.safeParse(untrustedData);
@@ -91,16 +91,17 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
           }
         }
 
-        if (data.category === "hackathon") {
-          content.concat("\nLike all hackathon projects, this was a collaborative effort created in a weekend.");
+        if (dirname(filename).endsWith("hackathons")) {
+          content += "\nLike all hackathon projects, this was a collaborative effort created in a weekend.";
+        } else {
+          console.log(`Not applying blurb because dirname is ${dirname(filename)}`)
         }
         const description = marked.parse(content) as string;
 
         // Unfortunately extremely verbose. Would love to know the idiomatic
         // way to do this!
-        type MyType = Pick<Project, "category" | "description" | "parenthetical" | "image" | "type">;
+        type MyType = Pick<Project, "description" | "parenthetical" | "image" | "type">;
         const baseReturnValue: MyType = {
-          category: data.category,
           description,
           parenthetical: data.parenthetical,
           image,

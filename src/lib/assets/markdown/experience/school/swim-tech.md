@@ -1,5 +1,4 @@
 ---
-category: school
 languages:
   - Python
   - Terraform/HCL

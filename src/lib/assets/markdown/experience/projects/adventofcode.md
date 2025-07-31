@@ -1,5 +1,4 @@
 ---
-category: personal
 image:
   alt: A screenshot of the Advent of Code homepage showing ASCII art of the number
     10

@@ -1,5 +1,4 @@
 ---
-category: school
 image:
   alt: A screenshot of a text-based game showing a tic-tac-toe board, with each square
     itself containing another tic-tac-toe board

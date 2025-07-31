@@ -1,5 +1,4 @@
 ---
-category: personal
 parenthetical: this website!
 type: github
 ---
