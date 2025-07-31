@@ -22,14 +22,16 @@ export type RenderBlog = BaseBlog & {
   requiresHighlight: boolean;
 };
 
-export type Project = zod.infer<typeof project> & {
+// properties needed to draw a project that should override properties in zod.infer<typeof project>
+type RenderProject = {
   date: Date;
   description: string;
   image?: ProjectImage;
   languages: string[];
   name: string;
-  url: string;
 };
+
+export type Project = Omit<zod.infer<typeof project>, keyof RenderProject> & RenderProject;
 
 /* This is by no means exhaustive, but I *think* it's better than nothing? */
 export type GitHubAPIResponse = {

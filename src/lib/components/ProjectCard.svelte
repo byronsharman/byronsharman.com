@@ -2,11 +2,7 @@
 import GenericCard from "$lib/components/GenericCard.svelte";
 import type { Project } from "$lib/types.ts";
 
-interface Props {
-  project: Project;
-}
-
-let { project }: Props = $props();
+let { project }: { project: Project } = $props();
 </script>
 
 <GenericCard minWidth href={project.url}>
@@ -20,13 +16,10 @@ let { project }: Props = $props();
   {/if}
   <h2 class="card-heading">
     {project.name}
-    {#if "hackathonName" in project}
-      <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`[${project.hackathonName}]`}</span>
-    {/if}
-    {#if project.name === 'byronsharman.com'}
-      <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">(this website!)</span>
+    {#if "parenthetical" in project}
+      <span class="font-normal text-fg-secondary dark:text-fg-secondary-dark">{`(${project.parenthetical})`}</span>
     {/if}
   </h2>
   <p class="text-sm text-fg-tertiary dark:text-fg-tertiary-dark mb-std">{project.languages.join(', ')}</p>
-  <div class="prose dark:prose-invert max-w-max">{@html project.description}</div>
+  <div class="prose dark:prose-invert text-base/6 max-w-max">{@html project.description}</div>
 </GenericCard>

@@ -1,12 +1,13 @@
 ---
 category: hackathon
-hackathonName: Blasterhacks 2025
+date: 2025-03-30
 image:
   alt: a screenshot of two terminals synchronized with Pear
   path: /projects/images/pear.avif
 languages:
 - Go
 name: Pear
+parenthetical: Blasterhacks 2025
 type: blog
 ---
 Pear allows multiple people to simultaneously access and use a terminal in real

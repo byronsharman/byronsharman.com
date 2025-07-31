@@ -91,37 +91,21 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
           }
         }
 
+        if (data.category === "hackathon") {
+          content.concat("\nLike all hackathon projects, this was a collaborative effort created in a weekend.");
+        }
         const description = marked.parse(content) as string;
 
         // Unfortunately extremely verbose. Would love to know the idiomatic
         // way to do this!
-        type MyType = Pick<Project, "description" | "type"> &
-          (
-            | {
-                category: "hackathon";
-                hackathonName: string;
-              }
-            | {
-                category: "personal" | "school";
-              }
-          );
-        let baseReturnValue: MyType;
-        if (data.category === "hackathon") {
-          baseReturnValue = {
-            category: data.category,
-            description: `${description}\nLike all hackathon projects, this was a collaborative effort created in a weekend.`,
-            hackathonName: data.hackathonName,
-            ...(image && { image }),
-            type: data.type,
-          };
-        } else {
-          baseReturnValue = {
-            category: data.category,
-            description,
-            ...(image && { image }),
-            type: data.type,
-          };
-        }
+        type MyType = Pick<Project, "category" | "description" | "parenthetical" | "image" | "type">;
+        const baseReturnValue: MyType = {
+          category: data.category,
+          description,
+          parenthetical: data.parenthetical,
+          image,
+          type: data.type,
+        };
 
         switch (data.type) {
           case "github": {
@@ -129,7 +113,11 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
               projectName,
               fetchFunc,
             );
-            return { ...baseReturnValue, ...additionalData };
+            return {
+              ...baseReturnValue,
+              ...additionalData,
+              date: data.date ?? additionalData.date,
+            };
           }
           case "blog": {
             const raw = await import(
@@ -138,12 +126,19 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
             const { data: blogData } = parseBlog(raw.default);
             return {
               ...baseReturnValue,
-              date: new Date(blogData.date * 1000),
+              date: data.date ?? new Date(blogData.date * 1000),
               languages: data.languages,
               name: data.name,
               url: `/blog/${projectName}`,
             };
           }
+          case "nolink":
+            return {
+              ...baseReturnValue,
+              date: data.date,
+              languages: data.languages,
+              name: data.name,
+            };
         }
       }),
     )

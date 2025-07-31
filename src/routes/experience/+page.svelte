@@ -8,14 +8,14 @@ let { data }: PageProps = $props();
 </script>
 
 <svelte:head>
-  <title>Projects | Byron Sharman</title>
+  <title>Experience</title>
   <meta name="description" content={`View ${data.projects.length} projects in Byron's project portfolio.`} />
 </svelte:head>
 
 <BackToHome />
 
 <header class="w-full max-w-(--content-width) my-std lg:my-lg">
-  <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Projects</h1>
+  <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Experience</h1>
 </header>
 
 <CardList>
