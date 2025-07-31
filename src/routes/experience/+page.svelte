@@ -1,15 +1,17 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
 import CardList from "$lib/components/CardList.svelte";
-import ProjectCard from "$lib/components/ProjectCard.svelte";
+import Experience from "$lib/components/Experience.svelte";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
+
+const descriptionTag = `Byron Sharman's experience. ${data.experiences.map(exp => `${exp.name}, ${exp.date.toLocaleDateString(undefined, { year: "numeric", month: "long" })}`).join("; ")}.`;
 </script>
 
 <svelte:head>
   <title>Experience</title>
-  <meta name="description" content={`View ${data.projects.length} projects in Byron's project portfolio.`} />
+  <meta name="description" content={descriptionTag} />
 </svelte:head>
 
 <BackToHome />
@@ -19,7 +21,7 @@ let { data }: PageProps = $props();
 </header>
 
 <CardList>
-  {#each data.projects as project}
-    <ProjectCard {project} />
+  {#each data.experiences as experience}
+    <Experience {experience} />
   {/each}
 </CardList>

@@ -21,7 +21,7 @@ const nolink = {
   date: zod.instanceof(Date),
 };
 
-export const project = zod.discriminatedUnion("type", [
+export const ExperienceSchema = zod.discriminatedUnion("type", [
   zod.strictObject({
     ...common,
     type: zod.literal("github"),

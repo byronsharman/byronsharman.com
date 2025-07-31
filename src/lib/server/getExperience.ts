@@ -1,36 +1,36 @@
-import type { GitHubAPIResponse, Project, ProjectImage } from "$lib/types";
+import type { GitHubAPIResponse, Experience, ExperienceImage } from "$lib/types";
 
 import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
 import * as marked from "marked";
 import { basename, dirname } from "node:path";
 
-import { project } from "$lib/zod-schemas/project";
+import { ExperienceSchema } from "$lib/zod-schemas/experience";
 import { parseBlog } from "./blogUtils";
 
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
-/* return a Project modified to include metadata fetched from the Github API */
+/* return an Experience modified to include metadata fetched from the Github API */
 async function fetchGitHubMetadata(
-  projectName: string,
+  repoName: string,
   fetchFunc: typeof fetch,
 ) {
   const res: Response = await fetchFunc(
-    `https://api.github.com/repos/byronsharman/${projectName}`,
+    `https://api.github.com/repos/byronsharman/${repoName}`,
   );
   if (!res.ok) {
     throw new Error(
       `Fetch from GitHub API failed with code ${res.status}: ${res.statusText}`,
     );
   }
-  const githubProject: GitHubAPIResponse = await res.json();
+  const data: GitHubAPIResponse = await res.json();
 
-  // get project languages by querying the URL returned by the API
+  // get languages by querying the URL returned by the API
   let languages: string[] = [];
-  const lang_res = await fetchFunc(githubProject.languages_url);
+  const lang_res = await fetchFunc(data.languages_url);
   if (!res.ok) {
     throw new Error(
-      `Fetch from GitHub API failed with code ${res.status}: ${res.statusText}. Skipping languages for project ${githubProject.name}.`,
+      `Fetch from GitHub API failed with code ${res.status}: ${res.statusText}. Skipping languages for experience ${data.name}.`,
     );
   } else {
     languages = Object.keys(await lang_res.json()).filter(
@@ -39,15 +39,15 @@ async function fetchGitHubMetadata(
   }
 
   return {
-    name: githubProject.name,
-    date: new Date(githubProject.updated_at),
-    url: githubProject.html_url,
+    name: data.name,
+    date: new Date(data.updated_at),
+    url: data.html_url,
     languages,
   };
 }
 
-export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
-  const rawProjectData: Record<string, string> = import.meta.glob(
+export async function getExperience(fetchFunc: typeof fetch): Promise<Experience[]> {
+  const rawData: Record<string, string> = import.meta.glob(
     "$lib/assets/markdown/experience/**/*.md",
     {
       query: "?raw",
@@ -58,21 +58,21 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
   );
   return (
     await Promise.allSettled(
-      Object.entries(rawProjectData).map(async ([filename, rawMarkdown]) => {
+      Object.entries(rawData).map(async ([filename, rawMarkdown]) => {
         const matterObject = matter(rawMarkdown);
         let { content } = matterObject;
         const untrustedData = matterObject.data;
 
-        const validated = project.safeParse(untrustedData);
+        const validated = ExperienceSchema.safeParse(untrustedData);
         let data: typeof validated.data | undefined;
         if (validated.success) {
           data = validated.data;
         } else {
           console.error(
-            `project '${filename}' did not pass data validation: ${validated.error}`,
+            `experience '${filename}' did not pass data validation: ${validated.error}`,
           );
           throw new Error(
-            `project '${filename}' did not pass data validation: ${validated.error}`,
+            `experience '${filename}' did not pass data validation: ${validated.error}`,
           );
         }
 
@@ -80,9 +80,9 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
           throw new Error("unpublished");
         }
 
-        const projectName: string = basename(filename, ".md");
+        const id: string = basename(filename, ".md");
 
-        let image: ProjectImage | undefined;
+        let image: ExperienceImage | undefined;
         if (data.image !== undefined) {
           const { alt, path } = data.image;
           const { width, height } = imageSizeFromFile(`static${path}`);
@@ -93,14 +93,12 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
 
         if (dirname(filename).endsWith("hackathons")) {
           content += "\nLike all hackathon projects, this was a collaborative effort created in a weekend.";
-        } else {
-          console.log(`Not applying blurb because dirname is ${dirname(filename)}`)
         }
         const description = marked.parse(content) as string;
 
         // Unfortunately extremely verbose. Would love to know the idiomatic
         // way to do this!
-        type MyType = Pick<Project, "description" | "parenthetical" | "image" | "type">;
+        type MyType = Pick<Experience, "description" | "parenthetical" | "image" | "type">;
         const baseReturnValue: MyType = {
           description,
           parenthetical: data.parenthetical,
@@ -111,7 +109,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
         switch (data.type) {
           case "github": {
             const additionalData = await fetchGitHubMetadata(
-              projectName,
+              id,
               fetchFunc,
             );
             return {
@@ -122,7 +120,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
           }
           case "blog": {
             const raw = await import(
-              `$lib/assets/markdown/blogs/${projectName}.md?raw`
+              `$lib/assets/markdown/blogs/${id}.md?raw`
             );
             const { data: blogData } = parseBlog(raw.default);
             return {
@@ -130,7 +128,7 @@ export async function getProjects(fetchFunc: typeof fetch): Promise<Project[]> {
               date: data.date ?? new Date(blogData.date * 1000),
               languages: data.languages,
               name: data.name,
-              url: `/blog/${projectName}`,
+              url: `/blog/${id}`,
             };
           }
           case "nolink":

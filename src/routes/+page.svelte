@@ -50,7 +50,7 @@ const { data }: PageProps = $props();
 
 <svelte:head>
   <title>Byron Sharman</title>
-  <meta name="description" content="I'm Byron, a computer science student at Colorado School of Mines. I love to write code and learn new technologies. Here, you can browse some of my projects or read my blog posts." />
+  <meta name="description" content="Byron Sharman is a computer science student at the Colorado School of Mines. This is his portfolio and blog." />
 </svelte:head>
 
 <article class="max-w-(--content-width) my-8 lg:my-24">

@@ -1,5 +1,5 @@
 import type * as zod from "zod";
-import type { project } from "$lib/zod-schemas/project";
+import type { ExperienceSchema } from "$lib/zod-schemas/experience";
 
 type BaseBlog = {
   date: number;
@@ -22,17 +22,18 @@ export type RenderBlog = BaseBlog & {
   requiresHighlight: boolean;
 };
 
-// properties needed to draw a project that should override properties in zod.infer<typeof project>
-type RenderProject = {
+// properties needed to draw an experience that should override properties in
+// zod.infer<typeof ExperienceSchema>
+type RenderExperience = {
   date: Date;
   description: string;
-  image?: ProjectImage;
+  image?: ExperienceImage;
   languages: string[];
   name: string;
   url?: string;
 };
 
-export type Project = Omit<zod.infer<typeof project>, keyof RenderProject> & RenderProject;
+export type Experience = Omit<zod.infer<typeof ExperienceSchema>, keyof RenderExperience> & RenderExperience;
 
 /* This is by no means exhaustive, but I *think* it's better than nothing? */
 export type GitHubAPIResponse = {
@@ -47,7 +48,7 @@ type BaseImage = {
   alt: string;
 };
 
-export type ProjectImage = BaseImage & {
+export type ExperienceImage = BaseImage & {
   path: string;
   width: number;
   height: number;

@@ -1,14 +1,14 @@
 import type { PageServerLoad } from "./$types";
 
-import { getProjects } from "$lib/server/getProjects";
-import type { Project } from "$lib/types";
+import { getExperience } from "$lib/server/getExperience";
+import type { Experience } from "$lib/types";
 
 export const load: PageServerLoad = async ({ fetch }) => {
-  let projects: Project[] = [];
+  let experiences: Experience[] = [];
   try {
-    projects = await getProjects(fetch);
+    experiences = await getExperience(fetch);
   } catch (e: unknown) {
     console.error(e);
   }
-  return { projects };
+  return { experiences };
 };
