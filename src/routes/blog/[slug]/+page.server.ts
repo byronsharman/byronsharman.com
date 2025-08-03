@@ -15,7 +15,7 @@ const RECENT_LIMIT = 4;
 // whether the blog should fetch syntax highlighting CSS
 let requiresHighlight = false;
 
-function configureMarked(slug: string): void {
+function configureMarked(slug: string) {
   let first_image = true;
   // this is necessary because the top-level definition does not get updated on
   // page refreshes
@@ -49,57 +49,21 @@ function configureMarked(slug: string): void {
     },
 
     image({ href, title, text }: Tokens.Image): string {
+      // when walkTokens fails, it sets href to an empty string, which
+      // indicates an img should not be created
       if (href === "") return text;
-      let srcset: string | undefined;
-      const match = href.match(/(.*)\.(\w+)$/);
-      if (match === null) {
-        console.error(`couldn't parse extension from image path ${href}`);
-        return text;
-      }
-      const baseName = match[1];
-      const extension = match[2];
-      (async () => {
-        switch (extension) {
-          // because Vite forces dynamic imports to have extensions, we must
-          // copy and paste this code for every extension we wish to support
-          case "avif":
-            return await import(
-              `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920&format=avif?withoutEnlargement`
-            );
-          case "jpg":
-            return await import(
-              `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif?withoutEnlargement`
-            );
-          case "png":
-            return await import(
-              `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif?withoutEnlargement`
-            );
-          case "webp":
-            return await import(
-              `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920&format=avif?withoutEnlargement`
-            );
-          default:
-            throw new Error(`unsupported extension ${extension}`);
-        }
-      })().then(({ default: path }: { default: string[] }) => {
-          // size of responsive images in pixels
-          // unfortunately we cannot specify these dynamically in the import URLs
-          // because this breaks vite-imagetools
-          const SIZES = [480, 700, 1920];
-
-          srcset = path.map((url, index) => `${url} ${SIZES[index]}w`).join(", ");
-        });
 
       let out = `\
 <figure class="flex flex-col text-center">\
 <img
-  srcset=${srcset}
+  srcset="${href}"
+  sizes="(max-width: 768px) 480px, 50vw"
   alt="${text}"
   class="mx-auto"
   loading="${first_image ? "eager" : "lazy"}"
 />`;
       if (title) {
-        out += `<figcaption>${marked.parseInline(title)}</figcaption>`;
+        out += `<figcaption>${title}</figcaption>`;
       }
       out += "</figure>";
       first_image = false;
@@ -107,7 +71,79 @@ function configureMarked(slug: string): void {
     },
   };
 
-  marked.use({ renderer });
+  // const walkTokens = async (token: marked.Token) => {
+  async function walkTokens(token: marked.Token) {
+    if (token.type === "image") {
+      // parse markdown in image captions
+      if (token.title !== null) {
+        token.title = await marked.parseInline(token.title);
+      }
+
+      let importObject: { default: string[] | undefined } | undefined;
+      const match = token.href.match(/(.*)\.(\w+)$/);
+      if (match === null) {
+        console.error(`couldn't parse extension from image path ${token.href}`);
+        // prevent the renderer from rendering this image
+        token.href = "";
+        return;
+      }
+      const baseName = match[1];
+      const extension = match[2];
+      switch (extension) {
+        // because Vite forces dynamic imports to have extensions, we must
+        // copy and paste this code for every extension we wish to support
+        case "avif":
+          importObject = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920`
+          );
+          break;
+        case "jpg":
+          importObject = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif`
+          );
+          break;
+        case "png":
+          importObject = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif`
+          );
+          break;
+        case "svg":
+          importObject = await import(`$lib/assets/blog/images/${slug}/${baseName}.svg`);
+          if (importObject === undefined || !("default" in importObject)) token.href = "";
+          else token.href = importObject.default;
+          // since svgs are a special case for srcset, we want to processing here
+          return;
+        case "webp":
+          importObject = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920`
+          );
+          break;
+        default:
+          console.error(`unsupported extension ${extension}`);
+          break;
+      }
+      if (importObject === undefined || importObject.default === undefined) {
+        console.error(`could not process image ${token.href}`);
+        token.href = "";
+        return;
+      }
+
+      // size of responsive images in pixels
+      // unfortunately we cannot specify these dynamically in the import URLs
+      // because this breaks vite-imagetools
+      const SIZES = [480, 700, 1920];
+      if (!(Array.isArray(importObject.default))) {
+        console.log(
+          `for ${token.href} in slug ${slug}: importObject.default is ${JSON.stringify(importObject.default)}`,
+        );
+      }
+      token.href = importObject.default
+        .map((url, index) => `${url} ${SIZES[index]}w`)
+        .join(", ");
+    }
+  }
+
+  return new marked.Marked({ renderer, walkTokens, async: true });
 }
 
 export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
@@ -130,8 +166,6 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
   // Loading it twice isn't an issue because this is all (theoretically) done
   // at compile time.
 
-  configureMarked(params.slug);
-
   let previewImage: BlogPreviewImage | undefined;
   if (data.image !== undefined) {
     const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${data.image.name}.`;
@@ -142,7 +176,11 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     };
   }
 
-  const html = await marked.parse(content);
+  // it is necessary to make new instances of marked; otherwise, the global
+  // instance will be duplicated and its configuration corrupted
+  // https://marked.js.org/using_advanced#instance
+  const markedInstance = configureMarked(params.slug);
+  const html = await markedInstance.parse(content);
 
   const ldjson = JSON.stringify({
     "@context": "https://schema.org",
