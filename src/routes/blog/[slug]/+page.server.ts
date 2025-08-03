@@ -3,7 +3,6 @@ import { error } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
 
 import hljs from "highlight.js/lib/common";
-import imageSizeFromFile from "image-size";
 import * as marked from "marked";
 import type { Tokens } from "marked";
 
@@ -51,11 +50,54 @@ function configureMarked(slug: string): void {
 
     image({ href, title, text }: Tokens.Image): string {
       if (href === "") return text;
-      const imgPath = `/blog/images/${slug}/${href}`;
-      // TODO: figure out how to asynchronously determine image size
-      // probably involves making walkTokens return custom tokens for images
-      const { width, height } = imageSizeFromFile(`static${imgPath}`);
-      let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto"${first_image ? "" : "loading=lazy"} />`;
+      let srcset: string | undefined;
+      const match = href.match(/(.*)\.(\w+)$/);
+      if (match === null) {
+        console.error(`couldn't parse extension from image path ${href}`);
+        return text;
+      }
+      const baseName = match[1];
+      const extension = match[2];
+      (async () => {
+        switch (extension) {
+          // because Vite forces dynamic imports to have extensions, we must
+          // copy and paste this code for every extension we wish to support
+          case "avif":
+            return await import(
+              `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920&format=avif?withoutEnlargement`
+            );
+          case "jpg":
+            return await import(
+              `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif?withoutEnlargement`
+            );
+          case "png":
+            return await import(
+              `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif?withoutEnlargement`
+            );
+          case "webp":
+            return await import(
+              `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920&format=avif?withoutEnlargement`
+            );
+          default:
+            throw new Error(`unsupported extension ${extension}`);
+        }
+      })().then(({ default: path }: { default: string[] }) => {
+          // size of responsive images in pixels
+          // unfortunately we cannot specify these dynamically in the import URLs
+          // because this breaks vite-imagetools
+          const SIZES = [480, 700, 1920];
+
+          srcset = path.map((url, index) => `${url} ${SIZES[index]}w`).join(", ");
+        });
+
+      let out = `\
+<figure class="flex flex-col text-center">\
+<img
+  srcset=${srcset}
+  alt="${text}"
+  class="mx-auto"
+  loading="${first_image ? "eager" : "lazy"}"
+/>`;
       if (title) {
         out += `<figcaption>${marked.parseInline(title)}</figcaption>`;
       }
