@@ -18,18 +18,8 @@ type SocialLink = {
 };
 
 let emailAddress = $state("");
-let fooSrcSet = $state("");
-onMount(async () => {
+onMount(() => {
   emailAddress = atob("bWFpbHRvOmJ5cm9uLm4uc2hhcm1hbkBnbWFpbC5jb20=");
-
-  // size of responsive images in pixels
-  const SIZES = [480, 700, 1920];
-
-  const name = "lukas_and_byron";
-  const foo = await import(
-    `$lib/assets/${name}.jpg?w=480;700;1920&format=avif?withoutEnlargement`
-  );
-  fooSrcSet = foo.default.map((url, index) => `${url} ${SIZES[index]}w`).join(", ");
 });
 
 const socials: SocialLink[] = $derived([
@@ -62,8 +52,6 @@ const { data }: PageProps = $props();
   <title>Byron Sharman</title>
   <meta name="description" content="Byron Sharman is a computer science student at the Colorado School of Mines. This is his portfolio and blog." />
 </svelte:head>
-
-<img alt="foo" srcset={fooSrcSet} sizes="(max-width: 768px) 480px, 50vw" loading="lazy" />
 
 <article class="max-w-(--content-width) my-8 lg:my-24">
   <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
