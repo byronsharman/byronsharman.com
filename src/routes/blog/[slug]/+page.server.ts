@@ -71,15 +71,14 @@ function configureMarked(slug: string) {
     },
   };
 
-  // const walkTokens = async (token: marked.Token) => {
-  async function walkTokens(token: marked.Token) {
+  const walkTokens = async (token: marked.Token) => {
     if (token.type === "image") {
       // parse markdown in image captions
       if (token.title !== null) {
         token.title = await marked.parseInline(token.title);
       }
 
-      let importObject: { default: string[] | undefined } | undefined;
+      let srcSet: { default: string | undefined } | undefined;
       const match = token.href.match(/(.*)\.(\w+)$/);
       if (match === null) {
         console.error(`couldn't parse extension from image path ${token.href}`);
@@ -93,53 +92,43 @@ function configureMarked(slug: string) {
         // because Vite forces dynamic imports to have extensions, we must
         // copy and paste this code for every extension we wish to support
         case "avif":
-          importObject = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920`
+          srcSet = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920&as=srcset`
           );
           break;
         case "jpg":
-          importObject = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif`
+          srcSet = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif&as=srcset`
           );
           break;
         case "png":
-          importObject = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif`
+          srcSet = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif&as=srcset`
           );
           break;
-        case "svg":
-          importObject = await import(`$lib/assets/blog/images/${slug}/${baseName}.svg`);
-          if (importObject === undefined || !("default" in importObject)) token.href = "";
-          else token.href = importObject.default;
-          // since svgs are a special case for srcset, we want to processing here
+        case "svg": {
+          const url = await import(`$lib/assets/blog/images/${slug}/${baseName}.svg`);
+          if (url === undefined || !("default" in url)) token.href = "";
+          else token.href = url.default;
+          // since svgs are a special case, we want to end processing here
           return;
+        }
         case "webp":
-          importObject = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920`
+          srcSet = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920&as=srcset`
           );
           break;
         default:
           console.error(`unsupported extension ${extension}`);
           break;
       }
-      if (importObject === undefined || importObject.default === undefined) {
+      if (srcSet === undefined || srcSet.default === undefined) {
         console.error(`could not process image ${token.href}`);
         token.href = "";
         return;
       }
 
-      // size of responsive images in pixels
-      // unfortunately we cannot specify these dynamically in the import URLs
-      // because this breaks vite-imagetools
-      const SIZES = [480, 700, 1920];
-      if (!(Array.isArray(importObject.default))) {
-        console.log(
-          `for ${token.href} in slug ${slug}: importObject.default is ${JSON.stringify(importObject.default)}`,
-        );
-      }
-      token.href = importObject.default
-        .map((url, index) => `${url} ${SIZES[index]}w`)
-        .join(", ");
+      token.href = srcSet.default;
     }
   }
 
