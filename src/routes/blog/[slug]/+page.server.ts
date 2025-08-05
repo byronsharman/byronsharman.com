@@ -53,11 +53,19 @@ function configureMarked(slug: string) {
       // indicates an img should not be created
       if (href === "") return text;
 
+      /* Unfortunately, to the best of my understanding, the only way to not
+       * throw off the browser's understanding of the image's intrinsic size
+       * (and therefore cause small images to be scaled up) is to dynamically
+       * set the sizes attribute to the correct size. It's really hard to pass
+       * context into the marked renderer, so believe it or not, I think the
+       * best way to get this information is to parse the srcSet attribute. */
+      const maxSize = href.split(" ").at(-1)?.replace("w", "px");
+
       let out = `\
-<figure class="flex flex-col text-center">\
+<figure class="text-center">\
 <img
   srcset="${href}"
-  sizes="(max-width: 700px) 100vw, 700px"
+  sizes="(max-width: 700px) 100vw, min(700px, ${maxSize})"
   alt="${text}"
   loading="${first_image ? "eager" : "lazy"}"
 />`;
