@@ -8,6 +8,7 @@ import type { Tokens } from "marked";
 
 import { getBlogCardData, parseBlog } from "$lib/server/blogUtils";
 import type { BlogCardData, Image, RenderBlog } from "$lib/types";
+import type { Picture } from "vite-imagetools";
 
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
@@ -31,9 +32,15 @@ function parseExtension(
 
 function configureMarked(slug: string) {
   let first_image = true;
+  // TODO: this can probably be removed now that there is one marked instance per page
   // this is necessary because the top-level definition does not get updated on
   // page refreshes
   requiresHighlight = false;
+
+  const imgData: Record<
+    string,
+    ({ type: "picture" } & Picture) | { type: "img"; src: string }
+  > = {};
 
   const renderer = {
     // these are modifications of the default renderer
@@ -63,26 +70,38 @@ function configureMarked(slug: string) {
     },
 
     image({ href, title, text }: Tokens.Image): string {
-      // when walkTokens fails, it sets href to an empty string, which
-      // indicates an img should not be created
-      if (href === "") return text;
+      if (!(href in imgData)) return text;
+      const data = imgData[href];
 
-      /* Unfortunately, to the best of my understanding, the only way to not
-       * throw off the browser's understanding of the image's intrinsic size
-       * (and therefore cause small images to be scaled up) is to dynamically
-       * set the sizes attribute to the correct size. It's really hard to pass
-       * context into the marked renderer, so believe it or not, I think the
-       * best way to get this information is to parse the srcSet attribute. */
-      const maxSize = href.split(" ").at(-1)?.replace("w", "px");
-
-      let out = `\
-<figure class="text-center">\
+      const loading = `loading="${first_image ? "eager" : "lazy"}"`;
+      let img: string | undefined;
+      switch (data.type) {
+        case "img":
+          img = `<img src="${data.src}" alt="${text}" ${loading} />`;
+          break;
+        case "picture":
+          img = Object.entries(data.sources)
+            .map(
+              ([format, srcset]) => `\
+<source
+  srcset="${srcset}"
+  type="image/${format}"
+  sizes="(max-width: 700px) 100vw, min(700px, ${data.img.w}px)"
+/>`,
+            )
+            .reduce((acc, current) => acc + current, "<picture>")
+            .concat(`\
 <img
-  srcset="${href}"
-  sizes="(max-width: 700px) 100vw, min(700px, ${maxSize})"
+  src=${data.img.src}
   alt="${text}"
-  loading="${first_image ? "eager" : "lazy"}"
-/>`;
+  width="${data.img.w}"
+  height="${data.img.h}"
+  ${loading}
+/></picture>`);
+          break;
+      }
+
+      let out = `<figure class="text-center">${img}`;
       if (title) {
         out += `<figcaption>${title}</figcaption>`;
       }
@@ -99,56 +118,53 @@ function configureMarked(slug: string) {
         token.title = await marked.parseInline(token.title);
       }
 
-      let srcSet: { default: string | undefined } | undefined;
+      let picture: { default: Picture } | undefined;
       const parseResult = parseExtension(token.href);
-      if (parseResult === null) {
-        token.href = "";
-        return;
-      }
+      if (parseResult === null) return;
       const { baseName, extension } = parseResult;
       switch (extension) {
         // because Vite forces dynamic imports to have extensions, we must
         // copy and paste this code for every extension we wish to support
         case "avif":
-          srcSet = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920&as=srcset`
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920&as=picture`
           );
           break;
         case "jpg":
-          srcSet = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif&as=srcset`
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif&as=picture`
           );
           break;
         case "png":
-          srcSet = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif&as=srcset`
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif&as=picture`
           );
           break;
         case "svg": {
-          const url = await import(
+          const { default: url } = await import(
             `$lib/assets/blog/images/${slug}/${baseName}.svg`
           );
-          if (url === undefined || !("default" in url)) token.href = "";
-          else token.href = url.default;
+          if (url !== undefined) {
+            imgData[token.href] = { type: "img", src: url };
+          }
           // since svgs are a special case, we want to end processing here
           return;
         }
         case "webp":
-          srcSet = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920&as=srcset`
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920&as=picture`
           );
           break;
         default:
           console.error(`unsupported extension ${extension}`);
           break;
       }
-      if (srcSet === undefined || srcSet.default === undefined) {
+      if (picture === undefined || picture.default === undefined) {
         console.error(`could not process image ${token.href}`);
-        token.href = "";
         return;
       }
 
-      token.href = srcSet.default;
+      imgData[token.href] = { type: "picture", ...picture.default };
     }
   };
 
