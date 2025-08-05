@@ -57,9 +57,8 @@ function configureMarked(slug: string) {
 <figure class="flex flex-col text-center">\
 <img
   srcset="${href}"
-  sizes="(max-width: 768px) 480px, 50vw"
+  sizes="(max-width: 700px) 100vw, 700px"
   alt="${text}"
-  class="mx-auto"
   loading="${first_image ? "eager" : "lazy"}"
 />`;
       if (title) {
