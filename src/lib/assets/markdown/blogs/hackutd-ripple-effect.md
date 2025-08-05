@@ -70,7 +70,7 @@ time.
 
 ## The hackathon
 
-![glass-walled university building with large HackUTD banner suspended over vestibule](waiting.webp "Waiting in line to check in.")
+![glass-walled university building with large HackUTD banner suspended over vestibule](waiting.jpg "Waiting in line to check in.")
 
 Monday morning, Addison and I checked out of our hotel, took a bus to the
 university, and joined the check-in line. Tyler and Megan soon joined us.
@@ -116,4 +116,4 @@ graduating this semester. I also was glad to work with Megan, the only frequent
 hackathon attendee at Mines with whom I hadn't partnered before. To these
 three, who flew to Dallas to spend time coding and hanging out: Thank you!
 
-![My team poses in front of a HackUTD banner. I discretely hold an energy drink in my right hand.](big_four.webp "I definitely didn't forget to put my energy drink down before posing for this photo. From left to right: Megan, Tyler, me (Byron), and Addison.")
+![My team poses in front of a HackUTD banner. I discretely hold an energy drink in my right hand.](big_four.jpg "I definitely didn't forget to put my energy drink down before posing for this photo. From left to right: Megan, Tyler, me (Byron), and Addison.")

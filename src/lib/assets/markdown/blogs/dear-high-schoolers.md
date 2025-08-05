@@ -9,7 +9,7 @@ image:
   ogExt: jpg
   optimizedExt: avif
 ---
-![piles of boxes labeled Pre-AP strewn across a computer lab](pre_ap_cesspool.avif "Thousands of Pre-AP booklets staged for sorting in my old high school library. Possibly the saddest photograph I have ever captured.")
+![piles of boxes labeled Pre-AP strewn across a computer lab](pre_ap_cesspool.jpg "Thousands of Pre-AP booklets staged for sorting in my old high school library. Possibly the saddest photograph I have ever captured.")
 
 I'm a second-year undergrad at the Colorado School of Mines, and I haven't
 thought about my SAT score for ages. In fact, I've forgotten what it was. I

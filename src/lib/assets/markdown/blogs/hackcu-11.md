@@ -5,7 +5,7 @@ date: 1745599436
 description: My first hackathon of the Spring 2025 semester.
 image:
   alt: a selfie with three students looking up from their laptops
-  name: teamphoto
+  name: team
   ogExt: jpg
   optimizedExt: avif
 ---
@@ -49,7 +49,7 @@ put the results in equal-width boxes, added summaries underneath the titles,
 included dates, highlighted the portions of the titles matching the search
 text, and more.
 
-![a screenshot showing bill search results with titles highlighted to match the search query](search_screenshot.avif "The finished search page.")
+![a screenshot showing bill search results with titles highlighted to match the search query](search_screenshot.png "The finished search page.")
 
 Lots of these features came with small sub-problems. For example, since
 summaries were not part of the locally available data, each bill incurred a
@@ -96,7 +96,7 @@ pleased me. In fact, our UI looked quite nice for a hackathon project. This was
 important because a main motivation was overcoming the dated and technical UI
 of the first-party Congress website.
 
-![a screenshot showing a bill with information like the status, probability it passes, summary, and history](bill_screenshot.avif "The bill overview page, one of several we implemented.")
+![a screenshot showing a bill with information like the status, probability it passes, summary, and history](bill_screenshot.png "The bill overview page, one of several we implemented.")
 
 Seeing the "Actions" timeline at the bottom reminds me of another little
 adventure. Megan had added the timeline using a third-party timeline library.
@@ -131,4 +131,4 @@ processing a big dataset. Overall, the hackathon was a great way to spend a
 weekend, and I hope to go again next year! Thanks very much to all the
 organizers, volunteers, and sponsors who made it possible.
 
-![a selfie with three students looking up from their laptops](teamphoto.avif "From left to right: Megan, me (Byron), and Renn.")
+![a selfie with three students looking up from their laptops](team.jpg "From left to right: Megan, me (Byron), and Renn.")

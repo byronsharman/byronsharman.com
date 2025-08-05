@@ -25,7 +25,7 @@ Colorado to hack with us again this year! [Grant](https://grantlemons.com/)
 also reunited with us.
 
 ## The first few hours
-![Lukas and I work on our laptops in a nice campus building. We are both smiling.](lukas_and_byron.avif "Lukas (left) and I (right) worked all night long on Friday.")
+![Lukas and I work on our laptops in a nice campus building. We are both smiling.](lukas_and_byron.jpg "Lukas (left) and I (right) worked all night long on Friday.")
 
 The most memorable part of opening ceremonies was the keynote, given by Sumner
 Evans. His competitive approach to hackathons contrasts with my casual one, so
@@ -130,7 +130,7 @@ host would be a minimal working example until we figured out how to set up the
 network.
 
 ## Getting stuck
-![I lean back in my chair with one hand in the air. I am surrounded by many cans of Red Bull and empty plastic food containers.](byron.avif "Prolonged debugging makes me hungry. If you thought three bowls of pasta was a lot, do you see the tray behind my laptop?")
+![I lean back in my chair with one hand in the air. I am surrounded by many cans of Red Bull and empty plastic food containers.](byron.jpg "Prolonged debugging makes me hungry. If you thought three bowls of pasta was a lot, do you see the tray behind my laptop?")
 
 At 10:00, I started dozing off from time to time. The name server kept
 returning 404s when we tried to register or fetch addresses from it. We got off
@@ -177,7 +177,7 @@ engineers always start by solving a simplified version of the problem and
 adding required features later.
 
 ## Progress!
-![Lukas and Grant write code on their laptops. Beverage cans, electronics, and miscellaneous paraphernalia are strewn across their table.](lukas_and_grant.avif "Lukas (left) and Grant (right) enjoy some beverages while coding and chatting.")
+![Lukas and Grant write code on their laptops. Beverage cans, electronics, and miscellaneous paraphernalia are strewn across their table.](lukas_and_grant.jpg "Lukas (left) and Grant (right) enjoy some beverages while coding and chatting.")
 
 Lukas and I started developing a TCP-based networking solution as a contingency
 plan. Meanwhile, Grant's libp2p network solution was working locally, so we
