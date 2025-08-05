@@ -5,9 +5,7 @@ date: 1734208091
 description: I enjoy an action-packed return to the United States.
 image:
   alt: my team poses in front of a HackUTD banner
-  name: big_four
-  ogExt: jpg
-  optimizedExt: webp
+  path: big_four.jpg
 ---
 After a few months of troglodytism (at least from the greater internet's
 perspective), I've found the time to publicize my travels again. This blog

@@ -5,9 +5,7 @@ date: 1721454101
 description: A lifetime American ventures into the far South.
 image:
   alt: sunset over the ocean seen from inside a cave on the beach
-  name: cove_at_takapuna
-  ogExt: jpg
-  optimizedExt: webp
+  path: cove_at_takapuna.jpg
 ---
 ![sunset over the ocean seen from inside a cave on Takapuna Beach](cove_at_takapuna.jpg "A small cave at Takapuna Beach offers a lovely view of the evening sunlight.")
 

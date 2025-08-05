@@ -17,7 +17,7 @@ export type RenderBlog = BaseBlog & {
   absoluteUrl: string;
   html: string;
   ldjson: string;
-  previewImage?: BlogPreviewImage;
+  previewImage?: Image;
   recentBlogs: BlogCardData[];
   requiresHighlight: boolean;
 };
@@ -48,17 +48,12 @@ export type GitHubAPIResponse = {
   name: string;
 };
 
-type BaseImage = {
+export type Image = {
   alt: string;
+  path: string;
 };
 
-export type ExperienceImage = BaseImage & {
-  path: string;
+export type ExperienceImage = Image & {
   width: number;
   height: number;
-};
-
-export type BlogPreviewImage = BaseImage & {
-  absolutePath: string;
-  ogUrl: string;
 };

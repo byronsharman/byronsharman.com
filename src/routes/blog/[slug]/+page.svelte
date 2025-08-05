@@ -18,8 +18,8 @@ let { data }: PageProps = $props();
   <meta property="og:type" content="article" />
   <meta property="og:url" content={data.absoluteUrl} />
   {#if data.previewImage}
-    <meta property="og:image" content={data.previewImage.ogUrl} />
-    <meta property="og:image:secure_url" content={data.previewImage.ogUrl} />
+    <meta property="og:image" content={data.previewImage.path} />
+    <meta property="og:image:secure_url" content={data.previewImage.path} />
     <meta property="og:image:alt" content={data.previewImage.alt} />
   {/if}
   <meta property="og:description" content={data.description} />

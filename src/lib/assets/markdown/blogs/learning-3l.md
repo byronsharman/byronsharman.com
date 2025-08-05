@@ -7,9 +7,7 @@ description: >-
   code.
 image:
   alt: diagram of the 3l keyboard layout
-  name: standard_three
-  ogExt: png
-  optimizedExt: png
+  path: standard_three.png
 ---
 3l, also known as [threelayout](https://github.com/jackrosenthal/threelayout), is a keyboard layout designed by Mines alumnus Jack Rosenthal. It's distinguished by its two additional layers, a symbols layer and a cursor layer, in addition to the usual lowercase and uppercase. With 3l, any special character can be typed with just the three letter rows, which is very handy for writing code. Additionally, the home row of 3l comprises the most common letters in English, minimizing finger travel distance. The project's README says the goals of this arrangement are "to increase hand alternation, reduce bottom-to-top row jumps, [and] decrease lateral motion."
 

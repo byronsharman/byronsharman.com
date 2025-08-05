@@ -8,9 +8,7 @@ export const Blog = zod.strictObject({
   image: zod
     .strictObject({
       alt: zod.string().nonempty(),
-      name: zod.string().nonempty(),
-      ogExt: zod.string(),
-      optimizedExt: zod.string(),
+      path: zod.string().nonempty(),
     })
     .optional(),
 });

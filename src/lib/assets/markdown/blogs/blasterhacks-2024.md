@@ -7,9 +7,7 @@ image:
   alt: >-
     me and my team members accepting our second place prize at the closing
     ceremonies
-  name: secondplace
-  ogExt: jpg
-  optimizedExt: avif
+  path: secondplace.jpg
 ---
 ![a screenshot of our finished application's image feed page](blasterhacks_screenshot.png "The feed page of our finished app.")
 

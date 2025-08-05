@@ -7,9 +7,7 @@ description: >-
   University of Colorado Boulder.
 image:
   alt: I code on my laptop behind a row of 3 Monsters and a Red Bull.
-  name: caffeine
-  ogExt: jpg
-  optimizedExt: jpg
+  path: caffeine.jpg
 ---
 After having a blast at [Blasterhacks](/blog/blasterhacks-2024), it was a no-brainer to attend HackCU in Boulder, which is only a 45-minute drive from Mines. Seven Mines students attended in total, so we split into two Lyft rides. Because [Tyler](https://tbwright.dev/) and I had already agreed to be teammates, we started brainstorming in the car. Our driver was friendly, and our ride was pleasant but uneventful.
 

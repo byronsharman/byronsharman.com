@@ -7,9 +7,7 @@ image:
   alt: >-
     A concrete path leads down a hill. There is snow on either side, and
     mountains are in the background.
-  name: path
-  ogExt: jpg
-  optimizedExt: avif
+  path: path.jpg
 ---
 ![A concrete path leads down a hill. There is snow on either side, and mountains are in the background.](path.jpg "The paved trail I take to campus every day. Not a spectacular view, but not bad either.")
 

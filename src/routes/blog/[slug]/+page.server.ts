@@ -7,13 +7,27 @@ import * as marked from "marked";
 import type { Tokens } from "marked";
 
 import { getBlogCardData, parseBlog } from "$lib/server/blogUtils";
-import type { BlogCardData, BlogPreviewImage, RenderBlog } from "$lib/types";
+import type { BlogCardData, Image, RenderBlog } from "$lib/types";
 
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
 
 // whether the blog should fetch syntax highlighting CSS
 let requiresHighlight = false;
+
+function parseExtension(
+  path: string,
+): { baseName: string; extension: string } | null {
+  const match = path.match(/(.*)\.(\w+)$/);
+  if (match === null) {
+    console.error(`couldn't parse extension from image path ${path}`);
+    return null;
+  }
+  return {
+    baseName: match[1],
+    extension: match[2],
+  };
+}
 
 function configureMarked(slug: string) {
   let first_image = true;
@@ -86,15 +100,12 @@ function configureMarked(slug: string) {
       }
 
       let srcSet: { default: string | undefined } | undefined;
-      const match = token.href.match(/(.*)\.(\w+)$/);
-      if (match === null) {
-        console.error(`couldn't parse extension from image path ${token.href}`);
-        // prevent the renderer from rendering this image
+      const parseResult = parseExtension(token.href);
+      if (parseResult === null) {
         token.href = "";
         return;
       }
-      const baseName = match[1];
-      const extension = match[2];
+      const { baseName, extension } = parseResult;
       switch (extension) {
         // because Vite forces dynamic imports to have extensions, we must
         // copy and paste this code for every extension we wish to support
@@ -164,14 +175,35 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
   // Loading it twice isn't an issue because this is all (theoretically) done
   // at compile time.
 
-  let previewImage: BlogPreviewImage | undefined;
+  let previewImage: Image | undefined;
   if (data.image !== undefined) {
-    const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${data.image.name}.`;
-    previewImage = {
-      alt: data.image.alt,
-      ogUrl: imgPathWithoutExt + data.image.ogExt,
-      absolutePath: imgPathWithoutExt + data.image.optimizedExt,
-    };
+    const parseResult = parseExtension(data.image.path);
+    if (parseResult !== null) {
+      const { baseName, extension } = parseResult;
+      let imgAsset: { default: string | undefined } | undefined;
+      switch (extension) {
+        case "jpg":
+          imgAsset = await import(
+            `$lib/assets/blog/images/${params.slug}/${baseName}.jpg?w=1200`
+          );
+          break;
+        case "png":
+          imgAsset = await import(
+            `$lib/assets/blog/images/${params.slug}/${baseName}.png?w=1200`
+          );
+          break;
+        default:
+          throw new Error(
+            `invalid preview image ${data.image.path} - Open Graph images must be png or jpg`,
+          );
+      }
+      if (imgAsset !== undefined) {
+        previewImage = {
+          alt: data.image.alt,
+          path: PUBLIC_BASE_URL + imgAsset.default,
+        };
+      }
+    }
   }
 
   // it is necessary to make new instances of marked; otherwise, the global
@@ -184,7 +216,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: data.title,
-    ...(previewImage && { image: previewImage.absolutePath }),
+    ...(previewImage && { image: previewImage.path }),
     datePublished: new Date(data.date * 1000).toISOString(),
     author: [
       {

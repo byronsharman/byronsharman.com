@@ -5,9 +5,7 @@ date: 1751069077
 description: I narrate the last hackathon of my second year at Mines.
 image:
   alt: two students work on their laptops in a university building
-  name: lukas_and_byron
-  ogExt: jpg
-  optimizedExt: avif
+  path: lukas_and_byron.jpg
 ---
 ## Background
 
