@@ -96,7 +96,7 @@ export async function getExperience(
 
         if (dirname(filename).endsWith("hackathons")) {
           content +=
-            "\nLike all hackathon projects, this was a collaborative effort created in a weekend.";
+            "\n\nLike all hackathon projects, this was a collaborative effort created in a weekend.";
         }
         const description = marked.parse(content) as string;
 
