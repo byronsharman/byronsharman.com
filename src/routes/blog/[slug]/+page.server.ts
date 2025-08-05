@@ -114,7 +114,9 @@ function configureMarked(slug: string) {
           );
           break;
         case "svg": {
-          const url = await import(`$lib/assets/blog/images/${slug}/${baseName}.svg`);
+          const url = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.svg`
+          );
           if (url === undefined || !("default" in url)) token.href = "";
           else token.href = url.default;
           // since svgs are a special case, we want to end processing here
@@ -137,7 +139,7 @@ function configureMarked(slug: string) {
 
       token.href = srcSet.default;
     }
-  }
+  };
 
   return new marked.Marked({ renderer, walkTokens, async: true });
 }

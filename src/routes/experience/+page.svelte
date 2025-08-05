@@ -6,7 +6,13 @@ import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
 
-const descriptionTag = `Byron Sharman's experience. ${data.experiences.map(exp => `${exp.name}, ${exp.date.toLocaleDateString(undefined, { year: "numeric", month: "long" })}`).join("; ")}.`;
+const experienceOverview = data.experiences
+  .map(
+    (exp) =>
+      `${exp.name}, ${exp.date.toLocaleDateString(undefined, { year: "numeric", month: "long" })}`,
+  )
+  .join("; ");
+const descriptionTag = `Byron Sharman's experience. ${experienceOverview}.`;
 </script>
 
 <svelte:head>

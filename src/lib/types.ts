@@ -33,7 +33,11 @@ type RenderExperience = {
   url?: string;
 };
 
-export type Experience = Omit<zod.infer<typeof ExperienceSchema>, keyof RenderExperience> & RenderExperience;
+export type Experience = Omit<
+  zod.infer<typeof ExperienceSchema>,
+  keyof RenderExperience
+> &
+  RenderExperience;
 
 /* This is by no means exhaustive, but I *think* it's better than nothing? */
 export type GitHubAPIResponse = {

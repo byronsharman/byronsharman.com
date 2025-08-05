@@ -43,8 +43,8 @@
     from var(--color-bg-primary-dark) calc(l - var(--lightness-diff-dark)) c h
   );
   --color-bg-tertiary-dark: oklch(
-    from var(--color-bg-primary-dark) calc(l - calc(2 * var(--lightness-diff-dark)))
-      c h
+    from var(--color-bg-primary-dark)
+      calc(l - calc(2 * var(--lightness-diff-dark))) c h
   );
 }
 

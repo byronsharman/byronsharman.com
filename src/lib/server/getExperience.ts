@@ -1,4 +1,8 @@
-import type { GitHubAPIResponse, Experience, ExperienceImage } from "$lib/types";
+import type {
+  GitHubAPIResponse,
+  Experience,
+  ExperienceImage,
+} from "$lib/types";
 
 import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
@@ -11,10 +15,7 @@ import { parseBlog } from "./blogUtils";
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
 /* return an Experience modified to include metadata fetched from the Github API */
-async function fetchGitHubMetadata(
-  repoName: string,
-  fetchFunc: typeof fetch,
-) {
+async function fetchGitHubMetadata(repoName: string, fetchFunc: typeof fetch) {
   const res: Response = await fetchFunc(
     `https://api.github.com/repos/byronsharman/${repoName}`,
   );
@@ -46,7 +47,9 @@ async function fetchGitHubMetadata(
   };
 }
 
-export async function getExperience(fetchFunc: typeof fetch): Promise<Experience[]> {
+export async function getExperience(
+  fetchFunc: typeof fetch,
+): Promise<Experience[]> {
   const rawData: Record<string, string> = import.meta.glob(
     "$lib/assets/markdown/experience/**/*.md",
     {
@@ -92,13 +95,17 @@ export async function getExperience(fetchFunc: typeof fetch): Promise<Experience
         }
 
         if (dirname(filename).endsWith("hackathons")) {
-          content += "\nLike all hackathon projects, this was a collaborative effort created in a weekend.";
+          content +=
+            "\nLike all hackathon projects, this was a collaborative effort created in a weekend.";
         }
         const description = marked.parse(content) as string;
 
         // Unfortunately extremely verbose. Would love to know the idiomatic
         // way to do this!
-        type MyType = Pick<Experience, "description" | "parenthetical" | "image" | "type">;
+        type MyType = Pick<
+          Experience,
+          "description" | "parenthetical" | "image" | "type"
+        >;
         const baseReturnValue: MyType = {
           description,
           parenthetical: data.parenthetical,
@@ -108,10 +115,7 @@ export async function getExperience(fetchFunc: typeof fetch): Promise<Experience
 
         switch (data.type) {
           case "github": {
-            const additionalData = await fetchGitHubMetadata(
-              id,
-              fetchFunc,
-            );
+            const additionalData = await fetchGitHubMetadata(id, fetchFunc);
             return {
               ...baseReturnValue,
               ...additionalData,
@@ -119,9 +123,7 @@ export async function getExperience(fetchFunc: typeof fetch): Promise<Experience
             };
           }
           case "blog": {
-            const raw = await import(
-              `$lib/assets/markdown/blogs/${id}.md?raw`
-            );
+            const raw = await import(`$lib/assets/markdown/blogs/${id}.md?raw`);
             const { data: blogData } = parseBlog(raw.default);
             return {
               ...baseReturnValue,
