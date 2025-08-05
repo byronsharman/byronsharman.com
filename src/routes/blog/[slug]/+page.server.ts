@@ -183,14 +183,6 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
 
   const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
 
-  // Why do we query blogs.json twice, once in blogUtils and once here? The
-  // motive is to do as much of the data processing as possible server-side (in
-  // .server.ts files). This means that blogUtils, which is only used to
-  // populate blog cards, removes data in blogs.json only needed to make a
-  // RenderBlog. To get that data again, we have to load blogs.json again.
-  // Loading it twice isn't an issue because this is all (theoretically) done
-  // at compile time.
-
   let previewImage: Image | undefined;
   if (data.image !== undefined) {
     const parseResult = parseExtension(data.image.path);
