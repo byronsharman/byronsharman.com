@@ -86,7 +86,10 @@ function configureMarked(slug: string) {
 <source
   srcset="${srcset}"
   type="image/${format}"
-  sizes="(max-width: 700px) 100vw, min(700px, ${data.img.w}px)"
+  sizes="
+    (max-width: 700px) and (min-resolution: 3dppx) 66vw,
+    (max-width: 700px) 100vw,
+    min(700px, ${data.img.w}px)"
 />`,
             )
             .reduce((acc, current) => acc + current, "<picture>")
@@ -127,17 +130,17 @@ function configureMarked(slug: string) {
         // copy and paste this code for every extension we wish to support
         case "avif":
           picture = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;1920&as=picture`
+            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;960;1400&as=picture`
           );
           break;
         case "jpg":
           picture = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1920&format=avif&as=picture`
+            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;960;1400&format=avif&as=picture`
           );
           break;
         case "png":
           picture = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1920&format=avif&as=picture`
+            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;960;1400&format=avif&as=picture`
           );
           break;
         case "svg": {
@@ -152,7 +155,7 @@ function configureMarked(slug: string) {
         }
         case "webp":
           picture = await import(
-            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;1920&as=picture`
+            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;960;1400&as=picture`
           );
           break;
         default:
