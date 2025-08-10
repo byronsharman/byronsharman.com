@@ -4,9 +4,10 @@ import type { Picture } from "vite-imagetools";
 interface Props {
   lazy: boolean;
   picture: Picture & { alt: string };
+  sizes: string;
 };
 
-const { picture, lazy }: Props = $props();
+const { picture, lazy, sizes }: Props = $props();
 </script>
 
 <picture>
@@ -14,9 +15,7 @@ const { picture, lazy }: Props = $props();
     <source
       srcset={srcset}
       type="image/{format}"
-      sizes="
-	(max-width: 700px) and (min-resolution: 3dppx) calc(33vw * 0.667),
-	(max-width: 700px) 33vw"
+      {sizes}
     />
   {/each}
   <img
