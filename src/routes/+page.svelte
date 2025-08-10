@@ -2,7 +2,6 @@
 import { onMount } from "svelte";
 
 import BlogCard from "$lib/components/BlogCard.svelte";
-import CardList from "$lib/components/CardList.svelte";
 import type { PageProps } from "./$types";
 
 import envelopeIcon from "$lib/assets/icons/envelope.svg";
@@ -53,46 +52,50 @@ const { data }: PageProps = $props();
   <meta name="description" content="Byron Sharman is a computer science student at the Colorado School of Mines. This is his portfolio and blog." />
 </svelte:head>
 
-<article class="my-8 lg:my-24">
-  <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
-    <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
+<div class="px-std">
+  <article class="max-w-(--content-width) mx-auto my-8 lg:my-24">
+    <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
+      <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
 
-    <div>
-      <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Byron Sharman</h1>
-      <p class="my-std lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
-        I'm Byron, a computer science student at Colorado School of Mines. I
-        like to make things, learn technologies, and explore the world,
-        both physically and conceptually.
-      </p>
+      <div>
+        <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Byron Sharman</h1>
+        <p class="my-std lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
+          I'm Byron, a computer science student at Colorado School of Mines. I
+          like to make things, learn technologies, and explore the world, both
+          physically and conceptually.
+        </p>
 
-      <ul class="my-std flex flex-row space-x-[20px]">
-        {#each socials as social}
-          <li>
-            <a href={social.targetUrl}>
-              <img alt={social.iconAlt} src={social.iconSrc} class="size-[20px] opacity-60 dark:invert" />
-            </a>
-          </li>
-        {/each}
-      </ul>
+        <ul class="my-std flex flex-row space-x-[20px]">
+          {#each socials as social}
+            <li>
+              <a href={social.targetUrl}>
+                <img alt={social.iconAlt} src={social.iconSrc} class="size-[20px] opacity-60 dark:invert" />
+              </a>
+            </li>
+          {/each}
+        </ul>
 
-      <a href="/experience" class="block w-fit my-lg lg:my-std border-b text-fg-primary dark:text-fg-primary-dark group">
-        See my experience
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline motion-safe:transition motion-safe:group-hover:translate-x-0.5">
-          <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
-        </svg>
-      </a>
+        <a href="/experience" class="block w-fit my-lg lg:my-std border-b text-fg-primary dark:text-fg-primary-dark group">
+          See my experience
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-4 inline motion-safe:transition motion-safe:group-hover:translate-x-0.5">
+            <path fill-rule="evenodd" d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      </div>
     </div>
-  </div>
-</article>
+  </article>
+</div>
 
-<CardList>
+<section class="p-std">
   <h2 class="sr-only">Blog Posts</h2>
-  {#each data.blogs as blog}
-    <BlogCard blog={blog} />
-  {/each}
-</CardList>
+  <div class="grid grid-cols-3 gap-std">
+    {#each data.blogs as blog}
+      <BlogCard blog={blog} />
+    {/each}
+  </div>
+</section>
 
-<footer class="mb-std lg:mb-lg flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
+<footer class="max-w-(--content-width) mx-auto my-std flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
   <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">
     <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M4.205 8.72805L12.205 3.72805C13.2041 3.10363 14.5 3.82189 14.5 5.00004V15C14.5 16.1782 13.2041 16.8965 12.205 16.272L4.205 11.272C3.265 10.6845 3.265 9.31555 4.205 8.72805Z" />

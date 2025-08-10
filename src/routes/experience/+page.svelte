@@ -1,6 +1,5 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
-import CardList from "$lib/components/CardList.svelte";
 import Experience from "$lib/components/Experience.svelte";
 import type { PageProps } from "./$types";
 
@@ -26,8 +25,8 @@ const descriptionTag = `Byron Sharman's experience. ${experienceOverview}.`;
   <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Experience</h1>
 </header>
 
-<section class="space-y-16 mt-16 mb-std lg:mb-lg">
+<main class="space-y-16 mt-16">
   {#each data.experiences as experience}
     <Experience {experience} />
   {/each}
-</section>
+</main>

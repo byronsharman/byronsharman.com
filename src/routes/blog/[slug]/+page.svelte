@@ -1,7 +1,6 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
 import BlogCard from "$lib/components/BlogCard.svelte";
-import CardList from "$lib/components/CardList.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
 
@@ -32,21 +31,27 @@ let { data }: PageProps = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<BackToHome />
+<div class="p-std lg:p-lg">
+  <main class="max-w-prose mx-auto">
+    <BackToHome />
 
-<article class="prose dark:prose-invert max-w-none text-[17px]">
-  <header class="mt-std lg:mt-lg">
-    <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
-    <DateP unixtime={data.date} />
-  </header>
-  {@html data.html}
-</article>
+    <article class="prose dark:prose-invert max-w-none text-[17px] mb-lg lg:mb-12">
+      <header class="mt-std lg:mt-lg">
+        <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
+        <DateP unixtime={data.date} />
+      </header>
+      {@html data.html}
+    </article>
+  </main>
+</div>
 
-<hr class="my-12 lg:my-24 w-48 border-fg-tertiary dark:border-fg-tertiary-dark" />
-
-<CardList>
-  <h2 class="mb-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
-  {#each data.recentBlogs as blog}
-    <BlogCard blog={blog} />
-  {/each}
-</CardList>
+<div class="px-std bg-stone-50">
+  <section class="max-w-[1280px] mx-auto">
+  <h2 class="py-lg lg:py-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
+  <div class="space-y-std lg:space-y-lg">
+    {#each data.recentBlogs as blog}
+      <BlogCard blog={blog} />
+    {/each}
+  </div>
+  </section>
+</div>
