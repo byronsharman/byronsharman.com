@@ -2,21 +2,21 @@
 import type { Experience } from "$lib/types.ts";
 
 function dateToStr(date: Date): string {
-  return new Intl.DateTimeFormat(
-    undefined,
-    { month: "long", year: "numeric" }
-  ).format(date);
+  return new Intl.DateTimeFormat(undefined, {
+    month: "long",
+    year: "numeric",
+  }).format(date);
 }
 
 let { experience }: { experience: Experience } = $props();
 const date = $derived(dateToStr(experience.date));
 let startDate = $derived(
   experience.startDate === undefined
-  ? undefined
-  : dateToStr(experience.startDate)
+    ? undefined
+    : dateToStr(experience.startDate),
 );
 const dateStr = $derived(
-  startDate === undefined ? date : `${startDate} – ${date}`
+  startDate === undefined ? date : `${startDate} – ${date}`,
 );
 </script>
 

@@ -100,7 +100,7 @@ function configureMarked(slug: string) {
   width="${data.img.w}"
   height="${data.img.h}"
   ${loading}
-  ${first_image ? "fetchpriority=\"high\"" : ""}
+  ${first_image ? 'fetchpriority="high"' : ""}
 /></picture>`);
           break;
       }
