@@ -67,6 +67,7 @@ function configureMarked(slug: string) {
           img = `<img src="${data.src}" alt="${text}" ${loading} />`;
           break;
         case "picture":
+          // TODO: use svelte.render on the component here to avoid duplication
           img = Object.entries(data.sources)
             .map(
               ([format, srcset]) => `\
