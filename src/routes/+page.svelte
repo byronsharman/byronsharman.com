@@ -105,3 +105,13 @@ const { data }: PageProps = $props();
     </svg>
   </a>
 </footer>
+
+<style>
+@reference "../app.css";
+
+:global(body) {
+  /* background-color: var(--color-bg-tertiary); */
+  @apply bg-stone-50;
+
+}
+</style>
