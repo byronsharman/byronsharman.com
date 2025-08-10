@@ -10,14 +10,13 @@ const { picture, lazy }: Props = $props();
 </script>
 
 <picture>
-  {#each Object.entries(picture.sources) as [srcset, format]}
+  {#each Object.entries(picture.sources) as [format, srcset]}
     <source
       srcset={srcset}
       type="image/{format}"
       sizes="
-	(max-width: 700px) and (min-resolution: 3dppx) 66vw,
-	(max-width: 700px) 100vw,
-	min(700px, {picture.img.w}px)"
+	(max-width: 700px) and (min-resolution: 3dppx) calc(33vw * 0.667),
+	(max-width: 700px) 33vw"
     />
   {/each}
   <img

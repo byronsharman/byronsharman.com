@@ -42,12 +42,12 @@ export async function getBlogCardData(): Promise<BlogCardData[]> {
               switch (extension) {
                 case "jpg":
                   imgAsset = await import(
-                    `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480,700,1200&format=avif&as=picture`
+                    `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1200&format=avif&as=picture`
                   );
                   break;
                 case "png":
                   imgAsset = await import(
-                    `$lib/assets/blog/images/${slug}/${baseName}.png?w=480,700,1200&format=avif&as=picture`
+                    `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1200&format=avif&as=picture`
                   );
                   break;
                 default:
