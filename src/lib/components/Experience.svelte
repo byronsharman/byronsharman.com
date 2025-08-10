@@ -24,7 +24,7 @@ const dateStr = $derived(
   <div class="flex flex-col sm:flex-row justify-between">
     <header class="flex flex-row divide-x divide-fg-tertiary dark:divide-fg-tertiary-dark">
       <h2 class="card-heading pe-std">
-        {#if experience.url !== undefined && experience.parenthetical === undefined}
+        {#if experience.type !== "blog" && experience.url !== undefined}
             <a href={experience.url} class="underline">{experience.name}</a>
         {:else}
           {experience.name}
@@ -32,7 +32,7 @@ const dateStr = $derived(
       </h2>
       {#if experience.parenthetical !== undefined}
         <h3 class="ps-std text-lg text-fg-secondary dark:text-fg-secondary-dark">
-          {#if experience.url !== undefined}
+          {#if experience.type === "blog" && experience.url !== undefined}
             <a href={experience.url} class="underline">{experience.parenthetical}</a>
           {:else}
             {experience.parenthetical}

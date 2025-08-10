@@ -134,12 +134,14 @@ export async function getExperience(
               url: `/blog/${id}`,
             };
           }
-          case "nolink":
+          case "employment":
             return {
               ...baseReturnValue,
               date: data.date,
               languages: data.languages,
               name: data.name,
+              startDate: data.startDate,
+              url: data.url,
             };
         }
       }),

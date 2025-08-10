@@ -18,8 +18,10 @@ const notGitHub = {
   name: zod.string(),
 };
 
-const nolink = {
+const employment = {
   date: zod.instanceof(Date),
+  startDate: zod.instanceof(Date),
+  url: zod.url().optional(),
 };
 
 export const ExperienceSchema = zod.discriminatedUnion("type", [
@@ -35,7 +37,7 @@ export const ExperienceSchema = zod.discriminatedUnion("type", [
   zod.strictObject({
     ...common,
     ...notGitHub,
-    ...nolink,
-    type: zod.literal("nolink"),
+    ...employment,
+    type: zod.literal("employment"),
   }),
 ]);

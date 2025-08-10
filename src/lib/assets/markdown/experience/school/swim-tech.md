@@ -4,9 +4,10 @@ languages:
   - Terraform/HCL
 name: Swim Tech, LLC
 parenthetical: CSCI370
-type: nolink
+type: employment
 date: 2025-06-01
 startDate: 2025-05-01
+url: https://swimtechsport.com/
 ---
 I spent the summer of 2025 building a voice categorization tool for Swim Tech,
 a swimming instruction company based in Colorado. During this time, I
