@@ -7,6 +7,7 @@ import * as marked from "marked";
 import type { Tokens } from "marked";
 
 import { getBlogCardData, parseBlog } from "$lib/server/blogUtils";
+import parseExtension from "$lib/server/parseExtension";
 import type { BlogCardData, Image, RenderBlog } from "$lib/types";
 import type { Picture } from "vite-imagetools";
 
@@ -15,20 +16,6 @@ const RECENT_LIMIT = 4;
 
 // whether the blog should fetch syntax highlighting CSS
 let requiresHighlight = false;
-
-function parseExtension(
-  path: string,
-): { baseName: string; extension: string } | null {
-  const match = path.match(/(.*)\.(\w+)$/);
-  if (match === null) {
-    console.error(`couldn't parse extension from image path ${path}`);
-    return null;
-  }
-  return {
-    baseName: match[1],
-    extension: match[2],
-  };
-}
 
 function configureMarked(slug: string) {
   let first_image = true;
@@ -239,7 +226,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     ],
   });
 
-  const recentBlogs: BlogCardData[] = getBlogCardData()
+  const recentBlogs: BlogCardData[] = (await getBlogCardData())
     .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
     .slice(0, RECENT_LIMIT);
 

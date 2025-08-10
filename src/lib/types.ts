@@ -1,4 +1,5 @@
 import type * as zod from "zod";
+import type { Picture } from "vite-imagetools";
 import type { ExperienceSchema } from "$lib/zod-schemas/experience";
 
 type BaseBlog = {
@@ -8,6 +9,8 @@ type BaseBlog = {
 };
 
 export type BlogCardData = BaseBlog & {
+  featured: boolean;
+  picture?: Picture & { alt: string };
   slug: string;
   url: string;
 };

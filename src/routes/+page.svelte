@@ -86,14 +86,16 @@ const { data }: PageProps = $props();
   </article>
 </div>
 
-<section class="p-std">
-  <h2 class="sr-only">Blog Posts</h2>
-  <div class="grid grid-cols-3 gap-std">
-    {#each data.blogs as blog}
-      <BlogCard blog={blog} />
-    {/each}
-  </div>
-</section>
+<div class="p-std">
+  <section class="max-w-[1280px] mx-auto">
+    <h2 class="sr-only">Blog Posts</h2>
+    <div class="grid grid-cols-3 gap-std">
+      {#each data.blogs as blog}
+        <BlogCard blog={blog} />
+      {/each}
+    </div>
+  </section>
+</div>
 
 <footer class="max-w-(--content-width) mx-auto my-std flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
   <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">
