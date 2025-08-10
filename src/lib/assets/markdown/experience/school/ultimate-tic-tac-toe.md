@@ -1,8 +1,4 @@
 ---
-image:
-  alt: A screenshot of a text-based game showing a tic-tac-toe board, with each square
-    itself containing another tic-tac-toe board
-  path: /projects/images/ultimate-tic-tac-toe.avif
 type: github
 ---
 [Ultimate Tic-Tac-Toe](https://en.wikipedia.org/wiki/Ultimate_tic-tac-toe) is a

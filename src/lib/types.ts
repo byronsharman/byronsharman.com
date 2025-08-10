@@ -27,7 +27,6 @@ export type RenderBlog = BaseBlog & {
 type RenderExperience = {
   date: Date;
   description: string;
-  image?: ExperienceImage;
   languages: string[];
   name: string;
   url?: string;
@@ -51,9 +50,4 @@ export type GitHubAPIResponse = {
 export type Image = {
   alt: string;
   path: string;
-};
-
-export type ExperienceImage = Image & {
-  width: number;
-  height: number;
 };

@@ -1,10 +1,5 @@
-import type {
-  GitHubAPIResponse,
-  Experience,
-  ExperienceImage,
-} from "$lib/types";
+import type { GitHubAPIResponse, Experience } from "$lib/types";
 
-import imageSizeFromFile from "image-size";
 import matter from "gray-matter";
 import * as marked from "marked";
 import { basename, dirname } from "node:path";
@@ -85,15 +80,6 @@ export async function getExperience(
 
         const id: string = basename(filename, ".md");
 
-        let image: ExperienceImage | undefined;
-        if (data.image !== undefined) {
-          const { alt, path } = data.image;
-          const { width, height } = imageSizeFromFile(`static${path}`);
-          if (width !== undefined && height !== undefined) {
-            image = { alt, path, width, height };
-          }
-        }
-
         if (dirname(filename).endsWith("hackathons")) {
           content +=
             "\n\nLike all hackathon projects, this was a collaborative effort created in a weekend.";
@@ -104,12 +90,11 @@ export async function getExperience(
         // way to do this!
         type MyType = Pick<
           Experience,
-          "description" | "parenthetical" | "image" | "startDate" | "type"
+          "description" | "parenthetical" | "startDate" | "type"
         >;
         const baseReturnValue: MyType = {
           description,
           parenthetical: data.parenthetical,
-          image,
           type: data.type,
           startDate: data.startDate,
         };

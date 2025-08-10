@@ -1,8 +1,5 @@
 ---
 parenthetical: Blasterhacks 2024
-image:
-  alt: A screenshot of a social media application showing a images in a feed
-  path: /blog/images/blasterhacks-2024/blasterhacks_screenshot.avif
 languages:
 - Svelte
 - Typescript

@@ -1,9 +1,5 @@
 ---
 parenthetical: HackCU X
-image:
-  alt: A screenshot of a productivity application showing a videos and notes relating
-    to high-level mathematics
-  path: /blog/images/hackcu-x/multinotes.avif
 languages:
 - Typescript React
 - Python

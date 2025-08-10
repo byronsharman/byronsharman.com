@@ -1,8 +1,5 @@
 ---
 date: 2025-03-30
-image:
-  alt: a screenshot of two terminals synchronized with Pear
-  path: /projects/images/pear.avif
 languages:
 - Go
 name: Pear

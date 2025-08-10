@@ -2,12 +2,6 @@ import * as zod from "zod";
 
 const common = {
   date: zod.instanceof(Date).optional(),
-  image: zod.optional(
-    zod.object({
-      alt: zod.string().nonempty(),
-      path: zod.string().nonempty(),
-    }),
-  ),
   parenthetical: zod.string().optional(),
   published: zod.optional(zod.boolean()),
   startDate: zod.instanceof(Date).optional(),
