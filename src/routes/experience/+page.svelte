@@ -22,7 +22,7 @@ const descriptionTag = `Byron Sharman's experience. ${experienceOverview}.`;
 
 <BackToHome />
 
-<header class="w-full max-w-(--content-width) my-std lg:my-lg">
+<header class="my-std lg:my-lg">
   <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Experience</h1>
 </header>
 

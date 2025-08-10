@@ -34,7 +34,7 @@ let { data }: PageProps = $props();
 
 <BackToHome />
 
-<article class="w-full max-w-(--content-width) prose dark:prose-invert text-[17px]">
+<article class="prose dark:prose-invert max-w-none text-[17px]">
   <header class="mt-std lg:mt-lg">
     <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
     <DateP unixtime={data.date} />

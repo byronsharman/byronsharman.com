@@ -53,7 +53,7 @@ const { data }: PageProps = $props();
   <meta name="description" content="Byron Sharman is a computer science student at the Colorado School of Mines. This is his portfolio and blog." />
 </svelte:head>
 
-<article class="max-w-(--content-width) my-8 lg:my-24">
+<article class="my-8 lg:my-24">
   <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
     <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
 
@@ -92,7 +92,7 @@ const { data }: PageProps = $props();
   {/each}
 </CardList>
 
-<footer class="w-full max-w-(--content-width) mb-std lg:mb-lg flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
+<footer class="mb-std lg:mb-lg flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
   <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">
     <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M4.205 8.72805L12.205 3.72805C13.2041 3.10363 14.5 3.82189 14.5 5.00004V15C14.5 16.1782 13.2041 16.8965 12.205 16.272L4.205 11.272C3.265 10.6845 3.265 9.31555 4.205 8.72805Z" />

@@ -16,6 +16,8 @@ let { children } = $props();
 </svelte:head>
 
 <!-- Note to future self: If you ever want to center main by making it a flex container, consider nesting it in a div. That way, it won't be considered a flex item and will collapse margins as expected. See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_display/Block_formatting_context -->
-<main class="flex flex-col items-center mx-std">
-  {@render children()}
-</main>
+<div class="mx-std">
+  <main class="items-center max-w-(--content-width) mx-auto">
+    {@render children()}
+  </main>
+</div>
