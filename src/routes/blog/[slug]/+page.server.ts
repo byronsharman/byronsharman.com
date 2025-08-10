@@ -1,5 +1,6 @@
 import { PUBLIC_BASE_URL } from "$env/static/public";
 import { error } from "@sveltejs/kit";
+import { render } from "svelte/server";
 import type { PageServerLoad } from "./$types";
 
 import hljs from "highlight.js/lib/common";
@@ -10,6 +11,8 @@ import { getBlogCardData, parseBlog } from "$lib/server/blogUtils";
 import parseExtension from "$lib/server/parseExtension";
 import type { BlogCardData, Image, RenderBlog } from "$lib/types";
 import type { Picture } from "vite-imagetools";
+
+import ResponsiveImage from "$lib/components/ResponsiveImage.svelte";
 
 // how many other blogs to put in the "Recent Posts" section
 const RECENT_LIMIT = 4;
@@ -60,36 +63,21 @@ function configureMarked(slug: string) {
       if (!(href in imgData)) return text;
       const data = imgData[href];
 
-      const loading = `loading="${first_image ? "eager" : "lazy"}"`;
       let img: string | undefined;
       switch (data.type) {
-        case "img":
+        case "img": {
+          const loading = `loading="${first_image ? "eager" : "lazy"}"`;
           img = `<img src="${data.src}" alt="${text}" ${loading} />`;
           break;
+        }
         case "picture":
-          // TODO: use svelte.render on the component here to avoid duplication
-          img = Object.entries(data.sources)
-            .map(
-              ([format, srcset]) => `\
-<source
-  srcset="${srcset}"
-  type="image/${format}"
-  sizes="
-    (max-width: 700px) and (min-resolution: 3dppx) 66vw,
-    (max-width: 700px) 100vw,
-    min(700px, ${data.img.w}px)"
-/>`,
-            )
-            .reduce((acc, current) => acc + current, "<picture>")
-            .concat(`\
-<img
-  src=${data.img.src}
-  alt="${text}"
-  width="${data.img.w}"
-  height="${data.img.h}"
-  ${loading}
-  ${first_image ? 'fetchpriority="high"' : ""}
-/></picture>`);
+          img = render(ResponsiveImage, {
+            props: {
+              lazy: first_image,
+              picture: { ...data, alt: text },
+              sizes: `(max-width: 700px) and (min-resolution: 3dppx) 66vw, (max-width: 700px) 100vw, min(700px, ${data.img.w}px)`,
+            },
+          }).body;
           break;
       }
 
