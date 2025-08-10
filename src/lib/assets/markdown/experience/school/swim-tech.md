@@ -6,10 +6,10 @@ name: Swim Tech, LLC
 parenthetical: CSCI370
 type: nolink
 date: 2025-06-01
+startDate: 2025-05-01
 ---
-I spent the summer of 2025 building a voice categorization tool for
-Swim Tech LLC, a swimming instruction company based in Colorado. During this
-time, I
+I spent the summer of 2025 building a voice categorization tool for Swim Tech,
+a swimming instruction company based in Colorado. During this time, I
 - Designed a serverless architecture in **AWS** estimated to cost roughly
   1/10th of equivalent traditional compute options
 - Provisioned cloud resources with OpenTofu (an open-source fork of

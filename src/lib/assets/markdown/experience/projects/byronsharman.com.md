@@ -1,5 +1,4 @@
 ---
-parenthetical: this website!
 type: github
 ---
 My website uses Svelte to generate web pages from Markdown files. The framework

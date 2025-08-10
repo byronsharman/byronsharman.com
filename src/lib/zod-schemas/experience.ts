@@ -10,6 +10,7 @@ const common = {
   ),
   parenthetical: zod.string().optional(),
   published: zod.optional(zod.boolean()),
+  startDate: zod.instanceof(Date).optional(),
 };
 
 const notGitHub = {
