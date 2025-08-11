@@ -4,6 +4,11 @@ published: true
 date: 1753468934
 description: Refactoring means learning lots of little things.
 ---
+> **Note:** Only a few weeks after writing this, I redesigned the homepage
+> again, and a lot of this is already out of date. That said, it took only a
+> couple days versus the month that this post covers, so the refactoring
+> clearly paid off!
+
 This summer, I've gone on a rampant refactoring spree, leaving hardly a file in
 my website's source code untouched. It started with a redesign, prompted by a
 realization that my homepage wasn't as clean as I thought.
@@ -19,18 +24,14 @@ reading this will find them helpful, too!
 ### 1. CSS variables are really useful
 
 I knew of their existence previously, but this was the first time I realized
-they'd be helpful in my own project. I found myself reusing the same spacing
-distances frequently, so I defined a couple spacing variables:
+they'd be helpful in my own project. I found myself reusing the same text
+colors frequently, so I defined a couple variables:
 ```css
-:root {
-  --spc-std: calc(var(--spacing) * 4);
-  --spc-lg: calc(var(--spacing) * 8);
+@theme {
+  --color-fg-primary: var(--color-black);
+  --color-fg-secondary: var(--color-neutral-700);
 }
 ```
-These definitions are taken straight from the Tailwind documentation.
-
-> **Aside:** If you're familiar with Tailwind, you might be thinking, "Those
-> should be theme variables." Don't worry; I realized this later.
 
 ### 2. Anyone can contribute to the MDN
 
@@ -144,16 +145,16 @@ let { data }: PageProps = $props();
 
 ### 12. Tailwind theme variables define custom utility variants
 
-If the code from #1 is changed to
+For example, if this code is added to the theme:
 ```css
 @theme {
-  --spacing-std: calc(var(--spacing) * 4);
-  --spacing-lg: calc(var(--spacing) * 8);
+  --spacing-std: --spacing(4);
+  --spacing-lg: --spacing(8);
 }
 ```
 then anywhere a value would be used for spacing—e.g. `my-4`, `gap-8`,
 etc.—there exist new valid values `my-std`, `gap-lg`, etc. This is a lot more
-readable than `my-(--spc-std)`, and I'd imagine it's a life-saver when
+readable than `my-(--spacing-std)`, and I'd imagine it's a life-saver when
 designing a cohesive theme for a large app.
 
 ### 13. Margin collapsing is bound by block formatting context
@@ -222,13 +223,19 @@ components (which makes image optimization hard), and [it can't be
 styled](https://svelte.dev/docs/svelte/@html#Styling) with Svelte's
 per-component style syntax.
 
-> **Note:** Technically, an `@html` tag can contain components if the
-> components are rendered to strings of HTML using the [imperative component
-> API](https://svelte.dev/docs/svelte/imperative-component-api). However, this
-> doesn't work for
-> [`enhanced:img`](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img),
-> which is not a component but rather magic syntax that is parsed by a
-> preprocessor before Svelte even runs.
+Technically, an `@html` tag can contain components if the components are
+rendered to strings of HTML using the [imperative component
+API](https://svelte.dev/docs/svelte/imperative-component-api). However, my main
+motivation for desiring this capability was to use
+[`enhanced:img`](https://svelte.dev/docs/kit/images#sveltejs-enhanced-img) in
+blog posts. This is not a component but rather magic syntax parsed by a
+preprocessor before Svelte even runs.
+
+> **Note from future self:** I worked around this issue by directly using
+> [vite-imagetools](https://github.com/JonasKruckenberg/imagetools/tree/main/packages/vite),
+> the same library that powers `enhanced:img`. Because it operates at a lower
+> level of abstraction, I learned a lot more about image optimization than had
+> I let `enhanced:img` do everything for me.
 
 ### 17. With Tailwind, CSS duplication is best handled by frameworks
 
@@ -355,13 +362,13 @@ complexity. For example, I wrote this entire narrowing function which is
 essentially boilerplate:
 ```ts
 function validateCategory(category: string): category is ProjectCategory {
-      return (PROJECT_CATEGORIES as readonly string[]).includes(category);
+  return (PROJECT_CATEGORIES as readonly string[]).includes(category);
 }
 ```
 Granted, the better I get at TypeScript, the more often I discover my existing
 approach was overly complicated. Nevertheless, it feels like there's a lot of
 `(typeof Foo)[keyof typeof Foo]`-esque nonsense to wade through before getting
-to the good stuff. Is there any good stuff?
+to the good stuff.
 
 ### 25. Image link alt tags should describe the link, not the image
 
