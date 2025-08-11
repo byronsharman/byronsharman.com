@@ -73,7 +73,7 @@ function configureMarked(slug: string) {
         case "picture":
           img = render(ResponsiveImage, {
             props: {
-              lazy: first_image,
+              lazy: !first_image,
               picture: { ...data, alt: text },
               sizes: `(max-width: 700px) and (min-resolution: 3dppx) 66vw, (max-width: 700px) 100vw, min(700px, ${data.img.w}px)`,
             },

@@ -18,7 +18,7 @@ if (blog.mode === "image" && blog.picture === undefined) {
     {#if (blog.mode === "featured" || blog.mode === "image") && blog.picture !== undefined}
       <ResponsiveImage
         picture={blog.picture}
-        lazy={false}
+        lazy={blog.mode === "image"}
         sizes="(min-resolution: 3dppx) calc(33vw * 0.667), 33vw"
         class_="rounded-lg mb-4"
       />
