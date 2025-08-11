@@ -1,6 +1,6 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
-import BlogCard from "$lib/components/BlogCard.svelte";
+import BlogGrid from "$lib/components/BlogGrid.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
 
@@ -45,13 +45,9 @@ let { data }: PageProps = $props();
   </main>
 </div>
 
-<div class="px-std bg-stone-50">
+<div class="p-std pt-0 bg-neutral-50">
   <section class="max-w-[1280px] mx-auto">
   <h2 class="py-lg lg:py-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
-  <div class="space-y-std lg:space-y-lg">
-    {#each data.recentBlogs as blog}
-      <BlogCard blog={blog} />
-    {/each}
-  </div>
+  <BlogGrid blogs={data.recentBlogs} />
   </section>
 </div>

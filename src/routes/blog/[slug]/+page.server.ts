@@ -15,7 +15,7 @@ import type { Picture } from "vite-imagetools";
 import ResponsiveImage from "$lib/components/ResponsiveImage.svelte";
 
 // how many other blogs to put in the "Recent Posts" section
-const RECENT_LIMIT = 4;
+const RECENT_LIMIT = 3;
 
 // whether the blog should fetch syntax highlighting CSS
 let requiresHighlight = false;

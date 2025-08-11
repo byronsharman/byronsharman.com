@@ -1,6 +1,6 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
-import BlogCard from "$lib/components/BlogCard.svelte";
+import BlogGrid from "$lib/components/BlogGrid.svelte";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
@@ -17,8 +17,4 @@ let { data }: PageProps = $props();
   <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">All Posts</h1>
 </header>
 
-<div class="grid md:grid-cols-3 gap-std">
-  {#each data.blogs as blog}
-    <BlogCard blog={blog} />
-  {/each}
-</div>
+<BlogGrid blogs={data.blogs} />
