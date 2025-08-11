@@ -9,7 +9,9 @@ if (blog.mode === "featured" && blog.picture === undefined) {
   throw new Error(`blogs must have an image to be featured (${blog.slug})`);
 }
 if (blog.mode === "image" && blog.picture === undefined) {
-  throw new Error(`blog card has mode 'image' but its picture is undefined (${blog.slug})`);
+  throw new Error(
+    `blog card has mode 'image' but its picture is undefined (${blog.slug})`,
+  );
 }
 </script>
 

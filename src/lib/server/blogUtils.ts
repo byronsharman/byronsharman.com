@@ -26,55 +26,59 @@ export async function getBlogCardData(): Promise<BlogCardData[]> {
   );
   return (
     // aaa I need the pipeline operator
-    await Promise.all(
-      Object.entries(rawBlogData).map(
-        async ([filename, rawMarkdown]): Promise<BlogCardData | undefined> => {
-          const slug: string = basename(filename, ".md");
-          const { data } = parseBlog(rawMarkdown);
-          const { date, description, image, published, title } = data;
+    (
+      await Promise.all(
+        Object.entries(rawBlogData).map(
+          async ([filename, rawMarkdown]): Promise<
+            BlogCardData | undefined
+          > => {
+            const slug: string = basename(filename, ".md");
+            const { data } = parseBlog(rawMarkdown);
+            const { date, description, image, published, title } = data;
 
-          let picture: (Picture & { alt: string }) | undefined;
-          if (image !== undefined) {
-            const parseResult = parseExtension(image.path);
-            if (parseResult !== null) {
-              const { baseName, extension } = parseResult;
-              let imgAsset: { default: Picture } | undefined;
-              switch (extension) {
-                case "jpg":
-                  imgAsset = await import(
-                    `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1200&format=avif&as=picture`
-                  );
-                  break;
-                case "png":
-                  imgAsset = await import(
-                    `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1200&format=avif&as=picture`
-                  );
-                  break;
-                default:
-                  throw new Error(`unsupported extension in ${image.path}`);
-              }
-              if (imgAsset !== undefined) {
-                picture = { ...imgAsset.default, alt: image.alt };
+            let picture: (Picture & { alt: string }) | undefined;
+            if (image !== undefined) {
+              const parseResult = parseExtension(image.path);
+              if (parseResult !== null) {
+                const { baseName, extension } = parseResult;
+                let imgAsset: { default: Picture } | undefined;
+                switch (extension) {
+                  case "jpg":
+                    imgAsset = await import(
+                      `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;1200&format=avif&as=picture`
+                    );
+                    break;
+                  case "png":
+                    imgAsset = await import(
+                      `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;1200&format=avif&as=picture`
+                    );
+                    break;
+                  default:
+                    throw new Error(`unsupported extension in ${image.path}`);
+                }
+                if (imgAsset !== undefined) {
+                  picture = { ...imgAsset.default, alt: image.alt };
+                }
               }
             }
-          }
 
-          if (!published) return undefined;
-          return {
-            date,
-            description,
-            mode: "regular",
-            picture,
-            slug,
-            title,
-            url: `/blog/${slug}`,
-          };
-        },
-      ),
+            if (!published) return undefined;
+            return {
+              date,
+              description,
+              mode: "regular",
+              picture,
+              slug,
+              title,
+              url: `/blog/${slug}`,
+            };
+          },
+        ),
+      )
     )
-  )
-    .filter((bcd) => bcd !== undefined)
-    .toSorted((a, b) => b.date - a.date);
+      .filter((bcd) => bcd !== undefined)
+      .toSorted((a, b) => b.date - a.date)
+  );
 }
 
 export function parseBlog(rawMarkdown: string): {

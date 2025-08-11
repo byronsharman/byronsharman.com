@@ -6,7 +6,7 @@ interface Props {
   picture: Picture & { alt: string };
   sizes: string;
   class_?: string;
-};
+}
 
 const { picture, lazy, sizes, class_ }: Props = $props();
 </script>
