@@ -1,5 +1,6 @@
 import type * as zod from "zod";
-import type { project } from "$lib/zod-schemas/project";
+import type { Picture } from "vite-imagetools";
+import type { ExperienceSchema } from "$lib/zod-schemas/experience";
 
 type BaseBlog = {
   date: number;
@@ -8,6 +9,8 @@ type BaseBlog = {
 };
 
 export type BlogCardData = BaseBlog & {
+  mode: "regular" | "image" | "featured";
+  picture?: Picture & { alt: string };
   slug: string;
   url: string;
 };
@@ -17,19 +20,26 @@ export type RenderBlog = BaseBlog & {
   absoluteUrl: string;
   html: string;
   ldjson: string;
-  previewImage?: BlogPreviewImage;
+  previewImage?: Image;
   recentBlogs: BlogCardData[];
   requiresHighlight: boolean;
 };
 
-export type Project = zod.infer<typeof project> & {
+// properties needed to draw an experience that should override properties in
+// zod.infer<typeof ExperienceSchema>
+type RenderExperience = {
   date: Date;
   description: string;
-  image?: ProjectImage;
   languages: string[];
   name: string;
-  url: string;
+  url?: string;
 };
+
+export type Experience = Omit<
+  zod.infer<typeof ExperienceSchema>,
+  keyof RenderExperience
+> &
+  RenderExperience;
 
 /* This is by no means exhaustive, but I *think* it's better than nothing? */
 export type GitHubAPIResponse = {
@@ -40,17 +50,7 @@ export type GitHubAPIResponse = {
   name: string;
 };
 
-type BaseImage = {
+export type Image = {
   alt: string;
-};
-
-export type ProjectImage = BaseImage & {
   path: string;
-  width: number;
-  height: number;
-};
-
-export type BlogPreviewImage = BaseImage & {
-  absolutePath: string;
-  ogUrl: string;
 };

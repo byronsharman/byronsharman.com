@@ -7,11 +7,9 @@ image:
   alt: >-
     A concrete path leads down a hill. There is snow on either side, and
     mountains are in the background.
-  name: path
-  ogExt: jpg
-  optimizedExt: avif
+  path: path.jpg
 ---
-![A concrete path leads down a hill. There is snow on either side, and mountains are in the background.](path.avif "The paved trail I take to campus every day. Not a spectacular view, but not bad either.")
+![A concrete path leads down a hill. There is snow on either side, and mountains are in the background.](path.jpg "The paved trail I take to campus every day. Not a spectacular view, but not bad either.")
 
 Every weekday morning, I wake up, make breakfast, and bike to school. It's one
 of my most enjoyable routines. In this post, I'll explain why biking has been a

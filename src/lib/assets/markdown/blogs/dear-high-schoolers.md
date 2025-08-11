@@ -5,11 +5,9 @@ date: 1748066695
 description: It's easy to lose sight of why we go to college.
 image:
   alt: piles of boxes labeled Pre-AP strewn across a computer lab
-  name: pre_ap_cesspool
-  ogExt: jpg
-  optimizedExt: avif
+  path: pre_ap_cesspool.jpg
 ---
-![piles of boxes labeled Pre-AP strewn across a computer lab](pre_ap_cesspool.avif "Thousands of Pre-AP booklets staged for sorting in my old high school library. Possibly the saddest photograph I have ever captured.")
+![piles of boxes labeled Pre-AP strewn across a computer lab](pre_ap_cesspool.jpg "Thousands of Pre-AP booklets staged for sorting in my old high school library. Possibly the saddest photograph I have ever captured.")
 
 I'm a second-year undergrad at the Colorado School of Mines, and I haven't
 thought about my SAT score for ages. In fact, I've forgotten what it was. I

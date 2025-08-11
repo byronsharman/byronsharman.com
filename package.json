@@ -29,7 +29,7 @@
   "type": "module",
   "dependencies": {
     "highlight.js": "^11.10.0",
-    "image-size": "^1.2.0",
-    "marked": "^16.0.0"
+    "marked": "^16.0.0",
+    "vite-imagetools": "^7.1.0"
   }
 }

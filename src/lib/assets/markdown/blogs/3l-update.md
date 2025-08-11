@@ -5,9 +5,7 @@ date: 1735498387
 description: The keyboard layout has served me well.
 image:
   alt: 'diagram of the 3l keyboard layout with the h, j, k, and l keys highlighted'
-  name: 3l_with_hjkl_highlighted
-  ogExt: png
-  optimizedExt: png
+  path: 3l_with_hjkl_highlighted.png
 ---
 3l is an alternative keyboard layout. It's been a while since my [original
 post](/blog/learning-3l) detailing what makes it unique and why I started using

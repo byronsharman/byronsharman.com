@@ -7,9 +7,7 @@ description: >-
   University of Colorado Boulder.
 image:
   alt: I code on my laptop behind a row of 3 Monsters and a Red Bull.
-  name: caffeine
-  ogExt: jpg
-  optimizedExt: jpg
+  path: caffeine.jpg
 ---
 After having a blast at [Blasterhacks](/blog/blasterhacks-2024), it was a no-brainer to attend HackCU in Boulder, which is only a 45-minute drive from Mines. Seven Mines students attended in total, so we split into two Lyft rides. Because [Tyler](https://tbwright.dev/) and I had already agreed to be teammates, we started brainstorming in the car. Our driver was friendly, and our ride was pleasant but uneventful.
 
@@ -33,7 +31,7 @@ Although my teammates craved more dinner, I wasn't hungry, so while they found a
 
 My teammates came back from dinner, and shortly afterward, the backend was ready for testing. I haven't mentioned Tyler's technical contributions yet because in addition to contributing to some important frontend features like the chat interface, he was writing the backend singlehandedly. It contained a database to store wobject state persistently over login, and it also stored wobject content to use as context for the LLM chat. This was powered by some cool [Qdrant](https://qdrant.tech/) vector database magic in combination with [Cohere](https://cohere.com/) that I don't understand. I do know that it was pretty cool when it started working, though!
 
-![a screenshot of our final app showing several wobjects and the chat](multinotes.avif "The chat bases its response on the content of wobjects.")
+![a screenshot of our final app showing several wobjects and the chat](multinotes.png "The chat bases its response on the content of wobjects.")
 
 However, although we'd already implemented most of the functionality we had planned, lots of polish was necessary. For example, wobjects loaded with sporadic reliability, and they jumped around when resizing. Seeing that several of these issues stemmed from our underlying approach, Addison aggressively refactored the frontend, hoping to fix the React problem Ryan and I were struggling with earlier. He refactored so much code that the rest of us were skeptical at first, but considering how many wobject issues it fixed, it was probably the best move. Even by the end of the hackathon, there were a lot of janky things, but that's what a hackathon is all about—a **proof of concept** showing off an idea.
 

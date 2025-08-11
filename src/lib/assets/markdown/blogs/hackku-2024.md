@@ -5,9 +5,7 @@ date: 1714663989
 description: I narrate the happenings of my last hackathon of the 2023–2024 school year.
 image:
   alt: Me and my two teammates posing for a photo during judging at HackKU
-  name: judging
-  ogExt: jpg
-  optimizedExt: jpg
+  path: judging.jpg
 ---
 Well, well. There's only one more week left in my first year of college. It's a good time to look back on the year and also to cover my last hackathon as a first-year student. HackKU, hosted in Lawrence, Kansas, was my first official [Major League Hacking (MLH)](https://mlh.io/) event. I was accompanied by teammates [Tyler](https://tbwright.dev/) and Danial.
 
@@ -18,16 +16,13 @@ As with any hackathon, a major theme of my HackKU experience was disregard for s
 Arriving in Kansas City several hours before needing to depart to Lawrence, we amused ourselves with too many activities to describe in detail. We satiated our hunger at Fritz's, a train-themed restaurant characterized by its unorthodox ordering system. Instead of the traditional waiter/waitress model, customers place orders through telephones at their tables, and food is delivered from the kitchen to customers via an automated rail system. This made it pretty fun to get food, and I'd imagine that people younger than us would enjoy it even more than we did.
 
 The prices were very competitive, which I appreciated as a college student. This burger cost me $4.99 before tax:
-![a half-eaten burger from Fritz's](burger.webp "Not the best I've ever had, but quite reasonable considering the price.")
-
-We also stumbled upon the model train showcase in Union Station. According to their website, they have over 8000 square feet of trains. This area is maintained by just a few volunteers.
-![model trains at Union Station](trains.webp "The small scale of the models means that depth perception makes them look a lot cooler, so a \"one-eyed\" camera can't capture how delightful they are in person.")
+![a half-eaten burger from Fritz's](burger.jpg "Not the best I've ever had, but quite reasonable considering the price.")
 
 My experience blogging about the two previous hackathons of the semester led me to realize the value in logging brief updates in real time, as it usually takes me several weeks after a hackathon to write its blog post, by which time my memory is eroded. Additionally, this practice allows me to retain details that sleep deprivation would otherwise destroy. That's why you'll see some very precise timestamps in the rest of this post.
 
 After an uneventful drive to Lawrence, there were still a few hours before hacking started, so we found a restaurant and grabbed some mac and cheese. Satisfied, we returned to the venue at 16:50, where we checked in, found a spot to work, and chatted with some of the employers recruiting at the event. Next, we went to opening ceremonies, and the organizers revealed the themed track to be social good. It was finally time to start!
 
-![The organizers present us their slideshow at opening ceremonies. The current slide says "HackKU" and prominently displays the event's branding.](opening_ceremonies.webp "Image credit: HackKU organizers")
+![The organizers present us their slideshow at opening ceremonies. The current slide says "HackKU" and prominently displays the event's branding.](opening_ceremonies.jpg "Image credit: HackKU organizers")
 
 ## Hacking events
 
@@ -89,7 +84,7 @@ Somehow we managed to stay awake for judging. There were some people from anothe
 
 Closing ceremonies were fine. Although we weren't awarded a prize, we still had a great time hanging out and writing code. Besides, I don't travel out of state very often, so that was fun as well.
 
-![Danial, Me, and Tyler posing for a picture in front of our finished project at the judging table](judging.webp "Image credit: HackKU organizers")
+![Danial, Me, and Tyler posing for a picture in front of our finished project at the judging table](judging.jpg "Image credit: HackKU organizers")
 
 There was a long ride home, but I was asleep for most of it. It felt amazing to finally take a long, warm shower and climb into a real bed.
 

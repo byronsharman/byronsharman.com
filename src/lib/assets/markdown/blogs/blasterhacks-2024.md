@@ -7,11 +7,9 @@ image:
   alt: >-
     me and my team members accepting our second place prize at the closing
     ceremonies
-  name: secondplace
-  ogExt: jpg
-  optimizedExt: avif
+  path: secondplace.jpg
 ---
-![a screenshot of our finished application's image feed page](blasterhacks_screenshot.avif "The feed page of our finished app.")
+![a screenshot of our finished application's image feed page](blasterhacks_screenshot.png "The feed page of our finished app.")
 
 I'm trying to maximize the amount of fun I have in college, so when I heard my friends were signing up for a hackathon, I knew I had to try. As a freshman, I wasn't really sure it would be for me, but it turned out to be a blast! Here's how it played out.
 
@@ -27,13 +25,13 @@ I returned to find that Elijah and Grant had set up Firebase and also created a 
 
 As we hopped between various tasks, we found that a [Kanban board](https://en.wikipedia.org/wiki/Kanban_board) was a highly effective project management system. It also had the benefit of intimidating other teams with the sheer amount of sticky notes in the "DONE" box, which Elijah had strategically made small, increasing the sticky note density and thereby our perceived progress.
 
-![Kanban board with sticky notes denoting tasks for each group member](kanban.avif "By the end of the hackathon, our Kanban board made us look extremely productive.")
+![Kanban board with sticky notes denoting tasks for each group member](kanban.jpg "By the end of the hackathon, our Kanban board made us look extremely productive.")
 
 Consistent and reliable notifications proved difficult and time-consuming; however, I mostly worked on the frontend while my teammates addressed that. I learned what DataURLs are when writing the code that uploads images to the backend, and this was more rewarding than floundering through the image capture problem because DataURLs are an actual design solution rather than a rope made out of band-aids. Besides, I am more likely to use them in my career.
 
 Until I started typing this, I didn't realize how much the Red Bull eroded my recollection. One memory I do retain from Saturday is the mini competitive programming competition. I already attend the Competitive Programming club, but these problems were exceptionally satisfying for my skill level; they were mostly two- or three-liners in Python, but still tricky enough to require thought. Even though I placed third, a series of technicalities caused me to win the first place prize, which was described to me as a plush ducky.
 
-![plush duck pillow held in midair](duck.avif "I was not expecting to win this.")
+![plush duck pillow held in midair](duck.jpg "I was not expecting to win this.")
 
 On Saturday, I also tweaked a lot of the frontend, working extensively with Tailwind and Svelte. Overall, I like Svelte, and at the time of writing, I'm using it to generate my website. Because it eliminates a lot of boilerplate, it makes the app-writing process relatively simple.
 
@@ -41,7 +39,7 @@ The fact that I don't remember much else from Saturday corroborates my teammates
 
 We probably should have prepared more for the presentation, but winging it served us well; we got second place in the general track!
 
-![me and my team members accepting our second place prize at the closing ceremonies](secondplace.avif "We all won bluetooth speakers! From left to right: me (Byron), Grant, Lukas, Elijah.")
+![me and my team members accepting our second place prize at the closing ceremonies](secondplace.jpg "We all won bluetooth speakers! From left to right: me (Byron), Grant, Lukas, Elijah.")
 
 ## Retrospective
 

@@ -1,26 +1,33 @@
 import { PUBLIC_BASE_URL } from "$env/static/public";
 import { error } from "@sveltejs/kit";
+import { render } from "svelte/server";
 import type { PageServerLoad } from "./$types";
 
 import hljs from "highlight.js/lib/common";
-import imageSizeFromFile from "image-size";
 import * as marked from "marked";
 import type { Tokens } from "marked";
 
 import { getBlogCardData, parseBlog } from "$lib/server/blogUtils";
-import type { BlogCardData, BlogPreviewImage, RenderBlog } from "$lib/types";
+import parseExtension from "$lib/server/parseExtension";
+import type { BlogCardData, Image, RenderBlog } from "$lib/types";
+import type { Picture } from "vite-imagetools";
+
+import ResponsiveImage from "$lib/components/ResponsiveImage.svelte";
 
 // how many other blogs to put in the "Recent Posts" section
-const RECENT_LIMIT = 4;
+const RECENT_LIMIT = 3;
 
 // whether the blog should fetch syntax highlighting CSS
 let requiresHighlight = false;
 
-function configureMarked(slug: string): void {
+function configureMarked(slug: string) {
   let first_image = true;
-  // this is necessary because the top-level definition does not get updated on
-  // page refreshes
   requiresHighlight = false;
+
+  const imgData: Record<
+    string,
+    ({ type: "picture" } & Picture) | { type: "img"; src: string }
+  > = {};
 
   const renderer = {
     // these are modifications of the default renderer
@@ -50,14 +57,30 @@ function configureMarked(slug: string): void {
     },
 
     image({ href, title, text }: Tokens.Image): string {
-      if (href === "") return text;
-      const imgPath = `/blog/images/${slug}/${href}`;
-      // TODO: figure out how to asynchronously determine image size
-      // probably involves making walkTokens return custom tokens for images
-      const { width, height } = imageSizeFromFile(`static${imgPath}`);
-      let out = `<figure class="flex flex-col text-center"><img src=${imgPath} width="${width}" height="${height}" alt="${text}" class="mx-auto"${first_image ? "" : "loading=lazy"} />`;
+      if (!(href in imgData)) return text;
+      const data = imgData[href];
+
+      let img: string | undefined;
+      switch (data.type) {
+        case "img": {
+          const loading = `loading="${first_image ? "eager" : "lazy"}"`;
+          img = `<img src="${data.src}" alt="${text}" ${loading} />`;
+          break;
+        }
+        case "picture":
+          img = render(ResponsiveImage, {
+            props: {
+              lazy: !first_image,
+              picture: { ...data, alt: text },
+              sizes: `(max-width: 700px) and (min-resolution: 3dppx) 66vw, (max-width: 700px) 100vw, min(700px, ${data.img.w}px)`,
+            },
+          }).body;
+          break;
+      }
+
+      let out = `<figure class="text-center">${img}`;
       if (title) {
-        out += `<figcaption>${marked.parseInline(title)}</figcaption>`;
+        out += `<figcaption>${title}</figcaption>`;
       }
       out += "</figure>";
       first_image = false;
@@ -65,7 +88,64 @@ function configureMarked(slug: string): void {
     },
   };
 
-  marked.use({ renderer });
+  const walkTokens = async (token: marked.Token) => {
+    if (token.type === "image") {
+      // parse markdown in image captions
+      if (token.title !== null) {
+        token.title = await marked.parseInline(token.title);
+      }
+
+      let picture: { default: Picture } | undefined;
+      const parseResult = parseExtension(token.href);
+      if (parseResult === null) return;
+      const { baseName, extension } = parseResult;
+      switch (extension) {
+        // because Vite forces dynamic imports to have extensions, we must
+        // copy and paste this code for every extension we wish to support
+        case "avif":
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.avif?w=480;700;960;1400&as=picture`
+          );
+          break;
+        case "jpg":
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.jpg?w=480;700;960;1400&format=avif&as=picture`
+          );
+          break;
+        case "png":
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.png?w=480;700;960;1400&format=avif&as=picture`
+          );
+          break;
+        case "svg": {
+          const { default: url } = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.svg`
+          );
+          if (url !== undefined) {
+            imgData[token.href] = { type: "img", src: url };
+          }
+          // since svgs are a special case, we want to end processing here
+          return;
+        }
+        case "webp":
+          picture = await import(
+            `$lib/assets/blog/images/${slug}/${baseName}.webp?w=480;700;960;1400&as=picture`
+          );
+          break;
+        default:
+          console.error(`unsupported extension ${extension}`);
+          break;
+      }
+      if (picture === undefined || picture.default === undefined) {
+        console.error(`could not process image ${token.href}`);
+        return;
+      }
+
+      imgData[token.href] = { type: "picture", ...picture.default };
+    }
+  };
+
+  return new marked.Marked({ renderer, walkTokens, async: true });
 }
 
 export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
@@ -80,33 +160,48 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
 
   const absoluteUrl = `${PUBLIC_BASE_URL}/blog/${params.slug}`;
 
-  // Why do we query blogs.json twice, once in blogUtils and once here? The
-  // motive is to do as much of the data processing as possible server-side (in
-  // .server.ts files). This means that blogUtils, which is only used to
-  // populate blog cards, removes data in blogs.json only needed to make a
-  // RenderBlog. To get that data again, we have to load blogs.json again.
-  // Loading it twice isn't an issue because this is all (theoretically) done
-  // at compile time.
-
-  configureMarked(params.slug);
-
-  let previewImage: BlogPreviewImage | undefined;
+  let previewImage: Image | undefined;
   if (data.image !== undefined) {
-    const imgPathWithoutExt = `${PUBLIC_BASE_URL}/blog/images/${params.slug}/${data.image.name}.`;
-    previewImage = {
-      alt: data.image.alt,
-      ogUrl: imgPathWithoutExt + data.image.ogExt,
-      absolutePath: imgPathWithoutExt + data.image.optimizedExt,
-    };
+    const parseResult = parseExtension(data.image.path);
+    if (parseResult !== null) {
+      const { baseName, extension } = parseResult;
+      let imgAsset: { default: string | undefined } | undefined;
+      switch (extension) {
+        case "jpg":
+          imgAsset = await import(
+            `$lib/assets/blog/images/${params.slug}/${baseName}.jpg?w=1200`
+          );
+          break;
+        case "png":
+          imgAsset = await import(
+            `$lib/assets/blog/images/${params.slug}/${baseName}.png?w=1200`
+          );
+          break;
+        default:
+          throw new Error(
+            `invalid preview image ${data.image.path} - Open Graph images must be png or jpg`,
+          );
+      }
+      if (imgAsset !== undefined) {
+        previewImage = {
+          alt: data.image.alt,
+          path: PUBLIC_BASE_URL + imgAsset.default,
+        };
+      }
+    }
   }
 
-  const html = await marked.parse(content);
+  // it is necessary to make new instances of marked; otherwise, the global
+  // instance will be duplicated and its configuration corrupted
+  // https://marked.js.org/using_advanced#instance
+  const markedInstance = configureMarked(params.slug);
+  const html = await markedInstance.parse(content);
 
   const ldjson = JSON.stringify({
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: data.title,
-    ...(previewImage && { image: previewImage.absolutePath }),
+    ...(previewImage && { image: previewImage.path }),
     datePublished: new Date(data.date * 1000).toISOString(),
     author: [
       {
@@ -117,7 +212,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
     ],
   });
 
-  const recentBlogs: BlogCardData[] = getBlogCardData()
+  const recentBlogs: BlogCardData[] = (await getBlogCardData())
     .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
     .slice(0, RECENT_LIMIT);
 

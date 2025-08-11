@@ -7,9 +7,7 @@ description: >-
   usage.
 image:
   alt: screenshot of Vim's opening screen
-  name: vim_screenshot
-  ogExt: png
-  optimizedExt: png
+  path: vim_screenshot.png
 ---
 ![screenshot of Vim's opening screen](vim_screenshot.png)
 
