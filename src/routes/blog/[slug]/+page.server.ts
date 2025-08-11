@@ -22,9 +22,6 @@ let requiresHighlight = false;
 
 function configureMarked(slug: string) {
   let first_image = true;
-  // TODO: this can probably be removed now that there is one marked instance per page
-  // this is necessary because the top-level definition does not get updated on
-  // page refreshes
   requiresHighlight = false;
 
   const imgData: Record<
