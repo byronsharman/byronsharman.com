@@ -40,7 +40,7 @@ const dateStr = $derived(
         </h3>
       {/if}
     </div>
-    <p class="text-base">{dateStr}</p>
+    <p class="text-base text-fg-primary dark:text-fg-primary-dark">{dateStr}</p>
   </header>
   <p class="text-sm text-fg-tertiary dark:text-fg-tertiary-dark mb-std">{experience.languages.join(', ')}</p>
   <div class="prose dark:prose-invert text-base/6 max-w-max">{@html experience.description}</div>
