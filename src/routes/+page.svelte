@@ -57,12 +57,12 @@ to style the <body> element per route. Specifically, :global(body) doesn't
 refresh on new routes. As a workaround, I wrap the entire page in a div and
 make sure to use padding instead of margins so that the <body> background color
 doesn't show through. -->
-<div class="flex flex-col justify-between min-h-screen bg-neutral-50 dark:bg-neutral-800">
+<div class="flex flex-col min-h-screen bg-neutral-50 dark:bg-neutral-800">
 
-  <main>
+  <main class="grow flex flex-col justify-evenly">
 
     <div class="px-std">
-      <article class="max-w-(--content-width) mx-auto py-8 lg:py-24">
+      <article class="max-w-(--content-width) mx-auto my-8">
         <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
           <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
 
@@ -98,7 +98,7 @@ doesn't show through. -->
     <div class="p-std">
       <section class="max-w-[1280px] mx-auto">
         <h2 class="sr-only">Recent Blogs</h2>
-        <div class="grid grid-cols-[4fr_3fr_3fr] gap-std">
+        <div class="grid md:grid-cols-[4fr_3fr_3fr] gap-std">
           {#each data.blogs.slice(0, 5) as blog}
             <BlogCard blog={blog} />
           {/each}
@@ -108,18 +108,20 @@ doesn't show through. -->
 
   </main>
 
-  <footer class="w-full max-w-(--content-width) mx-auto py-std flex flex-row justify-between text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
-    <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">
-      <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4.205 8.72805L12.205 3.72805C13.2041 3.10363 14.5 3.82189 14.5 5.00004V15C14.5 16.1782 13.2041 16.8965 12.205 16.272L4.205 11.272C3.265 10.6845 3.265 9.31555 4.205 8.72805Z" />
-      </svg>
-    </a>
-    <p class="mx-std">Come here from one of my friends' sites? Use these buttons to navigate the webring.</p>
-    <a aria-label="next" href="https://grantlemons.com/webring/next" class="flex flex-col justify-center">
-      <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M15.795 11.272L7.795 16.272C6.79593 16.8964 5.5 16.1782 5.5 15L5.5 5.00002C5.5 3.82186 6.79593 3.1036 7.795 3.72802L15.795 8.72802C16.735 9.31552 16.735 10.6845 15.795 11.272Z" />
-      </svg>
-    </a>
-  </footer>
+  <div class="mx-std">
+    <footer class="w-full max-w-(--content-width) mx-auto py-std flex flex-row justify-between text-center text-fg-tertiary dark:text-fg-tertiary-dark text-xs">
+      <a aria-label="previous" href="https://grantlemons.com/webring/prev" class="flex flex-col justify-center">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4.205 8.72805L12.205 3.72805C13.2041 3.10363 14.5 3.82189 14.5 5.00004V15C14.5 16.1782 13.2041 16.8965 12.205 16.272L4.205 11.272C3.265 10.6845 3.265 9.31555 4.205 8.72805Z" />
+        </svg>
+      </a>
+      <p class="mx-std">Come here from one of my friends' sites? Use these buttons to navigate the webring.</p>
+      <a aria-label="next" href="https://grantlemons.com/webring/next" class="flex flex-col justify-center">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15.795 11.272L7.795 16.272C6.79593 16.8964 5.5 16.1782 5.5 15L5.5 5.00002C5.5 3.82186 6.79593 3.1036 7.795 3.72802L15.795 8.72802C16.735 9.31552 16.735 10.6845 15.795 11.272Z" />
+        </svg>
+      </a>
+    </footer>
+  </div>
 
 </div>
