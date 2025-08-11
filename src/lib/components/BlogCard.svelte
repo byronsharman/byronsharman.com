@@ -21,7 +21,11 @@ if (blog.mode === "image" && blog.picture === undefined) {
       <ResponsiveImage
         picture={blog.picture}
         lazy={blog.mode === "image"}
-        sizes="(min-resolution: 3dppx) calc(33vw * 0.667), 33vw"
+        sizes={
+          blog.mode === "featured"
+          ? "(min-width: 48rem) calc(calc(min(1280px, calc(100vw - 4rem)) * 0.4) - 4rem), calc(100vw - 6rem)"
+          : "(min-width: 48rem) calc(calc(min(1280px, calc(100vw - 4rem)) / 3) - 4rem), calc(100vw - 6rem)"
+        }
         class_="rounded-lg mb-4"
       />
     {/if}
