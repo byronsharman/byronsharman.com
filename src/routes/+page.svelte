@@ -97,7 +97,7 @@ doesn't show through. -->
 
     <div class="p-std">
       <section class="max-w-[1280px] mx-auto">
-        <h2 class="sr-only">Blog Posts</h2>
+        <h2 class="sr-only">Recent Blogs</h2>
         <div class="grid grid-cols-[4fr_3fr_3fr] gap-std">
           {#each data.blogs.slice(0, 5) as blog}
             <BlogCard blog={blog} />
