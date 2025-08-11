@@ -14,7 +14,7 @@ let { data }: PageProps = $props();
 <BackToHome />
 
 <header class="my-std lg:my-lg">
-  <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">All Posts</h1>
+  <h1 class="font-semibold text-4xl text-fg-primary dark:text-fg-primary-dark">All Posts</h1>
 </header>
 
 <BlogGrid blogs={data.blogs} />

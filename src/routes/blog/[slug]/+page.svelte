@@ -32,7 +32,7 @@ let { data }: PageProps = $props();
   {@html `<script type="application/ld+json">${data.ldjson}</script>`}
 </svelte:head>
 
-<div class="p-std lg:p-lg">
+<div class="p-std">
   <main class="max-w-prose mx-auto">
     <BackToHome />
 
@@ -48,7 +48,7 @@ let { data }: PageProps = $props();
 
 <div class="p-std pt-0 bg-neutral-50 dark:bg-neutral-800">
   <section class="max-w-[1280px] mx-auto">
-    <h2 class="py-lg lg:py-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
+    <h2 class="py-lg lg:py-12 font-semibold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
     <BlogGrid blogs={data.recentBlogs} />
     <AllPosts />
   </section>
