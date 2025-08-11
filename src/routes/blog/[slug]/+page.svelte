@@ -45,7 +45,7 @@ let { data }: PageProps = $props();
   </main>
 </div>
 
-<div class="p-std pt-0 bg-neutral-50">
+<div class="p-std pt-0 bg-neutral-50 dark:bg-neutral-800">
   <section class="max-w-[1280px] mx-auto">
   <h2 class="py-lg lg:py-12 font-bold text-3xl text-fg-primary dark:text-fg-primary-dark">Recent Posts</h2>
   <BlogGrid blogs={data.recentBlogs} />
