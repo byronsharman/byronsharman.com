@@ -1,7 +1,6 @@
 ---
 title: >-
-  Natasha Paremski's Rach 3 is the best thing that happened to me the week
-  before finals
+  Natasha Paremski rocked Rach 3
 published: true
 date: 1715296345
 description: Rarely do I feel so elated walking out of a concerto performance.
