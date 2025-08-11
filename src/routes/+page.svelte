@@ -58,7 +58,7 @@ const { data }: PageProps = $props();
       <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
 
       <div>
-        <h1 class="font-bold text-4xl text-fg-primary dark:text-fg-primary-dark">Byron Sharman</h1>
+        <h1 class="font-semibold text-4xl text-fg-primary dark:text-fg-primary-dark tracking-tight">Byron Sharman</h1>
         <p class="my-std lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
           I'm Byron, a computer science student at Colorado School of Mines. I
           like to make things, learn technologies, and explore the world, both
@@ -89,8 +89,8 @@ const { data }: PageProps = $props();
 <div class="p-std">
   <section class="max-w-[1280px] mx-auto">
     <h2 class="sr-only">Blog Posts</h2>
-    <div class="grid grid-cols-3 gap-std">
-      {#each data.blogs as blog}
+    <div class="grid grid-cols-[4fr_3fr_3fr] gap-std">
+      {#each data.blogs.slice(0, 5) as blog}
         <BlogCard blog={blog} />
       {/each}
     </div>
@@ -115,8 +115,7 @@ const { data }: PageProps = $props();
 @reference "../app.css";
 
 :global(body) {
-  /* background-color: var(--color-bg-tertiary); */
-  @apply bg-stone-50;
+  @apply bg-neutral-50 dark:bg-neutral-800;
 
 }
 </style>

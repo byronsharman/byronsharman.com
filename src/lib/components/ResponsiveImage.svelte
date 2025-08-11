@@ -5,9 +5,10 @@ interface Props {
   lazy: boolean;
   picture: Picture & { alt: string };
   sizes: string;
+  class_?: string;
 };
 
-const { picture, lazy, sizes }: Props = $props();
+const { picture, lazy, sizes, class_ }: Props = $props();
 </script>
 
 <picture>
@@ -25,5 +26,6 @@ const { picture, lazy, sizes }: Props = $props();
     height={picture.img.h}
     loading={lazy ? "lazy" : null}
     fetchpriority={lazy ? null : "high"}
+    class={class_}
   />
 </picture>
