@@ -63,7 +63,7 @@ export async function getBlogCardData(): Promise<BlogCardData[]> {
           return {
             date,
             description,
-            featured: false,
+            mode: "regular",
             picture,
             slug,
             title,

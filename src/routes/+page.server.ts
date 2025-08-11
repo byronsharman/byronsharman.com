@@ -8,7 +8,7 @@ export const load: PageServerLoad = async () => {
   // feature the first blog with an image
   for (const bcd of blogs) {
     if (bcd.picture !== undefined) {
-      bcd.featured = true;
+      bcd.mode = "featured";
       break;
     }
   }

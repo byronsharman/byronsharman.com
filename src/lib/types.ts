@@ -9,7 +9,7 @@ type BaseBlog = {
 };
 
 export type BlogCardData = BaseBlog & {
-  featured: boolean;
+  mode: "regular" | "image" | "featured";
   picture?: Picture & { alt: string };
   slug: string;
   url: string;
