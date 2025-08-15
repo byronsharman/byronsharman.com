@@ -11,4 +11,5 @@ export const Blog = zod.strictObject({
       path: zod.string().nonempty(),
     })
     .optional(),
+  featured: zod.boolean().optional(),
 });
