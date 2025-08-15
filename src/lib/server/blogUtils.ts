@@ -34,7 +34,8 @@ export async function getBlogCardData(): Promise<BlogCardData[]> {
           > => {
             const slug: string = basename(filename, ".md");
             const { data } = parseBlog(rawMarkdown);
-            const { date, description, featured, image, published, title } = data;
+            const { date, description, featured, image, published, title } =
+              data;
 
             let picture: (Picture & { alt: string }) | undefined;
             if (image !== undefined) {
