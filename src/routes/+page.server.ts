@@ -5,7 +5,7 @@ import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
   const blogs: BlogCardData[] = await getBlogCardData();
-  if (!blogs.some(blog => blog.mode === "featured")) {
+  if (!blogs.some((blog) => blog.mode === "featured")) {
     // feature the first blog with an image
     for (const bcd of blogs) {
       if (bcd.picture !== undefined) {
@@ -15,11 +15,10 @@ export const load: PageServerLoad = async () => {
     }
   }
 
-  // swap the first blog with the first featured blog
-  let i=0;
+  // move the featured blog to the front
+  let i = 0;
   for (; blogs[i].mode !== "featured"; i++) {}
-  const tmp = blogs[0];
-  blogs[0] = blogs[i];
-  blogs[i] = tmp;
+  const tmp = blogs.splice(i, 1);
+  blogs.unshift(...tmp);
   return { blogs };
 };
