@@ -3,6 +3,7 @@ title: Biking
 published: true
 date: 1737662893
 description: A healthier way of life.
+featured: true
 image:
   alt: >-
     A concrete path leads down a hill. There is snow on either side, and
