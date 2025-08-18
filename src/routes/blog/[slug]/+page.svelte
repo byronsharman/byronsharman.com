@@ -33,7 +33,7 @@ let { data }: PageProps = $props();
 </svelte:head>
 
 <div class="p-std">
-  <main class="max-w-prose mx-auto">
+  <main class="max-w-(--content-width) mx-auto">
     <BackToHome />
 
     <article class="prose dark:prose-invert max-w-none text-[17px] mb-lg lg:mb-12">
