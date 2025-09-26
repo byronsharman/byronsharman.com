@@ -1,14 +1,15 @@
 ---
 title: A pretty good summer
-published: false
+published: true
 date: 1758858100
 description: I summarize what I did during the summer of 2025.
-# image:
-#   alt: >-
-#     A concrete path leads down a hill. There is snow on either side, and
-#     mountains are in the background.
-#  path: path.jpg
+image:
+  alt: >-
+    A green field on a college campus. In the background, South Table lies underneath a large cumulonimbus cloud.
+  path: south-table-cropped.jpg
 ---
+
+![The sun sets underneath a cloud, casting its rays high into the sky and turning the horizon yellow. The city of Golden lies in shadow.](view-from-south-table.jpg "I love watching sunsets, especially from the top of South Table.")
 
 This semester has been very busy, which has made me think of the last time I
 wasn't busy: this summer, when most of my days were spent strolling under the
@@ -71,6 +72,8 @@ Best Technical Presentation!
 
 ## Fourteeners
 
+![yellow alpine flowers on a mountain hillside at sunrise with a mountain range in the background](flowers.jpg "The mountains at golden hour are a special experience for me.")
+
 I climbed my first three fourteeners this summer: Grays Peak, Torries Peak, and
 Mount Bierstadt. Though I've lived in Colorado my entire life, my time in the
 mountains previously has been mostly high mountain lakes or scenic trails not
@@ -89,6 +92,8 @@ prefer the other way better. There's nothing quite like finding a remote lake
 and being all alone with a friend or family member for the weekend.
 
 ## Chasing hobbies
+
+![a grilled cheese sandwich cut in half diagonally with cheese dripping out](grilled-cheese.jpg "The secret to grilled cheese is patience. (Extra butter doesn't hurt, either.)")
 
 Field Session ended pretty early, and my only other commitment was TAing for
 Data Structures and Algorithms, so I had plenty of time. Ever since Mines
