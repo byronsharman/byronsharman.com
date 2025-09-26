@@ -43,10 +43,10 @@ OpenTofu, our infrastructure as code tool. Grant recommended the IaC route, and
 it was an excellent choice because it allowed each team member to experiment
 with their own instance of the architecture, and since many more lines of code
 were dedicated to infrastructure than actual business logic, our velocity
-significantly improved. Additionally, for the same reason, being able to track
-our infrastructure changes under version control proved crucial to our
-development process. Finally, this choice allowed us to transition from our
-personal cloud accounts to our client's account very easily.
+significantly improved. For the same reason, the ability to track our
+infrastructure changes under version control proved crucial to our development
+process. Finally, this choice allowed us to transition from our personal cloud
+accounts to our client's account very easily.
 
 Though I've dabbled with Nix for a while, this was really my first time fully
 embracing a declarative configuration, and I grew to appreciate the power and
@@ -58,17 +58,16 @@ For both reports and presentation slides throughout the class, we used
 [Typst](https://typst.app/) to typeset and generate PDFs programatically. We
 greatly appreciated its speed, language design, and ease of use. I have since
 adopted Typst both for other classes and for personal use. I highly recommend
-it. Frequently it gives me that "Vim feeling": it's so powerful that it feels
-unfair, as if I shouldn't have been allowed to do that complicated 20-minute
-task in 15 seconds with two lines of code. Besides, the near-instant
-compilation times and the fact that it is a full Turing-complete language makes
-it a clear winner over LaTeX. I'm excited to continue using it throughout my
+it. Frequently it gives me what I call the _Vim feeling_: it's so powerful that
+it feels unfair, as if I shouldn't have been allowed to do that complicated
+20-minute task in 15 seconds with two lines of code. Besides, the near-instant
+compilation times and the fact that it is a full programming language makes it
+a clear winner over LaTeX. I'm excited to continue using it throughout my
 career.
 
 Our client, [Swim Tech](https://swimtechsport.com/), was pleased with our work.
-All the teams had a final presentation, and we took ours seriously, practicing
-it extensively. This effort resulted in us earning a students' choice award for
-Best Technical Presentation!
+All the teams had a final presentation, and we practiced ours extensively. This
+effort earned us a students' choice award for Best Technical Presentation!
 
 ## Fourteeners
 
@@ -77,14 +76,13 @@ Best Technical Presentation!
 I climbed my first three fourteeners this summer: Grays Peak, Torries Peak, and
 Mount Bierstadt. Though I've lived in Colorado my entire life, my time in the
 mountains has previously been limited to high mountain lakes or scenic trails
-not involving a summit. Before, I went to the mountains to be alone with my
-thoughts in nature. However, my roommate, Jose, has been getting into
-fourteeners and was gracious enough to invite me to several! I found them to be
-a fun way to experience the mountains, albeit for completely different reasons
-than the sort of outdoorsmanship I am accustomed to. Climbing a fourteener
-feels like a social event where everyone has the same goal and is encouraging
-each other to achieve it. That said, the three mountains I summited are
-probably the three most crowded in Colorado, so I don't know what the
+not involving a summit. I went to the mountains to be alone with my thoughts in
+nature. However, my roommate, Jose, has been getting into fourteeners and was
+gracious enough to invite me. I found them to be a fun way to experience the
+mountains, albeit for completely different reasons than I am accustomed to.
+Climbing a fourteener is a social event; everyone faces the same challenge and
+encourages each other to surmount it. That said, the three mountains I summited
+are probably the three most crowded in Colorado, so I don't know what the
 experience is like at lower-traffic mountains.
 
 Overall, I enjoyed trying this new form of getting outdoors, but I think I
@@ -96,25 +94,24 @@ and being all alone with a friend or family member for the weekend.
 ![a grilled cheese sandwich cut in half diagonally with cheese dripping out](grilled-cheese.jpg "The secret to grilled cheese is patience. (Extra butter doesn't hurt, either.)")
 
 Field Session ended pretty early, and my only other commitment was TAing for
-Data Structures and Algorithms, so I had plenty of time. Ever since Mines
-stopped forcing me to buy their meal plan, I've been keen to learn how to cook,
-and this summer afforded me a great opportunity to hone my skills. I iterated
-on recipes for grilled cheese, mac and cheese, stir fries, hashed browns, beef
+Data Structures and Algorithms, so I had plenty of time. Ever since being
+emancipated from Mines's meal plan, I've been keen to learn how to cook, and
+this summer afforded me a great opportunity to hone my skills. I iterated on
+recipes for grilled cheese, mac and cheese, stir fries, hashed browns, beef
 stew, steak, spaghetti, etc., etc. I was surprised by the extent to which
-techniques of starkly different dishes overlap and by how an understanding of
-heat and seasoning applies universally. I am now at a level where I can make
-some dishes well and others OK, and I can improvise something reasonably tasty
-with whatever is in the fridge and pantry, which was one of my main goals when
-I started. Considering I have only been cooking in earnest for a year, I am
-quite content with this progress. It's really satisfying to make something
-delicious! The only downside is that I have gone from being willing to eat
-anything to being fairly picky, probably because I've spent so much time
-thinking about how my own cooking can be improved. Next, I hope to broaden my
-repertoire and cuisine familiarity.
+techniques of starkly different dishes overlap. An understanding of heat and
+seasoning applies universally. I am now at a level where I can make some dishes
+well and others OK, and I can improvise something reasonably tasty with
+whatever is in the fridge and pantry, which was one of my main goals when I
+started. Considering I have only been cooking in earnest for a year, I am quite
+content with this progress. It's really satisfying to make something delicious!
+The only downside is that I have gone from being willing to eat anything to
+being fairly picky because I critique my own food critically. Next, I hope to
+broaden my repertoire and cuisine familiarity.
 
 Ever since my first week at Mines, I've been struggling to balance piano with
-everything else I want to do in college. I love playing the piano, but I simply
-don't have the time to get good at it or the capital to afford an instructor.
+everything else I want to do in college. I love playing the piano, but I don't
+have the time to get good at it or the capital to afford an instructor.
 However, the first constraint no longer applied during the summer, and I really
 enjoyed learning some new pieces and listening to repertoire with which I was
 not previously familiar. I've been following [Ben
