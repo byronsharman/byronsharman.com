@@ -97,7 +97,7 @@
       @apply font-semibold! tracking-tight;
     }
     img {
-      @apply mx-auto mb-0 md:max-h-(--content-width) object-scale-down rounded-md;
+      @apply mx-auto mb-0 sm:w-auto sm:max-h-[65vh] rounded-md;
     }
     @media (prefers-color-scheme: light) {
       pre {
