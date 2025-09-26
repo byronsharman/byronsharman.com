@@ -9,7 +9,7 @@ interface Props {
 let { unixtime, small = false }: Props = $props();
 
 const tzOffset = new Date().getTimezoneOffset() * 60000;
-const date = new Date(unixtime * 1000 - tzOffset);
+const date = $derived(new Date(unixtime * 1000 - tzOffset));
 const iso8601 = $derived(
   new Intl.DateTimeFormat(undefined, { dateStyle: "long" }).format(date),
 );
