@@ -73,7 +73,7 @@ Presentation!
 
 ![yellow alpine flowers on a mountain hillside at sunrise with a mountain range in the background](flowers.jpg "The mountains at golden hour are a special experience for me.")
 
-I climbed my first three fourteeners this summer: Grays Peak, Torries Peak, and
+I climbed my first three fourteeners this summer: Grays Peak, Torreys Peak, and
 Mount Bierstadt. Though I've lived in Colorado my entire life, my time in the
 mountains has previously been limited to high mountain lakes or scenic trails,
 destinations ideal for being alone with one's thoughts in nature. However, my
