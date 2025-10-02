@@ -83,6 +83,9 @@ words like *of*, *to*, and *as*. It also comes in handy for passwords.
 My speed hasn't improved much since the last blog; I'm at around 105 WPM. I
 used to be faster when I used QWERTY, so this is admittedly frustrating.
 
+> **Edit (October 2025):** I have since improved to within error bars of my
+> QWERTY speed, averaging 123 WPM on TypeRacer.
+
 The largest issue with the layout itself is platform support. Chrome doesn't
 hide the slash key (which activates the cursor layer) from websites, so
 `Ctrl+Home` and other common shortcuts are overridden in Microsoft&nbsp;365 to
