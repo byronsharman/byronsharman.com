@@ -9,15 +9,12 @@ date: 2025-06-01
 startDate: 2025-05-01
 url: https://swimtechsport.com/
 ---
-I spent the summer of 2025 building a voice categorization tool for Swim Tech,
-a swimming instruction company based in Colorado. During this time, I
-- Designed a serverless architecture in **AWS** estimated to cost roughly
-  1/10th of equivalent traditional compute options
-- Provisioned cloud resources with OpenTofu (an open-source fork of
-  **Terraform**), managing all **infrastructure as code** for better
-  reproducibility and a seamless client hand-off
-- Bridged business and engineering domains by translating stakeholder
-  requirements into technical specifications
-- Wrote a **CI/CD pipeline** that applies infrastructure changes, renders a
-  static site, and deploys the app, saving hours of tedious manual deployment and
-  facilitating feature delivery
+I spent the summer of 2025 working with two other students to build a voice categorization tool for Swim Tech, a swimming instruction company based in Colorado. Our project was essentially a microservice that converts voice recordings to text, recognizes names, and matches them to student records. During this time, I
+- Translated our client's business requirements into technical specifications.
+- Helped ideate a serverless architecture in **AWS** involving services like
+  Lambda, S3, API Gateway, Transcribe, Cognito, etc.
+- Implemented that architecture with OpenTofu (an open-source fork of
+  **Terraform**), enabling reproducibility, managing infrastructure with version
+  control, and per-environment experimentation 
+- Wrote a **CI/CD pipeline** that provisioned our infrastructure and rendered a
+  static demo site which interfaced with our API.
