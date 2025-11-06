@@ -30,11 +30,7 @@
     from var(--color-bg-primary) calc(l - calc(2 * var(--lightness-diff))) c h
   );
 
-  --color-fg-blog-dark: color-mix(
-    in oklch,
-    var(--color-neutral-200),
-    var(--color-neutral-100)
-  );
+  --color-fg-blog-dark: var(--color-neutral-200);
   --color-fg-primary-dark: var(--color-white);
   --color-fg-secondary-dark: var(--color-neutral-300);
   --color-fg-tertiary-dark: var(--color-neutral-400);
