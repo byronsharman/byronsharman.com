@@ -1,7 +1,7 @@
 ---
 title: DubHacks 2025
 published: true
-date: 1762109781
+date: 1762467633
 description: Our projection project was projected to be successful.
 image:
   alt: Four students stand on a stage holding a banner that says 'Winner'
