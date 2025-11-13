@@ -15,7 +15,7 @@ if (blog.mode === "image" && blog.picture === undefined) {
 }
 </script>
 
-<a href={blog.url} class={[blog.mode === "featured" && "order-first", (blog.mode === "featured" || blog.mode === "image") && "row-span-2", "block sm:p-6 md:p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-black dark:shadow-neutral-900 hover:shadow-lg transition"]}>
+<a href={blog.url} class={[blog.mode === "featured" && "order-first", (blog.mode === "featured" || blog.mode === "image") && "row-span-2", "block sm:p-6 md:p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-black dark:shadow-neutral-900 hover:shadow-lg transition overflow-clip"]}>
   <article class="card">
     {#if (blog.mode === "featured" || blog.mode === "image") && blog.picture !== undefined}
       <ResponsiveImage
@@ -26,7 +26,7 @@ if (blog.mode === "image" && blog.picture === undefined) {
           ? "(min-width: 48rem) calc(calc(min(1280px, calc(100vw - 4rem)) * 0.4) - 4rem), calc(100vw - 6rem)"
           : "(min-width: 48rem) calc(calc(min(1280px, calc(100vw - 4rem)) / 3) - 4rem), calc(100vw - 6rem)"
         }
-        class_="rounded-t-lg sm:rounded-lg sm:mb-4"
+        class_="sm:rounded-lg sm:mb-4"
       />
     {/if}
     <div class="p-6 sm:p-0">
