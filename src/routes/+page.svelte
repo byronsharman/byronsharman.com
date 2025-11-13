@@ -9,8 +9,8 @@ import envelopeIcon from "$lib/assets/icons/envelope.svg";
 import githubLogo from "$lib/assets/icons/github.svg";
 import linkedinLogo from "$lib/assets/icons/linkedin.png";
 import rssIcon from "$lib/assets/icons/rss.svg";
-import portrait from "$lib/assets/portraits/big-portrait.jpg";
-import portraitCropped from "$lib/assets/portraits/big-portrait-cropped.jpg";
+import portrait from "$lib/assets/portraits/big-portrait.jpg?w=320;640&format=avif&as=picture";
+import portraitCropped from "$lib/assets/portraits/big-portrait-cropped.jpg?w=320;480;640;800&format=avif&as=picture";
 
 type SocialLink = {
   iconSrc: string;
@@ -68,9 +68,17 @@ doesn't show through. -->
         <div class="w-full flex flex-col gap-std sm:flex-row-reverse sm:justify-between sm:items-center">
           <picture>
             <!-- Unfortunately, we can't use CSS variables in media queries, so we'll just hardcode the Tailwind default value of var(--breakpoint-sm). -->
-            <source media="(width < 40rem)" srcset={portraitCropped} />
-            <source media="(width >= 40rem)" srcset={portrait} />
-            <img alt="portrait of my face with blurred plants in the background" src={portrait} class="sm:max-w-80 rounded-md" />
+            <source media="(width < 40rem)" srcset={portraitCropped.sources.avif} sizes="100vw" />
+            <source media="(width >= 40rem)" srcset={portrait.sources.avif} sizes="20rem" />
+            <img
+              alt="portrait of my face with blurred plants in the background"
+              src={portrait.img.src}
+              width={portrait.img.w}
+              height={portrait.img.h}
+              class="sm:max-w-80 rounded-md"
+              loading="eager"
+              fetchpriority="high"
+            />
           </picture>
 
           <div class="max-w-[500px]">
