@@ -15,7 +15,7 @@ if (blog.mode === "image" && blog.picture === undefined) {
 }
 </script>
 
-<a href={blog.url} class={[blog.mode === "featured" && "order-first", (blog.mode === "featured" || blog.mode === "image") && "row-span-2", "block p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-black dark:shadow-neutral-900 hover:shadow-lg transition"]}>
+<a href={blog.url} class={[blog.mode === "featured" && "order-first", (blog.mode === "featured" || blog.mode === "image") && "row-span-2", "block p-6 md:p-8 bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-black dark:shadow-neutral-900 hover:shadow-lg transition"]}>
   <article class="card">
     {#if (blog.mode === "featured" || blog.mode === "image") && blog.picture !== undefined}
       <ResponsiveImage

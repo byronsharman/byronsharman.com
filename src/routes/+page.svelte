@@ -9,7 +9,8 @@ import envelopeIcon from "$lib/assets/icons/envelope.svg";
 import githubLogo from "$lib/assets/icons/github.svg";
 import linkedinLogo from "$lib/assets/icons/linkedin.png";
 import rssIcon from "$lib/assets/icons/rss.svg";
-import portrait from "$lib/assets/portraits/portrait.avif";
+import portrait from "$lib/assets/portraits/big-portrait.jpg";
+import portraitCropped from "$lib/assets/portraits/big-portrait-cropped.jpg";
 
 type SocialLink = {
   iconSrc: string;
@@ -60,14 +61,19 @@ make sure to use padding instead of margins so that the <body> background color
 doesn't show through. -->
 <div class="flex flex-col min-h-screen bg-neutral-50 dark:bg-neutral-800">
 
-  <main class="grow flex flex-col justify-evenly">
+  <main class="grow flex flex-col justify-evenly md:gap-24 md:my-12">
 
     <div class="px-std">
-      <article class="max-w-(--content-width) mx-auto my-8">
-        <div class="flex flex-col sm:flex-row-reverse gap-8 lg:gap-12">
-          <img alt="portrait of my face with blurred plants in the background" src={portrait} class="size-36 rounded-full" />
+      <article class="max-w-[960px] mx-auto my-8">
+        <div class="w-full flex flex-col gap-std sm:flex-row-reverse sm:justify-between sm:items-center">
+          <picture>
+            <!-- Unfortunately, we can't use CSS variables in media queries, so we'll just hardcode the Tailwind default value of var(--breakpoint-sm). -->
+            <source media="(width < 40rem)" srcset={portraitCropped} />
+            <source media="(width >= 40rem)" srcset={portrait} />
+            <img alt="portrait of my face with blurred plants in the background" src={portrait} class="sm:max-w-80 rounded-md" />
+          </picture>
 
-          <div>
+          <div class="max-w-[500px]">
             <h1 class="font-semibold text-4xl text-fg-primary dark:text-fg-primary-dark tracking-tight">Byron Sharman</h1>
             <p class="my-std lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
               I love to create, learn, and explore, both physically and
@@ -97,7 +103,7 @@ doesn't show through. -->
       </article>
     </div>
 
-    <div class="p-std">
+    <div class="px-std">
       <section class="max-w-[1280px] mx-auto">
         <h2 class="sr-only">Recent Blogs</h2>
         <div class="grid md:grid-cols-[4fr_3fr_3fr] gap-std">
