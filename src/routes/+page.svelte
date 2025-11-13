@@ -64,7 +64,7 @@ doesn't show through. -->
   <main class="grow flex flex-col justify-evenly md:gap-24 md:my-12">
 
     <div class="px-std">
-      <article class="max-w-[960px] mx-auto my-8">
+      <article class="max-w-[960px] mx-auto my-4 sm:my-8">
         <div class="w-full flex flex-col gap-std sm:flex-row-reverse sm:justify-between sm:items-center">
           <picture>
             <!-- Unfortunately, we can't use CSS variables in media queries, so we'll just hardcode the Tailwind default value of var(--breakpoint-sm). -->
