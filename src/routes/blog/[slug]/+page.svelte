@@ -37,10 +37,10 @@ let { data }: PageProps = $props();
     <BackToHome />
 
     <article class="prose dark:prose-invert max-w-none text-[17px] mb-lg lg:mb-12">
-      <header class="mt-std lg:mt-lg">
+      <hgroup class="mt-std lg:mt-lg">
         <h1 class="mb-sm! text-pretty lg:text-balance">{data.title}</h1>
         <DateP unixtime={data.date} />
-      </header>
+      </hgroup>
       {@html data.html}
     </article>
   </main>
