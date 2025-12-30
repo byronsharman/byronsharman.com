@@ -6,7 +6,7 @@ let { children }: LayoutProps = $props();
 
 <div class="min-h-screen bg-neutral-50 dark:bg-neutral-800">
   <div class="p-std">
-    <div class="max-w-[1280px] mx-auto">
+    <div class="max-w-[960px] mx-auto">
       {@render children()}
     </div>
   </div>
