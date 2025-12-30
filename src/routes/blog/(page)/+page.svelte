@@ -7,7 +7,7 @@ let { data }: PageProps = $props();
 </script>
 
 <svelte:head>
-  <title>Experience</title>
+  <title>All Posts</title>
   <meta name="description" content="A complete list of all Byron's blog posts." />
 </svelte:head>
 
