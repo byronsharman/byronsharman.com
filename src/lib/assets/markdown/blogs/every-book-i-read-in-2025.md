@@ -45,7 +45,7 @@ artists, and the great cesspit of internet culture. Great fun, but
 not without meaning. I'm glad I own this; I expect to find myself
 reading it again.
 
-### _The Rise and Fall of the Dinosuars_ by Steve Brusatte
+### _The Rise and Fall of the Dinosaurs_ by Steve Brusatte
 The book earns its readers' attention with caricatures of
 legendary paleontologists and stories of their fossil discoveries
 before going into the science of what made that animal
