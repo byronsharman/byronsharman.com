@@ -12,7 +12,7 @@ books is a cool hobby," I said to myself. "If only it were free!"
 Then I remembered that there is [a public
 library](https://jeffcolibrary.org/locations/gn/) within walking
 distance of the Mines campus. I didn't read quite as much as I'd
-have liked—and I certainly didn't finish as many as I started—but
+have liked—and I certainly didn't finish as many books as I started—but
 I _did_ find a way to wind down before going to bed that's much
 healthier than doomscrolling. So, mostly for myself, but maybe to
 the benefit of some of my readers, I'm going to list them, in
