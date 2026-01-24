@@ -86,7 +86,7 @@
       @apply my-0!;
     }
     figure {
-      @apply my-6!;
+      @apply my-6 text-center!;
     }
     h1,
     h2 {

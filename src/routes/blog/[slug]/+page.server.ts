@@ -78,7 +78,7 @@ function configureMarked(slug: string) {
           break;
       }
 
-      let out = `<figure class="text-center">${img}`;
+      let out = `<figure>${img}`;
       if (title) {
         out += `<figcaption>${title}</figcaption>`;
       }
