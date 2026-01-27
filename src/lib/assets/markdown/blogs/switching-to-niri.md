@@ -1,7 +1,7 @@
 ---
 title: Switching to Niri
-published: false
-date: 1769492004
+published: true
+date: 1769550476
 description: I've returned to a window manager.
 ---
 
@@ -14,6 +14,7 @@ edge of the screen:
     <video
         src="https://github.com/YaLTeR/niri/assets/1794388/bce834b0-f205-434e-a027-b373495f9729"
         width="700"
+        height="393.75"
         muted="muted"
         controls
     ></video>
