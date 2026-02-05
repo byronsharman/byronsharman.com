@@ -2,7 +2,7 @@
 import AllPosts from "$lib/components/AllPosts.svelte";
 import BackToHome from "$lib/components/BackToHome.svelte";
 import BlogGrid from "$lib/components/BlogGrid.svelte";
-import Copyright from "$lib/components/Copyright.svelte";
+import Footer from "$lib/components/Footer.svelte";
 import DateP from "$lib/components/DateP.svelte";
 import type { PageProps } from "./$types";
 
@@ -56,5 +56,5 @@ let { data }: PageProps = $props();
 </div>
 
 <footer class="py-3 bg-neutral-50 dark:bg-neutral-800">
-  <Copyright />
+  <Footer />
 </footer>
