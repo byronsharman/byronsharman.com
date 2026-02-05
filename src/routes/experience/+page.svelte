@@ -1,5 +1,6 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
+import Copyright from "$lib/components/Copyright.svelte";
 import Experience from "$lib/components/Experience.svelte";
 import type { PageProps } from "./$types";
 
@@ -30,3 +31,7 @@ const descriptionTag = `Byron Sharman's experience. ${experienceOverview}.`;
     <Experience {experience} />
   {/each}
 </main>
+
+<footer class="mt-12">
+  <Copyright />
+</footer>
