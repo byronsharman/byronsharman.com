@@ -1,5 +1,6 @@
 <script lang='ts'>
 import BackToHome from "$lib/components/BackToHome.svelte";
+import Footer from "$lib/components/Footer.svelte";
 import Experience from "$lib/components/Experience.svelte";
 import type { PageProps } from "./$types";
 
@@ -30,3 +31,5 @@ const descriptionTag = `Byron Sharman's experience. ${experienceOverview}.`;
     <Experience {experience} />
   {/each}
 </main>
+
+<Footer classList="mt-12" />
