@@ -1,5 +1,5 @@
 <script lang='ts'>
-let { classList = "mx-std" }: { classList: string} = $props();
+let { classList = "mx-std" }: { classList: string } = $props();
 </script>
 
 <footer class={classList}>
