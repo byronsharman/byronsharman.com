@@ -83,7 +83,7 @@ It also weakens the spatial model of windows' relative positions.
 Niri's window switching is excellent. Like other tiling window managers,
 windows are focused with directional keyboard shortcuts. Unique to Niri,
 though, is the fact that these shortcuts are practical even when a task
-requires more windows that can fit on the screen. This is complemented by
+requires more windows than can fit on the screen. This is complemented by
 touchpad gestures that very intuitively match the scrolling-desktop model. I
 can move deftly through a sea of windows without getting lost.
 
