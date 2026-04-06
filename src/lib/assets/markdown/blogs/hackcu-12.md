@@ -70,10 +70,10 @@ making a frontend while Renn started working on translating Bluetooth signals
 to something our program could understand. I wrote a data structure to
 represent the state of a cube. The hard parts were already done for me by the
 [TwoPhaseSolver](https://github.com/hkociemba/RubiksCube-TwophaseSolver)
-library, whose authors had already figured out that there are two best ways to
-represent a cube: one superior for visualization and the other designed to be
-computationally efficient to solve. I chose the first and manually transpiled
-the types to Go:
+library, whose authors had figured out that there are two best ways to
+represent a cube state: one superior for visualization and the other designed
+to be computationally efficient to solve. I chose the first and manually
+transpiled the types to Go:
 
 ```go
 type Orientation byte
