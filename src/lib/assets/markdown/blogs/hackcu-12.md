@@ -1,8 +1,11 @@
 ---
 title: HackCU 12
 published: false
-date: 1775307848
+date: 1775501762
 description: My last HackCU.
+image:
+    alt: sketches of a multi-pane user interface drawn in colored chalk on a blackboard
+    path: blackboard.jpg
 ---
 
 I plan to graduate from Mines with my bachelor's this December, which means
@@ -46,6 +49,8 @@ struck by my perpetual hunger, so Renn and I went to the nearby
 Boulder, our meals were expensive but tasty.
 
 ## First steps
+
+![sketches of a multi-pane user interface drawn in colored chalk on a blackboard](blackboard.jpg "To plan the design of our app, we sketched a few wireframes on a blackboard.")
 
 Our idea wasn't quite clear in our heads at the time, so we spent some time
 nailing down details and thinking about the UI and UX. It also took a while to
@@ -333,6 +338,11 @@ the tools useful to me. But if agents are so powerful, shouldn't they be
 helpful even in the hands of someone new to agentic coding?
 
 ## Uh oh, time is running low
+
+<figure>
+    <iframe width="700" height="394" src="https://www.youtube-nocookie.com/embed/Lg7raksJpAs" title="YouTube video player" frameborder="0" allow="encrypted-media; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="max-w-full"></iframe>
+    <figcaption>Here, our app can be seen kinda-sorta working.</figcaption>
+</figure>
 
 The sun rose on a long to-do list, and our team realized we wouldn't finish
 implementing everything by the deadline. Ronald and Sushruth produced our
