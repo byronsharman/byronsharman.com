@@ -93,7 +93,7 @@
       @apply font-semibold! tracking-tight;
     }
     iframe {
-      @apply mx-auto rounded-md
+      @apply mx-auto rounded-md;
     }
     img {
       @apply mx-auto mb-0 sm:w-auto sm:max-h-[65vh] rounded-md;
