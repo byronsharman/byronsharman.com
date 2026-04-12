@@ -214,6 +214,7 @@ export const load: PageServerLoad = async ({ params }): Promise<RenderBlog> => {
 
   const recentBlogs: BlogCardData[] = (await getBlogCardData())
     .filter((blog) => blog.slug !== params.slug) // don't show this blog in the recent blogs
+    .map((blog) => ({ ...blog, mode: "regular" } satisfies BlogCardData))
     .slice(0, RECENT_LIMIT);
 
   const { date, description, title } = data;
