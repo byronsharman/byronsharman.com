@@ -52,7 +52,7 @@ const { data }: PageProps = $props();
 
 <svelte:head>
   <title>Byron Sharman</title>
-  <meta name="description" content="Byron Sharman is a computer science student at the Colorado School of Mines. This is his portfolio and blog." />
+  <meta name="description" content="Hello! I'm a computer science student at the Colorado School of Mines. Welcome to my website and blog." />
 </svelte:head>
 
 <!-- At the time of writing, it doesn't seem like there's a JavaScript-free way
