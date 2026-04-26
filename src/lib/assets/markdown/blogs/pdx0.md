@@ -4,8 +4,8 @@ published: true
 date: 1777161028
 description: A much-needed break from classes and a chance to see somewhere new.
 image:
-  alt: two students walk through the Portland airport, with its elaborate wooden ceiling clearly visible
-  path: airport.jpg
+  alt: a bee, its fuzzy body clearly visible, collects pollen from one of many white flowers
+  path: bee.jpg
 ---
 
 Danial, [Renn](https://renntg.com/), and I were planning to go to [BeaverHacks
