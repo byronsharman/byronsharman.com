@@ -2,7 +2,10 @@
 title: Oregon Trip
 published: true
 date: 1777161028
-description: remember to replace this placeholder
+description: A much-needed break from classes and a chance to see somewhere new.
+image:
+  alt: two students walk through the Portland airport, with its elaborate wooden ceiling clearly visible
+  path: airport.jpg
 ---
 
 Danial, [Renn](https://renntg.com/), and I were planning to go to [BeaverHacks
@@ -13,8 +16,8 @@ travel!
 
 The trip started early Saturday morning, when we headed over to the airport. We
 got to the gate a little before our flight departed, so we walked around Gate B
-for a little while before boarding. Aside from me being silly and almost
-getting on the wrong plane, the flight was without incident.
+before boarding. Aside from me being silly and almost getting on the wrong
+plane, the flight was without incident.
 
 Oregon State University is in Corvallis, and getting there from the Portland
 airport isn't trivial. Lukas's dad gave us a ride to Portland Union Station. We
@@ -53,6 +56,8 @@ flowering.
 !["two students walk between three enormous coniferous trees, only the bottoms of which are visible"](trio-0.jpg)
 !["three students pose in front of two enormous coniferous trees"](trio-1.jpg "From left to right: Lukas, Danial, and Renn.")
 !["the view from between three trees, looking directly upward"](trio-2.jpg "Apparently, there is a book at the top of one of these trees which you can sign if you climb it!")
+!["the sun sets over a field framed with trees and with cattle in the distance"](field.jpg)
+!["a stream runs underneath a bank covered in tall deciduous trees at golden hour"](stream.jpg)
 
 We ate dinner at the [KBBQ](https://www.kbbqexpressor.com/) and headed to
 Lukas's apartment for the night. Lukas tried out the projector he'd won at
@@ -77,7 +82,7 @@ took an Uber to Albany, an Amtrak bus to the Portland Union Station, and the
 Portland MAX train to the airport. The latter step was a little bit exciting,
 as multiple times we boarded the wrong train and had to hold the doors open to
 dismount before being whisked away in the wrong direction. We took
-multitudinous forms of transportation by the end of the trip: airplane, private
+multitudinous forms of transportation throughout the trip: airplane, private
 car, train, public bus, ride sharing, private bus, and light rail.
 
 !["two students walk through the Portland airport, with its elaborate wooden ceiling clearly visible"](airport.jpg "After a good amount of travelling, we arrived at PDX, one of the most beautiful airports I've seen.")
