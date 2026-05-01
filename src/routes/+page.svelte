@@ -85,10 +85,9 @@ doesn't show through. -->
           <div class="max-w-[500px]">
             <h1 class="font-semibold text-4xl text-fg-primary dark:text-fg-primary-dark tracking-tight">Byron Sharman</h1>
             <p class="my-std lg:text-lg text-fg-secondary dark:text-fg-secondary-dark">
-              I love to create, learn, and explore, both physically and
-              conceptually. I manifest these desires by studying computer
-              science at the Colorado School of Mines, where I serve as
-              president of the ACM student chapter.
+              I'm Byron, a computer science student at Colorado School of Mines. I
+              like to make things, learn technologies, and explore the world, both
+              physically and conceptually.
             </p>
 
             <ul class="my-std flex flex-row space-x-[20px]">
