@@ -19,16 +19,11 @@ type SocialLink = {
   targetUrl: string;
 };
 
-let emailAddress = $state("");
-onMount(() => {
-  emailAddress = atob("bWFpbHRvOmJ5cm9uLm4uc2hhcm1hbkBnbWFpbC5jb20=");
-});
-
 const socials: SocialLink[] = $derived([
   {
     iconSrc: envelopeIcon,
     iconAlt: "email",
-    targetUrl: emailAddress,
+    targetUrl: "mailto:public@byronsharman.com",
   },
   {
     iconSrc: githubLogo,
