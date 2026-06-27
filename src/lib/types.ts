@@ -29,6 +29,7 @@ export type RenderBlog = BaseBlog & {
 // zod.infer<typeof ExperienceSchema>
 type RenderExperience = {
   date: Date;
+  ongoing: boolean;
   description: string;
   languages: string[];
   name: string;

@@ -9,7 +9,7 @@ function dateToStr(date: Date): string {
 }
 
 let { experience }: { experience: Experience } = $props();
-const date = $derived(dateToStr(experience.date));
+const date = $derived(experience.ongoing ? "present" : dateToStr(experience.date));
 let startDate = $derived(
   experience.startDate === undefined
     ? undefined

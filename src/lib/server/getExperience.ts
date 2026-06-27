@@ -90,13 +90,14 @@ export async function getExperience(
         // way to do this!
         type MyType = Pick<
           Experience,
-          "description" | "parenthetical" | "startDate" | "type"
+          "description" | "parenthetical" | "startDate" | "type" | "ongoing"
         >;
         const baseReturnValue: MyType = {
           description,
           parenthetical: data.parenthetical,
           type: data.type,
           startDate: data.startDate,
+          ongoing: !!data.ongoing,
         };
 
         switch (data.type) {
