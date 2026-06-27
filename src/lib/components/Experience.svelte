@@ -1,19 +1,15 @@
 <script lang='ts'>
+import { formatMonthYear } from "$lib/dateFormat";
 import type { Experience } from "$lib/types.ts";
 
-function dateToStr(date: Date): string {
-  return new Intl.DateTimeFormat(undefined, {
-    month: "long",
-    year: "numeric",
-  }).format(date);
-}
-
 let { experience }: { experience: Experience } = $props();
-const date = $derived(experience.ongoing ? "present" : dateToStr(experience.date));
+const date = $derived(
+  experience.ongoing ? "present" : formatMonthYear(experience.date),
+);
 let startDate = $derived(
   experience.startDate === undefined
     ? undefined
-    : dateToStr(experience.startDate),
+    : formatMonthYear(experience.startDate),
 );
 const dateStr = $derived(
   startDate === undefined ? date : `${startDate} – ${date}`,
