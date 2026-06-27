@@ -2,6 +2,7 @@ import * as zod from "zod";
 
 const common = {
   date: zod.instanceof(Date).optional(),
+  ongoing: zod.boolean().optional(),
   parenthetical: zod.string().optional(),
   published: zod.optional(zod.boolean()),
   startDate: zod.instanceof(Date).optional(),

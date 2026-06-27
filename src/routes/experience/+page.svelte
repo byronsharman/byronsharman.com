@@ -2,17 +2,19 @@
 import BackToHome from "$lib/components/BackToHome.svelte";
 import Footer from "$lib/components/Footer.svelte";
 import Experience from "$lib/components/Experience.svelte";
+import { formatMonthYear } from "$lib/dateFormat";
 import type { PageProps } from "./$types";
 
 let { data }: PageProps = $props();
 
-const experienceOverview = data.experiences
-  .map(
-    (exp) =>
-      `${exp.name}, ${exp.date.toLocaleDateString(undefined, { year: "numeric", month: "long" })}`,
-  )
-  .join("; ");
-const descriptionTag = `Byron Sharman's experience. ${experienceOverview}.`;
+const experienceOverview = $derived(
+  data.experiences
+    .map((exp) => `${exp.name}, ${formatMonthYear(exp.date)}`)
+    .join("; "),
+);
+const descriptionTag = $derived(
+  `Byron Sharman's experience. ${experienceOverview}.`,
+);
 </script>
 
 <svelte:head>

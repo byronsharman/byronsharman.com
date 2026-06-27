@@ -9,24 +9,32 @@ import { parseBlog } from "./blogUtils";
 
 const LANG_EXCLUDES = ["Dockerfile", "Makefile"];
 
+async function gitHubFetchErrorMessage(
+  res: Response,
+  repoName: string,
+  requestType: string,
+) {
+  const body = await res.text();
+  const bodySummary = body.length > 0 ? ` Response body: ${body}` : "";
+  return `GitHub API ${requestType} request for '${repoName}' failed with ${res.status} ${res.statusText}.${bodySummary}`;
+}
+
 /* return an Experience modified to include metadata fetched from the Github API */
 async function fetchGitHubMetadata(repoName: string, fetchFunc: typeof fetch) {
   const res: Response = await fetchFunc(
     `https://api.github.com/repos/byronsharman/${repoName}`,
   );
   if (!res.ok) {
-    throw new Error(
-      `Fetch from GitHub API failed with code ${res.status}: ${res.statusText}`,
-    );
+    throw new Error(await gitHubFetchErrorMessage(res, repoName, "repo"));
   }
   const data: GitHubAPIResponse = await res.json();
 
   // get languages by querying the URL returned by the API
   let languages: string[] = [];
   const lang_res = await fetchFunc(data.languages_url);
-  if (!res.ok) {
+  if (!lang_res.ok) {
     throw new Error(
-      `Fetch from GitHub API failed with code ${res.status}: ${res.statusText}. Skipping languages for experience ${data.name}.`,
+      await gitHubFetchErrorMessage(lang_res, repoName, "languages"),
     );
   } else {
     languages = Object.keys(await lang_res.json()).filter(
@@ -54,8 +62,9 @@ export async function getExperience(
       eager: true,
     },
   );
+
   return (
-    await Promise.allSettled(
+    await Promise.all(
       Object.entries(rawData).map(async ([filename, rawMarkdown]) => {
         const matterObject = matter(rawMarkdown);
         let { content } = matterObject;
@@ -75,7 +84,7 @@ export async function getExperience(
         }
 
         if ("published" in data && data.published === false) {
-          throw new Error("unpublished");
+          return undefined;
         }
 
         const id: string = basename(filename, ".md");
@@ -90,13 +99,14 @@ export async function getExperience(
         // way to do this!
         type MyType = Pick<
           Experience,
-          "description" | "parenthetical" | "startDate" | "type"
+          "description" | "parenthetical" | "startDate" | "type" | "ongoing"
         >;
         const baseReturnValue: MyType = {
           description,
           parenthetical: data.parenthetical,
           type: data.type,
           startDate: data.startDate,
+          ongoing: !!data.ongoing,
         };
 
         switch (data.type) {
@@ -132,7 +142,6 @@ export async function getExperience(
       }),
     )
   )
-    .filter((outcome) => outcome.status === "fulfilled")
-    .map((outcome) => outcome.value)
+    .filter((experience) => experience !== undefined)
     .toSorted((a, b) => b.date.valueOf() - a.date.valueOf());
 }
