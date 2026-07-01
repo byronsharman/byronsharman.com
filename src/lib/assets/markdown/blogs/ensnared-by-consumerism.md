@@ -1,9 +1,18 @@
 ---
 title: Ensnared by consumerism (Dell Alienware AW3425DW review)
-published: false
-date: 1782782551
+published: true
+date: 1782875539
 description: It all seemed so obvious.
 ---
+
+> **Note to the reader:** Sometimes my blogs are written for others, and
+> sometimes they are written for myself. This one is mostly for myself. You
+> might enjoy [my other posts](/blog) more.
+>
+> If by some miracle you were researching this monitor and the search engine
+> gods favored my website, scroll down to the technical review. You probably
+> won't find it helpful unless you are also gaming on Linux on a Pascal-series
+> GPU.
 
 Since I was a senior in high school, I've been looking forward to an early
 retirement.
@@ -32,42 +41,42 @@ and enjoy an abnormally high savings rate.
 
 That started to slip a few weeks ago, when I got my first paycheck from my
 internship. When the number in one's bank account increases, one feels a
-natural pull to bring it back down, as if it were at equilibrium before. Window
-shopping for enthusiast consumer electronics on Reddit changes from a fantasy
-to asking oneself what _afford_ really means. If something costs less than
-one's net worth, surely that means one can afford it! I tried to rationalize my
-wayward impulses, thinking of the importance of things like emergency funds. I
-reminded myself that some things money cannot buy. Then I considered the fact
-that a 34-inch 240Hz 1440p ultrawide OLED monitor was not one of those things.
-Like a modern version of Ralphie in the 1983 film _A Christmas Story_, I
-watched reviews, compared specs, and played out thought experiments. One day, I
-found myself lugging a giant box out of a Best Buy and onto the bus.
+natural impulse to bring it back down, as if it were at equilibrium before.
+Window shopping for enthusiast consumer electronics on Reddit changes from a
+fantasy to asking oneself what _afford_ really means. If something costs less
+than one's net worth, surely that means one can afford it! I tried to
+rationalize my wayward impulses, thinking of the importance of things like
+emergency funds. I reminded myself that some things money cannot buy. Then I
+considered the fact that a 240Hz 1440p ultrawide OLED monitor was not one of
+those things. Like a modern version of Ralphie in the 1983 film _A Christmas
+Story_, I watched reviews, compared specs, and played out thought experiments.
+One day, I found myself lugging a giant box out of a Best Buy and onto the bus.
 
 ## A diversion in technicality
 
 My unit of choice was the Dell Alienware AW3425DW. The motivation for its
 purchase was to enjoy an excellent HDR experience in movies and games, which it
 excels at. QD-OLED monitors don't get as bright as their TV counterparts, but
-I've never felt the monitor was insufficiently bright, especially not in the
-literal closet in which I use it.
+I've never felt the brightness insufficient, especially not in my closet.
 
 Oh yeah. There's not a good space for a PC setup in my bedroom, so I use the
 walk-in closet instead.
 
 !["a closet with brick walls and a PC setup with a monitor showing an explosion from the movie Dune: Part One"](setup.jpg "My phone camera, combined with aggressive lossy AVIF compression, doesn't do the display justice. Also, don't worry about the cable management.")
 
-There are lots of HDR modes. I don't understand the difference between them
-very well. The monitor didn't come with a paper manual. All I know is HDR works
-and it looks good. On Linux, GNOME or KDE is necessary to turn on HDR. KDE's
+There are lots of HDR modes. I don't understand the difference between them.
+The monitor didn't come with a manual. All I know is HDR works and it looks
+good. [My Wayland compositor of choice, Niri](/blog/switching-to-niri), doesn't
+support HDR yet, so I use GNOME or KDE when consuming HDR content. KDE's
 implementation is more mature, and I think it's slightly better. I actually
 found OLED contrast to be annoying on movies with pronounced film grain, like
-_Rogue One: A Star Wars Story_, where dark shots looked outright noisy.
-Changing the mode to "Creator" helped a lot, as did tweaking some `mpv`
-settings. However, I never found a fix as effective as reducing the brightness.
+_Rogue One: A Star Wars Story_, where dark shots looked noisy. Changing the
+mode to "Creator" helped a lot, as did tweaking some `mpv` settings. However, I
+never found a fix as effective as reducing the brightness.
 
 Gaming on HDR is really neat—when it works. A lot of games don't support HDR on
 PC at all, even on Windows. For the ones that do, Nvidia drivers become an
-issue. There are some improvements to HDR Linux support on newer Nvidia
+issue. There are some improvements to Linux HDR support on newer Nvidia
 drivers, but drivers for Pascal-era cards like mine don't have those fixes, so
 they require setting extra environment variables. It's also necessary to use a
 third-party fork of Proton called Proton-GE, unless you want to use a piece of
@@ -84,21 +93,20 @@ The monitor supports a refresh rate of 240 Hz, but even with DSC, my GPU's
 DisplayPort output is too old to reach that. Instead, I run it at 165 Hz, which
 is enough to make UI animations feel smooth, even at the large screen size. At
 3440x1440, my GPU can't render many games above 60 FPS, so I find desktop
-animations to be the most visible aspect of the high refresh rate. In
-[Niri](/blog/switching-to-niri), I frequently see animations that take the full
-height or width of the display, which on this monitor feel responsive, natural,
-and, well, _satisfying_. Niri marries highly optimized GPU rendering with
-finely tuned easing profiles, and it pays off here.
+animations to be the most visible aspect of the high refresh rate. In Niri, I
+frequently see animations that take the full height or width of the display,
+which on this monitor feel responsive, natural, and satisfying. Niri marries
+highly optimized GPU rendering with finely tuned easing profiles, and it shows.
 
 The aspect ratio is tremendously beneficial for movies and TV shows. On normal
 16:9 screens, including TVs, most movies play with black bars on the top and
 bottom, but on a 21:9 screen, the picture goes from corner to corner. This
 means although it's technically a 1440p display, it's hardly any less pixels
-than 4K, which is equivalent to 1610p at cinematic aspect ratios. Things look
-tremendously sharp, and for a single-person "PC theater" setup, this is the
-best money can buy until another 0 is appended to the price. The extra screen
-real estate is also nice for productivity; you can fit three windows side by
-side at the widths comparable to two windows on a regular monitor.
+than 4K. The picture is tremendously sharp, and for a single-person "PC
+theater" setup, this is the best money can buy until another 0 is appended to
+the price. The extra screen real estate is also nice for productivity. Three
+windows fit side by side at the widths comparable to two windows on a regular
+monitor.
 
 People like to rave about OLED's true blacks. They say it has "perfect blacks",
 which I find to be misleading. Perfect blacks do not mean black pixels are
@@ -110,11 +118,10 @@ tint. The blacks are not black unless in a perfectly dark room. Which I am in
 now, and even so, if I lean forward and stare at the pixels, I can see they're
 _still_ not as black as the bezel because the light from the monitor is
 bouncing off the white wall behind me and back onto the monitor. However, this
-is not noticeable during normal use. The blacks are fantastic. Funnily enough,
-I notice their benefit the most not in games or movies but when writing code in
-the terminal, which I have configured to have a perfectly black background.
-Unfortunately, I do not own a camera good enough to capture the nuances
-discussed in this paragraph.
+is not noticeable during normal use. Funnily enough, I notice this benefit the
+most not in games or movies but when writing code in the terminal, whose
+background color I have set to pure black. Unfortunately, I do not own a camera
+good enough to capture the nuances discussed in this paragraph.
 
 Overall, the image quality itself, though good, is inferior to my laptop's OLED
 screen, which has punchier HDR and more vibrant colors. This might be a
@@ -126,8 +133,8 @@ someone who writes code a lot. I decided that rather than policing my own
 computer use and going to extreme lengths to babysit my delicate electronics, I
 will simply write code when I feel like doing so, and if the monitor goes bad
 in three years, that's OK. Mini-LED backlighting technology will have matured
-by then, and I'll be able to get similar image quality and improved brightness
-without that concern.
+by then, enabling comparable image quality and improved brightness without
+burn-in concern.
 
 ## Further reflection on the implications on my character
 
