@@ -3,7 +3,7 @@ languages:
   - TypeScript
   - YAML
 name: The Trade Desk
-parenthetical: Software Engineering Intern
+parenthetical: Software Engineer Intern
 type: employment
 date: 2026-08-01
 ongoing: true
