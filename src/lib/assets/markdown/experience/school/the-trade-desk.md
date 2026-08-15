@@ -6,7 +6,7 @@ name: The Trade Desk
 parenthetical: Software Engineer Intern
 type: employment
 date: 2026-08-01
-ongoing: true
+ongoing: false
 startDate: 2026-05-01
 url: https://www.thetradedesk.com/
 ---
