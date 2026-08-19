@@ -2,7 +2,7 @@
 title: Declarative systems and sources of truth
 published: true
 date: 1787100626
-description: I write miscellaneous thoughts on the titular subject matter.
+description: My thoughts on a concept that keeps coming up.
 image:
   alt: >-
     a climate control component of a vehicle held over a table
