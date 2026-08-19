@@ -45,8 +45,8 @@ My first memory of running into issues with sources of truth was many years
 ago, when I was making [a multiplayer tank game][bangbang]. I wasn't very
 creative in middle school; the goal of the game was to shoot other tanks and be
 the last standing. Each player connected to a central server. The clients all
-did their own collision logic to determine when when a tank shell hit another
-tank. Because of network delays, positions of the tanks drifted over time, and
+did their own collision logic to determine when a tank shell hit another tank.
+Because of network delays, positions of the tanks drifted over time, and
 sometimes a tank would be operating on one player's computer but eliminated on
 another's.
 
