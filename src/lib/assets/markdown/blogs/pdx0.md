@@ -1,5 +1,5 @@
 ---
-title: Oregon Trip
+title: Oregon trip
 published: true
 date: 1777161028
 description: A much-needed break from classes and a chance to see somewhere new.
